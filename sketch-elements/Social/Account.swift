@@ -12,8 +12,8 @@ struct Account: View {
     
     var conversations: [Conversation]
     var posts: [Post]
-    var user: User
-    var users: [User]
+    var user: MyUser
+    var users: [MyUser]
     @State var selectedType = 0
     var menuItems: [String] = ["Posts", "Comments", "Likes"]
     
@@ -54,7 +54,7 @@ struct Account: View {
                             timestamp: post.timestamp,
                             contentImage: post.picture,
                             commentPictures: post.comments.map({ (comment: String) -> Picture in
-                                return users.first { (user: User) -> Bool in
+                                return users.first { (user: MyUser) -> Bool in
                                     return user.id == comment
                                 }!.picture!
                             })

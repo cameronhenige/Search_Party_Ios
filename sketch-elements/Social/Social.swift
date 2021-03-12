@@ -11,7 +11,7 @@ import SwiftUI
 struct Social: View {
     
     var stories:[Story] = storiesData
-    var users:[User] = usersData
+    var users:[MyUser] = usersData
     var posts:[Post] = postsData
     var conversations:[Conversation] = conversationsData
 

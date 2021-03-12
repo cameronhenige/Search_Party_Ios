@@ -11,7 +11,7 @@ import URLImage
 
 struct CardSocial: View {
     
-    var user: User
+    var user: MyUser
     var contentText: String
     var timestamp: Double
     var contentImage: Picture?
@@ -88,7 +88,7 @@ struct CardSocial_Previews: PreviewProvider {
             timestamp: postsData[0].timestamp,
             contentImage: postsData[0].picture,
             commentPictures: postsData[0].comments.map({ (comment: String) -> Picture in
-                return usersData.first { (user: User) -> Bool in
+                return usersData.first { (user: MyUser) -> Bool in
                     return user.id == comment
                 }!.picture!
             })

@@ -16,7 +16,7 @@ class OnboardingRouter: ObservableObject {
             UserDefaults.standard.set(true, forKey: "didLaunchBefore")
             currentPage = "onboardingView"
         } else {
-            currentPage = "homeView"
+            currentPage = ""
         }
     }
     

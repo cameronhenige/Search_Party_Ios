@@ -11,7 +11,7 @@ import SwiftUI
 struct Timeline: View {
     
     var stories: [Story]
-    var users: [User]
+    var users: [MyUser]
     var posts: [Post]
     var body: some View {
         

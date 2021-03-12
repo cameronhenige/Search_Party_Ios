@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct Recipes: View {
-    
+    @EnvironmentObject var authState: AuthenticationState
     var categories: [Category]
     var tintColor: Color = Constant.color.tintColor
     
@@ -28,8 +28,16 @@ struct Recipes: View {
             .background(Constant.color.gray)
             .navigationBarColor(tintColor.uiColor())
             .navigationBarTitle(Text("Recipes"), displayMode: .large)
-            .navigationBarItems(trailing: Image(systemName: Constant.icon.magnifyingGlass).foregroundColor(.white))
+            .navigationBarItems(trailing: Button(action: signoutTapped, label: {
+                Image(systemName: "person.circle")
+                Text("Logout")
+            }))
+            
         }
+    }
+    
+    private func signoutTapped() {
+        authState.signout()
     }
 }
 

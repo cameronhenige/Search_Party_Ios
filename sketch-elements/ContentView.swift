@@ -7,17 +7,11 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
-// NOTE: This is needed only to change the theme, feel free to remove it
-enum Theme: String, CaseIterable, Identifiable {
-    case food
-    case social
-    case travel
-    var id: String { self.rawValue }
-}
 
 struct ContentView: View {
-    
+    @EnvironmentObject var authState: AuthenticationState
     @EnvironmentObject var userData: UserData
     @EnvironmentObject var viewRouter: OnboardingRouter
 
@@ -26,14 +20,17 @@ struct ContentView: View {
         
         VStack {
             if viewRouter.currentPage == "onboardingView" {
-                SplashView(state: AppState())
-            } else if viewRouter.currentPage == "homeView" {
-                ZStack {
-                    
+                OnboardingView().environmentObject(viewRouter)
+            }else{
+                if authState.loggedInUser == nil {
+                //if(Auth.auth().currentUser == nil){
+                    SplashView(state: AppState())
+                }else{
                     Food()
-                    ModalAnchorView()
+                    //ModalAnchorView()
+
                 }
-            }
+        }
         }
         
 

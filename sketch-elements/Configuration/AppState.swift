@@ -9,6 +9,6 @@
 import SwiftUI
 
 class AppState: ObservableObject {
-    @Published var user: User?
-    var currentUser: User?
+    @Published var user: MyUser?
+    @Published var currentUser: MyUser?
 }

@@ -14,8 +14,8 @@ import FBSDKLoginKit
 
 class AuthService: AuthAPI {
     
-    func loginWithFacebook() -> Future<User?, Never> {
-        return Future<User?, Never> { promise in
+    func loginWithFacebook() -> Future<MyUser?, Never> {
+        return Future<MyUser?, Never> { promise in
             let loginManager = LoginManager()
             loginManager.logIn(permissions: ["email"], from: nil) { (result, error) in
                 guard let token = AccessToken.current, error == nil else {
@@ -32,36 +32,36 @@ class AuthService: AuthAPI {
                             promise(.success(nil))
                             return
                     }
-                    let user = User(id: id, email: email, name: "name", picture: nil, caption: "caption")
+                    let user = MyUser(id: id, email: email, name: "name", picture: nil, caption: "caption")
                     promise(.success(user))
                 })
             }
         }
     }
     
-    func login(email: String, password: String) -> Future<User?, Never> {
-        return Future<User?, Never> { promise in
+    func login(email: String, password: String) -> Future<MyUser?, Never> {
+        return Future<MyUser?, Never> { promise in
             Auth.auth().signIn(withEmail: email, password: password) {(authResult, _) in
                 guard let id = authResult?.user.providerID,
                     let email = authResult?.user.email else {
                         promise(.success(nil))
                         return
                 }
-                let user = User(id: id, email: email, name: "name", picture: nil, caption: "caption")
+                let user = MyUser(id: id, email: email, name: "name", picture: nil, caption: "caption")
                 promise(.success(user))
             }
         }
     }
     
-    func signUp(email: String, password: String) -> Future<User?, Never> {
-        return Future<User?, Never> { promise in
+    func signUp(email: String, password: String) -> Future<MyUser?, Never> {
+        return Future<MyUser?, Never> { promise in
             Auth.auth().createUser(withEmail: email, password: password) { (authResult, _) in
                 guard let id = authResult?.user.providerID,
                     let email = authResult?.user.email else {
                         promise(.success(nil))
                         return
                 }
-                let user = User(id: id, email: email, name: "name", picture: nil, caption: "caption")
+                let user = MyUser(id: id, email: email, name: "name", picture: nil, caption: "caption")
                 promise(.success(user))
             }
         }

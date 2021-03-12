@@ -9,4 +9,5 @@ target 'sketch-elements' do
   pod 'Firebase/Auth'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'lottie-ios'
 end

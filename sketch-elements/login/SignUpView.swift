@@ -11,6 +11,7 @@ import SwiftUI
 struct SignUpView: View {
     @ObservedObject private var viewModel: SignUpViewModel
     @State var pushActive = false
+    @EnvironmentObject var authState: AuthenticationState
     
     init(state: AppState) {
         self.viewModel = SignUpViewModel(authAPI: AuthService(), state: state)
@@ -18,12 +19,7 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
-            NavigationLink(destination: ContentView()
-                            .environmentObject(ModalManager())
-                            .environmentObject(UserData()),
-                           isActive: self.$pushActive) {
-              EmptyView()
-            }.hidden()
+
             VStack(alignment: .leading, spacing: 30) {
                 Text("Sign Up")
                     .modifier(TextModifier(font: UIConfiguration.titleFont,
@@ -46,6 +42,10 @@ struct SignUpView: View {
                         customButton(title: "Create Account",
                                      backgroundColor: UIColor(hexString: "#334D92"),
                                      action: self.viewModel.signUp)
+                        
+                        Button(action: signUpTapped, label: {
+                            Text("Sign Up")
+                        })
                     }
                 }
             }
@@ -55,6 +55,13 @@ struct SignUpView: View {
                   message: Text(status.message),
                   dismissButton: .default(Text("OK"), action: { self.pushActive = true }))
         }
+        
+
+    }
+    
+    private func signUpTapped() {
+        authState.signup(email: viewModel.email, password: viewModel.password, passwordConfirmation: viewModel.password)
+
     }
     
     private func customButton(title: String,

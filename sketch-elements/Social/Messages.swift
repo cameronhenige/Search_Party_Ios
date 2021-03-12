@@ -11,7 +11,7 @@ import SwiftUI
 struct Messages: View {
     
     var conversations: [Conversation]
-    var users: [User]
+    var users: [MyUser]
     var body: some View {
         
         NavigationView {

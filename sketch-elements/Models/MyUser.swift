@@ -6,7 +6,7 @@
 //  Copyright © 2020 Filip Molcik. All rights reserved.
 //
 
-struct User: Hashable, Codable, Identifiable {
+struct MyUser: Hashable, Codable, Identifiable {
     var id: String
     let email: String
     var name: String

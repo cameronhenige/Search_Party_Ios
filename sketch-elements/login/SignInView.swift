@@ -22,9 +22,7 @@ struct SignInView: View {
     
     var body: some View {
         VStack {
-            NavigationLink(destination: ContentView()
-                            .environmentObject(ModalManager())
-                            .environmentObject(UserData()),
+            NavigationLink(destination: Food(),
                            isActive: self.$pushActive) {
               EmptyView()
             }.hidden()
