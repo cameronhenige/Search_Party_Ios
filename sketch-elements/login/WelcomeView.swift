@@ -12,7 +12,8 @@ struct WelcomeView: View {
     @State private var index = 1
     @State private var pushActive = false
     @ObservedObject var state: AppState
-    
+    @EnvironmentObject var authState: AuthenticationState
+
     var body: some View {
         NavigationView {
             VStack {
@@ -23,17 +24,16 @@ struct WelcomeView: View {
                 .navigationBarHidden(true)
                 
                 VStack(spacing: 40) {
-                    Image("logo")
+                    Image("flashlight")
                         .resizable()
                         .frame(width: 120, height: 120, alignment: .center)
-                        .colorMultiply(Color(UIConfiguration.tintColor))
                         .padding(.top, 100)
                     
-                    Text("Welcome to your app")
+                    Text("Welcome to Search Party")
                         .modifier(TextModifier(font: UIConfiguration.titleFont,
                                                color: UIConfiguration.tintColor))
                     
-                    Text("Start your iOS app with this Firebase Swift Stater Kit")
+                    Text("Sign in to get access to all features")
                         .modifier(TextModifier(font: UIConfiguration.subtitleFont))
                         .padding(.horizontal, 60)
                     
@@ -42,7 +42,7 @@ struct WelcomeView: View {
                             self.index = 1
                             self.pushActive = true
                         }) {
-                            Text("Log In")
+                            Text("Sign In")
                                 .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
                                                          color: UIConfiguration.tintColor,
                                                          textColor: .white,
@@ -61,11 +61,28 @@ struct WelcomeView: View {
                                     .stroke(Color.gray, lineWidth: 1)
                             )
                         }
+                        
+                        Button(action: {
+                            self.signInAnonymously()
+                        }) {
+                            Text("Skip for now")
+                                .modifier(TextModifier(font: UIConfiguration.buttonFont,
+                                                       color: .black))
+                                .frame(width: 275, height: 55)
+                                
+                            
+                        }
+                        
                     }
                 }
                 Spacer()
             }
         }
+    }
+    
+    private func signInAnonymously() {
+        authState.signInAnonymously()
+
     }
     
     private func destinationView() -> AnyView {

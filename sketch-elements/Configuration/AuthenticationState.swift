@@ -25,7 +25,8 @@ class AuthenticationState: NSObject, ObservableObject {
     
     private let auth = Auth.auth()
     fileprivate var currentNonce: String?
-    
+    fileprivate var fullName: String?
+
     override private init() {
         loggedInUser = auth.currentUser
         super.init()
@@ -51,11 +52,13 @@ class AuthenticationState: NSObject, ObservableObject {
         }
     }
     
-    func signup(email: String, password: String, passwordConfirmation: String) {
+    func signup(email: String, password: String, passwordConfirmation: String, fullName: String) {
         guard password == passwordConfirmation else {
             self.error = NSError(domain: "", code: 9210, userInfo: [NSLocalizedDescriptionKey: "Password and confirmation does not match"])
             return
         }
+        
+        self.fullName = fullName
         
         self.isAuthenticating = true
         self.error = nil
@@ -63,16 +66,31 @@ class AuthenticationState: NSObject, ObservableObject {
         auth.createUser(withEmail: email, password: password, completion: handleAuthResultCompletion)
     }
     
-    private func handleSignInWith(email: String, password: String) {
+    func handleSignInWith(email: String, password: String) {
         auth.signIn(withEmail: email, password: password, completion: handleAuthResultCompletion)
+    }
+    
+    func signInAnonymously(){
+        auth.signInAnonymously(completion: handleAuthResultCompletion)
     }
     
     
     private func handleAuthResultCompletion(auth: AuthDataResult?, error: Error?) {
         DispatchQueue.main.async {
-            self.isAuthenticating = false
             if let user = auth?.user {
-                self.loggedInUser = user
+                if(self.fullName != nil){
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = self.fullName
+                    changeRequest?.commitChanges { (error) in
+                        self.loggedInUser = user
+                        self.isAuthenticating = false
+
+                    }
+                }else{
+                    self.loggedInUser = user
+                    self.isAuthenticating = false
+                }
+            
             } else if let error = error {
                 self.error = error as NSError
             }

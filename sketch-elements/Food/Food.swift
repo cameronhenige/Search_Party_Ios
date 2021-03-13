@@ -16,11 +16,11 @@ struct Food: View {
     var body: some View {
         TabView() {
             Recipes(categories: categories).tabItem {
-                Text("Recipes")
+                Text("Lost")
                 Image(systemName: Constant.icon.doc)
             }
             Restaurants(restaurants: restaurants).tabItem {
-                Text("Restaurants")
+                Text("Found")
                 Image(systemName: Constant.icon.house)
             }
         }

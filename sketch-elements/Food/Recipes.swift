@@ -27,7 +27,7 @@ struct Recipes: View {
             }
             .background(Constant.color.gray)
             .navigationBarColor(tintColor.uiColor())
-            .navigationBarTitle(Text("Recipes"), displayMode: .large)
+            .navigationBarTitle(Text("Lost"), displayMode: .large)
             .navigationBarItems(trailing: Button(action: signoutTapped, label: {
                 Image(systemName: "person.circle")
                 Text("Logout")

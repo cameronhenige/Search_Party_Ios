@@ -9,12 +9,16 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @ObservedObject private var viewModel: SignUpViewModel
     @State var pushActive = false
+    
+    @State var fullName: String = ""
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var confirmPassword: String = ""
+    
     @EnvironmentObject var authState: AuthenticationState
     
     init(state: AppState) {
-        self.viewModel = SignUpViewModel(authAPI: AuthService(), state: state)
     }
     
     var body: some View {
@@ -28,39 +32,40 @@ struct SignUpView: View {
                 VStack(alignment: .center, spacing: 30) {
                     VStack(alignment: .center, spacing: 25) {
                         CustomTextField(placeHolderText: "Full Name",
-                                      text: $viewModel.fullName)
-                        CustomTextField(placeHolderText: "Phone Number",
-                                      text: $viewModel.phoneNumber)
+                                      text: $fullName)
                         CustomTextField(placeHolderText: "E-mail Address",
-                                      text: $viewModel.email)
-                        CustomTextField(placeHolderText: "Password",
-                                      text: $viewModel.password,
-                                      isPasswordType: true)
+                                      text: $email)
+                        
+                        SecureField("Password", text: $password)
+                            .textFieldStyle(MyTextFieldStyle()).textContentType(.newPassword)
+                        
+                        SecureField("Confirm Password", text: $confirmPassword)
+                            .textFieldStyle(MyTextFieldStyle()).textContentType(.newPassword)
+                        
                     }.padding(.horizontal, 25)
                     
-                    VStack(alignment: .center, spacing: 40) {
-                        customButton(title: "Create Account",
-                                     backgroundColor: UIColor(hexString: "#334D92"),
-                                     action: self.viewModel.signUp)
+                    
+                        Button(action: signUpTapped) {
+                            Text("Create Account")
+                                .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
+                                                         color: UIConfiguration.tintColor,
+                                                         textColor: .white,
+                                                         width: 275,
+                                                         height: 55))
+                        }
                         
-                        Button(action: signUpTapped, label: {
-                            Text("Sign Up")
-                        })
-                    }
                 }
             }
             Spacer()
-        }.alert(item: self.$viewModel.statusViewModel) { status in
-            Alert(title: Text(status.title),
-                  message: Text(status.message),
-                  dismissButton: .default(Text("OK"), action: { self.pushActive = true }))
+        }.alert(item: $authState.error) { error in
+            Alert(title: Text("Error"), message: Text(error.localizedDescription))
         }
         
 
     }
     
     private func signUpTapped() {
-        authState.signup(email: viewModel.email, password: viewModel.password, passwordConfirmation: viewModel.password)
+        authState.signup(email: email, password: password, passwordConfirmation: confirmPassword, fullName: fullName)
 
     }
     

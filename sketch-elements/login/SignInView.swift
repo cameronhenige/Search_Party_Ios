@@ -14,10 +14,11 @@ import FirebaseAuth
 
 struct SignInView: View {
     @State var pushActive = false
-    @ObservedObject private var viewModel: SignInViewModel
-    
+    @State var email: String = ""
+    @State var password: String = ""
+    @EnvironmentObject var authState: AuthenticationState
+
     init(state: AppState) {
-        self.viewModel = SignInViewModel(authAPI: AuthService(), state: state)
     }
     
     var body: some View {
@@ -35,33 +36,29 @@ struct SignInView: View {
                 VStack(alignment: .center, spacing: 30) {
                     VStack(alignment: .center, spacing: 25) {
                         CustomTextField(placeHolderText: "E-mail",
-                                      text: $viewModel.email)
+                                      text: $email)
                         CustomTextField(placeHolderText: "Password",
-                                      text: $viewModel.password,
+                                      text: $password,
                                       isPasswordType: true)
                     }.padding(.horizontal, 25)
                     
                     VStack(alignment: .center, spacing: 40) {
                         customButton(title: "Log In",
                                      backgroundColor: UIConfiguration.tintColor,
-                                     action: { self.viewModel.login() })
-                        Text("OR")
-                        customButton(title: "Facebook Login",
-                                     backgroundColor: UIColor(hexString: "#334D92"),
-                                     action: { self.viewModel.facebookLogin() })
+                                     action: { signInTapped() })
+
                     }
                 }
             }
             Spacer()
-        }.alert(item: self.$viewModel.statusViewModel) { status in
-            Alert(title: Text(status.title),
-                  message: Text(status.message),
-                  dismissButton: .default(Text("OK"), action: {
-                    if status.title == "Successful" {
-                        self.pushActive = true
-                    }
-                  }))
+        }.alert(item: $authState.error) { error in
+            Alert(title: Text("Error"), message: Text(error.localizedDescription))
         }
+    }
+    
+    private func signInTapped() {
+        authState.handleSignInWith(email: email, password: password)
+
     }
     
     private func customButton(title: String,

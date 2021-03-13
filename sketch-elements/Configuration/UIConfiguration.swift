@@ -17,8 +17,16 @@ class UIConfiguration {
     
     // Color
     static let backgroundColor: UIColor = .white
-    static let tintColor = UIColor(hexString: "#ff5a66")
+    static let tintColor = UIColor(hexString: "#284b63")
     static let subtitleColor = UIColor(hexString: "#464646")
     static let buttonColor = UIColor(hexString: "#414665")
     static let buttonBorderColor = UIColor(hexString: "#B0B3C6")
+    
+    
+    static let colorPrimary = UIColor(hexString: "#284b63")
+    static let colorPrimaryDark = UIColor(hexString: "#284b63")
+    static let colorAccent = UIColor(hexString: "#d5905e")
+    static let colorPrimaryDarker = UIColor(hexString: "#1d3647")
+    static let colorPrimaryTrans = UIColor(hexString: "#33424242")
+    static let colorPrimaryDarkTrans = UIColor(hexString: "#284b631b")
 }

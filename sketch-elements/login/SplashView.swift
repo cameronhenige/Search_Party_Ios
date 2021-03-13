@@ -19,14 +19,14 @@ struct SplashView: View {
                 ZStack {
                     Color(UIConfiguration.tintColor)
                         .edgesIgnoringSafeArea(.all)
-                    Image("logo")
+                    Image("flashlight")
                         .resizable()
                         .frame(width: 120, height: 120, alignment: .center)
                 }
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation {
                     self.isActive = true
                 }

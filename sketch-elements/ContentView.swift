@@ -22,11 +22,14 @@ struct ContentView: View {
             if viewRouter.currentPage == "onboardingView" {
                 OnboardingView().environmentObject(viewRouter)
             }else{
-                if authState.loggedInUser == nil {
-                //if(Auth.auth().currentUser == nil){
-                    SplashView(state: AppState())
-                }else{
+                if authState.loggedInUser != nil  && !authState.isAuthenticating {
+                    
                     Food()
+
+                //if(Auth.auth().currentUser == nil){
+                }else{
+                    SplashView(state: AppState())
+
                     //ModalAnchorView()
 
                 }

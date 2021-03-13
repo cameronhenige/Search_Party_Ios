@@ -91,6 +91,7 @@
 		34F1215E2587962C00BBB7DB /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215D2587962C00BBB7DB /* Cities.swift */; };
 		34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE0A2C25681474007D1B06 /* CountPicker.swift */; };
 		8F13A40F363A7DADDC1D96A3 /* Pods_sketch_elements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8932A4A0913576979DD75BDA /* Pods_sketch_elements.framework */; };
+		F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */; };
 		F2D7454825FAF237003C5157 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454525FAF236003C5157 /* SignInView.swift */; };
 		F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454625FAF237003C5157 /* WelcomeView.swift */; };
 		F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454725FAF237003C5157 /* SignUpView.swift */; };
@@ -222,6 +223,7 @@
 		8932A4A0913576979DD75BDA /* Pods_sketch_elements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sketch_elements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1924A760991C453EECAF10E /* Pods-sketch-elements.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketch-elements.release.xcconfig"; path = "Target Support Files/Pods-sketch-elements/Pods-sketch-elements.release.xcconfig"; sourceTree = "<group>"; };
 		C4FA1B351C17CA5F83931D6A /* Pods-sketch-elements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketch-elements.debug.xcconfig"; path = "Target Support Files/Pods-sketch-elements/Pods-sketch-elements.debug.xcconfig"; sourceTree = "<group>"; };
+		F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F2D7454525FAF236003C5157 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F2D7454625FAF237003C5157 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		F2D7454725FAF237003C5157 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		3403A3002406B70F00D7B040 /* sketch-elements */ = {
 			isa = PBXGroup;
 			children = (
+				F2A9DBED25FC7ADB0055AC33 /* Extensions */,
 				F2D7459A25FB24C1003C5157 /* LottieFiles */,
 				F2D7458A25FB2476003C5157 /* onboarding */,
 				F2D7456825FAF6AC003C5157 /* Components */,
@@ -508,6 +511,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F2A9DBED25FC7ADB0055AC33 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F2D7454425FAF228003C5157 /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,7 +647,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3403A2F92406B70F00D7B040 /* Build configuration list for PBXProject "sketch-elements" */;
+			buildConfigurationList = 3403A2F92406B70F00D7B040 /* Build configuration list for PBXProject "SearchPartyIos" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -810,6 +821,7 @@
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
 				3403A32824080DBC00D7B040 /* Recipe.swift in Sources */,
 				341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */,
+				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */,
 				34F1215525875BAF00BBB7DB /* Guide.swift in Sources */,
 				340A1981249BB0C900D49461 /* MapView.swift in Sources */,
@@ -1013,7 +1025,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3403A2F92406B70F00D7B040 /* Build configuration list for PBXProject "sketch-elements" */ = {
+		3403A2F92406B70F00D7B040 /* Build configuration list for PBXProject "SearchPartyIos" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3403A3102406B71100D7B040 /* Debug */,
