@@ -17,11 +17,11 @@ struct Food: View {
         TabView() {
             Recipes(categories: categories).tabItem {
                 Text("Lost")
-                Image(systemName: Constant.icon.doc)
+                Image("lost_icon").renderingMode(.template)
             }
             Restaurants(restaurants: restaurants).tabItem {
                 Text("Found")
-                Image(systemName: Constant.icon.house)
+                Image("found_icon").renderingMode(.template)
             }
         }
         .tabBarOpaque()
