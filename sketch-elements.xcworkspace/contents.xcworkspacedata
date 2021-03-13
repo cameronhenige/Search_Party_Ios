@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/hannahkrolewski/Documents/ios-sketch-elements-master/SearchPartyIos.xcodeproj">
+      location = "group:/Users/hannahkrolewski/Documents/ios-sketch-elements-master/sketch-elements.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
