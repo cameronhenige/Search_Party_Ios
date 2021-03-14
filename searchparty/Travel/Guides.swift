@@ -60,7 +60,7 @@ struct GuideTile: View {
         NavigationLink(
             destination: GuideDetail(guide: guide)
         ) {
-                CardWithBackground(title: guide.city, subTitle: guide.country, height: height, pictureUrl: guide.picture.uri, description: "\(guide.duration) days")
+                CardWithBackground(title: guide.city, subTitle: guide.country, height: height, description: "\(guide.duration) days")
             }
 
     }

@@ -12,7 +12,7 @@
 		3403A3082406B71100D7B040 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3403A3072406B71100D7B040 /* Assets.xcassets */; };
 		3403A30B2406B71100D7B040 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3403A30A2406B71100D7B040 /* Preview Assets.xcassets */; };
 		3403A30E2406B71100D7B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3403A30C2406B71100D7B040 /* LaunchScreen.storyboard */; };
-		3403A31A2408099500D7B040 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403A3192408099500D7B040 /* Recipes.swift */; };
+		3403A31A2408099500D7B040 /* LostPets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403A3192408099500D7B040 /* LostPets.swift */; };
 		3403A31D240809E700D7B040 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403A31C240809E700D7B040 /* UserData.swift */; };
 		3403A32324080C7700D7B040 /* restaurants.json in Resources */ = {isa = PBXBuildFile; fileRef = 3403A32124080C7600D7B040 /* restaurants.json */; };
 		3403A32424080C7700D7B040 /* recipes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3403A32224080C7700D7B040 /* recipes.json */; };
@@ -24,7 +24,6 @@
 		341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */; };
 		341D20DE241CDE2E00C706A2 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20DD241CDE2E00C706A2 /* TabBarModifier.swift */; };
 		3445A7912408268B0020561B /* recipeCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = 3445A7902408268B0020561B /* recipeCategories.json */; };
-		3445A796240839DE0020561B /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3445A795240839DE0020561B /* URLImage */; };
 		3445A798240A80AF0020561B /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3445A797240A80AF0020561B /* ColorPalette.xcassets */; };
 		3445A79D240B043E0020561B /* RecipesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3445A79C240B043E0020561B /* RecipesList.swift */; };
 		3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3445A79E240B0C3F0020561B /* CardWithBackground.swift */; };
@@ -90,7 +89,9 @@
 		34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215A258760C800BBB7DB /* Coordinates.swift */; };
 		34F1215E2587962C00BBB7DB /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215D2587962C00BBB7DB /* Cities.swift */; };
 		34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE0A2C25681474007D1B06 /* CountPicker.swift */; };
-		8F13A40F363A7DADDC1D96A3 /* Pods_sketch_elements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8932A4A0913576979DD75BDA /* Pods_sketch_elements.framework */; };
+		EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF93CF780A55C6FBF7A9F6D /* Pods_searchparty.framework */; };
+		F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */; };
+		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
 		F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */; };
 		F2D7454825FAF237003C5157 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454525FAF236003C5157 /* SignInView.swift */; };
 		F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454625FAF237003C5157 /* WelcomeView.swift */; };
@@ -142,7 +143,7 @@
 		3403A30A2406B71100D7B040 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3403A30D2406B71100D7B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3403A30F2406B71100D7B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3403A3192408099500D7B040 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		3403A3192408099500D7B040 /* LostPets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPets.swift; sourceTree = "<group>"; };
 		3403A31C240809E700D7B040 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		3403A32124080C7600D7B040 /* restaurants.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = restaurants.json; sourceTree = "<group>"; };
 		3403A32224080C7700D7B040 /* recipes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = recipes.json; sourceTree = "<group>"; };
@@ -220,9 +221,13 @@
 		34F1215A258760C800BBB7DB /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		34F1215D2587962C00BBB7DB /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		34FE0A2C25681474007D1B06 /* CountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountPicker.swift; sourceTree = "<group>"; };
-		8932A4A0913576979DD75BDA /* Pods_sketch_elements.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sketch_elements.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C5FA00BB9469F4898CBFCB0 /* Pods-searchparty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-searchparty.release.xcconfig"; path = "Target Support Files/Pods-searchparty/Pods-searchparty.release.xcconfig"; sourceTree = "<group>"; };
+		8D8137A38D55DA01ED477E73 /* Pods-searchparty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-searchparty.debug.xcconfig"; path = "Target Support Files/Pods-searchparty/Pods-searchparty.debug.xcconfig"; sourceTree = "<group>"; };
 		A1924A760991C453EECAF10E /* Pods-sketch-elements.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketch-elements.release.xcconfig"; path = "Target Support Files/Pods-sketch-elements/Pods-sketch-elements.release.xcconfig"; sourceTree = "<group>"; };
+		BAF93CF780A55C6FBF7A9F6D /* Pods_searchparty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_searchparty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4FA1B351C17CA5F83931D6A /* Pods-sketch-elements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketch-elements.debug.xcconfig"; path = "Target Support Files/Pods-sketch-elements/Pods-sketch-elements.debug.xcconfig"; sourceTree = "<group>"; };
+		F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetsViewModel.swift; sourceTree = "<group>"; };
+		F216C07525FD605D0026B180 /* LostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPet.swift; sourceTree = "<group>"; };
 		F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F2D7454525FAF236003C5157 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F2D7454625FAF237003C5157 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -271,9 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3445A796240839DE0020561B /* URLImage in Frameworks */,
 				34B255AA24081B3500599A4C /* SwiftUI.framework in Frameworks */,
-				8F13A40F363A7DADDC1D96A3 /* Pods_sketch_elements.framework in Frameworks */,
+				EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +289,8 @@
 			children = (
 				C4FA1B351C17CA5F83931D6A /* Pods-sketch-elements.debug.xcconfig */,
 				A1924A760991C453EECAF10E /* Pods-sketch-elements.release.xcconfig */,
+				8D8137A38D55DA01ED477E73 /* Pods-searchparty.debug.xcconfig */,
+				3C5FA00BB9469F4898CBFCB0 /* Pods-searchparty.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				349524C5258A30E70077F145 /* Reservable.swift */,
 				349524C8258A31E90077F145 /* Hotel.swift */,
 				349524CB258A35BC0077F145 /* Place.swift */,
+				F216C07525FD605D0026B180 /* LostPet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,7 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				34DCE8C0240817CD00C4EE89 /* Food.swift */,
-				3403A3192408099500D7B040 /* Recipes.swift */,
+				3403A3192408099500D7B040 /* LostPets.swift */,
 				3445A79C240B043E0020561B /* RecipesList.swift */,
 				3461D3D5245C2036009D389E /* Restaurants.swift */,
 				34AD61DC240BD093005943F9 /* RecipeDetail.swift */,
@@ -506,7 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				34B255A924081B3500599A4C /* SwiftUI.framework */,
-				8932A4A0913576979DD75BDA /* Pods_sketch_elements.framework */,
+				BAF93CF780A55C6FBF7A9F6D /* Pods_searchparty.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -539,6 +546,7 @@
 				F2D7456125FAF6AC003C5157 /* SignUpViewModel.swift */,
 				F2D7456225FAF6AC003C5157 /* SignInViewModel.swift */,
 				F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */,
+				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -626,7 +634,6 @@
 			);
 			name = searchparty;
 			packageProductDependencies = (
-				3445A795240839DE0020561B /* URLImage */,
 			);
 			productName = "sketch-elements";
 			productReference = 3403A2FE2406B70F00D7B040 /* searchparty.app */;
@@ -714,15 +721,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sketch-elements/Pods-sketch-elements-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-searchparty/Pods-searchparty-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sketch-elements/Pods-sketch-elements-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-searchparty/Pods-searchparty-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sketch-elements/Pods-sketch-elements-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-searchparty/Pods-searchparty-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8B2948E4B81965A27562798D /* [CP] Check Pods Manifest.lock */ = {
@@ -740,7 +747,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-sketch-elements-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-searchparty-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -794,6 +801,7 @@
 				349A579D2587A78000277356 /* GuideDetail.swift in Sources */,
 				347853502586667E0023A217 /* Travel.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
+				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
 				34F1215825875BBC00BBB7DB /* City.swift in Sources */,
 				349E4BDA241523A60079BF04 /* Header.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
@@ -841,9 +849,10 @@
 				345AE3B0241A7ABD004EBE8C /* ContentView.swift in Sources */,
 				345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */,
 				349524CC258A35BC0077F145 /* Place.swift in Sources */,
+				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
 				F2D7457F25FAF744003C5157 /* HomeView.swift in Sources */,
 				345D2E1E2458413B00201DD0 /* TableRow.swift in Sources */,
-				3403A31A2408099500D7B040 /* Recipes.swift in Sources */,
+				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
 				349E4BD8241522990079BF04 /* ButtonPrimary.swift in Sources */,
 				344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */,
 				3478534325861F7A0023A217 /* SizeAwareViewModifier.swift in Sources */,
@@ -982,12 +991,12 @@
 		};
 		3403A3132406B71100D7B040 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4FA1B351C17CA5F83931D6A /* Pods-sketch-elements.debug.xcconfig */;
+			baseConfigurationReference = 8D8137A38D55DA01ED477E73 /* Pods-searchparty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"searchparty/Preview Content\"";
-				DEVELOPMENT_TEAM = UK8THPS548;
+				DEVELOPMENT_TEAM = MWZP6Z24DW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = searchparty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1003,12 +1012,12 @@
 		};
 		3403A3142406B71100D7B040 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1924A760991C453EECAF10E /* Pods-sketch-elements.release.xcconfig */;
+			baseConfigurationReference = 3C5FA00BB9469F4898CBFCB0 /* Pods-searchparty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"searchparty/Preview Content\"";
-				DEVELOPMENT_TEAM = UK8THPS548;
+				DEVELOPMENT_TEAM = MWZP6Z24DW;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = searchparty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1055,14 +1064,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		3445A795240839DE0020561B /* URLImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3445A794240839DE0020561B /* XCRemoteSwiftPackageReference "url-image" */;
-			productName = URLImage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3403A2F62406B70F00D7B040 /* Project object */;
 }

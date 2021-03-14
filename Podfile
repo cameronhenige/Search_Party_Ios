@@ -7,6 +7,8 @@ target 'searchparty' do
 
   # Pods for sketch-elements
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'lottie-ios'

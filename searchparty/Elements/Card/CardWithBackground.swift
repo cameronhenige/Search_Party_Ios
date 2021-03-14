@@ -7,14 +7,13 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct CardWithBackground: View {
     
     var title: String
     var subTitle: String?
     var height: CGFloat
-    var pictureUrl: URL
+    //var pictureUrl: URL
     var description: String?
     
     var body: some View {
@@ -46,25 +45,25 @@ struct CardWithBackground: View {
             .frame(maxWidth: .infinity)
             .frame(height: height)
             .foregroundColor(Color.white)
-            .background(
-                URLImage(pictureUrl, content:  {
-                    $0.image
-                        .renderingMode(.original)
-                        .resizable()
-                })
-            )
+//            .background(
+//                URLImage(pictureUrl, content:  {
+//                    $0.image
+//                        .renderingMode(.original)
+//                        .resizable()
+//                })
+//            )
         }
     }
 }
 
-struct CardWithBackground_Previews: PreviewProvider {
-    static var previews: some View {
-        CardWithBackground(
-            title: recipesData[0].title,
-            subTitle: recipeCategoriesData[0].subtitle,
-            height: 300.0,
-            pictureUrl: recipesData[0].picture.uri,
-            description: "\(recipesData[0].minutes) minutes")
-            .environmentObject(UserData())
-    }
-}
+//struct CardWithBackground_Previews: PreviewProvider {
+//    static var previews: some View {
+////        CardWithBackground(
+////            title: recipesData[0].title,
+////            subTitle: recipeCategoriesData[0].subtitle,
+////            height: 300.0,
+////            pictureUrl: recipesData[0].picture.uri,
+////            description: "\(recipesData[0].minutes) minutes")
+////            .environmentObject(UserData())
+//    }
+//}

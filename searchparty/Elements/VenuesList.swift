@@ -47,26 +47,26 @@ struct VenuesList<Venue: Place>: View {
                         
                         
                         if let hotel = venue as? Hotel {
-                            NavigationLink(
-                                destination: HotelDetail(hotel: hotel, tintColor: tintColor)
-                            ) {
-                                
-                                if (venue.featured) {
-                                    CardWithBackground(
-                                        title: venue.title,
-                                        subTitle: venue.subtitle,
-                                        height: 200,
-                                        pictureUrl: venue.picture.uri                                    )
-                                } else {
-                                    CardWithAttachment(
-                                        title: venue.title,
-                                        subTitle: venue.subtitle,
-                                        pictureUrl: venue.picture.uri,
-                                        attachment: AnyView(Stars(venue.ratings, label: "\(venue.reviews) reviews", color: tintColor))
-                                    )
-                                }
-                                
-                            }
+//                            NavigationLink(
+//                                destination: HotelDetail(hotel: hotel, tintColor: tintColor)
+//                            ) {
+//
+//                                if (venue.featured) {
+//                                    CardWithBackground(
+//                                        title: venue.title,
+//                                        subTitle: venue.subtitle,
+//                                        height: 200,
+//                                        pictureUrl: venue.picture.uri                                    )
+//                                } else {
+//                                    CardWithAttachment(
+//                                        title: venue.title,
+//                                        subTitle: venue.subtitle,
+//                                        pictureUrl: venue.picture.uri,
+//                                        attachment: AnyView(Stars(venue.ratings, label: "\(venue.reviews) reviews", color: tintColor))
+//                                    )
+//                                }
+//
+//                            }
                         }
                         
                         

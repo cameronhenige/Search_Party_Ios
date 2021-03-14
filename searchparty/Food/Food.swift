@@ -15,7 +15,7 @@ struct Food: View {
     
     var body: some View {
         TabView() {
-            Recipes(categories: categories).tabItem {
+            LostPets(categories: categories).tabItem {
                 Text("Lost")
                 Image("lost_icon").renderingMode(.template)
             }

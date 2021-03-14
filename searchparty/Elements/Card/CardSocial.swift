@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct CardSocial: View {
     
@@ -40,12 +39,12 @@ struct CardSocial: View {
                 
                 HStack(){
                     if(contentImage != nil) {
-                        URLImage(contentImage!.uri, content: {
-                        $0.image
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        }).padding(.horizontal, -20)
+//                        URLImage(contentImage!.uri, content: {
+//                        $0.image
+//                            .renderingMode(.original)
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                        }).padding(.horizontal, -20)
                     } else {
                         Text(contentText)
                         Spacer()

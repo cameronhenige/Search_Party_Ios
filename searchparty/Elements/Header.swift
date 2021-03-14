@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct Header<Content: View>: View {
     
@@ -27,13 +26,13 @@ struct Header<Content: View>: View {
         .padding(.all)
         .foregroundColor(.white)
         .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.3), Color.black.opacity(0)]), startPoint: .top, endPoint: .bottom))
-        .background(
-            URLImage(image, content:  {
-                $0.image
-                    .renderingMode(.original)
-                    .resizable(capInsets: .init(), resizingMode: .tile)
-            }))
-            .frame(maxWidth: .infinity)
-            .frame(height: height)
+//        .background(
+//            URLImage(image, content:  {
+//                $0.image
+//                    .renderingMode(.original)
+//                    .resizable(capInsets: .init(), resizingMode: .tile)
+//            }))
+//            .frame(maxWidth: .infinity)
+//            .frame(height: height)
     }
 }

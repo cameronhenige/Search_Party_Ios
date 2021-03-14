@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct ReservationModal: View {
     
@@ -30,13 +29,13 @@ struct ReservationModal: View {
                     }
                     Spacer()
                     VStack(alignment: .trailing) {
-                        URLImage(place.picture.uri, content:  {
-                            $0.image
-                                .renderingMode(.original)
-                                .resizable()
-                        })
-                            .frame(width: 140, height: 100)
-                            .cornerRadius(6)
+//                        URLImage(place.picture.uri, content:  {
+//                            $0.image
+//                                .renderingMode(.original)
+//                                .resizable()
+//                        })
+//                            .frame(width: 140, height: 100)
+//                            .cornerRadius(6)
                     }
                 }
                 .padding([.leading, .trailing])

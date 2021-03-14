@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct CardWithAttachment: View {
     
@@ -31,13 +30,13 @@ struct CardWithAttachment: View {
                 }
                 Spacer()
                 VStack(alignment: .trailing){
-                    URLImage(pictureUrl, content:  {
-                        $0.image
-                            .renderingMode(.original)
-                            .resizable()
-                    })
-                        .frame(width: 110, height: 70)
-                        .cornerRadius(4)
+//                    URLImage(pictureUrl, content:  {
+//                        $0.image
+//                            .renderingMode(.original)
+//                            .resizable()
+//                    })
+//                        .frame(width: 110, height: 70)
+//                        .cornerRadius(4)
                 }
             }
             .frame(height:70)

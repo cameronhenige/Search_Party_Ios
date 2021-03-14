@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct Profile: View {
     
@@ -31,14 +30,14 @@ struct Profile: View {
                     .clipShape(Circle())
                     
                 } else {
-                    URLImage(image!, content:  {
-                        $0.image
-                            .renderingMode(.original)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    })
-                    .frame(width: size, height: size)
-                    .clipShape(Circle())
+//                    URLImage(image!, content:  {
+//                        $0.image
+//                            .renderingMode(.original)
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fill)
+//                    })
+//                    .frame(width: size, height: size)
+//                    .clipShape(Circle())
                 }
                 
                 if (disabled) {
