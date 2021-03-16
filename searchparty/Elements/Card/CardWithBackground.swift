@@ -7,13 +7,19 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import Kingfisher
 
 struct CardWithBackground: View {
     
+    var lostPet: LostPet
     var title: String
     var subTitle: String?
+    var subSubTitle: String?
     var height: CGFloat
-    //var pictureUrl: URL
+    @State var pictureUrl: URL?
+    @State var hasPicture: Bool = false
+
     var description: String?
     
     var body: some View {
@@ -23,6 +29,12 @@ struct CardWithBackground: View {
                     VStack(alignment: .leading) {
                         if (subTitle != nil ){
                             Text((subTitle!).uppercased())
+                                .font(.subheadline)
+                                .fontWeight(.semibold)
+                                .opacity(0.6)
+                        }
+                        if (subSubTitle != nil ){
+                            Text((subSubTitle!).uppercased())
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                                 .opacity(0.6)
@@ -45,13 +57,26 @@ struct CardWithBackground: View {
             .frame(maxWidth: .infinity)
             .frame(height: height)
             .foregroundColor(Color.white)
-//            .background(
-//                URLImage(pictureUrl, content:  {
-//                    $0.image
-//                        .renderingMode(.original)
-//                        .resizable()
-//                })
-//            )
+            .background(
+                PetBackground(pictureUrl: self.pictureUrl, hasPicture: self.hasPicture, petType: lostPet.type)
+            )
+
+        }.onAppear {
+            
+            if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+                hasPicture = true
+                let storageLocation : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages![0]
+                let storage = Storage.storage().reference().child(storageLocation)
+                storage.downloadURL { (URL, Error) in
+                    if(Error != nil){
+                        print(Error?.localizedDescription)
+                        return
+                    }
+                    pictureUrl = URL
+                }
+            }else{
+                hasPicture = false
+            }
         }
     }
 }

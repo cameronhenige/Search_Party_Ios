@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 struct LostPet: Codable, Identifiable {
     @DocumentID var id: String?
@@ -23,7 +24,7 @@ struct LostPet: Codable, Identifiable {
     var temperament: String?
     var healthCondition: String?
     var generalImages: [String]?
-    //var lostDateTime: FIRTimestamp?
+    var lostDateTime: Timestamp?
     var lostLocation: String?
     var lostLocationDescription: String?
     var ownerName: String?
@@ -34,5 +35,6 @@ struct LostPet: Codable, Identifiable {
     var foundPetDescription: String?
     var foundPet: Bool?
     var Owners: [String]?
+    
     
 }

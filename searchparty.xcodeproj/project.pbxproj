@@ -92,6 +92,7 @@
 		EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF93CF780A55C6FBF7A9F6D /* Pods_searchparty.framework */; };
 		F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */; };
 		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
+		F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C0DB25FF078D0026B180 /* PetBackground.swift */; };
 		F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */; };
 		F2D7454825FAF237003C5157 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454525FAF236003C5157 /* SignInView.swift */; };
 		F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454625FAF237003C5157 /* WelcomeView.swift */; };
@@ -228,6 +229,7 @@
 		C4FA1B351C17CA5F83931D6A /* Pods-sketch-elements.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketch-elements.debug.xcconfig"; path = "Target Support Files/Pods-sketch-elements/Pods-sketch-elements.debug.xcconfig"; sourceTree = "<group>"; };
 		F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetsViewModel.swift; sourceTree = "<group>"; };
 		F216C07525FD605D0026B180 /* LostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPet.swift; sourceTree = "<group>"; };
+		F216C0DB25FF078D0026B180 /* PetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackground.swift; sourceTree = "<group>"; };
 		F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F2D7454525FAF236003C5157 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F2D7454625FAF237003C5157 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				34B4B12424AB668100B092A8 /* Card.swift */,
 				34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */,
 				34B40A1325851B970096EC29 /* CardSocial.swift */,
+				F216C0DB25FF078D0026B180 /* PetBackground.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				34AD61DD240BD093005943F9 /* RecipeDetail.swift in Sources */,
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
 				34F1215E2587962C00BBB7DB /* Cities.swift in Sources */,
+				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				34B4B12724AB6B0500B092A8 /* CardWithAttachment.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,

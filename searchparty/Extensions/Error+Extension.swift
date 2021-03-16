@@ -12,3 +12,24 @@ extension NSError: Identifiable {
     public var id: Int { code }
 }
 
+extension LostPet
+{
+    func getLostLocationDescription() -> String? {
+        if let desc = lostLocationDescription {
+            return "Lost near \(desc)"
+        }else{
+            return nil
+        }
+    }
+    
+    func getLostDate() -> String? {
+        if let desc = lostDateTime {
+            let formatter1 = DateFormatter()
+            formatter1.dateStyle = .short
+            
+            return "Lost on \(formatter1.string(from: desc.dateValue()))"
+        }else{
+            return nil
+        }
+    }
+}

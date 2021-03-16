@@ -6,8 +6,10 @@ target 'searchparty' do
   use_frameworks!
 
   # Pods for sketch-elements
+  pod 'Kingfisher', '~> 6.0'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'

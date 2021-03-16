@@ -20,11 +20,12 @@ struct LostPets: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach(lostPetsViewModel.lostPets) { lostPet in
-//                    NavigationLink(
-//                        destination: RecipesListView(lostPet: lostPet)
-//                    ) {
-                        CardWithBackground(title: lostPet.name, subTitle: lostPet.description, height: 300.0, description: nil)
-//                    }
+                    NavigationLink(
+                        destination: RecipesListView(lostPet: lostPet)
+                    ) {
+                        
+                        CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
+                    }
                 }
                 
                 
@@ -40,6 +41,8 @@ struct LostPets: View {
         }.onAppear(){
             self.lostPetsViewModel.fetchLostPets()
         }
+        
+
     }
     
     private func signoutTapped() {
