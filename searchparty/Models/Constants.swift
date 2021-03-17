@@ -10,6 +10,13 @@ import SwiftUI
 
 struct Constant {
     
+    struct distances {
+        static let RADIUS_QUARTER_MILE = 402.335
+        static let RADIUS_HALF_MILE = 804.67
+        static let RADIUS_ONE_MILE = 1609.34
+        static let RADIUS_TWO_MILE = 3218.68
+        static let RADIUS_FIVE_MILE = 8046.70
+    }
     struct color {
         static let tintColor = Color("BrandPrimary")
         static let foodPrimary = Color("BrandPrimary")

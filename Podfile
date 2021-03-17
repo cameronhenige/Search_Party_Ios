@@ -14,4 +14,7 @@ target 'searchparty' do
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'lottie-ios'
+  pod 'GeoFire'
+  pod 'GeoFire/Utils'
+  pod 'FlexibleGeohash'
 end

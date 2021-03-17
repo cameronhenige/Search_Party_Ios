@@ -33,3 +33,14 @@ extension LostPet
         }
     }
 }
+
+extension SPUser
+{
+    func getRadiusFromUser() -> Double {
+        if(filterDistance != nil) {
+            return Double(filterDistance!)
+        }else{
+            return Constant.distances.RADIUS_TWO_MILE
+        }
+    }
+}

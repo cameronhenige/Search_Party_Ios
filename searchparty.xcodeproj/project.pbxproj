@@ -93,6 +93,12 @@
 		F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */; };
 		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
 		F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C0DB25FF078D0026B180 /* PetBackground.swift */; };
+		F2791A5F260062D200C056A6 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A5E260062D200C056A6 /* MapViewModel.swift */; };
+		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
+		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
+		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
+		F2791A6D2600759E00C056A6 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6C2600759E00C056A6 /* Chat.swift */; };
+		F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */; };
 		F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */; };
 		F2D7454825FAF237003C5157 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454525FAF236003C5157 /* SignInView.swift */; };
 		F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454625FAF237003C5157 /* WelcomeView.swift */; };
@@ -230,6 +236,12 @@
 		F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetsViewModel.swift; sourceTree = "<group>"; };
 		F216C07525FD605D0026B180 /* LostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPet.swift; sourceTree = "<group>"; };
 		F216C0DB25FF078D0026B180 /* PetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackground.swift; sourceTree = "<group>"; };
+		F2791A5E260062D200C056A6 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
+		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
+		F2791A6C2600759E00C056A6 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHashConverter.swift; sourceTree = "<group>"; };
 		F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F2D7454525FAF236003C5157 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F2D7454625FAF237003C5157 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -376,6 +388,10 @@
 				349524C8258A31E90077F145 /* Hotel.swift */,
 				349524CB258A35BC0077F145 /* Place.swift */,
 				F216C07525FD605D0026B180 /* LostPet.swift */,
+				F2791A6126006B7100C056A6 /* SPUser.swift */,
+				F2791A642600746500C056A6 /* Search.swift */,
+				F2791A692600750500C056A6 /* SearchPartyUser.swift */,
+				F2791A6C2600759E00C056A6 /* Chat.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -525,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */,
+				F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -550,6 +567,7 @@
 				F2D7456225FAF6AC003C5157 /* SignInViewModel.swift */,
 				F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */,
 				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
+				F2791A5E260062D200C056A6 /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -788,6 +806,7 @@
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
 				34F1215E2587962C00BBB7DB /* Cities.swift in Sources */,
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
+				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				34B4B12724AB6B0500B092A8 /* CardWithAttachment.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
@@ -803,6 +822,7 @@
 				34ADED322584BB1300A504F5 /* Profile.swift in Sources */,
 				344723BB24ABA93C003B9F50 /* IngredientsModal.swift in Sources */,
 				349A579D2587A78000277356 /* GuideDetail.swift in Sources */,
+				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
 				347853502586667E0023A217 /* Travel.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
@@ -825,6 +845,7 @@
 				34B40A1425851B970096EC29 /* CardSocial.swift in Sources */,
 				3478534025861EFF0023A217 /* SegmentedPickerCollapsed.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
+				F2791A5F260062D200C056A6 /* MapViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
 				34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */,
 				341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */,
@@ -840,6 +861,7 @@
 				F2D7458025FAF744003C5157 /* DrawerView.swift in Sources */,
 				34ADED2F2584B5B100A504F5 /* Timeline.swift in Sources */,
 				346DFE0A2584F98C00449492 /* Story.swift in Sources */,
+				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
 				344723B924ABA89E003B9F50 /* BackButton.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
@@ -851,6 +873,7 @@
 				344723BD24ABA9CD003B9F50 /* RestaurantDetail.swift in Sources */,
 				34B4B12524AB668100B092A8 /* Card.swift in Sources */,
 				345AE3B0241A7ABD004EBE8C /* ContentView.swift in Sources */,
+				F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */,
 				345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */,
 				349524CC258A35BC0077F145 /* Place.swift in Sources */,
 				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
@@ -859,6 +882,7 @@
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
 				349E4BD8241522990079BF04 /* ButtonPrimary.swift in Sources */,
 				344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */,
+				F2791A652600746500C056A6 /* Search.swift in Sources */,
 				3478534325861F7A0023A217 /* SizeAwareViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

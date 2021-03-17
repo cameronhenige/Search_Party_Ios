@@ -1,0 +1,6 @@
+framework module FlexibleGeohash {
+  umbrella header "FlexibleGeohash-umbrella.h"
+
+  export *
+  module * { export * }
+}

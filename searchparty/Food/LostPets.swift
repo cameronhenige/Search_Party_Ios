@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct LostPets: View {
     @EnvironmentObject var authState: AuthenticationState
@@ -14,6 +15,9 @@ struct LostPets: View {
     var tintColor: Color = Constant.color.tintColor
     
     @ObservedObject private var lostPetsViewModel = LostPetsViewModel()
+    
+    @ObservedObject var mapData = MapViewModel()
+    @State var locationManager = CLLocationManager()
     
     var body: some View {
         
@@ -39,8 +43,16 @@ struct LostPets: View {
             }))
             
         }.onAppear(){
+            locationManager.delegate = mapData
+            locationManager.requestWhenInUseAuthorization()
+            
             self.lostPetsViewModel.fetchLostPets()
         }
+//        .alert(isPresented: $mapData.permissionDenied, content: {
+//            Alert(title: Text("Permission Denied"), message: Text("Please Enable Permission in App Settings"), dismissButton: .default(Text("Go to Settings"), action: {
+//                UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
+//            }))
+//        })
         
 
     }
