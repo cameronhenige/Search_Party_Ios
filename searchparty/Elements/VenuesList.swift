@@ -32,18 +32,18 @@ struct VenuesList<Venue: Place>: View {
                     ForEach(venues) { venue in
                         
                         
-                        if let restaurant = venue as? Restaurant {
-                            NavigationLink(
-                                destination: RestaurantDetail(restaurant: restaurant, tintColor: tintColor)
-                            ) {
-                                CardWithAttachment(
-                                    title: venue.title,
-                                    subTitle: venue.subtitle,
-                                    pictureUrl: venue.picture.uri,
-                                    attachment: AnyView(Stars(venue.ratings, label: "\(venue.reviews) reviews", color: tintColor))
-                                )
-                            }
-                        }
+//                        if let restaurant = venue as? Restaurant {
+//                            NavigationLink(
+//                                destination: RestaurantDetail()
+//                            ) {
+//                                CardWithAttachment(
+//                                    title: venue.title,
+//                                    subTitle: venue.subtitle,
+//                                    pictureUrl: venue.picture.uri,
+//                                    attachment: AnyView(Stars(venue.ratings, label: "\(venue.reviews) reviews", color: tintColor))
+//                                )
+//                            }
+//                        }
                         
                         
                         if let hotel = venue as? Hotel {

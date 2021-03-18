@@ -16,8 +16,6 @@ struct LostPets: View {
     
     @ObservedObject private var lostPetsViewModel = LostPetsViewModel()
     
-    @ObservedObject var mapData = MapViewModel()
-    @State var locationManager = CLLocationManager()
     @State var isShowingAlert = true
 
     
@@ -25,18 +23,16 @@ struct LostPets: View {
     var body: some View {
         
         
-        if(mapData.permissionStatus == nil){
-            //locationManager.authorizationStatus
+        if(lostPetsViewModel.permissionStatus == nil){
             AnyView(Text("Waiting on permission")).onAppear(){
-                locationManager.delegate = mapData
+                //locationManager.delegate = lostPetsViewModel
              }
-        }else if(mapData.permissionStatus == .notDetermined){
+        }else if(lostPetsViewModel.permissionStatus == .notDetermined){
             AnyView(Text("Permission not determined")).onAppear(){
-                locationManager.delegate = mapData
-
-                locationManager.requestAlwaysAuthorization()
+                //locationManager.delegate = lostPetsViewModel
+                self.lostPetsViewModel.requestLocationPermission()
              }
-        }else if(mapData.permissionStatus == .denied){
+        }else if(lostPetsViewModel.permissionStatus == .denied){
             AnyView(Text("Permission denied!")).alert(isPresented: $isShowingAlert, content: {
                 Alert(title: Text("Permission Denied"), message: Text("Please Enable Permission in App Settings"), dismissButton: .default(Text("Go to Settings"), action: {
                     UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
@@ -51,7 +47,7 @@ struct LostPets: View {
                         
                         
                         NavigationLink(
-                            destination: RecipesListView(lostPet: lostPet)
+                            destination: RestaurantDetail(lostPet: lostPet)
                         ) {
                             
                             CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
@@ -69,33 +65,12 @@ struct LostPets: View {
                 }))
                 
             }.onAppear(){
-                locationManager.delegate = mapData
+                //locationManager.delegate = lostPetsViewModel
 
                 self.lostPetsViewModel.fetchLostPets()
             }
             
         }
-        
-//        switch mapData.$permissionDenied {
-//        case 1:
-//            return AnyView(Text("Option 1"))
-//        case 2:
-//            return AnyView(Text("Option 2"))
-//        default:
-//            return AnyView(Text("Wrong option!"))
-//        }
-        
-//        switch locationManager.locationAuthorizationStatus {
-//        case .denied:
-//            EmptyView()
-//        case .notDetermined:
-//            Button("Hi")
-//        default:
-//            ()
-//        }
-        
-
-        
 
     }
     

@@ -25,6 +25,7 @@ struct ContentView: View {
                 if authState.loggedInUser != nil  && !authState.isAuthenticating {
                     
                     Food()
+                    
 
                 //if(Auth.auth().currentUser == nil){
                 }else{

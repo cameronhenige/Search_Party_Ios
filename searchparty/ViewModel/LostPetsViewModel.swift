@@ -13,12 +13,25 @@ import FirebaseAuth
 import GeoFire
 import FlexibleGeohash
 
-class LostPetsViewModel: ObservableObject {
+class LostPetsViewModel: NSObject, ObservableObject {
 
 @Published var lostPets = [LostPet]()
 @Published var isLoadingLostPets = false
-
+    @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
     private var db = Firestore.firestore()
+    private let locationManager = CLLocationManager()
+    @Published var userLatitude: Double = 0
+    @Published var userLongitude: Double = 0
+    
+    
+    override init() {
+      super.init()
+      self.locationManager.delegate = self
+    }
+    
+    func requestLocationPermission() {
+        locationManager.requestAlwaysAuthorization()
+    }
     
     func fetchLostPets() {
         
@@ -28,19 +41,17 @@ class LostPetsViewModel: ObservableObject {
 
             if(Error == nil){
                 let user = try? DocumentSnapshot!.data(as: SPUser.self)
-                if(user!.filterLocation != nil) {
-                    self.queryLostPets(filterLocation: user!.filterLocation!, radiusInM: user!.getRadiusFromUser())
-                }else{
-                    //todo get location
-                }
-            }else{
-                self.isLoadingLostPets = false
+                if(user != nil && user!.filterLocation != nil) {
 
+                    self.queryLostPets(filterLocation: user!.filterLocation!, radiusInM: user!.getRadiusFromUser())
+                } else {
+                    self.locationManager.requestLocation()
+                }
+            } else {
+                self.isLoadingLostPets = false
                 //todo
             }
         }
-        
-
     }
     
     func queryLostPets(filterLocation: GeoPoint, radiusInM: Double) {
@@ -63,7 +74,6 @@ class LostPetsViewModel: ObservableObject {
 
         var tempLostPets = [LostPet]()
         
-        let matchingDocs = [QueryDocumentSnapshot]()
         func getDocumentsCompletion(snapshot: QuerySnapshot?, error: Error?) -> () {
 
             guard let documents = snapshot?.documents else {
@@ -100,4 +110,39 @@ class LostPetsViewModel: ObservableObject {
         })
     }
     
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+                if #available(iOS 14.0, *) {
+            permissionStatus = manager.authorizationStatus
+        } else {
+            permissionStatus = CLLocationManager.authorizationStatus()
+        }
+        print(permissionStatus?.rawValue)
+    }
+    
+    func saveLocationToUser(location: CLLocation) {
+        
+        db.collection("Users").document(Auth.auth().currentUser!.uid).setData([
+            "filterLocation": GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        ], merge: true) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                self.fetchLostPets()
+            }
+        }
+    }
+}
+
+extension LostPetsViewModel: CLLocationManagerDelegate {
+  
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let location = locations.last else { return }
+    userLatitude = location.coordinate.latitude
+    userLongitude = location.coordinate.longitude
+    saveLocationToUser(location: location)
+  }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+         print("error:: \(error.localizedDescription)")
+    }
 }
