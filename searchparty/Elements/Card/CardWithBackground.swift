@@ -46,10 +46,7 @@ struct CardWithBackground: View {
                     Spacer()
                 }
                 Spacer()
-                HStack() {
-                    Text(description ?? "")
-                    Spacer()
-                }
+
                 
             }
             .padding(.all)

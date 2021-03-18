@@ -44,8 +44,12 @@ struct LostPets: View {
             })
         }else{
             NavigationView {
+                
+                
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(lostPetsViewModel.lostPets) { lostPet in
+                        
+                        
                         NavigationLink(
                             destination: RecipesListView(lostPet: lostPet)
                         ) {
