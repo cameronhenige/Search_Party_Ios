@@ -47,11 +47,9 @@ class LostPetsViewModel: ObservableObject {
   
 
         let center = CLLocationCoordinate2D(latitude: filterLocation.latitude, longitude: filterLocation.longitude)
-        print(center)
         
         let queryBounds = GFUtils.queryBounds(forLocation: center,
                                               withRadius: radiusInM)
-        print(queryBounds)
         let queries = queryBounds.compactMap { (any) -> Query? in
             guard let bound = any as? GFGeoQueryBounds else { return nil }
             
@@ -65,16 +63,13 @@ class LostPetsViewModel: ObservableObject {
 
         var tempLostPets = [LostPet]()
         
-        var matchingDocs = [QueryDocumentSnapshot]()
-        // Collect all the query results together into a single list
+        let matchingDocs = [QueryDocumentSnapshot]()
         func getDocumentsCompletion(snapshot: QuerySnapshot?, error: Error?) -> () {
-
 
             guard let documents = snapshot?.documents else {
                 print("Unable to fetch snapshot data. \(String(describing: error))")
                 return
             }
-            print(documents)
             for document in documents {
                 
                 let lostPet = try? document.data(as: LostPet.self)
@@ -92,56 +87,17 @@ class LostPetsViewModel: ObservableObject {
                     tempLostPets.append(lostPet!)
                 }
             }
-            print(matchingDocs)
-            print("exiting query")
-
             dispatchGroup.leave()
         }
         
-        
-
-        // After all callbacks have executed, matchingDocs contains the result. Note that this
-        // sample does not demonstrate how to wait on all callbacks to complete.
-        print("number of queries \(queries.count)")
-        for query in queries {
-            print("entering query")
-
+            for query in queries {
             dispatchGroup.enter()
             query.getDocuments(completion: getDocumentsCompletion)
         }
         
         dispatchGroup.notify(queue: .main, execute: {
-            print("completed")
             self.lostPets = tempLostPets
-            //completedFetch(roomArray, nil)
         })
-        
-//
-//
-//        let bounds: List<GeoQueryBounds> = GFUtils.getGeoHashQueryBounds(center, radiusInM)
-//        let tasks: MutableList<Task<QuerySnapshot>> = getAllTasksForBounds(bounds, NewFirestoreUtil().getLostPetsCollectionReference(), "lostLocation")
-//
-//        Tasks.whenAllComplete(tasks)
-//                .addOnCompleteListener {
-//                    ViewModelProviders.of(requireActivity()).get(LostPetsViewModel::class.java).lostPets.postValue(getMatchingLostPetsFromTasks(center, radiusInM, tasks))
-//                    showLoadingFinished()
-//                }
     }
-    
-    func getLostPets(){
-        db.collection("Lost").addSnapshotListener { (querySnapshot, error) in
-            self.isLoadingLostPets = false
-
-            guard (querySnapshot?.documents) != nil else {
-                print("No documents")
-                return
-            }
-            self.lostPets = querySnapshot!.documents.compactMap { (document) -> LostPet? in
-                return try? document.data(as: LostPet.self)
-            }
-        }
-    }
-    
-    
     
 }

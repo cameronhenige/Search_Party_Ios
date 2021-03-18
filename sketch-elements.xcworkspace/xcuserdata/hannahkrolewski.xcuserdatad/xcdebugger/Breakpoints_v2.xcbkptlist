@@ -423,22 +423,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4AE06BD3-4760-438D-AB4C-BE6A21157431"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "searchparty/Food/LostPets.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "8BC34BF6-C8E5-4A1F-B7BD-593D48685965"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -590,8 +574,8 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "getDocumentsCompletion(snapshot:error:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -606,8 +590,8 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "getDocumentsCompletion(snapshot:error:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -622,40 +606,8 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "getDocumentsCompletion(snapshot:error:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D9AE6AD4-C445-4596-AAA8-55345F2B5B7B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "getDocumentsCompletion(snapshot:error:)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E4E713A1-3172-4587-8FB5-4572ED429C1D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "getDocumentsCompletion(snapshot:error:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -670,25 +622,9 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:filterLocation:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D6FFBC9D-CE62-42DF-A5EB-B01E39F2C6F9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:userLocation:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "queryLostPets(filterLocation:radiusInM:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -702,9 +638,9 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:userLocation:)"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "queryLostPets(filterLocation:radiusInM:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -752,56 +688,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:filterLocation:)"
+            landmarkName = "queryLostPets(filterLocation:radiusInM:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "10B478C4-3137-4E6D-B56F-71BD5E7735FC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:filterLocation:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "10B478C4-3137-4E6D-B56F-71BD5E7735FC - 995ada2f2d038480"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "searchparty.LostPetsViewModel.queryLostPets(filterLocation: __C.FIRGeoPoint, radiusInM: Swift.Double) -&gt; ()"
-                  moduleName = "searchparty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hannahkrolewski/Documents/ios-sketch-elements-master/searchparty/ViewModel/LostPetsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "721">
-               </Location>
-               <Location
-                  uuid = "10B478C4-3137-4E6D-B56F-71BD5E7735FC - 37e02e9be0af91e2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Any) -&gt; Swift.Optional&lt;__C.FIRQuery&gt; in searchparty.LostPetsViewModel.queryLostPets(filterLocation: __C.FIRGeoPoint, radiusInM: Swift.Double) -&gt; ()"
-                  moduleName = "searchparty"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/hannahkrolewski/Documents/ios-sketch-elements-master/searchparty/ViewModel/LostPetsViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -814,9 +702,9 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:filterLocation:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "queryLostPets(filterLocation:radiusInM:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -830,8 +718,8 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "getDocumentsCompletion(snapshot:error:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -846,9 +734,9 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:userLocation:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "queryLostPets(filterLocation:radiusInM:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -862,8 +750,8 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "getDocumentsCompletion(snapshot:error:)"
             landmarkType = "9">
          </BreakpointContent>
@@ -910,9 +798,9 @@
             filePath = "searchparty/ViewModel/LostPetsViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "queryLostPets(filterLocation:radiusInM:userLocation:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "queryLostPets(filterLocation:radiusInM:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
