@@ -47,7 +47,7 @@ struct LostPets: View {
                         
                         
                         NavigationLink(
-                            destination: RestaurantDetail(lostPet: lostPet)
+                            destination: LostPetView(lostPet: lostPet)
                         ) {
                             
                             CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
