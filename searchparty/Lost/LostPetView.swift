@@ -14,11 +14,21 @@ struct LostPetView: View {
     var tintColor: Color = Constant.color.tintColor
     //let gradient = LinearGradient(gradient: Gradient(colors: [.white, .clear]), startPoint: .top, endPoint: .bottom)
     @EnvironmentObject var modalManager: ModalManager
-    
+    @State private var isPresented = false
 //    init() {
 //        //self.restaurant = restaurant
 //        //self.tintColor = tintColor
 //    }
+    
+    
+    private func goToSearchParty() {
+        self.isPresented.toggle()
+
+    }
+    
+    private func markPetAsFound() {
+            //todo
+    }
     
     var body: some View {
         return VStack(spacing: 0){
@@ -56,15 +66,23 @@ struct LostPetView: View {
                             foregroundColor: tintColor,
                             content: [
                             TabItem(
-                                name: "Generate Flyer", icon: Constant.icon.creditcard),
+                                name: "Generate Flyer", icon: Constant.icon.doc),
                             TabItem(
                                 name: "Chat",
-                                icon: Constant.icon.clock)
+                                icon: Constant.icon.doc)
                         ])
-                        ButtonPrimary(action: self.modalManager.openModal, backgroundColor: tintColor) {
+                        
+                        ButtonPrimary(action: markPetAsFound, backgroundColor: tintColor) {
                                 Text("Mark Pet as Found")
                                     .font(.headline)
-                            }.padding([.top, .leading, .trailing])
+                        }.padding([.top, .leading, .trailing])
+                        
+                        ButtonPrimary(action: goToSearchParty, backgroundColor: tintColor) {
+                                Text("Join Search Party")
+                                    .font(.headline)
+                        }.padding([.top, .leading, .trailing]).fullScreenCover(isPresented: $isPresented, content: {
+                            SearchPartyView()
+                        })
 
                         VStack(alignment: .leading) {
 
@@ -73,42 +91,42 @@ struct LostPetView: View {
                             }
                             
                             if let type = lostPet.type, !type.isEmpty {
-                                Text("Pet Type")
+                                Text("Pet Type").font(.caption)
                                 Text(type).padding(.bottom)
                             }
                             
                             if let lostLocationDescription = lostPet.lostLocationDescription, !lostLocationDescription.isEmpty {
-                                Text("Lost Location")
+                                Text("Lost Location").font(.caption)
                                 Text(lostLocationDescription).padding(.bottom)
                             }
                             
                             if let lostDateTime = lostPet.lostDateTime {
-                                Text("Lost Date")
+                                Text("Lost Date").font(.caption)
                                 Text("Todo").padding(.bottom)
                             }
                             
                             if let ownersName = lostPet.ownerName, !ownersName.isEmpty {
-                                Text("Owners' Name")
+                                Text("Owners' Name").font(.caption)
                                 Text(ownersName).padding(.bottom)
                             }
                             
                             if let ownerEmail = lostPet.ownerEmail, !ownerEmail.isEmpty {
-                                Text("Owners' Email")
+                                Text("Owners' Email").font(.caption)
                                 Text(ownerEmail).padding(.bottom)
                             }
                             
                             if let ownerPhoneNumber = lostPet.ownerPhoneNumber, !ownerPhoneNumber.isEmpty {
-                                Text("Owners' Phone Number")
+                                Text("Owners' Phone Number").font(.caption)
                                 Text(ownerPhoneNumber).padding(.bottom)
                             }
                             
                             if let ownerOtherContactMethod = lostPet.ownerOtherContactMethod, !ownerOtherContactMethod.isEmpty {
-                                Text("Other Contact Method")
+                                Text("Other Contact Method").font(.caption)
                                 Text(ownerOtherContactMethod).padding(.bottom)
                             }
                             
                             if let ownerPreferredContactMethod = lostPet.ownerPreferredContactMethod, !ownerPreferredContactMethod.isEmpty {
-                                Text("Preferred Contact Method")
+                                Text("Preferred Contact Method").font(.caption)
                                 Text(ownerPreferredContactMethod).padding(.bottom)
                             }
                             
@@ -121,7 +139,7 @@ struct LostPetView: View {
         .background(Constant.color.gray)
         .edgesIgnoringSafeArea([.top])
         .navigationBarTitle("", displayMode: .large)
-        .navigationBarItems(trailing: Image(systemName: Constant.icon.bookmark).foregroundColor(.white))
+        .navigationBarItems(trailing: Image(systemName: Constant.icon.compose).foregroundColor(.white))
         .onAppear {
 //            self.modalManager.newModal(position: .closed) {
 //                ReservationModal(

@@ -29,6 +29,7 @@ struct ContentView: View {
 
                 //if(Auth.auth().currentUser == nil){
                 }else{
+                    
                     SplashView(state: AppState())
 
                     //ModalAnchorView()

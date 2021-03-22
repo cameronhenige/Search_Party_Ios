@@ -22,24 +22,25 @@ struct SignInView: View {
     }
     
     var body: some View {
+        ZStack {
+            Color(UIConfiguration.tintColor)
+                .edgesIgnoringSafeArea(.all)
+        
         VStack {
-            NavigationLink(destination: Food(),
-                           isActive: self.$pushActive) {
-              EmptyView()
-            }.hidden()
             VStack(alignment: .leading, spacing: 30) {
                 Text("Log in")
                     .modifier(TextModifier(font: UIConfiguration.titleFont,
-                                           color: UIConfiguration.tintColor))
+                                           color: UIConfiguration.white))
                     .padding(.leading, 25)
                     .padding(.bottom, 80)
                 VStack(alignment: .center, spacing: 30) {
                     VStack(alignment: .center, spacing: 25) {
-                        CustomTextField(placeHolderText: "E-mail",
-                                      text: $email)
-                        CustomTextField(placeHolderText: "Password",
-                                      text: $password,
-                                      isPasswordType: true)
+                        
+                        TextField("E-Mail", text: $email)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        SecureField("Password", text: $password)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                     }.padding(.horizontal, 25)
                     
                     VStack(alignment: .center, spacing: 40) {
@@ -54,6 +55,7 @@ struct SignInView: View {
         }.alert(item: $authState.error) { error in
             Alert(title: Text("Error"), message: Text(error.localizedDescription))
         }
+        }
     }
     
     private func signInTapped() {
@@ -65,12 +67,11 @@ struct SignInView: View {
                               backgroundColor: UIColor,
                               action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Text(title)
-                .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                         color: backgroundColor,
-                                         textColor: .white,
-                                         width: 275,
-                                         height: 55))
+            Text(title).modifier(ButtonModifier(font: UIConfiguration.buttonFont,
+                                                                              color: UIConfiguration.white,
+                                                                              textColor: UIConfiguration.tintColor,
+                                                                              width: 275,
+                                                                              height: 55))
         }
     }
 }

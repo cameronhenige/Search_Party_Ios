@@ -16,13 +16,18 @@ struct WelcomeView: View {
 
     var body: some View {
         NavigationView {
+            ZStack {
+                Color(UIConfiguration.tintColor)
+                    .edgesIgnoringSafeArea(.all)
+            
+            
             VStack {
                 NavigationLink(destination: destinationView(),
                                isActive: self.$pushActive) {
                                 EmptyView()
                 }
                 .navigationBarHidden(true)
-                
+
                 VStack(spacing: 40) {
                     Image("flashlight")
                         .resizable()
@@ -31,10 +36,11 @@ struct WelcomeView: View {
                     
                     Text("Welcome to Search Party")
                         .modifier(TextModifier(font: UIConfiguration.titleFont,
-                                               color: UIConfiguration.tintColor))
+                                               color: UIConfiguration.white))
                     
                     Text("Sign in to get access to all features")
-                        .modifier(TextModifier(font: UIConfiguration.subtitleFont))
+                        .modifier(TextModifier(font: UIConfiguration.subtitleFont,
+                                               color: UIConfiguration.white))
                         .padding(.horizontal, 60)
                     
                     VStack(spacing: 25) {
@@ -44,8 +50,8 @@ struct WelcomeView: View {
                         }) {
                             Text("Sign In")
                                 .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                                         color: UIConfiguration.tintColor,
-                                                         textColor: .white,
+                                                         color: UIConfiguration.white,
+                                                         textColor: UIConfiguration.tintColor,
                                                          width: 275,
                                                          height: 55))
                         }
@@ -55,7 +61,7 @@ struct WelcomeView: View {
                         }) {
                             Text("Sign Up")
                                 .modifier(TextModifier(font: UIConfiguration.buttonFont,
-                                                       color: .black))
+                                                       color: UIConfiguration.white))
                                 .frame(width: 275, height: 55)
                                 .overlay(RoundedRectangle(cornerRadius: 25)
                                     .stroke(Color.gray, lineWidth: 1)
@@ -67,15 +73,18 @@ struct WelcomeView: View {
                         }) {
                             Text("Skip for now")
                                 .modifier(TextModifier(font: UIConfiguration.buttonFont,
-                                                       color: .black))
+                                                       color: UIConfiguration.white))
                                 .frame(width: 275, height: 55)
                                 
                             
                         }
                         
                     }
+                    
                 }
                 Spacer()
+                
+            }.navigationBarColor(UIConfiguration.tintColor)
             }
         }
     }

@@ -22,43 +22,46 @@ struct SignUpView: View {
     }
     
     var body: some View {
+        ZStack {
+            Color(UIConfiguration.tintColor)
+                .edgesIgnoringSafeArea(.all)
+        
         VStack {
 
             VStack(alignment: .leading, spacing: 30) {
                 Text("Sign Up")
                     .modifier(TextModifier(font: UIConfiguration.titleFont,
-                                           color: UIConfiguration.tintColor))
+                                           color: UIConfiguration.white))
                     .padding(.leading, 25)
+                    .padding(.bottom, 80)
                 VStack(alignment: .center, spacing: 30) {
                     VStack(alignment: .center, spacing: 25) {
-                        CustomTextField(placeHolderText: "Full Name",
-                                      text: $fullName)
-                        CustomTextField(placeHolderText: "E-mail Address",
-                                      text: $email)
+                        TextField("Full Name", text: $fullName)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("E-mail Address", text: $email)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                         
                         SecureField("Password", text: $password)
-                            .textFieldStyle(MyTextFieldStyle()).textContentType(.newPassword)
+                            .textFieldStyle(RoundedBorderTextFieldStyle()).textContentType(.newPassword)
                         
                         SecureField("Confirm Password", text: $confirmPassword)
-                            .textFieldStyle(MyTextFieldStyle()).textContentType(.newPassword)
+                            .textFieldStyle(RoundedBorderTextFieldStyle()).textContentType(.newPassword)
                         
                     }.padding(.horizontal, 25)
-                    
-                    
-                        Button(action: signUpTapped) {
-                            Text("Create Account")
-                                .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                                         color: UIConfiguration.tintColor,
-                                                         textColor: .white,
-                                                         width: 275,
-                                                         height: 55))
-                        }
+                    VStack(alignment: .center, spacing: 40) {
+                        customButton(title: "Create Account",
+                                     backgroundColor: UIConfiguration.tintColor,
+                                     action: { signUpTapped() })
+
+                    }
                         
                 }
             }
             Spacer()
         }.alert(item: $authState.error) { error in
             Alert(title: Text("Error"), message: Text(error.localizedDescription))
+        }
         }
         
 
@@ -75,8 +78,8 @@ struct SignUpView: View {
         Button(action: action) {
             Text(title)
                 .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                         color: backgroundColor,
-                                         textColor: .white,
+                                         color: UIConfiguration.white,
+                                         textColor: UIConfiguration.tintColor,
                                          width: 275,
                                          height: 45))
         }

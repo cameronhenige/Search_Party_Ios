@@ -67,11 +67,11 @@ struct ButtonModifier: ViewModifier {
 struct MyTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
-            .padding(12)
+            .padding(12).foregroundColor(.white)
             .background(
                 RoundedRectangle(cornerRadius: 25,
                                  style: .continuous)
-                    .stroke(Color.gray, lineWidth: 1)
+                    .stroke(Color.white, lineWidth: 1)
         )
     }
 }

@@ -16,6 +16,8 @@ class UIConfiguration {
     static let buttonFont = UIFont(name: "Avenir-Heavy", size: 20)!
     
     // Color
+    static let white: UIColor = .white
+
     static let backgroundColor: UIColor = .white
     static let tintColor = UIColor(hexString: "#284b63")
     static let subtitleColor = UIColor(hexString: "#464646")
