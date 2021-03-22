@@ -101,6 +101,7 @@
 		F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
 		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
+		F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */; };
 		F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */; };
 		F2D7454825FAF237003C5157 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454525FAF236003C5157 /* SignInView.swift */; };
 		F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454625FAF237003C5157 /* WelcomeView.swift */; };
@@ -246,6 +247,7 @@
 		F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHashConverter.swift; sourceTree = "<group>"; };
 		F2A585452607BEDA00E8920E /* SearchPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyView.swift; sourceTree = "<group>"; };
 		F2A5854A26083CF100E8920E /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
+		F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F2D7454525FAF236003C5157 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F2D7454625FAF237003C5157 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				F2D7454725FAF237003C5157 /* SignUpView.swift */,
 				F2D7454625FAF237003C5157 /* WelcomeView.swift */,
 				F2D7458725FB21B6003C5157 /* OnboardingRouter.swift */,
+				F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				349A579D2587A78000277356 /* GuideDetail.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
 				347853502586667E0023A217 /* Travel.swift in Sources */,
+				F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
 				34F1215825875BBC00BBB7DB /* City.swift in Sources */,

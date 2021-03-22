@@ -13,7 +13,7 @@ import FBSDKLoginKit
 import FirebaseAuth
 
 struct SignInView: View {
-    @State var pushActive = false
+    //@State var pushActive = false
     @State var email: String = ""
     @State var password: String = ""
     @EnvironmentObject var authState: AuthenticationState
@@ -27,6 +27,12 @@ struct SignInView: View {
                 .edgesIgnoringSafeArea(.all)
         
         VStack {
+            
+            NavigationLink(destination: ForgotPasswordView(),
+                           isActive: $authState.isResettingPassword) {
+                            EmptyView()
+            }
+            
             VStack(alignment: .leading, spacing: 30) {
                 Text("Log in")
                     .modifier(TextModifier(font: UIConfiguration.titleFont,
@@ -50,6 +56,18 @@ struct SignInView: View {
                                 Text("Log In")
                                     .font(.headline)
                         }.padding(.horizontal, 60)
+                        
+                        Button(action: {
+                            self.authState.isResettingPassword = true
+                            
+                        }) {
+                            Text("Forgot Password")
+                                .modifier(TextModifier(font: UIConfiguration.buttonFont,
+                                                       color: UIConfiguration.white))
+                                .frame(width: 275, height: 55)
+                                
+                            
+                        }
 
                     }
                 }
@@ -66,5 +84,4 @@ struct SignInView: View {
 
     }
     
-
 }

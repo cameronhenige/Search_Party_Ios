@@ -19,6 +19,8 @@ class AuthenticationState: NSObject, ObservableObject {
     
     @Published var loggedInUser: User?
     @Published var isAuthenticating = false
+    @Published var isResettingPassword = false
+
     @Published var error: NSError?
     
     static let shared = AuthenticationState()
@@ -52,6 +54,15 @@ class AuthenticationState: NSObject, ObservableObject {
         }
     }
     
+    func forgotPassword(email: String) {
+
+        
+        
+        self.isAuthenticating = true
+        self.error = nil
+        auth.sendPasswordReset(withEmail: email, completion: handleResetPasswordCompletion)
+    }
+    
     func signup(email: String, password: String, passwordConfirmation: String, fullName: String) {
         guard password == passwordConfirmation else {
             self.error = NSError(domain: "", code: 9210, userInfo: [NSLocalizedDescriptionKey: "Password and confirmation does not match"])
@@ -72,6 +83,15 @@ class AuthenticationState: NSObject, ObservableObject {
     
     func signInAnonymously(){
         auth.signInAnonymously(completion: handleAuthResultCompletion)
+    }
+    
+    private func handleResetPasswordCompletion(error: Error?) {
+        self.isAuthenticating = false
+        if(error != nil){
+            self.error = error as! NSError
+        }else{
+            isResettingPassword = false
+        }
     }
     
     
