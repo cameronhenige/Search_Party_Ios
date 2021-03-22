@@ -100,6 +100,7 @@
 		F2791A6D2600759E00C056A6 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6C2600759E00C056A6 /* Chat.swift */; };
 		F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
+		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
 		F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */; };
 		F2D7454825FAF237003C5157 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454525FAF236003C5157 /* SignInView.swift */; };
 		F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7454625FAF237003C5157 /* WelcomeView.swift */; };
@@ -244,6 +245,7 @@
 		F2791A6C2600759E00C056A6 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHashConverter.swift; sourceTree = "<group>"; };
 		F2A585452607BEDA00E8920E /* SearchPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyView.swift; sourceTree = "<group>"; };
+		F2A5854A26083CF100E8920E /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
 		F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		F2D7454525FAF236003C5157 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F2D7454625FAF237003C5157 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			children = (
 				349E4BD7241522990079BF04 /* ButtonPrimary.swift */,
 				344723C724ABC64A003B9F50 /* ButtonApplePay.swift */,
+				F2A5854A26083CF100E8920E /* ButtonSecondary.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				F2D7457925FAF6AC003C5157 /* AuthAPI.swift in Sources */,
 				3461D3D8245C20D0009D389E /* Restaurant.swift in Sources */,
 				F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */,
+				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
 				34B4B12924AB72B500B092A8 /* Stars.swift in Sources */,
 				3461D3D6245C2036009D389E /* Restaurants.swift in Sources */,
 				F2D7457725FAF6AC003C5157 /* CustomTextField.swift in Sources */,

@@ -50,9 +50,12 @@ struct SignUpView: View {
                         
                     }.padding(.horizontal, 25)
                     VStack(alignment: .center, spacing: 40) {
-                        customButton(title: "Create Account",
-                                     backgroundColor: UIConfiguration.tintColor,
-                                     action: { signUpTapped() })
+
+                        
+                        ButtonSecondary(action: signUpTapped) {
+                                Text("Create Account")
+                                    .font(.headline)
+                        }.padding(.horizontal, 60)
 
                     }
                         
@@ -72,16 +75,4 @@ struct SignUpView: View {
 
     }
     
-    private func customButton(title: String,
-                              backgroundColor: UIColor,
-                              action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Text(title)
-                .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                         color: UIConfiguration.white,
-                                         textColor: UIConfiguration.tintColor,
-                                         width: 275,
-                                         height: 45))
-        }
-    }
 }

@@ -44,29 +44,20 @@ struct WelcomeView: View {
                         .padding(.horizontal, 60)
                     
                     VStack(spacing: 25) {
-                        Button(action: {
-                            self.index = 1
-                            self.pushActive = true
-                        }) {
-                            Text("Sign In")
-                                .modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                                         color: UIConfiguration.white,
-                                                         textColor: UIConfiguration.tintColor,
-                                                         width: 275,
-                                                         height: 55))
-                        }
-                        Button(action: {
-                            self.index = 2
-                            self.pushActive = true
-                        }) {
-                            Text("Sign Up")
-                                .modifier(TextModifier(font: UIConfiguration.buttonFont,
-                                                       color: UIConfiguration.white))
-                                .frame(width: 275, height: 55)
-                                .overlay(RoundedRectangle(cornerRadius: 25)
-                                    .stroke(Color.gray, lineWidth: 1)
-                            )
-                        }
+                        
+                        ButtonSecondary(action: signInClicked) {
+                                Text("Sign In")
+                                    .font(.headline)
+                        }.padding(.horizontal, 60)
+                        
+                        
+                        ButtonSecondary(action: signUpClicked) {
+                                Text("Sign Up")
+                                    .font(.headline)
+                        }.padding(.horizontal, 60)
+                        
+                        
+
                         
                         Button(action: {
                             self.signInAnonymously()
@@ -87,6 +78,16 @@ struct WelcomeView: View {
             }.navigationBarColor(UIConfiguration.tintColor)
             }
         }
+    }
+    
+    private func signInClicked() {
+        self.index = 1
+        self.pushActive = true
+    }
+    
+    private func signUpClicked() {
+        self.index = 2
+        self.pushActive = true
     }
     
     private func signInAnonymously() {

@@ -44,9 +44,12 @@ struct SignInView: View {
                     }.padding(.horizontal, 25)
                     
                     VStack(alignment: .center, spacing: 40) {
-                        customButton(title: "Log In",
-                                     backgroundColor: UIConfiguration.tintColor,
-                                     action: { signInTapped() })
+
+                        
+                        ButtonSecondary(action: signInTapped) {
+                                Text("Log In")
+                                    .font(.headline)
+                        }.padding(.horizontal, 60)
 
                     }
                 }
@@ -63,15 +66,5 @@ struct SignInView: View {
 
     }
     
-    private func customButton(title: String,
-                              backgroundColor: UIColor,
-                              action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Text(title).modifier(ButtonModifier(font: UIConfiguration.buttonFont,
-                                                                              color: UIConfiguration.white,
-                                                                              textColor: UIConfiguration.tintColor,
-                                                                              width: 275,
-                                                                              height: 55))
-        }
-    }
+
 }
