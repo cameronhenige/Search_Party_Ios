@@ -20,7 +20,7 @@ class AuthenticationState: NSObject, ObservableObject {
     @Published var loggedInUser: User?
     @Published var isAuthenticating = false
     @Published var isResettingPassword = false
-
+    @Published var didResetPassword = false
     @Published var error: NSError?
     
     static let shared = AuthenticationState()
@@ -90,6 +90,7 @@ class AuthenticationState: NSObject, ObservableObject {
         if(error != nil){
             self.error = error as! NSError
         }else{
+            didResetPassword = true
             isResettingPassword = false
         }
     }

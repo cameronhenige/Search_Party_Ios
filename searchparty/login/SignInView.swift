@@ -33,6 +33,8 @@ struct SignInView: View {
                             EmptyView()
             }
             
+        
+            
             VStack(alignment: .leading, spacing: 30) {
                 Text("Log in")
                     .modifier(TextModifier(font: UIConfiguration.titleFont,
@@ -47,9 +49,14 @@ struct SignInView: View {
                         SecureField("Password", text: $password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
+                        if(authState.didResetPassword){
+                            Text("Your password has been reset. Please check your email to reset it.")
+                        }
+                        
                     }.padding(.horizontal, 25)
                     
                     VStack(alignment: .center, spacing: 40) {
+                        
 
                         
                         ButtonSecondary(action: signInTapped) {
@@ -59,6 +66,7 @@ struct SignInView: View {
                         
                         Button(action: {
                             self.authState.isResettingPassword = true
+                            self.authState.didResetPassword = false
                             
                         }) {
                             Text("Forgot Password")
