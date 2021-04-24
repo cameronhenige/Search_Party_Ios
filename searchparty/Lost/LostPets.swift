@@ -10,7 +10,7 @@ import SwiftUI
 import CoreLocation
 
 struct LostPets: View {
-    @EnvironmentObject var authState: AuthenticationState
+    //@EnvironmentObject var authState: AuthenticationState
     var categories: [Category]
     var tintColor: Color = Constant.color.tintColor
     
@@ -59,9 +59,9 @@ struct LostPets: View {
                 .background(Constant.color.gray)
                 .navigationBarColor(tintColor.uiColor())
                 .navigationBarTitle(Text("Lost"), displayMode: .large)
-                .navigationBarItems(trailing: Button(action: signoutTapped, label: {
-                    Image(systemName: "person.circle")
-                    Text("Logout")
+                .navigationBarItems(trailing: Button(action: doSomething, label: {
+                    Image(systemName: Constant.icon.plus)
+                    Text("Add Lost Pet")
                 }))
                 
             }.onAppear(){
@@ -74,8 +74,8 @@ struct LostPets: View {
 
     }
     
-    private func signoutTapped() {
-        authState.signout()
+    private func doSomething() {
+        print("something")
     }
 }
 

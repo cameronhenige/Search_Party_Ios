@@ -81,7 +81,7 @@
 		34B4B12524AB668100B092A8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12424AB668100B092A8 /* Card.swift */; };
 		34B4B12724AB6B0500B092A8 /* CardWithAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */; };
 		34B4B12924AB72B500B092A8 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12824AB72B500B092A8 /* Stars.swift */; };
-		34DCE8C1240817CD00C4EE89 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCE8C0240817CD00C4EE89 /* Food.swift */; };
+		34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCE8C0240817CD00C4EE89 /* MainScreen.swift */; };
 		34F1214F25875B1700BBB7DB /* guides.json in Resources */ = {isa = PBXBuildFile; fileRef = 34F1214E25875B1700BBB7DB /* guides.json */; };
 		34F1215225875B2B00BBB7DB /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 34F1215125875B2B00BBB7DB /* cities.json */; };
 		34F1215525875BAF00BBB7DB /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215425875BAF00BBB7DB /* Guide.swift */; };
@@ -97,6 +97,7 @@
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
 		F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D62633D89000912F28 /* EditLostPet.swift */; };
+		F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DA2633E9EC00912F28 /* AccountScreen.swift */; };
 		F2791A5F260062D200C056A6 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A5E260062D200C056A6 /* MapViewModel.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
@@ -227,7 +228,7 @@
 		34B4B12424AB668100B092A8 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithAttachment.swift; sourceTree = "<group>"; };
 		34B4B12824AB72B500B092A8 /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
-		34DCE8C0240817CD00C4EE89 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		34DCE8C0240817CD00C4EE89 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		34F1214E25875B1700BBB7DB /* guides.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = guides.json; sourceTree = "<group>"; };
 		34F1215125875B2B00BBB7DB /* cities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		34F1215425875BAF00BBB7DB /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
 		F233D3D62633D89000912F28 /* EditLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLostPet.swift; sourceTree = "<group>"; };
+		F233D3DA2633E9EC00912F28 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		F2791A5E260062D200C056A6 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 		3403A3002406B70F00D7B040 /* searchparty */ = {
 			isa = PBXGroup;
 			children = (
+				F233D3D92633E9DA00912F28 /* Account */,
 				F2A9DBED25FC7ADB0055AC33 /* Extensions */,
 				F2D7459A25FB24C1003C5157 /* LottieFiles */,
 				F2D7458A25FB2476003C5157 /* onboarding */,
@@ -429,7 +432,7 @@
 		3445A79B240B03D70020561B /* Lost */ = {
 			isa = PBXGroup;
 			children = (
-				34DCE8C0240817CD00C4EE89 /* Food.swift */,
+				34DCE8C0240817CD00C4EE89 /* MainScreen.swift */,
 				3403A3192408099500D7B040 /* LostPets.swift */,
 				3445A79C240B043E0020561B /* RecipesList.swift */,
 				3461D3D5245C2036009D389E /* Restaurants.swift */,
@@ -555,6 +558,14 @@
 				BAF93CF780A55C6FBF7A9F6D /* Pods_searchparty.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F233D3D92633E9DA00912F28 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				F233D3DA2633E9EC00912F28 /* AccountScreen.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		F2A9DBED25FC7ADB0055AC33 /* Extensions */ = {
@@ -859,7 +870,7 @@
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
 				F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */,
 				3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */,
-				34DCE8C1240817CD00C4EE89 /* Food.swift in Sources */,
+				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
 				345D2E202458473000201DD0 /* TextTableRow.swift in Sources */,
 				349524D2258A3F8C0077F145 /* HotelDetail.swift in Sources */,
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
@@ -886,6 +897,7 @@
 				34F1215525875BAF00BBB7DB /* Guide.swift in Sources */,
 				340A1981249BB0C900D49461 /* MapView.swift in Sources */,
 				F2D7458025FAF744003C5157 /* DrawerView.swift in Sources */,
+				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
 				34ADED2F2584B5B100A504F5 /* Timeline.swift in Sources */,
 				346DFE0A2584F98C00449492 /* Story.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,

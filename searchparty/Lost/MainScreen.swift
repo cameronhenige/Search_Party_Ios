@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Food: View {
+struct MainScreen: View {
     
     var categories:[Category] = recipeCategoriesData
     var restaurants:[Restaurant] = restaurantsData
@@ -23,6 +23,10 @@ struct Food: View {
                 Text("Found")
                 Image("found_icon").renderingMode(.template)
             }
+            AccountScreen().tabItem {
+                Text("Account")
+                Image("found_icon").renderingMode(.template)
+            }
         }
         .tabBarOpaque()
         .accentColor(Constant.color.foodPrimary)
@@ -32,7 +36,7 @@ struct Food: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Food().environmentObject(UserData())
+        MainScreen().environmentObject(UserData())
     }
 }
 
