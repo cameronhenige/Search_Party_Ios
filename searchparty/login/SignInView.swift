@@ -50,7 +50,9 @@ struct SignInView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         if(authState.didResetPassword){
-                            Text("Your password has been reset. Please check your email to reset it.")
+                            Text("Please check your email to reset your password.")
+                                .modifier(TextModifier(font: UIConfiguration.subtitleFont,
+                                                       color: UIConfiguration.white))
                         }
                         
                     }.padding(.horizontal, 25)

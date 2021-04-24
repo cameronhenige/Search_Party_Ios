@@ -10,20 +10,18 @@ import SwiftUI
 
 struct LostPetView: View {
     var lostPet: LostPet
-
     var tintColor: Color = Constant.color.tintColor
-    //let gradient = LinearGradient(gradient: Gradient(colors: [.white, .clear]), startPoint: .top, endPoint: .bottom)
     @EnvironmentObject var modalManager: ModalManager
-    @State private var isPresented = false
-//    init() {
-//        //self.restaurant = restaurant
-//        //self.tintColor = tintColor
-//    }
     
+    @State var isOnSearchParty = false
+    @State var isOnLostPetIsFound = false
+    @State var isOnChat = false
+    @State var isOnEditPet = false
+    @State var selectedView = 1
+    @State private var isPresented = false
     
     private func goToSearchParty() {
         self.isPresented.toggle()
-
     }
     
     private func markPetAsFound() {
@@ -49,40 +47,53 @@ struct LostPetView: View {
                     
                     VStack(alignment: .leading, spacing:0) {
                         
-//                        Header(image: restaurant.picture.uri, height: 223) {
-//                            VStack(){
-//                                Spacer()
-//                                HStack(){
-//                                    Text(restaurant.title)
-//                                        .font(.largeTitle)
-//                                        .fontWeight(.bold)
-//                                    Spacer()
-//                                }
-//                            }
-//                        }
+                        HStack {
+                            Button(action: {
+                                self.isOnLostPetIsFound = true
+                            }) {
+                                Text("Generate Flyer")
+                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
+                            
                         
+                            NavigationLink(destination: ChatScreen(), isActive: $isOnChat) {
+                                Button(action: {
+                                    self.isOnChat = true
+                                }) {
+                                    Text("Chat")
+                                }.buttonStyle(PrimaryButtonStyle()).padding([.top, .trailing])
+                            }
+                            
+                            
 
-                        TabBar(
-                            foregroundColor: tintColor,
-                            content: [
-                            TabItem(
-                                name: "Generate Flyer", icon: Constant.icon.doc),
-                            TabItem(
-                                name: "Chat",
-                                icon: Constant.icon.doc)
-                        ])
+                        }
                         
-                        ButtonPrimary(action: markPetAsFound, backgroundColor: tintColor) {
-                                Text("Mark Pet as Found")
-                                    .font(.headline)
-                        }.padding([.top, .leading, .trailing])
                         
-                        ButtonPrimary(action: goToSearchParty, backgroundColor: tintColor) {
+                        NavigationLink(destination: MarkPetAsFound(), isActive: $isOnLostPetIsFound) {
+                            Button(action: {
+                                self.isOnLostPetIsFound = true
+                            }) {
+                                Text("Mark Pet As Found")
+                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                        }
+
+                        
+                        
+                        NavigationLink(destination: SearchPartyView(), isActive: $isOnSearchParty) {
+                            Button(action: {
+                                self.isOnSearchParty = true
+                            }) {
                                 Text("Join Search Party")
-                                    .font(.headline)
-                        }.padding([.top, .leading, .trailing]).fullScreenCover(isPresented: $isPresented, content: {
-                            SearchPartyView()
-                        })
+                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                        }
+                        
+                        NavigationLink(destination: EditLostPet(), isActive: $isOnEditPet) {
+                            Button(action: {
+                                self.isOnEditPet = true
+                            }) {
+                                Text("Edit Pet")
+                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                        }
+
 
                         VStack(alignment: .leading) {
 
@@ -139,7 +150,6 @@ struct LostPetView: View {
         .background(Constant.color.gray)
         .edgesIgnoringSafeArea([.top])
         .navigationBarTitle("", displayMode: .large)
-        .navigationBarItems(trailing: Image(systemName: Constant.icon.compose).foregroundColor(.white))
         .onAppear {
 //            self.modalManager.newModal(position: .closed) {
 //                ReservationModal(

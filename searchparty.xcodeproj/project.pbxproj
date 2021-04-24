@@ -93,6 +93,10 @@
 		F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */; };
 		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
 		F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C0DB25FF078D0026B180 /* PetBackground.swift */; };
+		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
+		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
+		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
+		F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D62633D89000912F28 /* EditLostPet.swift */; };
 		F2791A5F260062D200C056A6 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A5E260062D200C056A6 /* MapViewModel.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
@@ -239,6 +243,10 @@
 		F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetsViewModel.swift; sourceTree = "<group>"; };
 		F216C07525FD605D0026B180 /* LostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPet.swift; sourceTree = "<group>"; };
 		F216C0DB25FF078D0026B180 /* PetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackground.swift; sourceTree = "<group>"; };
+		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
+		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
+		F233D3D62633D89000912F28 /* EditLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLostPet.swift; sourceTree = "<group>"; };
 		F2791A5E260062D200C056A6 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
@@ -429,6 +437,9 @@
 				344723BA24ABA93C003B9F50 /* IngredientsModal.swift */,
 				344723BC24ABA9CD003B9F50 /* LostPetView.swift */,
 				F2A585452607BEDA00E8920E /* SearchPartyView.swift */,
+				F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */,
+				F233D3D22633D41400912F28 /* ChatScreen.swift */,
+				F233D3D62633D89000912F28 /* EditLostPet.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -471,6 +482,7 @@
 				349E4BD7241522990079BF04 /* ButtonPrimary.swift */,
 				344723C724ABC64A003B9F50 /* ButtonApplePay.swift */,
 				F2A5854A26083CF100E8920E /* ButtonSecondary.swift */,
+				F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -805,6 +817,7 @@
 				349A57A52588C09200277356 /* CityDetail.swift in Sources */,
 				345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */,
 				F2D7459425FB2484003C5157 /* LottieSubview.swift in Sources */,
+				F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */,
 				3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */,
 				345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */,
 				F2D7457125FAF6AC003C5157 /* SignInViewModel.swift in Sources */,
@@ -826,6 +839,7 @@
 				341D20DE241CDE2E00C706A2 /* TabBarModifier.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				3445A79D240B043E0020561B /* RecipesList.swift in Sources */,
+				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
 				344723CD24AC9613003B9F50 /* CollapsablePicker.swift in Sources */,
 				3403A32624080D4400D7B040 /* Data.swift in Sources */,
@@ -838,6 +852,7 @@
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
 				34F1215825875BBC00BBB7DB /* City.swift in Sources */,
+				F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */,
 				349E4BDA241523A60079BF04 /* Header.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
 				34785333258608AD0023A217 /* Messages.swift in Sources */,
@@ -848,6 +863,7 @@
 				345D2E202458473000201DD0 /* TextTableRow.swift in Sources */,
 				349524D2258A3F8C0077F145 /* HotelDetail.swift in Sources */,
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
+				F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */,
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
 				F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */,
 				344723C624ABC37D003B9F50 /* ReservationModal.swift in Sources */,

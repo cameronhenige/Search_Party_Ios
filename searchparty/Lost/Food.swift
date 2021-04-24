@@ -26,6 +26,7 @@ struct Food: View {
         }
         .tabBarOpaque()
         .accentColor(Constant.color.foodPrimary)
+        
     }
 }
 

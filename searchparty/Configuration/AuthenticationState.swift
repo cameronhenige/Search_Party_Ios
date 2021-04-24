@@ -56,8 +56,6 @@ class AuthenticationState: NSObject, ObservableObject {
     
     func forgotPassword(email: String) {
 
-        
-        
         self.isAuthenticating = true
         self.error = nil
         auth.sendPasswordReset(withEmail: email, completion: handleResetPasswordCompletion)
@@ -87,6 +85,7 @@ class AuthenticationState: NSObject, ObservableObject {
     
     private func handleResetPasswordCompletion(error: Error?) {
         self.isAuthenticating = false
+
         if(error != nil){
             self.error = error as! NSError
         }else{

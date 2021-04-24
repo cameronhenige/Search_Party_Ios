@@ -55,7 +55,6 @@ struct ForgotPasswordView: View {
     }
     
     private func forgotPasswordTapped(){
-        authState.isResettingPassword = false
         authState.forgotPassword(email: email)
     }
 }

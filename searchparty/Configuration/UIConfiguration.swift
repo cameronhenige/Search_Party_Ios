@@ -12,6 +12,8 @@ import UIKit
 class UIConfiguration {
     // Fonts
     static let titleFont = UIFont(name: "Arial Rounded MT Bold", size: 28)!
+    static let smallFont = UIFont(name: "Avenir-Medium", size: 12)!
+
     static let subtitleFont = UIFont(name: "Avenir-Medium", size: 16)!
     static let buttonFont = UIFont(name: "Avenir-Heavy", size: 20)!
     
