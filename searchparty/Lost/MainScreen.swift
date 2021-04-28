@@ -25,7 +25,7 @@ struct MainScreen: View {
             }
             AccountScreen().tabItem {
                 Text("Account")
-                Image("found_icon").renderingMode(.template)
+                Image(systemName: "person.circle").renderingMode(.template)
             }
         }
         .tabBarOpaque()

@@ -35,6 +35,7 @@ class LostPetsViewModel: NSObject, ObservableObject {
     
     func fetchLostPets() {
         
+        
         let userDocument = db.collection("Users").document(Auth.auth().currentUser!.uid)
         isLoadingLostPets = true
         userDocument.getDocument { (DocumentSnapshot, Error) in

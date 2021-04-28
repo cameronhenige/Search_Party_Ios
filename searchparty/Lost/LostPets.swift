@@ -12,13 +12,13 @@ import CoreLocation
 struct LostPets: View {
     //@EnvironmentObject var authState: AuthenticationState
     var categories: [Category]
-    var tintColor: Color = Constant.color.tintColor
     
     @ObservedObject private var lostPetsViewModel = LostPetsViewModel()
     
     @State var isShowingAlert = true
 
-    
+    @State var isAddingLostPet = false
+
 
     var body: some View {
         
@@ -55,15 +55,21 @@ struct LostPets: View {
                     }
                     
                     
+                }.toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        NavigationLink(destination: AddLostPet(), isActive: $isAddingLostPet) {
+                            Button(action: {
+                                self.isAddingLostPet = true
+                            }) {
+                                Text("Add Lost Pet")
+                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                        }
+                    }
                 }
                 .background(Constant.color.gray)
-                .navigationBarColor(tintColor.uiColor())
-                .navigationBarTitle(Text("Lost"), displayMode: .large)
-                .navigationBarItems(trailing: Button(action: doSomething, label: {
-                    Image(systemName: Constant.icon.plus)
-                    Text("Add Lost Pet")
-                }))
-                
+                .navigationBarColor(Constant.color.tintColor.uiColor())
+                .navigationBarTitle(Text("Lost"), displayMode: .inline)
+        
             }.onAppear(){
                 //locationManager.delegate = lostPetsViewModel
 

@@ -13,7 +13,7 @@ struct VenuesList<Venue: Place>: View {
     var venues: [Venue]
     let gradient = LinearGradient(gradient: Gradient(colors: [.white, .clear]), startPoint: .top, endPoint: .bottom)
     var tintColor = Constant.color.tintColor
-    var navigationBarDisplayMode = NavigationBarItem.TitleDisplayMode.large
+    var navigationBarDisplayMode = NavigationBarItem.TitleDisplayMode.inline
     var title = "Venues"
     
     var body: some View {

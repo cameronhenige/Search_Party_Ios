@@ -23,7 +23,6 @@ struct ContentView: View {
                 OnboardingView().environmentObject(viewRouter)
             }else{
                 if authState.loggedInUser != nil  && !authState.isAuthenticating {
-                    
                     MainScreen()
                     
 
