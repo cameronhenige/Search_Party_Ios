@@ -19,7 +19,7 @@ struct PetBackground: View {
         if(hasPicture){
             KFImage(pictureUrl)
                 .resizable()
-                      .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fill).frame(minWidth: 0, maxWidth: .infinity)
         }else{
             
             if(petType == "Dog"){
