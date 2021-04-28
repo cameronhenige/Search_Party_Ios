@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import Kingfisher
 
 struct LostPetView: View {
     var lostPet: LostPet
@@ -19,7 +21,8 @@ struct LostPetView: View {
     @State var isOnEditPet = false
     @State var selectedView = 1
     @State private var isPresented = false
-    
+    @State var pictureUrl: URL?
+    @State var hasPicture: Bool = false
     private func goToSearchParty() {
         self.isPresented.toggle()
     }
@@ -31,15 +34,30 @@ struct LostPetView: View {
     var body: some View {
         return VStack(spacing: 0){
 
-
-            
             ZStack(alignment: .top) {
 
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center, spacing: 0, content: {
-                        Image("dog")
+                        PetBackground(pictureUrl: self.pictureUrl, hasPicture: self.hasPicture, petType: lostPet.type)
                             .frame(height: 350.0)
+                            .onAppear {
+                                
+                                if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+                                    hasPicture = true
+                                    let storageLocation : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages![0]
+                                    let storage = Storage.storage().reference().child(storageLocation)
+                                    storage.downloadURL { (URL, Error) in
+                                        if(Error != nil){
+                                            print(Error?.localizedDescription)
+                                            return
+                                        }
+                                        pictureUrl = URL
+                                    }
+                                }else{
+                                    hasPicture = false
+                                }
+                            }
                         Text(lostPet.name)
                             .fontWeight(.bold)
                             .font(.title)
@@ -147,9 +165,7 @@ struct LostPetView: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .background(Constant.color.gray)
-        .edgesIgnoringSafeArea([.top])
-        .navigationBarTitle("", displayMode: .large)
+        .navigationBarColor(Constant.color.tintColor.uiColor())
         .onAppear {
 //            self.modalManager.newModal(position: .closed) {
 //                ReservationModal(
