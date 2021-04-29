@@ -10,7 +10,6 @@ import SwiftUI
 import CoreLocation
 
 struct LostPets: View {
-    @StateObject private var modelData = ModelData()
 
     //@EnvironmentObject var authState: AuthenticationState
     var categories: [Category]
@@ -49,7 +48,7 @@ struct LostPets: View {
                         
                         
                         NavigationLink(
-                            destination: LostPetView(lostPet: lostPet).environmentObject(modelData)
+                            destination: LostPetView(lostPet: lostPet)
                         ) {
                             
                             CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)

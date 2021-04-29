@@ -8,13 +8,13 @@ A view that shows a featured landmark.
 import SwiftUI
 
 struct FeatureCard: View {
-    var landmark: Landmark
+    var landmark: String
 
     var body: some View {
-        landmark.featureImage?
+        Image(landmark)
             .resizable()
             .aspectRatio(3 / 2, contentMode: .fit)
-            .overlay(TextOverlay(landmark: landmark))
+//            .overlay(TextOverlay(landmark: landmark))
     }
 }
 
@@ -46,6 +46,6 @@ struct TextOverlay: View {
 
 struct FeatureCard_Previews: PreviewProvider {
     static var previews: some View {
-        FeatureCard(landmark: ModelData().features[0])
+        FeatureCard(landmark: "dog")
     }
 }

@@ -157,6 +157,8 @@
 		F2DBDDDE263B24FC00E9C987 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDDA263B24FC00E9C987 /* ModelData.swift */; };
 		F2DBDDE1263B271100E9C987 /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDDF263B271100E9C987 /* hikeData.json */; };
 		F2DBDDE2263B271100E9C987 /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDE0263B271100E9C987 /* landmarkData.json */; };
+		F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */; };
+		F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -318,6 +320,8 @@
 		F2DBDDDA263B24FC00E9C987 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		F2DBDDDF263B271100E9C987 /* hikeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hikeData.json; sourceTree = "<group>"; };
 		F2DBDDE0263B271100E9C987 /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
+		F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackgroundSingle.swift; sourceTree = "<group>"; };
+		F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImagePage.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -433,6 +437,7 @@
 				F2791A642600746500C056A6 /* Search.swift */,
 				F2791A692600750500C056A6 /* SearchPartyUser.swift */,
 				F2791A6C2600759E00C056A6 /* Chat.swift */,
+				F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 				34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */,
 				34B40A1325851B970096EC29 /* CardSocial.swift */,
 				F216C0DB25FF078D0026B180 /* PetBackground.swift */,
+				F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -900,6 +906,7 @@
 				3403A32624080D4400D7B040 /* Data.swift in Sources */,
 				34ADED322584BB1300A504F5 /* Profile.swift in Sources */,
 				344723BB24ABA93C003B9F50 /* IngredientsModal.swift in Sources */,
+				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
 				349A579D2587A78000277356 /* GuideDetail.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
 				347853502586667E0023A217 /* Travel.swift in Sources */,
@@ -910,6 +917,7 @@
 				34F1215825875BBC00BBB7DB /* City.swift in Sources */,
 				F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */,
 				349E4BDA241523A60079BF04 /* Header.swift in Sources */,
+				F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
 				34785333258608AD0023A217 /* Messages.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,

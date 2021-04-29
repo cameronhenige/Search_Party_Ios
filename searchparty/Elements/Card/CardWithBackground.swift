@@ -11,7 +11,7 @@ import FirebaseStorage
 import Kingfisher
 
 struct CardWithBackground: View {
-    
+
     var lostPet: LostPet
     var title: String
     var subTitle: String?
@@ -55,7 +55,7 @@ struct CardWithBackground: View {
             .frame(height: height)
             .foregroundColor(Color.white)
             .background(
-                PetBackground(pictureUrl: self.pictureUrl, hasPicture: self.hasPicture, petType: lostPet.type)
+                PetBackgroundSingle(pictureUrl: self.pictureUrl, hasPicture: self.hasPicture, petType: lostPet.type)
             )
 
         }.onAppear {

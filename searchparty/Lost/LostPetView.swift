@@ -11,7 +11,7 @@ import FirebaseStorage
 import Kingfisher
 
 struct LostPetView: View {
-    @EnvironmentObject var modelData: ModelData
+    @StateObject private var modelData = ModelData()
 
     var lostPet: LostPet
     var tintColor: Color = Constant.color.tintColor
@@ -33,6 +33,8 @@ struct LostPetView: View {
             //todo
     }
     
+
+    
     var body: some View {
         return
             ZStack(alignment: .top) {
@@ -40,7 +42,7 @@ struct LostPetView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center, spacing: 0, content: {
-                        PetBackground(pictureUrl: self.pictureUrl, hasPicture: self.hasPicture, petType: lostPet.type)
+                        PetBackground(generalImages: self.lostPet.generalImages, hasPicture: self.hasPicture, petType: lostPet.type).environmentObject(modelData)
                             .frame(height: 350.0)
                             .onAppear {
                                 
@@ -66,9 +68,7 @@ struct LostPetView: View {
                     
                     VStack(alignment: .leading, spacing:0) {
                         
-                        PageView(pages: modelData.features.map { FeatureCard(landmark: $0) })
-                            .aspectRatio(3 / 2, contentMode: .fit)
-                            .listRowInsets(EdgeInsets())
+
                         
                         RandomView
 

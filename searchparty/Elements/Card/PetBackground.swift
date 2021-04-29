@@ -10,18 +10,41 @@ import SwiftUI
 import Kingfisher
 
 struct PetBackground: View {
-    var pictureUrl: URL?
+    var generalImages: [String]?
     var hasPicture: Bool = false
     var petType: String?
+    //var petImagePages: [PetImagePage]
+    
+    @EnvironmentObject var modelData: ModelData
 
+    
+    private func getPetImagePagesFromPet(lostPetImages: [String]) -> [PetImagePage] {
+        
+        var petImagePages = [PetImagePage]()
+
+        for url in lostPetImages {
+            var petImage = PetImagePage(nameGiven: "dog")
+            petImagePages.append(petImage)
+        }
+
+        return petImagePages
+
+    }
+    
     var body: some View {
         
-        if(hasPicture){
-            KFImage(pictureUrl)
-                .resizable()
-                .aspectRatio(contentMode: .fill).frame(minWidth: 0, maxWidth: .infinity)
-        }else{
+        if(generalImages != nil && !generalImages!.isEmpty) {
+            //            KFImage(pictureUrl)
+            //                .resizable()
+            //                .aspectRatio(contentMode: .fill).frame(minWidth: 0, maxWidth: .infinity)
             
+                        
+            PageView(pages: getPetImagePagesFromPet(lostPetImages: generalImages!).map {FeatureCard(landmark: $0.name)
+                            
+                        }).aspectRatio(3 / 2, contentMode: .fit)
+                        .listRowInsets(EdgeInsets())
+            
+        }else{
             if(petType == "Dog"){
             Image("dog")
             }else if petType == "Cat" {
@@ -32,12 +55,15 @@ struct PetBackground: View {
                 Image("maps_default_marker")
 
             }
+
+            
+
         }
     }
 }
 
-struct PetBackground_Previews: PreviewProvider {
-    static var previews: some View {
-        PetBackground(pictureUrl: URL(string: "https://firebasestorage.googleapis.com/v0/b/react-native-e.appspot.com/o/f18c2d27ce297526d53da71a2386d229f4b1bed4.png?alt=media&token=cf79a3a7-ce7c-4307-a874-27be6f3f1dc1"), petType: "Dog")
-    }
-}
+//struct PetBackground_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PetBackground(generalImages: nil, petType: "Dog")
+//    }
+//}
