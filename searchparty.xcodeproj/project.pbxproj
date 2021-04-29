@@ -148,6 +148,15 @@
 		F2D745B725FB24C1003C5157 /* neighborhood.json in Resources */ = {isa = PBXBuildFile; fileRef = F2D745A825FB24C1003C5157 /* neighborhood.json */; };
 		F2D745B825FB24C1003C5157 /* dog_sitting.json in Resources */ = {isa = PBXBuildFile; fileRef = F2D745A925FB24C1003C5157 /* dog_sitting.json */; };
 		F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D745CA25FB259C003C5157 /* PageControl.swift */; };
+		F2DBDDD1263B238600E9C987 /* FeatureCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDCD263B238600E9C987 /* FeatureCard.swift */; };
+		F2DBDDD2263B238600E9C987 /* PageControlLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDCE263B238600E9C987 /* PageControlLandmark.swift */; };
+		F2DBDDD3263B238600E9C987 /* PageViewControllerLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDCF263B238600E9C987 /* PageViewControllerLandmark.swift */; };
+		F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD0263B238600E9C987 /* PageView.swift */; };
+		F2DBDDDC263B24FC00E9C987 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD8263B24FB00E9C987 /* Landmark.swift */; };
+		F2DBDDDD263B24FC00E9C987 /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD9263B24FC00E9C987 /* Hike.swift */; };
+		F2DBDDDE263B24FC00E9C987 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDDA263B24FC00E9C987 /* ModelData.swift */; };
+		F2DBDDE1263B271100E9C987 /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDDF263B271100E9C987 /* hikeData.json */; };
+		F2DBDDE2263B271100E9C987 /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDE0263B271100E9C987 /* landmarkData.json */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +309,15 @@
 		F2D745A825FB24C1003C5157 /* neighborhood.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = neighborhood.json; sourceTree = "<group>"; };
 		F2D745A925FB24C1003C5157 /* dog_sitting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dog_sitting.json; sourceTree = "<group>"; };
 		F2D745CA25FB259C003C5157 /* PageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
+		F2DBDDCD263B238600E9C987 /* FeatureCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCard.swift; sourceTree = "<group>"; };
+		F2DBDDCE263B238600E9C987 /* PageControlLandmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlLandmark.swift; sourceTree = "<group>"; };
+		F2DBDDCF263B238600E9C987 /* PageViewControllerLandmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewControllerLandmark.swift; sourceTree = "<group>"; };
+		F2DBDDD0263B238600E9C987 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		F2DBDDD8263B24FB00E9C987 /* Landmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		F2DBDDD9263B24FC00E9C987 /* Hike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hike.swift; sourceTree = "<group>"; };
+		F2DBDDDA263B24FC00E9C987 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		F2DBDDDF263B271100E9C987 /* hikeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hikeData.json; sourceTree = "<group>"; };
+		F2DBDDE0263B271100E9C987 /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -349,6 +367,7 @@
 		3403A3002406B70F00D7B040 /* searchparty */ = {
 			isa = PBXGroup;
 			children = (
+				F2DBDDCC263B238600E9C987 /* PageView */,
 				F233D3D92633E9DA00912F28 /* Account */,
 				F2A9DBED25FC7ADB0055AC33 /* Extensions */,
 				F2D7459A25FB24C1003C5157 /* LottieFiles */,
@@ -388,6 +407,9 @@
 		3403A31B240809CC00D7B040 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F2DBDDD9263B24FC00E9C987 /* Hike.swift */,
+				F2DBDDD8263B24FB00E9C987 /* Landmark.swift */,
+				F2DBDDDA263B24FC00E9C987 /* ModelData.swift */,
 				3461D3DA245C219B009D389E /* Extensions.swift */,
 				3403A32524080D4400D7B040 /* Data.swift */,
 				3403A32724080DBC00D7B040 /* Recipe.swift */,
@@ -418,6 +440,8 @@
 		3403A31E240809FE00D7B040 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F2DBDDDF263B271100E9C987 /* hikeData.json */,
+				F2DBDDE0263B271100E9C987 /* landmarkData.json */,
 				3403A32224080C7700D7B040 /* recipes.json */,
 				3403A32124080C7600D7B040 /* restaurants.json */,
 				3445A7902408268B0020561B /* recipeCategories.json */,
@@ -671,6 +695,17 @@
 			path = LottieFiles;
 			sourceTree = "<group>";
 		};
+		F2DBDDCC263B238600E9C987 /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				F2DBDDCD263B238600E9C987 /* FeatureCard.swift */,
+				F2DBDDCE263B238600E9C987 /* PageControlLandmark.swift */,
+				F2DBDDCF263B238600E9C987 /* PageViewControllerLandmark.swift */,
+				F2DBDDD0263B238600E9C987 /* PageView.swift */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -740,6 +775,7 @@
 				F2D745AC25FB24C1003C5157 /* gift.json in Resources */,
 				34F1214F25875B1700BBB7DB /* guides.json in Resources */,
 				F2D745B025FB24C1003C5157 /* shelter.json in Resources */,
+				F2DBDDE1263B271100E9C987 /* hikeData.json in Resources */,
 				346DFE142584FB3800449492 /* users.json in Resources */,
 				3403A32424080C7700D7B040 /* recipes.json in Resources */,
 				F2D745AB25FB24C1003C5157 /* social_media.json in Resources */,
@@ -758,6 +794,7 @@
 				F2D7458425FAFC8C003C5157 /* GoogleService-Info.plist in Resources */,
 				F2D745AE25FB24C1003C5157 /* dont_chase_dog.json in Resources */,
 				F2D745AA25FB24C1003C5157 /* cat_grey.json in Resources */,
+				F2DBDDE2263B271100E9C987 /* landmarkData.json in Resources */,
 				F2D745B725FB24C1003C5157 /* neighborhood.json in Resources */,
 				F2D745B325FB24C1003C5157 /* flyer.json in Resources */,
 				346DFE0E2584FADA00449492 /* conversations.json in Resources */,
@@ -819,6 +856,7 @@
 			files = (
 				F2D7459325FB2484003C5157 /* OnboardingView.swift in Sources */,
 				F2D7457925FAF6AC003C5157 /* AuthAPI.swift in Sources */,
+				F2DBDDD1263B238600E9C987 /* FeatureCard.swift in Sources */,
 				3461D3D8245C20D0009D389E /* Restaurant.swift in Sources */,
 				F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */,
 				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
@@ -841,6 +879,7 @@
 				34B40A17258528C80096EC29 /* Post.swift in Sources */,
 				34AD61DD240BD093005943F9 /* RecipeDetail.swift in Sources */,
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
+				F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */,
 				34F1215E2587962C00BBB7DB /* Cities.swift in Sources */,
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
@@ -849,6 +888,8 @@
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
 				344723CB24AC7B80003B9F50 /* SegmentedPicker.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
+				F2DBDDDE263B24FC00E9C987 /* ModelData.swift in Sources */,
+				F2DBDDD3263B238600E9C987 /* PageViewControllerLandmark.swift in Sources */,
 				34785354258666ED0023A217 /* Guides.swift in Sources */,
 				341D20DE241CDE2E00C706A2 /* TabBarModifier.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
@@ -862,6 +903,7 @@
 				349A579D2587A78000277356 /* GuideDetail.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
 				347853502586667E0023A217 /* Travel.swift in Sources */,
+				F2DBDDDD263B24FC00E9C987 /* Hike.swift in Sources */,
 				F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
@@ -917,10 +959,12 @@
 				34B4B12524AB668100B092A8 /* Card.swift in Sources */,
 				345AE3B0241A7ABD004EBE8C /* ContentView.swift in Sources */,
 				F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */,
+				F2DBDDDC263B24FC00E9C987 /* Landmark.swift in Sources */,
 				F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */,
 				345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */,
 				349524CC258A35BC0077F145 /* Place.swift in Sources */,
 				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
+				F2DBDDD2263B238600E9C987 /* PageControlLandmark.swift in Sources */,
 				F2D7457F25FAF744003C5157 /* HomeView.swift in Sources */,
 				345D2E1E2458413B00201DD0 /* TableRow.swift in Sources */,
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,

@@ -11,6 +11,8 @@ import FirebaseStorage
 import Kingfisher
 
 struct LostPetView: View {
+    @EnvironmentObject var modelData: ModelData
+
     var lostPet: LostPet
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
@@ -63,6 +65,10 @@ struct LostPetView: View {
                     })
                     
                     VStack(alignment: .leading, spacing:0) {
+                        
+                        PageView(pages: modelData.features.map { FeatureCard(landmark: $0) })
+                            .aspectRatio(3 / 2, contentMode: .fit)
+                            .listRowInsets(EdgeInsets())
                         
                         RandomView
 
