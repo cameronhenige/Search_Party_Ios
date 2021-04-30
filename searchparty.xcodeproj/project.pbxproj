@@ -35,9 +35,6 @@
 		345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */; };
 		345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3AA241A7A8E004EBE8C /* ModalManager.swift */; };
 		345AE3B0241A7ABD004EBE8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3AF241A7ABD004EBE8C /* ContentView.swift */; };
-		345D2E1E2458413B00201DD0 /* TableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D2E1D2458413B00201DD0 /* TableRow.swift */; };
-		345D2E202458473000201DD0 /* TextTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D2E1F2458473000201DD0 /* TextTableRow.swift */; };
-		345D2E24245857F700201DD0 /* CheckBoxTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345D2E23245857F700201DD0 /* CheckBoxTableRow.swift */; };
 		3461D3D8245C20D0009D389E /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461D3D7245C20D0009D389E /* Restaurant.swift */; };
 		3461D3DB245C219B009D389E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3461D3DA245C219B009D389E /* Extensions.swift */; };
 		346DFE0A2584F98C00449492 /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346DFE092584F98C00449492 /* Story.swift */; };
@@ -47,7 +44,6 @@
 		346DFE1C2585038900449492 /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 346DFE082584F94B00449492 /* stories.json */; };
 		346DFE1F258503F600449492 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346DFE1E258503F600449492 /* Picture.swift */; };
 		34785336258609640023A217 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34785335258609640023A217 /* Conversation.swift */; };
-		3492B625258A09F2001D2094 /* VenuesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3492B624258A09F2001D2094 /* VenuesList.swift */; };
 		349524C6258A30E70077F145 /* Reservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524C5258A30E70077F145 /* Reservable.swift */; };
 		349524C9258A31E90077F145 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524C8258A31E90077F145 /* Hotel.swift */; };
 		349524CC258A35BC0077F145 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524CB258A35BC0077F145 /* Place.swift */; };
@@ -163,9 +159,6 @@
 		345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalAnchorView.swift; sourceTree = "<group>"; };
 		345AE3AA241A7A8E004EBE8C /* ModalManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalManager.swift; sourceTree = "<group>"; };
 		345AE3AF241A7ABD004EBE8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		345D2E1D2458413B00201DD0 /* TableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableRow.swift; sourceTree = "<group>"; };
-		345D2E1F2458473000201DD0 /* TextTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableRow.swift; sourceTree = "<group>"; };
-		345D2E23245857F700201DD0 /* CheckBoxTableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxTableRow.swift; sourceTree = "<group>"; };
 		3461D3D7245C20D0009D389E /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		3461D3DA245C219B009D389E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		346DFE082584F94B00449492 /* stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = stories.json; sourceTree = "<group>"; };
@@ -176,7 +169,6 @@
 		346DFE1E258503F600449492 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		347853302585F47F0023A217 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		34785335258609640023A217 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
-		3492B624258A09F2001D2094 /* VenuesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesList.swift; sourceTree = "<group>"; };
 		349524C5258A30E70077F145 /* Reservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservable.swift; sourceTree = "<group>"; };
 		349524C8258A31E90077F145 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		349524CB258A35BC0077F145 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -432,16 +424,6 @@
 			path = Modifiers;
 			sourceTree = "<group>";
 		};
-		344723C424ABC098003B9F50 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				345D2E1D2458413B00201DD0 /* TableRow.swift */,
-				345D2E1F2458473000201DD0 /* TextTableRow.swift */,
-				345D2E23245857F700201DD0 /* CheckBoxTableRow.swift */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
 		344723C924ABCAC1003B9F50 /* Button */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,14 +454,12 @@
 				344723C924ABCAC1003B9F50 /* Button */,
 				341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */,
 				344723C324ABC078003B9F50 /* Modifiers */,
-				344723C424ABC098003B9F50 /* Table */,
 				340A1980249BB0C900D49461 /* MapView.swift */,
 				34B4B12824AB72B500B092A8 /* Stars.swift */,
 				344723B824ABA89E003B9F50 /* BackButton.swift */,
 				344723BE24ABAC67003B9F50 /* TabBar.swift */,
 				34FE0A2C25681474007D1B06 /* CountPicker.swift */,
 				34ADED312584BB1300A504F5 /* Profile.swift */,
-				3492B624258A09F2001D2094 /* VenuesList.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -760,7 +740,6 @@
 				F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */,
 				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
 				34B4B12924AB72B500B092A8 /* Stars.swift in Sources */,
-				345D2E24245857F700201DD0 /* CheckBoxTableRow.swift in Sources */,
 				3461D3DB245C219B009D389E /* Extensions.swift in Sources */,
 				349524C6258A30E70077F145 /* Reservable.swift in Sources */,
 				345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */,
@@ -801,7 +780,6 @@
 				F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */,
 				3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */,
 				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
-				345D2E202458473000201DD0 /* TextTableRow.swift in Sources */,
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
 				F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */,
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
@@ -826,7 +804,6 @@
 				344723B924ABA89E003B9F50 /* BackButton.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
-				3492B625258A09F2001D2094 /* VenuesList.swift in Sources */,
 				349524C9258A31E90077F145 /* Hotel.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
 				3403A31D240809E700D7B040 /* UserData.swift in Sources */,
@@ -840,7 +817,6 @@
 				349524CC258A35BC0077F145 /* Place.swift in Sources */,
 				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
 				F2DBDDD2263B238600E9C987 /* PageControlLostPet.swift in Sources */,
-				345D2E1E2458413B00201DD0 /* TableRow.swift in Sources */,
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
 				344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */,
 				F2791A652600746500C056A6 /* Search.swift in Sources */,
