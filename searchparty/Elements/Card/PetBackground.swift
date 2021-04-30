@@ -36,7 +36,7 @@ struct PetBackground: View {
         if(generalImages != nil && !generalImages!.isEmpty) {
 
                         
-            PageView(pages: getPetImagePagesFromPet(lostPetImages: generalImages!).map {FeatureCard(url: $0.url, lostPetId: lostPetId)
+            PageView(pages: getPetImagePagesFromPet(lostPetImages: generalImages!).map {SingleLostPetImage(url: $0.url, lostPetId: lostPetId)
                             
                         }).aspectRatio(3 / 2, contentMode: .fit)
                         .listRowInsets(EdgeInsets())

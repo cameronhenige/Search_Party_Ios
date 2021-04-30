@@ -1,14 +1,8 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A view that wraps a UIPageViewController.
-*/
 
 import SwiftUI
 import UIKit
 
-struct PageViewControllerLandmark<Page: View>: UIViewControllerRepresentable {
+struct PageViewControllerLostPet<Page: View>: UIViewControllerRepresentable {
     var pages: [Page]
     @Binding var currentPage: Int
 
@@ -32,10 +26,10 @@ struct PageViewControllerLandmark<Page: View>: UIViewControllerRepresentable {
     }
 
     class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-        var parent: PageViewControllerLandmark
+        var parent: PageViewControllerLostPet
         var controllers = [UIViewController]()
 
-        init(_ pageViewController: PageViewControllerLandmark) {
+        init(_ pageViewController: PageViewControllerLostPet) {
             parent = pageViewController
             controllers = parent.pages.map { UIHostingController(rootView: $0) }
         }

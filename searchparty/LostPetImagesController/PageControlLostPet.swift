@@ -8,7 +8,7 @@ A view wrapping a UIPageControl.
 import SwiftUI
 import UIKit
 
-struct PageControlLandmark: UIViewRepresentable {
+struct PageControlLostPet: UIViewRepresentable {
     var numberOfPages: Int
     @Binding var currentPage: Int
 
@@ -32,9 +32,9 @@ struct PageControlLandmark: UIViewRepresentable {
     }
 
     class Coordinator: NSObject {
-        var control: PageControlLandmark
+        var control: PageControlLostPet
 
-        init(_ control: PageControlLandmark) {
+        init(_ control: PageControlLostPet) {
             self.control = control
         }
 

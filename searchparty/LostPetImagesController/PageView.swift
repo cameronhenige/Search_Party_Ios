@@ -13,8 +13,8 @@ struct PageView<Page: View>: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            PageViewControllerLandmark(pages: pages, currentPage: $currentPage)
-            PageControlLandmark(numberOfPages: pages.count, currentPage: $currentPage)
+            PageViewControllerLostPet(pages: pages, currentPage: $currentPage)
+            PageControlLostPet(numberOfPages: pages.count, currentPage: $currentPage)
                 .frame(width: CGFloat(pages.count * 18))
                 .padding(.trailing)
         }
@@ -23,7 +23,7 @@ struct PageView<Page: View>: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(pages: ModelData().features.map { _ in FeatureCard(url: "dogg", lostPetId: "sdajf") })
+        PageView(pages: ModelData().features.map { _ in SingleLostPetImage(url: "dogg", lostPetId: "sdajf") })
             .aspectRatio(3 / 2, contentMode: .fit)
     }
 }
