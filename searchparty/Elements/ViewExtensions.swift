@@ -14,9 +14,6 @@ extension View {
         self.modifier(NavigationBarModifier(backgroundColor: backgroundColor))
     }
     
-    func tabBarOpaque() -> some View {
-        self.modifier(TabBarModifier())
-    }
 
     func eraseToAnyView() -> AnyView {
             AnyView(self)

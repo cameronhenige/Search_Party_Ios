@@ -28,7 +28,6 @@ struct MainScreen: View {
                 Image(systemName: "person.circle").renderingMode(.template)
             }
         }
-        .tabBarOpaque()
         .accentColor(Constant.color.foodPrimary)
         
     }

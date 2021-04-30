@@ -22,7 +22,6 @@
 		340A1981249BB0C900D49461 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A1980249BB0C900D49461 /* MapView.swift */; };
 		341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */; };
 		341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */; };
-		341D20DE241CDE2E00C706A2 /* TabBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20DD241CDE2E00C706A2 /* TabBarModifier.swift */; };
 		3445A7912408268B0020561B /* recipeCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = 3445A7902408268B0020561B /* recipeCategories.json */; };
 		3445A798240A80AF0020561B /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3445A797240A80AF0020561B /* ColorPalette.xcassets */; };
 		3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3445A79E240B0C3F0020561B /* CardWithBackground.swift */; };
@@ -31,7 +30,6 @@
 		344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723BE24ABAC67003B9F50 /* TabBar.swift */; };
 		344723C124ABB098003B9F50 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C024ABB098003B9F50 /* TabItem.swift */; };
 		344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C724ABC64A003B9F50 /* ButtonApplePay.swift */; };
-		344723CB24AC7B80003B9F50 /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723CA24AC7B80003B9F50 /* SegmentedPicker.swift */; };
 		345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A7241A7A8E004EBE8C /* Modal.swift */; };
 		345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A8241A7A8E004EBE8C /* ModalView.swift */; };
 		345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */; };
@@ -49,13 +47,10 @@
 		346DFE1C2585038900449492 /* stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 346DFE082584F94B00449492 /* stories.json */; };
 		346DFE1F258503F600449492 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346DFE1E258503F600449492 /* Picture.swift */; };
 		34785336258609640023A217 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34785335258609640023A217 /* Conversation.swift */; };
-		3478534025861EFF0023A217 /* SegmentedPickerCollapsed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3478533F25861EFF0023A217 /* SegmentedPickerCollapsed.swift */; };
-		3478534325861F7A0023A217 /* SizeAwareViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3478534225861F7A0023A217 /* SizeAwareViewModifier.swift */; };
 		3492B625258A09F2001D2094 /* VenuesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3492B624258A09F2001D2094 /* VenuesList.swift */; };
 		349524C6258A30E70077F145 /* Reservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524C5258A30E70077F145 /* Reservable.swift */; };
 		349524C9258A31E90077F145 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524C8258A31E90077F145 /* Hotel.swift */; };
 		349524CC258A35BC0077F145 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524CB258A35BC0077F145 /* Place.swift */; };
-		349E4BDA241523A60079BF04 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E4BD9241523A60079BF04 /* Header.swift */; };
 		34AA9DA925850D180087798C /* MyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA9DA825850D180087798C /* MyUser.swift */; };
 		34ADED2C2584B48100A504F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED2B2584B48100A504F5 /* Constants.swift */; };
 		34ADED322584BB1300A504F5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED312584BB1300A504F5 /* Profile.swift */; };
@@ -155,7 +150,6 @@
 		340A1980249BB0C900D49461 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
-		341D20DD241CDE2E00C706A2 /* TabBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModifier.swift; sourceTree = "<group>"; };
 		3445A7902408268B0020561B /* recipeCategories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recipeCategories.json; sourceTree = "<group>"; };
 		3445A797240A80AF0020561B /* ColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPalette.xcassets; sourceTree = "<group>"; };
 		3445A79E240B0C3F0020561B /* CardWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithBackground.swift; sourceTree = "<group>"; };
@@ -164,7 +158,6 @@
 		344723BE24ABAC67003B9F50 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		344723C024ABB098003B9F50 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		344723C724ABC64A003B9F50 /* ButtonApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApplePay.swift; sourceTree = "<group>"; };
-		344723CA24AC7B80003B9F50 /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
 		345AE3A7241A7A8E004EBE8C /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		345AE3A8241A7A8E004EBE8C /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalAnchorView.swift; sourceTree = "<group>"; };
@@ -183,13 +176,10 @@
 		346DFE1E258503F600449492 /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
 		347853302585F47F0023A217 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		34785335258609640023A217 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
-		3478533F25861EFF0023A217 /* SegmentedPickerCollapsed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPickerCollapsed.swift; sourceTree = "<group>"; };
-		3478534225861F7A0023A217 /* SizeAwareViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeAwareViewModifier.swift; sourceTree = "<group>"; };
 		3492B624258A09F2001D2094 /* VenuesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuesList.swift; sourceTree = "<group>"; };
 		349524C5258A30E70077F145 /* Reservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservable.swift; sourceTree = "<group>"; };
 		349524C8258A31E90077F145 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		349524CB258A35BC0077F145 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		349E4BD9241523A60079BF04 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		34AA9DA825850D180087798C /* MyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
 		34ADED2B2584B48100A504F5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		34ADED312584BB1300A504F5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -438,8 +428,6 @@
 			isa = PBXGroup;
 			children = (
 				341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */,
-				341D20DD241CDE2E00C706A2 /* TabBarModifier.swift */,
-				3478534225861F7A0023A217 /* SizeAwareViewModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -482,7 +470,6 @@
 				345AE3A6241A7A8E004EBE8C /* Modal */,
 				344723C224ABC040003B9F50 /* Card */,
 				344723C924ABCAC1003B9F50 /* Button */,
-				349E4BD9241523A60079BF04 /* Header.swift */,
 				341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */,
 				344723C324ABC078003B9F50 /* Modifiers */,
 				344723C424ABC098003B9F50 /* Table */,
@@ -490,11 +477,9 @@
 				34B4B12824AB72B500B092A8 /* Stars.swift */,
 				344723B824ABA89E003B9F50 /* BackButton.swift */,
 				344723BE24ABAC67003B9F50 /* TabBar.swift */,
-				344723CA24AC7B80003B9F50 /* SegmentedPicker.swift */,
 				34FE0A2C25681474007D1B06 /* CountPicker.swift */,
 				34ADED312584BB1300A504F5 /* Profile.swift */,
 				3492B624258A09F2001D2094 /* VenuesList.swift */,
-				3478533F25861EFF0023A217 /* SegmentedPickerCollapsed.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -794,11 +779,9 @@
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
-				344723CB24AC7B80003B9F50 /* SegmentedPicker.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
 				F2DBDDDE263B24FC00E9C987 /* ModelData.swift in Sources */,
 				F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */,
-				341D20DE241CDE2E00C706A2 /* TabBarModifier.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
@@ -812,7 +795,6 @@
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
 				34F1215825875BBC00BBB7DB /* City.swift in Sources */,
 				F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */,
-				349E4BDA241523A60079BF04 /* Header.swift in Sources */,
 				F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
@@ -825,7 +807,6 @@
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
 				F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */,
 				F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */,
-				3478534025861EFF0023A217 /* SegmentedPickerCollapsed.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
 				34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */,
@@ -863,7 +844,6 @@
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
 				344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */,
 				F2791A652600746500C056A6 /* Search.swift in Sources */,
-				3478534325861F7A0023A217 /* SizeAwareViewModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
