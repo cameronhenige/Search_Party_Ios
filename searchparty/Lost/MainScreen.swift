@@ -10,12 +10,10 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    var categories:[Category] = recipeCategoriesData
-    var restaurants:[Restaurant] = restaurantsData
     
     var body: some View {
         TabView() {
-            LostPets(categories: categories).tabItem {
+            LostPets().tabItem {
                 Text("Lost")
                 Image("lost_icon").renderingMode(.template)
             }
@@ -33,10 +31,10 @@ struct MainScreen: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainScreen().environmentObject(UserData())
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainScreen().environmentObject(UserData())
+//    }
+//}
 
 

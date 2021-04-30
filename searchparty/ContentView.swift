@@ -12,7 +12,6 @@ import FirebaseAuth
 
 struct ContentView: View {
     @EnvironmentObject var authState: AuthenticationState
-    @EnvironmentObject var userData: UserData
     @EnvironmentObject var viewRouter: OnboardingRouter
 
     var body: some View {

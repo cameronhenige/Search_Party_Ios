@@ -10,9 +10,6 @@ import SwiftUI
 import CoreLocation
 
 struct LostPets: View {
-
-    //@EnvironmentObject var authState: AuthenticationState
-    var categories: [Category]
     
     @ObservedObject private var lostPetsViewModel = LostPetsViewModel()
     
@@ -88,8 +85,7 @@ struct LostPets: View {
 
 struct Recipes_Previews: PreviewProvider {
     static var previews: some View {
-        LostPets(categories: recipeCategoriesData)
-            .environmentObject(UserData())
+        LostPets()
             .environment(\.colorScheme, .light)
     }
 }
