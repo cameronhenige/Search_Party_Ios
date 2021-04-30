@@ -63,10 +63,8 @@
 		34ADED2C2584B48100A504F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED2B2584B48100A504F5 /* Constants.swift */; };
 		34ADED322584BB1300A504F5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED312584BB1300A504F5 /* Profile.swift */; };
 		34B255AA24081B3500599A4C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B255A924081B3500599A4C /* SwiftUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		34B40A1425851B970096EC29 /* CardSocial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B40A1325851B970096EC29 /* CardSocial.swift */; };
 		34B40A17258528C80096EC29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B40A16258528C80096EC29 /* Post.swift */; };
 		34B4B12524AB668100B092A8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12424AB668100B092A8 /* Card.swift */; };
-		34B4B12724AB6B0500B092A8 /* CardWithAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */; };
 		34B4B12924AB72B500B092A8 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12824AB72B500B092A8 /* Stars.swift */; };
 		34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCE8C0240817CD00C4EE89 /* MainScreen.swift */; };
 		34F1214F25875B1700BBB7DB /* guides.json in Resources */ = {isa = PBXBuildFile; fileRef = 34F1214E25875B1700BBB7DB /* guides.json */; };
@@ -202,10 +200,8 @@
 		34ADED2B2584B48100A504F5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		34ADED312584BB1300A504F5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		34B255A924081B3500599A4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		34B40A1325851B970096EC29 /* CardSocial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSocial.swift; sourceTree = "<group>"; };
 		34B40A16258528C80096EC29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		34B4B12424AB668100B092A8 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithAttachment.swift; sourceTree = "<group>"; };
 		34B4B12824AB72B500B092A8 /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
 		34DCE8C0240817CD00C4EE89 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		34F1214E25875B1700BBB7DB /* guides.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = guides.json; sourceTree = "<group>"; };
@@ -438,8 +434,6 @@
 			children = (
 				3445A79E240B0C3F0020561B /* CardWithBackground.swift */,
 				34B4B12424AB668100B092A8 /* Card.swift */,
-				34B4B12624AB6B0500B092A8 /* CardWithAttachment.swift */,
-				34B40A1325851B970096EC29 /* CardSocial.swift */,
 				F216C0DB25FF078D0026B180 /* PetBackground.swift */,
 				F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */,
 			);
@@ -808,7 +802,6 @@
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
-				34B4B12724AB6B0500B092A8 /* CardWithAttachment.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
 				344723CB24AC7B80003B9F50 /* SegmentedPicker.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
@@ -843,7 +836,6 @@
 				F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */,
 				F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */,
 				344723C624ABC37D003B9F50 /* ReservationModal.swift in Sources */,
-				34B40A1425851B970096EC29 /* CardSocial.swift in Sources */,
 				3478534025861EFF0023A217 /* SegmentedPickerCollapsed.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
