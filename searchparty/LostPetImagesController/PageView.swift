@@ -21,9 +21,9 @@ struct PageView<Page: View>: View {
     }
 }
 
-struct PageView_Previews: PreviewProvider {
-    static var previews: some View {
-        PageView(pages: ModelData().features.map { _ in SingleLostPetImage(url: "dogg", lostPetId: "sdajf") })
-            .aspectRatio(3 / 2, contentMode: .fit)
-    }
-}
+//struct PageView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PageView(pages: ModelData().features.map { _ in SingleLostPetImage(url: "dogg", lostPetId: "sdajf") })
+//            .aspectRatio(3 / 2, contentMode: .fit)
+//    }
+//}

@@ -113,9 +113,6 @@
 		F2DBDDD2263B238600E9C987 /* PageControlLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDCE263B238600E9C987 /* PageControlLostPet.swift */; };
 		F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDCF263B238600E9C987 /* PageViewControllerLostPet.swift */; };
 		F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD0263B238600E9C987 /* PageView.swift */; };
-		F2DBDDDC263B24FC00E9C987 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD8263B24FB00E9C987 /* Landmark.swift */; };
-		F2DBDDDD263B24FC00E9C987 /* Hike.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD9263B24FC00E9C987 /* Hike.swift */; };
-		F2DBDDDE263B24FC00E9C987 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDDA263B24FC00E9C987 /* ModelData.swift */; };
 		F2DBDDE1263B271100E9C987 /* hikeData.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDDF263B271100E9C987 /* hikeData.json */; };
 		F2DBDDE2263B271100E9C987 /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDE0263B271100E9C987 /* landmarkData.json */; };
 		F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */; };
@@ -237,9 +234,6 @@
 		F2DBDDCE263B238600E9C987 /* PageControlLostPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlLostPet.swift; sourceTree = "<group>"; };
 		F2DBDDCF263B238600E9C987 /* PageViewControllerLostPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewControllerLostPet.swift; sourceTree = "<group>"; };
 		F2DBDDD0263B238600E9C987 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
-		F2DBDDD8263B24FB00E9C987 /* Landmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
-		F2DBDDD9263B24FC00E9C987 /* Hike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hike.swift; sourceTree = "<group>"; };
-		F2DBDDDA263B24FC00E9C987 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		F2DBDDDF263B271100E9C987 /* hikeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hikeData.json; sourceTree = "<group>"; };
 		F2DBDDE0263B271100E9C987 /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = landmarkData.json; sourceTree = "<group>"; };
 		F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackgroundSingle.swift; sourceTree = "<group>"; };
@@ -331,9 +325,6 @@
 		3403A31B240809CC00D7B040 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F2DBDDD9263B24FC00E9C987 /* Hike.swift */,
-				F2DBDDD8263B24FB00E9C987 /* Landmark.swift */,
-				F2DBDDDA263B24FC00E9C987 /* ModelData.swift */,
 				3461D3DA245C219B009D389E /* Extensions.swift */,
 				3403A32524080D4400D7B040 /* Data.swift */,
 				3403A32724080DBC00D7B040 /* Recipe.swift */,
@@ -743,7 +734,6 @@
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
-				F2DBDDDE263B24FC00E9C987 /* ModelData.swift in Sources */,
 				F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
@@ -751,7 +741,6 @@
 				3403A32624080D4400D7B040 /* Data.swift in Sources */,
 				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
-				F2DBDDDD263B24FC00E9C987 /* Hike.swift in Sources */,
 				F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
@@ -792,7 +781,6 @@
 				34B4B12524AB668100B092A8 /* Card.swift in Sources */,
 				345AE3B0241A7ABD004EBE8C /* ContentView.swift in Sources */,
 				F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */,
-				F2DBDDDC263B24FC00E9C987 /* Landmark.swift in Sources */,
 				F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */,
 				345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */,
 				349524CC258A35BC0077F145 /* Place.swift in Sources */,

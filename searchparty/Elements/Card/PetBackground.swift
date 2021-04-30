@@ -15,8 +15,6 @@ struct PetBackground: View {
     var petType: String?
     var lostPetId: String
     
-    @EnvironmentObject var modelData: ModelData
-
     
     private func getPetImagePagesFromPet(lostPetImages: [String]) -> [PetImagePage] {
         

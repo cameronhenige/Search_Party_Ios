@@ -11,7 +11,6 @@ import FirebaseStorage
 import Kingfisher
 
 struct LostPetView: View {
-    @StateObject private var modelData = ModelData()
 
     var lostPet: LostPet
     var tintColor: Color = Constant.color.tintColor
@@ -42,7 +41,7 @@ struct LostPetView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center, spacing: 0, content: {
-                        PetBackground(generalImages: self.lostPet.generalImages, hasPicture: self.hasPicture, petType: lostPet.type, lostPetId: self.lostPet.id!).environmentObject(modelData)
+                        PetBackground(generalImages: self.lostPet.generalImages, hasPicture: self.hasPicture, petType: lostPet.type, lostPetId: self.lostPet.id!)
                             
                         Text(lostPet.name)
                             .fontWeight(.bold)
