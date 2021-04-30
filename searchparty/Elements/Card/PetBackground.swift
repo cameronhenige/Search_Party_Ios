@@ -13,7 +13,7 @@ struct PetBackground: View {
     var generalImages: [String]?
     var hasPicture: Bool = false
     var petType: String?
-    //var petImagePages: [PetImagePage]
+    var lostPetId: String
     
     @EnvironmentObject var modelData: ModelData
 
@@ -23,7 +23,7 @@ struct PetBackground: View {
         var petImagePages = [PetImagePage]()
 
         for url in lostPetImages {
-            var petImage = PetImagePage(nameGiven: "dog")
+            var petImage = PetImagePage(url: url)
             petImagePages.append(petImage)
         }
 
@@ -34,12 +34,9 @@ struct PetBackground: View {
     var body: some View {
         
         if(generalImages != nil && !generalImages!.isEmpty) {
-            //            KFImage(pictureUrl)
-            //                .resizable()
-            //                .aspectRatio(contentMode: .fill).frame(minWidth: 0, maxWidth: .infinity)
-            
+
                         
-            PageView(pages: getPetImagePagesFromPet(lostPetImages: generalImages!).map {FeatureCard(landmark: $0.name)
+            PageView(pages: getPetImagePagesFromPet(lostPetImages: generalImages!).map {FeatureCard(url: $0.url, lostPetId: lostPetId)
                             
                         }).aspectRatio(3 / 2, contentMode: .fit)
                         .listRowInsets(EdgeInsets())

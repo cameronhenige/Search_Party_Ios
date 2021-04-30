@@ -23,7 +23,7 @@ struct PageView<Page: View>: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(pages: ModelData().features.map { _ in FeatureCard(landmark: "dogg") })
+        PageView(pages: ModelData().features.map { _ in FeatureCard(url: "dogg", lostPetId: "sdajf") })
             .aspectRatio(3 / 2, contentMode: .fit)
     }
 }

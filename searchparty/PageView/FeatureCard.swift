@@ -6,15 +6,44 @@ A view that shows a featured landmark.
 */
 
 import SwiftUI
+import Kingfisher
+import FirebaseStorage
 
 struct FeatureCard: View {
-    var landmark: String
+    var url: String
+    var lostPetId: String
+    
+    @State var fullUrl: URL?
 
     var body: some View {
-        Image(landmark)
-            .resizable()
-            .aspectRatio(3 / 2, contentMode: .fit)
-//            .overlay(TextOverlay(landmark: landmark))
+        
+        VStack {
+            
+            if(fullUrl != nil){
+                KFImage(fullUrl)
+                    .resizable()
+                    .aspectRatio(3 / 2, contentMode: .fit)
+            }
+            
+        }.onAppear {
+            
+                let storageLocation : String = "Lost/" + lostPetId + "/generalImages/" + url
+                let storage = Storage.storage().reference().child(storageLocation)
+                storage.downloadURL { (URL, Error) in
+                    if(Error != nil){
+                        print(Error?.localizedDescription)
+                        return
+                    }
+                    fullUrl = URL
+                }
+            
+        }
+        
+        
+//        Image(url)
+//            .resizable()
+//            .aspectRatio(3 / 2, contentMode: .fit)
+////            .overlay(TextOverlay(landmark: landmark))
     }
 }
 
@@ -46,6 +75,6 @@ struct TextOverlay: View {
 
 struct FeatureCard_Previews: PreviewProvider {
     static var previews: some View {
-        FeatureCard(landmark: "dog")
+        FeatureCard(url: "dog", lostPetId: "id")
     }
 }

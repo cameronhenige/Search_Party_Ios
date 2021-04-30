@@ -42,28 +42,11 @@ struct LostPetView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center, spacing: 0, content: {
-                        PetBackground(generalImages: self.lostPet.generalImages, hasPicture: self.hasPicture, petType: lostPet.type).environmentObject(modelData)
-                            .frame(height: 350.0)
-                            .onAppear {
-                                
-                                if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
-                                    hasPicture = true
-                                    let storageLocation : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages![0]
-                                    let storage = Storage.storage().reference().child(storageLocation)
-                                    storage.downloadURL { (URL, Error) in
-                                        if(Error != nil){
-                                            print(Error?.localizedDescription)
-                                            return
-                                        }
-                                        pictureUrl = URL
-                                    }
-                                }else{
-                                    hasPicture = false
-                                }
-                            }
+                        PetBackground(generalImages: self.lostPet.generalImages, hasPicture: self.hasPicture, petType: lostPet.type, lostPetId: self.lostPet.id!).environmentObject(modelData)
+                            
                         Text(lostPet.name)
                             .fontWeight(.bold)
-                            .font(.title)
+                            .font(.title).padding(.top)
                     })
                     
                     VStack(alignment: .leading, spacing:0) {
