@@ -99,7 +99,6 @@
 		F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D62633D89000912F28 /* EditLostPet.swift */; };
 		F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DA2633E9EC00912F28 /* AccountScreen.swift */; };
 		F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DE2633EDF600912F28 /* AddLostPet.swift */; };
-		F2791A5F260062D200C056A6 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A5E260062D200C056A6 /* MapViewModel.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -120,11 +119,8 @@
 		F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456625FAF6AC003C5157 /* UIConfiguration.swift */; };
 		F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456725FAF6AC003C5157 /* UIColorExt.swift */; };
 		F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456925FAF6AC003C5157 /* CustomModifier.swift */; };
-		F2D7457725FAF6AC003C5157 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456A25FAF6AC003C5157 /* CustomTextField.swift */; };
 		F2D7457925FAF6AC003C5157 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456E25FAF6AC003C5157 /* AuthAPI.swift */; };
 		F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456F25FAF6AC003C5157 /* AuthService.swift */; };
-		F2D7457F25FAF744003C5157 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7457D25FAF743003C5157 /* HomeView.swift */; };
-		F2D7458025FAF744003C5157 /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7457E25FAF743003C5157 /* DrawerView.swift */; };
 		F2D7458425FAFC8C003C5157 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2D7458325FAFC8C003C5157 /* GoogleService-Info.plist */; };
 		F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7458725FB21B6003C5157 /* OnboardingRouter.swift */; };
 		F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7458B25FB2484003C5157 /* PageViewController.swift */; };
@@ -260,7 +256,6 @@
 		F233D3D62633D89000912F28 /* EditLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLostPet.swift; sourceTree = "<group>"; };
 		F233D3DA2633E9EC00912F28 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		F233D3DE2633EDF600912F28 /* AddLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPet.swift; sourceTree = "<group>"; };
-		F2791A5E260062D200C056A6 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -281,11 +276,8 @@
 		F2D7456625FAF6AC003C5157 /* UIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConfiguration.swift; sourceTree = "<group>"; };
 		F2D7456725FAF6AC003C5157 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		F2D7456925FAF6AC003C5157 /* CustomModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
-		F2D7456A25FAF6AC003C5157 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F2D7456E25FAF6AC003C5157 /* AuthAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		F2D7456F25FAF6AC003C5157 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		F2D7457D25FAF743003C5157 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		F2D7457E25FAF743003C5157 /* DrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 		F2D7458325FAFC8C003C5157 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F2D7458725FB21B6003C5157 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		F2D7458B25FB2484003C5157 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -609,8 +601,6 @@
 		F2D7454425FAF228003C5157 /* login */ = {
 			isa = PBXGroup;
 			children = (
-				F2D7457E25FAF743003C5157 /* DrawerView.swift */,
-				F2D7457D25FAF743003C5157 /* HomeView.swift */,
 				F2D7454C25FAF2B3003C5157 /* SplashView.swift */,
 				F2D7454525FAF236003C5157 /* SignInView.swift */,
 				F2D7454725FAF237003C5157 /* SignUpView.swift */,
@@ -628,7 +618,6 @@
 				F2D7456225FAF6AC003C5157 /* SignInViewModel.swift */,
 				F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */,
 				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
-				F2791A5E260062D200C056A6 /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -648,7 +637,6 @@
 			isa = PBXGroup;
 			children = (
 				F2D7456925FAF6AC003C5157 /* CustomModifier.swift */,
-				F2D7456A25FAF6AC003C5157 /* CustomTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -861,7 +849,6 @@
 				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
 				34B4B12924AB72B500B092A8 /* Stars.swift in Sources */,
 				3461D3D6245C2036009D389E /* Restaurants.swift in Sources */,
-				F2D7457725FAF6AC003C5157 /* CustomTextField.swift in Sources */,
 				345D2E24245857F700201DD0 /* CheckBoxTableRow.swift in Sources */,
 				3461D3DB245C219B009D389E /* Extensions.swift in Sources */,
 				349524C6258A30E70077F145 /* Reservable.swift in Sources */,
@@ -929,7 +916,6 @@
 				34B40A1425851B970096EC29 /* CardSocial.swift in Sources */,
 				3478534025861EFF0023A217 /* SegmentedPickerCollapsed.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
-				F2791A5F260062D200C056A6 /* MapViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
 				34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */,
 				341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */,
@@ -942,7 +928,6 @@
 				3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */,
 				34F1215525875BAF00BBB7DB /* Guide.swift in Sources */,
 				340A1981249BB0C900D49461 /* MapView.swift in Sources */,
-				F2D7458025FAF744003C5157 /* DrawerView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
 				34ADED2F2584B5B100A504F5 /* Timeline.swift in Sources */,
 				346DFE0A2584F98C00449492 /* Story.swift in Sources */,
@@ -965,7 +950,6 @@
 				349524CC258A35BC0077F145 /* Place.swift in Sources */,
 				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
 				F2DBDDD2263B238600E9C987 /* PageControlLostPet.swift in Sources */,
-				F2D7457F25FAF744003C5157 /* HomeView.swift in Sources */,
 				345D2E1E2458413B00201DD0 /* TableRow.swift in Sources */,
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
 				349E4BD8241522990079BF04 /* ButtonPrimary.swift in Sources */,
