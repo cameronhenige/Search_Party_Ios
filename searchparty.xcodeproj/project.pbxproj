@@ -25,9 +25,7 @@
 		3445A7912408268B0020561B /* recipeCategories.json in Resources */ = {isa = PBXBuildFile; fileRef = 3445A7902408268B0020561B /* recipeCategories.json */; };
 		3445A798240A80AF0020561B /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3445A797240A80AF0020561B /* ColorPalette.xcassets */; };
 		3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3445A79E240B0C3F0020561B /* CardWithBackground.swift */; };
-		344723B924ABA89E003B9F50 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723B824ABA89E003B9F50 /* BackButton.swift */; };
 		344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723BC24ABA9CD003B9F50 /* LostPetView.swift */; };
-		344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723BE24ABAC67003B9F50 /* TabBar.swift */; };
 		344723C124ABB098003B9F50 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C024ABB098003B9F50 /* TabItem.swift */; };
 		344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C724ABC64A003B9F50 /* ButtonApplePay.swift */; };
 		345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A7241A7A8E004EBE8C /* Modal.swift */; };
@@ -49,18 +47,15 @@
 		349524CC258A35BC0077F145 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524CB258A35BC0077F145 /* Place.swift */; };
 		34AA9DA925850D180087798C /* MyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA9DA825850D180087798C /* MyUser.swift */; };
 		34ADED2C2584B48100A504F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED2B2584B48100A504F5 /* Constants.swift */; };
-		34ADED322584BB1300A504F5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED312584BB1300A504F5 /* Profile.swift */; };
 		34B255AA24081B3500599A4C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34B255A924081B3500599A4C /* SwiftUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		34B40A17258528C80096EC29 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B40A16258528C80096EC29 /* Post.swift */; };
 		34B4B12524AB668100B092A8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12424AB668100B092A8 /* Card.swift */; };
-		34B4B12924AB72B500B092A8 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B4B12824AB72B500B092A8 /* Stars.swift */; };
 		34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DCE8C0240817CD00C4EE89 /* MainScreen.swift */; };
 		34F1214F25875B1700BBB7DB /* guides.json in Resources */ = {isa = PBXBuildFile; fileRef = 34F1214E25875B1700BBB7DB /* guides.json */; };
 		34F1215225875B2B00BBB7DB /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 34F1215125875B2B00BBB7DB /* cities.json */; };
 		34F1215525875BAF00BBB7DB /* Guide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215425875BAF00BBB7DB /* Guide.swift */; };
 		34F1215825875BBC00BBB7DB /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215725875BBC00BBB7DB /* City.swift */; };
 		34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F1215A258760C800BBB7DB /* Coordinates.swift */; };
-		34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE0A2C25681474007D1B06 /* CountPicker.swift */; };
 		EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF93CF780A55C6FBF7A9F6D /* Pods_searchparty.framework */; };
 		F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */; };
 		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
@@ -149,9 +144,7 @@
 		3445A7902408268B0020561B /* recipeCategories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recipeCategories.json; sourceTree = "<group>"; };
 		3445A797240A80AF0020561B /* ColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPalette.xcassets; sourceTree = "<group>"; };
 		3445A79E240B0C3F0020561B /* CardWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithBackground.swift; sourceTree = "<group>"; };
-		344723B824ABA89E003B9F50 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		344723BC24ABA9CD003B9F50 /* LostPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetView.swift; sourceTree = "<group>"; };
-		344723BE24ABAC67003B9F50 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		344723C024ABB098003B9F50 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		344723C724ABC64A003B9F50 /* ButtonApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApplePay.swift; sourceTree = "<group>"; };
 		345AE3A7241A7A8E004EBE8C /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
@@ -174,18 +167,15 @@
 		349524CB258A35BC0077F145 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		34AA9DA825850D180087798C /* MyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
 		34ADED2B2584B48100A504F5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		34ADED312584BB1300A504F5 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		34B255A924081B3500599A4C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		34B40A16258528C80096EC29 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		34B4B12424AB668100B092A8 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		34B4B12824AB72B500B092A8 /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
 		34DCE8C0240817CD00C4EE89 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		34F1214E25875B1700BBB7DB /* guides.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = guides.json; sourceTree = "<group>"; };
 		34F1215125875B2B00BBB7DB /* cities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		34F1215425875BAF00BBB7DB /* Guide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide.swift; sourceTree = "<group>"; };
 		34F1215725875BBC00BBB7DB /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		34F1215A258760C800BBB7DB /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
-		34FE0A2C25681474007D1B06 /* CountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountPicker.swift; sourceTree = "<group>"; };
 		3C5FA00BB9469F4898CBFCB0 /* Pods-searchparty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-searchparty.release.xcconfig"; path = "Target Support Files/Pods-searchparty/Pods-searchparty.release.xcconfig"; sourceTree = "<group>"; };
 		8D8137A38D55DA01ED477E73 /* Pods-searchparty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-searchparty.debug.xcconfig"; path = "Target Support Files/Pods-searchparty/Pods-searchparty.debug.xcconfig"; sourceTree = "<group>"; };
 		A1924A760991C453EECAF10E /* Pods-sketch-elements.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sketch-elements.release.xcconfig"; path = "Target Support Files/Pods-sketch-elements/Pods-sketch-elements.release.xcconfig"; sourceTree = "<group>"; };
@@ -455,11 +445,6 @@
 				341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */,
 				344723C324ABC078003B9F50 /* Modifiers */,
 				340A1980249BB0C900D49461 /* MapView.swift */,
-				34B4B12824AB72B500B092A8 /* Stars.swift */,
-				344723B824ABA89E003B9F50 /* BackButton.swift */,
-				344723BE24ABAC67003B9F50 /* TabBar.swift */,
-				34FE0A2C25681474007D1B06 /* CountPicker.swift */,
-				34ADED312584BB1300A504F5 /* Profile.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -739,7 +724,6 @@
 				3461D3D8245C20D0009D389E /* Restaurant.swift in Sources */,
 				F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */,
 				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
-				34B4B12924AB72B500B092A8 /* Stars.swift in Sources */,
 				3461D3DB245C219B009D389E /* Extensions.swift in Sources */,
 				349524C6258A30E70077F145 /* Reservable.swift in Sources */,
 				345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */,
@@ -765,7 +749,6 @@
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
 				3403A32624080D4400D7B040 /* Data.swift in Sources */,
-				34ADED322584BB1300A504F5 /* Profile.swift in Sources */,
 				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
 				F2DBDDDD263B24FC00E9C987 /* Hike.swift in Sources */,
@@ -787,7 +770,6 @@
 				F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
-				34FE0A2D25681474007D1B06 /* CountPicker.swift in Sources */,
 				341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */,
 				34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */,
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
@@ -801,7 +783,6 @@
 				346DFE0A2584F98C00449492 /* Story.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
-				344723B924ABA89E003B9F50 /* BackButton.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
 				349524C9258A31E90077F145 /* Hotel.swift in Sources */,
@@ -818,7 +799,6 @@
 				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
 				F2DBDDD2263B238600E9C987 /* PageControlLostPet.swift in Sources */,
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
-				344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */,
 				F2791A652600746500C056A6 /* Search.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
