@@ -30,10 +30,8 @@
 		344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723BC24ABA9CD003B9F50 /* LostPetView.swift */; };
 		344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723BE24ABAC67003B9F50 /* TabBar.swift */; };
 		344723C124ABB098003B9F50 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C024ABB098003B9F50 /* TabItem.swift */; };
-		344723C624ABC37D003B9F50 /* ReservationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C524ABC37D003B9F50 /* ReservationModal.swift */; };
 		344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723C724ABC64A003B9F50 /* ButtonApplePay.swift */; };
 		344723CB24AC7B80003B9F50 /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723CA24AC7B80003B9F50 /* SegmentedPicker.swift */; };
-		344723CD24AC9613003B9F50 /* CollapsablePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723CC24AC9613003B9F50 /* CollapsablePicker.swift */; };
 		345AE3AB241A7A8E004EBE8C /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A7241A7A8E004EBE8C /* Modal.swift */; };
 		345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A8241A7A8E004EBE8C /* ModalView.swift */; };
 		345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */; };
@@ -57,7 +55,6 @@
 		349524C6258A30E70077F145 /* Reservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524C5258A30E70077F145 /* Reservable.swift */; };
 		349524C9258A31E90077F145 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524C8258A31E90077F145 /* Hotel.swift */; };
 		349524CC258A35BC0077F145 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349524CB258A35BC0077F145 /* Place.swift */; };
-		349E4BD8241522990079BF04 /* ButtonPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E4BD7241522990079BF04 /* ButtonPrimary.swift */; };
 		349E4BDA241523A60079BF04 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E4BD9241523A60079BF04 /* Header.swift */; };
 		34AA9DA925850D180087798C /* MyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AA9DA825850D180087798C /* MyUser.swift */; };
 		34ADED2C2584B48100A504F5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34ADED2B2584B48100A504F5 /* Constants.swift */; };
@@ -166,10 +163,8 @@
 		344723BC24ABA9CD003B9F50 /* LostPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetView.swift; sourceTree = "<group>"; };
 		344723BE24ABAC67003B9F50 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		344723C024ABB098003B9F50 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
-		344723C524ABC37D003B9F50 /* ReservationModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModal.swift; sourceTree = "<group>"; };
 		344723C724ABC64A003B9F50 /* ButtonApplePay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApplePay.swift; sourceTree = "<group>"; };
 		344723CA24AC7B80003B9F50 /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
-		344723CC24AC9613003B9F50 /* CollapsablePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsablePicker.swift; sourceTree = "<group>"; };
 		345AE3A7241A7A8E004EBE8C /* Modal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		345AE3A8241A7A8E004EBE8C /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalAnchorView.swift; sourceTree = "<group>"; };
@@ -194,7 +189,6 @@
 		349524C5258A30E70077F145 /* Reservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservable.swift; sourceTree = "<group>"; };
 		349524C8258A31E90077F145 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
 		349524CB258A35BC0077F145 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		349E4BD7241522990079BF04 /* ButtonPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPrimary.swift; sourceTree = "<group>"; };
 		349E4BD9241523A60079BF04 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		34AA9DA825850D180087798C /* MyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
 		34ADED2B2584B48100A504F5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -463,7 +457,6 @@
 		344723C924ABCAC1003B9F50 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				349E4BD7241522990079BF04 /* ButtonPrimary.swift */,
 				344723C724ABC64A003B9F50 /* ButtonApplePay.swift */,
 				F2A5854A26083CF100E8920E /* ButtonSecondary.swift */,
 				F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */,
@@ -498,11 +491,9 @@
 				344723B824ABA89E003B9F50 /* BackButton.swift */,
 				344723BE24ABAC67003B9F50 /* TabBar.swift */,
 				344723CA24AC7B80003B9F50 /* SegmentedPicker.swift */,
-				344723CC24AC9613003B9F50 /* CollapsablePicker.swift */,
 				34FE0A2C25681474007D1B06 /* CountPicker.swift */,
 				34ADED312584BB1300A504F5 /* Profile.swift */,
 				3492B624258A09F2001D2094 /* VenuesList.swift */,
-				344723C524ABC37D003B9F50 /* ReservationModal.swift */,
 				3478533F25861EFF0023A217 /* SegmentedPickerCollapsed.swift */,
 			);
 			path = Elements;
@@ -811,7 +802,6 @@
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
-				344723CD24AC9613003B9F50 /* CollapsablePicker.swift in Sources */,
 				3403A32624080D4400D7B040 /* Data.swift in Sources */,
 				34ADED322584BB1300A504F5 /* Profile.swift in Sources */,
 				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
@@ -835,7 +825,6 @@
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
 				F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */,
 				F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */,
-				344723C624ABC37D003B9F50 /* ReservationModal.swift in Sources */,
 				3478534025861EFF0023A217 /* SegmentedPickerCollapsed.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
@@ -872,7 +861,6 @@
 				F2DBDDD2263B238600E9C987 /* PageControlLostPet.swift in Sources */,
 				345D2E1E2458413B00201DD0 /* TableRow.swift in Sources */,
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
-				349E4BD8241522990079BF04 /* ButtonPrimary.swift in Sources */,
 				344723BF24ABAC67003B9F50 /* TabBar.swift in Sources */,
 				F2791A652600746500C056A6 /* Search.swift in Sources */,
 				3478534325861F7A0023A217 /* SizeAwareViewModifier.swift in Sources */,
