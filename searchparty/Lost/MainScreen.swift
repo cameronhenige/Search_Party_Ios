@@ -19,7 +19,7 @@ struct MainScreen: View {
                 Text("Lost")
                 Image("lost_icon").renderingMode(.template)
             }
-            Restaurants(restaurants: restaurants).tabItem {
+            AccountScreen().tabItem {
                 Text("Found")
                 Image("found_icon").renderingMode(.template)
             }
