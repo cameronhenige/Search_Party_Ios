@@ -13,7 +13,9 @@ import PhotosUI
 struct AddLostPet: View {
     @State private var showingActionSheet = false
        @State private var backgroundColor = Color.white
-
+    var items: [GridItem] {
+      Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+    }
     @State var petName = ""
     @State var petAge = ""
     @State var petBreed = ""
@@ -61,10 +63,27 @@ struct AddLostPet: View {
                     TextField("Breed", text: $petBreed)
                     
                     if !images.isEmpty{
-                        ForEach(images,id: \.self){ img in
-                            Image(uiImage: img).resizable().frame(width: UIScreen.main.bounds.width-45, height: 250).cornerRadius(20)
+                        
+                        LazyVGrid(columns: items, spacing: 10) {
+                                ForEach(0..<images.count, id: \.self) { i in
+
+                                
+                                ZStack {
+                                
+                                Image(uiImage: images[i]).resizable().frame(height: 150).cornerRadius(20)
+                                    
+                                        Image(systemName: "trash")
+                                            .font(.largeTitle)
+                                            .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
+                                                print("Delete button tapped!")
+                                                images.remove(at: i)
+                                            }
+                                    
+                                }
+                            }
                         }
                     }
+                    
                     Image(uiImage: self.image)
                         .resizable()
                         .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 100.0)
@@ -158,8 +177,8 @@ struct MyImagePicker : UIViewControllerRepresentable {
     
 }
 
-//struct AddLostPet_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddLostPet()
-//    }
-//}
+struct AddLostPet_Previews: PreviewProvider {
+    static var previews: some View {
+        AddLostPet()
+    }
+}
