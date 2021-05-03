@@ -21,7 +21,6 @@ struct AddLostPet: View {
     @State var petBreed = ""
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
-    @State private var image = UIImage()
     @State private var images : [UIImage] = []
     @State var picker = false
 
@@ -31,7 +30,6 @@ struct AddLostPet: View {
     @State private var petSex = 0
     var petSexes = ["Male", "Female"]
 
-    
     var body: some View {
         Form {
             
@@ -50,7 +48,6 @@ struct AddLostPet: View {
                         }
                     }
 
-                    
                     TextField("Approximate Age", text: $petAge)
                         .keyboardType(.numberPad)
                         .onReceive(Just(petAge)) { newValue in
@@ -62,12 +59,14 @@ struct AddLostPet: View {
                     
                     TextField("Breed", text: $petBreed)
                     
+                    
+                    Text("Provide as many angles of your pet as possible.")
+                    
                     if !images.isEmpty{
                         
                         LazyVGrid(columns: items, spacing: 10) {
                                 ForEach(0..<images.count, id: \.self) { i in
 
-                                
                                 ZStack {
                                 
                                 Image(uiImage: images[i]).resizable().frame(height: 150).cornerRadius(20)
@@ -78,15 +77,11 @@ struct AddLostPet: View {
                                                 print("Delete button tapped!")
                                                 images.remove(at: i)
                                             }
-                                    
                                 }
                             }
                         }
                     }
-                    
-                    Image(uiImage: self.image)
-                        .resizable()
-                        .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 100.0)
+                
                     
                     
                     Button(action: {
@@ -113,7 +108,7 @@ struct AddLostPet: View {
         .sheet(isPresented: $picker) {
             MyImagePicker(images: $images, picker: $picker)
         }.sheet(isPresented: $isShowCamera) {
-            ImagePicker(sourceType: .camera, selectedImage: self.$image)
+            //todo ImagePicker(sourceType: .camera, selectedImage: self.$image)
             
         }
 
@@ -133,9 +128,11 @@ struct MyImagePicker : UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
+        
         config.selectionLimit = 0
         let picker = PHPickerViewController(configuration: config)
         picker.delegate = context.coordinator
+        
         return picker
     }
     
