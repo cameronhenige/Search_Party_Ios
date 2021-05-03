@@ -94,6 +94,7 @@
 		F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDD0263B238600E9C987 /* PageView.swift */; };
 		F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */; };
 		F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */; };
+		F2DBDDE8263D0E4800E9C987 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -192,6 +193,7 @@
 		F2DBDDD0263B238600E9C987 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackgroundSingle.swift; sourceTree = "<group>"; };
 		F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImagePage.swift; sourceTree = "<group>"; };
+		F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,6 +299,7 @@
 		3445A79B240B03D70020561B /* Lost */ = {
 			isa = PBXGroup;
 			children = (
+				F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */,
 				34DCE8C0240817CD00C4EE89 /* MainScreen.swift */,
 				3403A3192408099500D7B040 /* LostPets.swift */,
 				344723BC24ABA9CD003B9F50 /* LostPetView.swift */,
@@ -658,6 +661,7 @@
 				F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */,
 				3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */,
 				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
+				F2DBDDE8263D0E4800E9C987 /* ImagePicker.swift in Sources */,
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
 				F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */,
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
