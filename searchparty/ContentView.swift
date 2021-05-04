@@ -17,7 +17,6 @@ struct ContentView: View {
     var body: some View {
                 
         
-        VStack {
             if viewRouter.currentPage == "onboardingView" {
                 OnboardingView().environmentObject(viewRouter)
             }else{
@@ -34,7 +33,7 @@ struct ContentView: View {
 
                 }
         }
-        }
+        
         
 
         
