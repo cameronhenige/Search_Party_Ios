@@ -12,6 +12,8 @@ import PhotosUI
 
 struct AddLostPet: View {
     @State private var showingActionSheet = false
+    @State private var shouldPresentImagePicker = false
+
        @State private var backgroundColor = Color.white
     var items: [GridItem] {
       Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
@@ -21,6 +23,8 @@ struct AddLostPet: View {
     @State var petBreed = ""
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
+    @State private var isShowGallery = false
+
     @State private var images : [UIImage] = []
     @State var picker = false
 
@@ -97,28 +101,80 @@ struct AddLostPet: View {
         }.actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
                 .default(Text("Gallery")) {
-                    self.showingActionSheet = false
-                    self.picker = true },
+                    //self.showingActionSheet = false
+                    self.isShowGallery = true },
                 .default(Text("Camera")) {
                     //todo
+                    
                     self.isShowCamera = true },
                 .cancel()
             ])
         }.navigationTitle("Add Lost Pet").navigationBarColor(Constant.color.tintColor.uiColor())
-        .sheet(isPresented: $picker) {
-            MyImagePicker(images: $images, picker: $picker)
-        }.sheet(isPresented: $isShowCamera) {
+        .sheet(isPresented: $isShowCamera) {
             //todo ImagePicker(sourceType: .camera, selectedImage: self.$image)
+            SUImagePickerView(sourceType: .camera, images: self.$images, isShowCamera: self.$isShowCamera)
             
+        }
+        .sheet(isPresented: $isShowGallery) {
+            MyImagePicker(images: $images, isShowGallery: self.$isShowGallery)
         }
 
         }
     
 }
 
+struct SUImagePickerView: UIViewControllerRepresentable {
+    
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @Binding var images: [UIImage]
+    @Binding var isShowCamera: Bool
+    
+    func makeCoordinator() -> ImagePickerViewCoordinator {
+        return ImagePickerViewCoordinator(parent1: self)
+    }
+    
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let pickerController = UIImagePickerController()
+        pickerController.sourceType = sourceType
+        pickerController.delegate = context.coordinator
+        return pickerController
+    }
+
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
+        // Nothing to update here
+    }
+    
+    class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        
+        var parent: SUImagePickerView
+
+        
+        init(parent1: SUImagePickerView) {
+            parent = parent1
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                
+                self.parent.images.append(image as! UIImage)
+            }
+            self.parent.isShowCamera = false
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            self.parent.isShowCamera = false
+
+        }
+        
+    }
+
+}
+
+
+
 struct MyImagePicker : UIViewControllerRepresentable {
     @Binding var images: [UIImage]
-    @Binding var picker: Bool
+    @Binding var isShowGallery: Bool
     
     func makeCoordinator() -> Coordinator {
         return MyImagePicker.Coordinator(parent1: self)
@@ -148,7 +204,7 @@ struct MyImagePicker : UIViewControllerRepresentable {
         }
         
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            parent.picker.toggle()
+            parent.isShowGallery.toggle()
             for img in results{
                 
             if img.itemProvider.canLoadObject(ofClass: UIImage.self){
