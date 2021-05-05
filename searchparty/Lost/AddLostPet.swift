@@ -13,6 +13,7 @@ import PhotosUI
 struct AddLostPet: View {
     
     @EnvironmentObject var modelData: ModelData
+    @State private var lostDate = Date()
 
     @State private var showingActionSheet = false
     @State private var shouldPresentImagePicker = false
@@ -104,10 +105,17 @@ struct AddLostPet: View {
             
             Section(header: Text("Add a description of what you think people should know about PET.")) {
                 TextEditor(text: $petDescription)
-                    .foregroundColor(.secondary)
+                Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
+
             }
             
-            Text("* Be sure to include things like unique markings, temperament, and health conditions.")
+            Section(header: Text("When and where was PET lost?")) {
+                DatePicker(
+                    "Lost Date",
+                    selection: $lostDate,
+                    displayedComponents: [.date]
+                )
+            }
                 
         }.actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
