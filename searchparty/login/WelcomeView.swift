@@ -77,7 +77,7 @@ struct WelcomeView: View {
                 
             }.navigationBarColor(UIConfiguration.tintColor)
             }
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func signInClicked() {

@@ -11,10 +11,14 @@ import Combine
 import PhotosUI
 
 struct AddLostPet: View {
+    
+    @EnvironmentObject var modelData: ModelData
+
     @State private var showingActionSheet = false
     @State private var shouldPresentImagePicker = false
 
-       @State private var backgroundColor = Color.white
+    @State private var backgroundColor = Color.white
+    
     var items: [GridItem] {
       Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
@@ -27,6 +31,7 @@ struct AddLostPet: View {
 
     @State private var images : [UIImage] = []
     @State var picker = false
+    @State private var profileText: String = ""
 
     @State private var petType = 0
     var petTypes = ["Dog", "Cat", "Bird", "Other"]
@@ -36,7 +41,6 @@ struct AddLostPet: View {
 
     var body: some View {
         Form {
-            
                 Section(header: Text("Let's get some information about your lost pet.")) {
                     TextField("Pet Name", text: $petName)
                     
@@ -44,14 +48,14 @@ struct AddLostPet: View {
                         ForEach(0 ..< petTypes.count) {
                             Text(self.petTypes[$0])
                         }
-                    }
+                    }.pickerStyle(SegmentedPickerStyle())
                     
                     Picker(selection: $petSex, label: Text("Sex")) {
                         ForEach(0 ..< petSexes.count) {
                             Text(self.petSexes[$0])
                         }
-                    }
-
+                    }.pickerStyle(SegmentedPickerStyle())
+                    
                     TextField("Approximate Age", text: $petAge)
                         .keyboardType(.numberPad)
                         .onReceive(Just(petAge)) { newValue in
@@ -62,12 +66,7 @@ struct AddLostPet: View {
                     }
                     
                     TextField("Breed", text: $petBreed)
-                    
-                    
                     Text("Provide as many angles of your pet as possible.")
-                    
-                    if !images.isEmpty{
-                        
                         LazyVGrid(columns: items, spacing: 10) {
                                 ForEach(0..<images.count, id: \.self) { i in
 
@@ -78,22 +77,35 @@ struct AddLostPet: View {
                                         Image(systemName: "trash")
                                             .font(.largeTitle)
                                             .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
-                                                print("Delete button tapped!")
                                                 images.remove(at: i)
                                             }
                                 }
                             }
+                            
+                            
+                            ZStack {
+                            
+                                
+                                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                                .fill(Color.gray)
+                                                .frame(height: 150)
+                                
+                                Image(systemName: "camera")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
+                                        self.showingActionSheet = true
+                                    }
+                            }
+                            
+                            
                         }
-                    }
-                
                     
+                    Text("Add a description of what you think people should know about PET.")
+                        .font(.headline)
+                        .padding(.vertical)
                     
-                    Button(action: {
-                        self.showingActionSheet = true
-                        //self.picker = true
-                    }) {
-                        Text("Add Image")
-                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
+                    TextEditor(text: $profileText)
+                        .foregroundColor(.secondary)
 
                 }
         
@@ -108,15 +120,13 @@ struct AddLostPet: View {
                     
                     self.isShowCamera = true },
                 .cancel()
-            ])
+            ])
         }.navigationTitle("Add Lost Pet").navigationBarColor(Constant.color.tintColor.uiColor())
-        .sheet(isPresented: $isShowCamera) {
-            //todo ImagePicker(sourceType: .camera, selectedImage: self.$image)
-            SUImagePickerView(sourceType: .camera, images: self.$images, isShowCamera: self.$isShowCamera)
-            
-        }
         .sheet(isPresented: $isShowGallery) {
             MyImagePicker(images: $images, isShowGallery: self.$isShowGallery)
+        }.sheet(isPresented: $isShowCamera) {
+            SUImagePickerView(sourceType: .camera, images: self.$images, isShowCamera: self.$isShowCamera)
+            
         }
 
         }

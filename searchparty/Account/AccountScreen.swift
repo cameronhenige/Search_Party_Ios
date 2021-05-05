@@ -11,19 +11,18 @@ import SwiftUI
 struct AccountScreen: View {
     @EnvironmentObject var authState: AuthenticationState
 
-    var tintColor: Color = Constant.color.tintColor
     
     var body: some View {
         NavigationView {
 
         Text("My Account").background(Constant.color.gray)
-            .navigationBarColor(tintColor.uiColor())
+            .navigationBarColor(Constant.color.tintColor.uiColor())
             .navigationBarTitle(Text("Account"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: signoutTapped, label: {
                 Image(systemName: "person.circle")
                 Text("Logout")
             }))
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func signoutTapped() {

@@ -63,16 +63,18 @@ struct LostPets: View {
                             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
                         }
                     }
-                }
-                .background(Constant.color.gray)
-                .navigationBarColor(Constant.color.tintColor.uiColor())
+                }.navigationBarColor(Constant.color.tintColor.uiColor())
                 .navigationBarTitle(Text("Lost"), displayMode: .inline)
-        
-            }.onAppear(){
-                //locationManager.delegate = lostPetsViewModel
+                .background(Constant.color.gray)
+                .onAppear(){
+                    //locationManager.delegate = lostPetsViewModel
 
-                self.lostPetsViewModel.fetchLostPets()
+                    self.lostPetsViewModel.fetchLostPets()
+                }
+        
             }
+            .navigationViewStyle(StackNavigationViewStyle())
+            
             
         }
 
