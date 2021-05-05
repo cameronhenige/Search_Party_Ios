@@ -31,7 +31,7 @@ struct AddLostPet: View {
 
     @State private var images : [UIImage] = []
     @State var picker = false
-    @State private var profileText: String = ""
+    @State private var petDescription: String = ""
 
     @State private var petType = 0
     var petTypes = ["Dog", "Cat", "Bird", "Other"]
@@ -99,16 +99,15 @@ struct AddLostPet: View {
                             
                             
                         }
-                    
-                    Text("Add a description of what you think people should know about PET.")
-                        .font(.headline)
-                        .padding(.vertical)
-                    
-                    TextEditor(text: $profileText)
-                        .foregroundColor(.secondary)
 
                 }
-        
+            
+            Section(header: Text("Add a description of what you think people should know about PET.")) {
+                TextEditor(text: $petDescription)
+                    .foregroundColor(.secondary)
+            }
+            
+            Text("* Be sure to include things like unique markings, temperament, and health conditions.")
                 
         }.actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
