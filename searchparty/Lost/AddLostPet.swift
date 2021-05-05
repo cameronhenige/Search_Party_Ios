@@ -101,13 +101,13 @@ struct AddLostPet: View {
                             
                         }
 
-                }
+                }.padding(.vertical)
             
             Section(header: Text("Add a description of what you think people should know about PET.")) {
                 TextEditor(text: $petDescription)
                 Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
 
-            }
+            }.padding(.vertical)
             
             Section(header: Text("When and where was PET lost?")) {
                 DatePicker(
@@ -115,16 +115,14 @@ struct AddLostPet: View {
                     selection: $lostDate,
                     displayedComponents: [.date]
                 )
-            }
+                
+            }.padding(.vertical)
                 
         }.actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
                 .default(Text("Gallery")) {
-                    //self.showingActionSheet = false
                     self.isShowGallery = true },
                 .default(Text("Camera")) {
-                    //todo
-                    
                     self.isShowCamera = true },
                 .cancel()
             ])
