@@ -98,6 +98,7 @@
 		F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDEB26423DE500E9C987 /* ModelData.swift */; };
 		F2DBDDEF264240D000E9C987 /* cats.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDEE264240D000E9C987 /* cats.json */; };
 		F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */; };
+		F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		F2DBDDEB26423DE500E9C987 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		F2DBDDEE264240D000E9C987 /* cats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cats.json; sourceTree = "<group>"; };
 		F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetViewModel.swift; sourceTree = "<group>"; };
+		F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLocations.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -300,6 +302,7 @@
 				F2791A692600750500C056A6 /* SearchPartyUser.swift */,
 				F2791A6C2600759E00C056A6 /* Chat.swift */,
 				F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */,
+				F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */,
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
 				341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */,
+				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */,
 				3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */,

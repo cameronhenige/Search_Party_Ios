@@ -11,11 +11,13 @@ import Combine
 import PhotosUI
 
 struct AddLostPet: View {
-    
+
     @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
 
 
     @EnvironmentObject var modelData: ModelData
+    
+    @State var currentLocation: CLLocationCoordinate2D = .applePark
     @State private var lostDate = Date()
 
     @State private var showingActionSheet = false
@@ -121,8 +123,8 @@ struct AddLostPet: View {
                 
                 Text("Lost Location")
                 
-                if(addLostPetViewModel.userLocation != nil) {
-                    MapView(coordinate: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+                if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
+                    MapView(coordinate: self.$currentLocation).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
                 }
                 
             }.padding(.vertical)

@@ -10,16 +10,36 @@ import SwiftUI
 import MapKit
 
 struct MapView: UIViewRepresentable {
-    var coordinate: CLLocationCoordinate2D
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
+    
+    @Binding var coordinate: CLLocationCoordinate2D
 
+    class Coordinator: NSObject, MKMapViewDelegate {
+        var parent: MapView
+        
+        init(_ parent: MapView) {
+            self.parent = parent
+        }
+        
+        
+        func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
+            self.parent.coordinate = mapView.centerCoordinate
+        }
+    }
+    
     func makeUIView(context: Context) -> MKMapView {
-        MKMapView(frame: .zero)
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        mapView.centerCoordinate = coordinate
+        return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        view.setRegion(region, animated: true)
+//        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+//        let region = MKCoordinateRegion(center: coordinate, span: span)
+//        view.setRegion(region, animated: true)
     }
 }
 
