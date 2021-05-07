@@ -12,6 +12,9 @@ import PhotosUI
 
 struct AddLostPet: View {
     
+    @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
+
+
     @EnvironmentObject var modelData: ModelData
     @State private var lostDate = Date()
 
@@ -116,8 +119,16 @@ struct AddLostPet: View {
                     displayedComponents: [.date]
                 )
                 
+                Text("Lost Location")
+                
+                if(addLostPetViewModel.userLocation != nil) {
+                    MapView(coordinate: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+                }
+                
             }.padding(.vertical)
                 
+        }.onAppear() {
+            self.addLostPetViewModel.requestLocation()
         }.actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
                 .default(Text("Gallery")) {

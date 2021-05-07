@@ -97,6 +97,7 @@
 		F2DBDDE8263D0E4800E9C987 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */; };
 		F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDEB26423DE500E9C987 /* ModelData.swift */; };
 		F2DBDDEF264240D000E9C987 /* cats.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDEE264240D000E9C987 /* cats.json */; };
+		F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,7 @@
 		F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F2DBDDEB26423DE500E9C987 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		F2DBDDEE264240D000E9C987 /* cats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cats.json; sourceTree = "<group>"; };
+		F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetViewModel.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -418,6 +420,7 @@
 				F2D7456225FAF6AC003C5157 /* SignInViewModel.swift */,
 				F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */,
 				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
+				F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
+				F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */,
 				F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */,
 				3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */,
 				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
