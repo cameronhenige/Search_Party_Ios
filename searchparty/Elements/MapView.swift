@@ -14,8 +14,10 @@ struct MapView: UIViewRepresentable {
         return Coordinator(self)
     }
     
-    @Binding var coordinate: CLLocationCoordinate2D
+    @Binding var coordinate: CLLocationCoordinate2D?
 
+    var initialLocation: CLLocationCoordinate2D
+    
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapView
         
@@ -32,14 +34,15 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
-        mapView.centerCoordinate = coordinate
+        let centerCoordinate = coordinate ?? initialLocation
+        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
+        let region = MKCoordinateRegion(center: centerCoordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        
         return mapView
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-//        let span = MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-//        let region = MKCoordinateRegion(center: coordinate, span: span)
-//        view.setRegion(region, animated: true)
     }
 }
 

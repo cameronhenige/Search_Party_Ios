@@ -17,7 +17,7 @@ struct AddLostPet: View {
 
     @EnvironmentObject var modelData: ModelData
     
-    @State var currentLocation: CLLocationCoordinate2D = .applePark
+    @State var currentLocation: CLLocationCoordinate2D?
     @State private var lostDate = Date()
 
     @State private var showingActionSheet = false
@@ -124,7 +124,7 @@ struct AddLostPet: View {
                 Text("Lost Location")
                 
                 if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
-                    MapView(coordinate: self.$currentLocation).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+                    MapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
                 }
                 
             }.padding(.vertical)
