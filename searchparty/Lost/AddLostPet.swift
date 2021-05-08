@@ -28,6 +28,13 @@ struct AddLostPet: View {
     var items: [GridItem] {
       Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
+
+    @State var name = ""
+    @State var phoneNumber = ""
+    @State var email = ""
+    @State var otherContactMethod = ""
+
+    
     @State var petName = ""
     @State var petAge = ""
     @State var petBreed = ""
@@ -128,6 +135,14 @@ struct AddLostPet: View {
                 }
                 
             }.padding(.vertical)
+            
+            Section(header: Text("Let's get your contact information.")) {
+                TextField("Name", text: $name).textContentType(.name)
+                TextField("Phone Number", text: $phoneNumber).textContentType(.telephoneNumber)
+                TextField("Email", text: $email).textContentType(.emailAddress)
+                TextField("Other Contact Method", text: $otherContactMethod)
+            }
+            
                 
         }.onAppear() {
             self.addLostPetViewModel.requestLocation()
