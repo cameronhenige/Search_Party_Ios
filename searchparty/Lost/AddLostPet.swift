@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import PhotosUI
+import iPhoneNumberField
 
 struct AddLostPet: View {
 
@@ -51,99 +52,119 @@ struct AddLostPet: View {
     
     @State private var petSex = 0
     var petSexes = ["Male", "Female"]
+    
+    @State private var preferredContactMethod = 0
+    var preferredContactMethods = ["Phone Number", "Email", "Other"]
 
-    var body: some View {
+    var AddLostPetSections: some View {
         Form {
-                Section(header: Text("Let's get some information about your lost pet.")) {
-                    TextField("Pet Name", text: $petName)
-                    
-                    Picker(selection: $petType, label: Text("Pet Type")) {
-                        ForEach(0 ..< petTypes.count) {
-                            Text(self.petTypes[$0])
+        Section(header: Text("Let's get some information about your lost pet.")) {
+            TextField("Pet Name", text: $petName)
+            
+            Picker(selection: $petType, label: Text("Pet Type")) {
+                ForEach(0 ..< petTypes.count) {
+                    Text(self.petTypes[$0])
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+            
+            Picker(selection: $petSex, label: Text("Sex")) {
+                ForEach(0 ..< petSexes.count) {
+                    Text(self.petSexes[$0])
+                }
+            }.pickerStyle(SegmentedPickerStyle())
+            
+            TextField("Approximate Age", text: $petAge)
+                .keyboardType(.numberPad)
+                .onReceive(Just(petAge)) { newValue in
+                    let filtered = newValue.filter { "0123456789".contains($0) }
+                    if filtered != newValue {
+                        self.petAge = filtered
+                    }
+            }
+            
+            TextField("Breed", text: $petBreed)
+            Text("Provide as many angles of your pet as possible.")
+                LazyVGrid(columns: items, spacing: 10) {
+                        ForEach(0..<images.count, id: \.self) { i in
+
+                        ZStack {
+                        
+                        Image(uiImage: images[i]).resizable().frame(height: 150).cornerRadius(20)
+                            
+                                Image(systemName: "trash")
+                                    .font(.largeTitle)
+                                    .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
+                                        images.remove(at: i)
+                                    }
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
+                    }
                     
-                    Picker(selection: $petSex, label: Text("Sex")) {
-                        ForEach(0 ..< petSexes.count) {
-                            Text(self.petSexes[$0])
-                        }
-                    }.pickerStyle(SegmentedPickerStyle())
                     
-                    TextField("Approximate Age", text: $petAge)
-                        .keyboardType(.numberPad)
-                        .onReceive(Just(petAge)) { newValue in
-                            let filtered = newValue.filter { "0123456789".contains($0) }
-                            if filtered != newValue {
-                                self.petAge = filtered
+                    ZStack {
+                    
+                        
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                        .fill(Color.gray)
+                                        .frame(height: 150)
+                        
+                        Image(systemName: "camera")
+                            .font(.largeTitle)
+                            .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
+                                self.showingActionSheet = true
                             }
                     }
                     
-                    TextField("Breed", text: $petBreed)
-                    Text("Provide as many angles of your pet as possible.")
-                        LazyVGrid(columns: items, spacing: 10) {
-                                ForEach(0..<images.count, id: \.self) { i in
-
-                                ZStack {
-                                
-                                Image(uiImage: images[i]).resizable().frame(height: 150).cornerRadius(20)
-                                    
-                                        Image(systemName: "trash")
-                                            .font(.largeTitle)
-                                            .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
-                                                images.remove(at: i)
-                                            }
-                                }
-                            }
-                            
-                            
-                            ZStack {
-                            
-                                
-                                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                                .fill(Color.gray)
-                                                .frame(height: 150)
-                                
-                                Image(systemName: "camera")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
-                                        self.showingActionSheet = true
-                                    }
-                            }
-                            
-                            
-                        }
-
-                }.padding(.vertical)
-            
-            Section(header: Text("Add a description of what you think people should know about PET.")) {
-                TextEditor(text: $petDescription)
-                Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
-
-            }.padding(.vertical)
-            
-            Section(header: Text("When and where was PET lost?")) {
-                DatePicker(
-                    "Lost Date",
-                    selection: $lostDate,
-                    displayedComponents: [.date]
-                )
-                
-                Text("Lost Location")
-                
-                if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
-                    MapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+                    
                 }
-                
-            }.padding(.vertical)
-            
-            Section(header: Text("Let's get your contact information.")) {
-                TextField("Name", text: $name).textContentType(.name)
-                TextField("Phone Number", text: $phoneNumber).textContentType(.telephoneNumber)
-                TextField("Email", text: $email).textContentType(.emailAddress)
-                TextField("Other Contact Method", text: $otherContactMethod)
+
+        }.padding(.vertical)
+    
+    Section(header: Text("Add a description of what you think people should know about PET.")) {
+        TextEditor(text: $petDescription)
+        Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
+
+    }.padding(.vertical)
+    
+    Section(header: Text("When and where was PET lost?")) {
+        DatePicker(
+            "Lost Date",
+            selection: $lostDate,
+            displayedComponents: [.date]
+        )
+        
+        Text("Lost Location")
+        
+        if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
+            MapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+        }
+        
+    }.padding(.vertical)
+    
+    Section(header: Text("Let's get your contact information.")) {
+        TextField("Name", text: $name).textContentType(.name)
+        iPhoneNumberField("Phone Number", text: $phoneNumber)
+        TextField("Email", text: $email).textContentType(.emailAddress)
+        
+        TextField("Other Contact Method", text: $otherContactMethod)
+        
+        Text("Preferred Contact Method")
+        
+        Picker(selection: $preferredContactMethod, label: Text("Preferred Contact Method")) {
+            ForEach(0 ..< preferredContactMethods.count) {
+                Text(self.preferredContactMethods[$0])
             }
-            
-                
+        }.pickerStyle(SegmentedPickerStyle())
+
+    }
+        }
+    }
+    
+    var body: some View {
+        
+        VStack {
+
+            AddLostPetSections
+
         }.onAppear() {
             self.addLostPetViewModel.requestLocation()
         }.actionSheet(isPresented: $showingActionSheet) {
@@ -161,6 +182,12 @@ struct AddLostPet: View {
             SUImagePickerView(sourceType: .camera, images: self.$images, isShowCamera: self.$isShowCamera)
             
         }
+        
+        Button(action: {
+            //todo self.isOnSearchParty = true
+        }) {
+            Text("Add Lost Pet")
+        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
 
         }
     

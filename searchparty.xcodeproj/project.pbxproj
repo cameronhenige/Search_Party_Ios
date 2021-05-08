@@ -99,6 +99,7 @@
 		F2DBDDEF264240D000E9C987 /* cats.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDEE264240D000E9C987 /* cats.json */; };
 		F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */; };
 		F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */; };
+		F2DBDDFD2646372900E9C987 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = F2DBDDFC2646372900E9C987 /* iPhoneNumberField */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -212,6 +213,7 @@
 			files = (
 				34B255AA24081B3500599A4C /* SwiftUI.framework in Frameworks */,
 				EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */,
+				F2DBDDFD2646372900E9C987 /* iPhoneNumberField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +529,7 @@
 			);
 			name = searchparty;
 			packageProductDependencies = (
+				F2DBDDFC2646372900E9C987 /* iPhoneNumberField */,
 			);
 			productName = "sketch-elements";
 			productReference = 3403A2FE2406B70F00D7B040 /* searchparty.app */;
@@ -558,6 +561,7 @@
 			mainGroup = 3403A2F52406B70F00D7B040;
 			packageReferences = (
 				3445A794240839DE0020561B /* XCRemoteSwiftPackageReference "url-image" */,
+				F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 			);
 			productRefGroup = 3403A2FF2406B70F00D7B040 /* Products */;
 			projectDirPath = "";
@@ -925,7 +929,23 @@
 				minimumVersion = 0.9.10;
 			};
 		};
+		F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
+			requirement = {
+				kind = exactVersion;
+				version = 0.5.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F2DBDDFC2646372900E9C987 /* iPhoneNumberField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
+			productName = iPhoneNumberField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3403A2F62406B70F00D7B040 /* Project object */;
 }
