@@ -164,7 +164,11 @@ struct AddLostPet: View {
         VStack {
 
             AddLostPetSections
-
+            Button(action: {
+                //todo self.isOnSearchParty = true
+            }) {
+                Text("Add Lost Pet")
+            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
         }.onAppear() {
             self.addLostPetViewModel.requestLocation()
         }.actionSheet(isPresented: $showingActionSheet) {
@@ -183,11 +187,7 @@ struct AddLostPet: View {
             
         }
         
-        Button(action: {
-            //todo self.isOnSearchParty = true
-        }) {
-            Text("Add Lost Pet")
-        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+
 
         }
     
