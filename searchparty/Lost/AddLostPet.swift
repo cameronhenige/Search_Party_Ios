@@ -168,7 +168,7 @@ struct AddLostPet: View {
                 //todo self.isOnSearchParty = true
             }) {
                 Text("Add Lost Pet")
-            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+            }.buttonStyle(PrimaryButtonStyle()).padding()
         }.onAppear() {
             self.addLostPetViewModel.requestLocation()
         }.actionSheet(isPresented: $showingActionSheet) {
