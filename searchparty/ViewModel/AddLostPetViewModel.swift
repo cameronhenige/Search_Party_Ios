@@ -31,10 +31,42 @@ class AddLostPetViewModel: NSObject, ObservableObject {
       self.locationManager.delegate = self
     }
     
-    func addLostPet(name: String, sex: String, age: Int, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String]) {
+    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String]) {
+            
+                    //todo LostPet.GENERAL_IMAGES: imagesAdded,
+
+            var itemData : [String: Any] = [
+                LostPet.NAME : name,
+                LostPet.SEX: sex,
+                LostPet.AGE: age,
+                LostPet.BREED: breed,
+                LostPet.TYPE: type,
+                LostPet.DESCRIPTION: description,
+                LostPet.LOST_DATE_TIME: lostDateTime,
+                LostPet.LOST_LOCATION: lostLocation,
+                LostPet.LOST_LOCATION_DESCRIPTION: lostLocationDescription,
+                LostPet.OWNER_NAME: ownerName,
+                LostPet.OWNER_EMAIL: ownerEmail,
+                LostPet.OWNER_PHONE_NUMBER: ownerPhoneNumber,
+                LostPet.OWNER_PREFERRED_CONTACT_METHOD: ownerPreferredContactMethod,
+                LostPet.OWNER_OTHER_CONTACT_METHOD: ownerOtherContactMethod,
+                LostPet.OWNERS: owners
+
+            ]
         
-        //auth.signIn(withEmail: email, password: password, completion: handleAuthResultCompletion)
+        
+        Firestore.firestore().collection("Lost").addDocument(data: itemData){ err in
+                if  err != nil {
+                    //todo self.showItemRetryDialog()
+                }else{
+                    print("Added item!")
+                    
+                }
+            }
     }
+    
+    
+    
     
     func requestLocationPermission() {
         locationManager.requestAlwaysAuthorization()

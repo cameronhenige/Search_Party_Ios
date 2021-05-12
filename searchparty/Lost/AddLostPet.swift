@@ -10,6 +10,7 @@ import SwiftUI
 import Combine
 import PhotosUI
 import iPhoneNumberField
+import FirebaseAuth
 
 struct AddLostPet: View {
 
@@ -153,7 +154,7 @@ struct AddLostPet: View {
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
                                 
-                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: 4, breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: ["OWNER_UID_TODO"])
+                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid])
                 
             }) {
                 Text("Add Lost Pet")

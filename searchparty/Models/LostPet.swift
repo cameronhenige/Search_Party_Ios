@@ -11,6 +11,25 @@ import FirebaseFirestoreSwift
 import FirebaseFirestore
 
 struct LostPet: Codable, Identifiable {
+    
+    public static var NAME : String = "name"
+    public static var SEX : String = "sex"
+    public static var AGE : String = "age"
+    public static var BREED : String = "breed"
+    public static var TYPE : String = "type"
+    public static var DESCRIPTION : String = "description"
+    public static var GENERAL_IMAGES : String = "generalImages"
+    public static var LOST_DATE_TIME : String = "lostDateTime"
+    public static var LOST_LOCATION : String = "lostLocation"
+    public static var LOST_LOCATION_DESCRIPTION : String = "lostLocationDescription"
+    public static var OWNER_NAME : String = "ownerName"
+    public static var OWNER_EMAIL : String = "ownerEmail"
+    public static var OWNER_PHONE_NUMBER : String = "ownerPhoneNumber"
+    public static var OWNER_PREFERRED_CONTACT_METHOD : String = "ownerPreferredContactMethod"
+    public static var OWNER_OTHER_CONTACT_METHOD : String = "ownerOtherContactMethod"
+    public static var OWNERS : String = "Owners"
+
+    
     @DocumentID var id: String?
     var name: String
 
