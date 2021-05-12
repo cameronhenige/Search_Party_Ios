@@ -22,11 +22,18 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     @Published var userLatitude: Double = 0
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
+    
+    @Published var isAddingLostPet = false
 
     
     override init() {
       super.init()
       self.locationManager.delegate = self
+    }
+    
+    func addLostPet(name: String, sex: String, age: Int, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String]) {
+        
+        //auth.signIn(withEmail: email, password: password, completion: handleAuthResultCompletion)
     }
     
     func requestLocationPermission() {

@@ -39,6 +39,8 @@
 		F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */; };
 		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
 		F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C0DB25FF078D0026B180 /* PetBackground.swift */; };
+		F21E41AE264B0D4400199197 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21E41AD264B0D4400199197 /* LocationViewController.swift */; };
+		F21E41B0264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -143,6 +145,8 @@
 		F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetsViewModel.swift; sourceTree = "<group>"; };
 		F216C07525FD605D0026B180 /* LostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPet.swift; sourceTree = "<group>"; };
 		F216C0DB25FF078D0026B180 /* PetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackground.swift; sourceTree = "<group>"; };
+		F21E41AD264B0D4400199197 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISearchViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		3445A79B240B03D70020561B /* Lost */ = {
 			isa = PBXGroup;
 			children = (
+				F21E41AD264B0D4400199197 /* LocationViewController.swift */,
 				F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */,
 				34DCE8C0240817CD00C4EE89 /* MainScreen.swift */,
 				3403A3192408099500D7B040 /* LostPets.swift */,
@@ -321,6 +326,7 @@
 				F233D3D22633D41400912F28 /* ChatScreen.swift */,
 				F233D3D62633D89000912F28 /* EditLostPet.swift */,
 				F233D3DE2633EDF600912F28 /* AddLostPet.swift */,
+				F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -664,9 +670,11 @@
 				34ADED2C2584B48100A504F5 /* Constants.swift in Sources */,
 				F2D7459725FB2484003C5157 /* Subview.swift in Sources */,
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
+				F21E41AE264B0D4400199197 /* LocationViewController.swift in Sources */,
 				F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */,
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
+				F21E41B0264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,

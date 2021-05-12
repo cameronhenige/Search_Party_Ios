@@ -55,6 +55,9 @@ struct AddLostPet: View {
     
     @State private var preferredContactMethod = 0
     var preferredContactMethods = ["Phone Number", "Email", "Other"]
+    
+    @State var lostLocationDescription = ""
+
 
     var AddLostPetSections: some View {
         Form {
@@ -82,6 +85,8 @@ struct AddLostPet: View {
                         self.petAge = filtered
                     }
             }
+            
+            
 
             TextField("Breed", text: $petBreed)
             Text("Provide as many angles of your pet as possible.")
@@ -138,11 +143,18 @@ struct AddLostPet: View {
         if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
             MapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
         }
+        
+        TextField("Location Description", text: $lostLocationDescription)
+
+        
+        
 
     }.padding(.vertical)
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
-                //todo self.isOnSearchParty = true
+                                
+                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: 4, breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: ["OWNER_UID_TODO"])
+                
             }) {
                 Text("Add Lost Pet")
             }.buttonStyle(PrimaryButtonStyle()).padding()) {
@@ -160,11 +172,13 @@ struct AddLostPet: View {
             }
         }.pickerStyle(SegmentedPickerStyle())
 
-    }
+    }.padding(.vertical)
             
             
         }
     }
+    
+
     
     var body: some View {
         

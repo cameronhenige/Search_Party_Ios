@@ -17,4 +17,5 @@ target 'searchparty' do
   pod 'GeoFire'
   pod 'GeoFire/Utils'
   pod 'FlexibleGeohash'
+  pod "TinyConstraints"
 end

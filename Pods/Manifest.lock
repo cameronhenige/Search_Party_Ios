@@ -333,6 +333,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
+  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -346,6 +347,7 @@ DEPENDENCIES:
   - GeoFire/Utils
   - Kingfisher (~> 6.0)
   - lottie-ios
+  - TinyConstraints
 
 SPEC REPOS:
   trunk:
@@ -373,6 +375,7 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - PromisesObjC
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -399,7 +402,8 @@ SPEC CHECKSUMS:
   lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 9e01ad6314fb65283001bf90b7a6af718e1216ac
+PODFILE CHECKSUM: 1570816bbca5f1d01d0140317a341cd7ddf90ae3
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1
