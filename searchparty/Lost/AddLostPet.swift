@@ -15,8 +15,6 @@ import FirebaseAuth
 struct AddLostPet: View {
 
     @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
-
-
     @EnvironmentObject var modelData: ModelData
     
     @State var currentLocation: CLLocationCoordinate2D?
@@ -124,13 +122,13 @@ struct AddLostPet: View {
 
                 }
 
-        }.padding(.vertical)
+        }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
     Section(header: Text("Add a description of what you think people should know about PET.")) {
         TextEditor(text: $petDescription)
         Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
 
-    }.padding(.vertical)
+    }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
     Section(header: Text("When and where was PET lost?")) {
         DatePicker(
@@ -150,7 +148,7 @@ struct AddLostPet: View {
         
         
 
-    }.padding(.vertical)
+    }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
                                 
@@ -172,11 +170,17 @@ struct AddLostPet: View {
                 Text(self.preferredContactMethods[$0])
             }
         }.pickerStyle(SegmentedPickerStyle())
+            
 
-    }.padding(.vertical)
+    }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
             
+        }.alert(isPresented: $addLostPetViewModel.errorAddingLostPet) {
+            Alert(title: Text("Error adding pet"), message: Text("There was an error adding your pet."), dismissButton: .default(Text("Ok")))
+        }.alert(isPresented: $addLostPetViewModel.addNameError) {
+            Alert(title: Text("Add a name"), message: Text("Add a name for your pet."), dismissButton: .default(Text("Ok")))
         }
+        
     }
     
 

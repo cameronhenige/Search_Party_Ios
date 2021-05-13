@@ -16,6 +16,9 @@ import FlexibleGeohash
 class AddLostPetViewModel: NSObject, ObservableObject {
 
 @Published var isLoadingLocation = false
+    @Published var errorAddingLostPet = false
+    @Published var addNameError = false
+
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
     private var db = Firestore.firestore()
     private let locationManager = CLLocationManager()
@@ -32,7 +35,11 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     }
     
     func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String]) {
+        
+        if(!name.isEmpty){
             
+    
+        isAddingLostPet = true
                     //todo LostPet.GENERAL_IMAGES: imagesAdded,
 
             var itemData : [String: Any] = [
@@ -57,12 +64,17 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         
         Firestore.firestore().collection("Lost").addDocument(data: itemData){ err in
                 if  err != nil {
-                    //todo self.showItemRetryDialog()
-                }else{
+                    self.errorAddingLostPet = true
+                } else {
                     print("Added item!")
-                    
                 }
+            
+            self.isAddingLostPet = false
+
             }
+        }else {
+            self.addNameError = true
+        }
     }
     
     
