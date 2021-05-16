@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseStorage
+
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
@@ -14,6 +16,8 @@ import GeoFire
 import FlexibleGeohash
 
 class AddLostPetViewModel: NSObject, ObservableObject {
+    static let LOST_PET_IMAGE_COMPRESSION : Float = 0.4
+    var imagesAdded = [] as [String]
 
 @Published var isLoadingLocation = false
     @Published var errorAddingLostPet = false
@@ -34,10 +38,10 @@ class AddLostPetViewModel: NSObject, ObservableObject {
       self.locationManager.delegate = self
     }
     
-    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String]) {
+    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [UIImage]) {
         
         if(!name.isEmpty){
-            
+
     
         isAddingLostPet = true
                     //todo LostPet.GENERAL_IMAGES: imagesAdded,
@@ -61,11 +65,16 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 
             ]
         
-        
-        Firestore.firestore().collection("Lost").addDocument(data: itemData){ err in
+            var ref: DocumentReference? = nil
+            ref = Firestore.firestore().collection("Lost").addDocument(data: itemData){ err in
                 if  err != nil {
                     self.errorAddingLostPet = true
                 } else {
+                    if(petImages.isEmpty) {
+                        //leave screen
+                    }else {
+                        self.addImages(lostPetDocumentId: ref!.documentID, petImages: petImages)
+                    }
                     print("Added item!")
                 }
             
@@ -77,8 +86,63 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         }
     }
     
+    func addImages(lostPetDocumentId: String, petImages: [UIImage]) {
+        
+        let group = DispatchGroup()
+        
+        for image in petImages {
+            group.enter()
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpeg"
     
+            let imageName = "\(FirebaseUtil().getCurrentTimeInMillis()).jpg"
     
+    let addItemImageRef = FirebaseUtil().getAddPetImageReference(imageName: imageName, lostPetId: lostPetDocumentId)
+    
+    addItemImageRef.putData(image.jpegData(compressionQuality: CGFloat(AddLostPetViewModel.LOST_PET_IMAGE_COMPRESSION))!, metadata: metaData) { (metadata, error) in
+                if error == nil{
+                    //uploadImageResult = .success(imageName)
+
+//                        self.showImage()
+                        self.imagesAdded.append(imageName)
+//                        self.imageCollectionView.reloadData()
+    
+                }else{
+                   // uploadImageResult = .failure(error!)
+
+                }
+        group.leave()
+
+
+            }
+            
+
+            
+            //todo need to update pet images list
+        }
+        
+        group.notify(queue: .main) {
+            print("all done adding images")
+                // all data available, continue
+            self.updateLostPetImages(lostPetDocumentId: lostPetDocumentId)
+        }
+    }
+    
+    func updateLostPetImages(lostPetDocumentId: String){
+        
+        Firestore.firestore().collection("Lost").document(lostPetDocumentId).updateData([LostPet.GENERAL_IMAGES: imagesAdded]) { err in
+            if  err != nil {
+                self.errorAddingLostPet = true
+            } else {
+                print("Added item images to lost pet!")
+            }
+        
+        self.isAddingLostPet = false
+
+        }
+        
+        
+    }
     
     func requestLocationPermission() {
         locationManager.requestAlwaysAuthorization()

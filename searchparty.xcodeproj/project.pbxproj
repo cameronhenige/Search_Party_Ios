@@ -52,6 +52,7 @@
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
 		F2791A6D2600759E00C056A6 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6C2600759E00C056A6 /* Chat.swift */; };
 		F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */; };
+		F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
 		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
 		F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */; };
@@ -158,6 +159,7 @@
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
 		F2791A6C2600759E00C056A6 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHashConverter.swift; sourceTree = "<group>"; };
+		F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
 		F2A585452607BEDA00E8920E /* SearchPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyView.swift; sourceTree = "<group>"; };
 		F2A5854A26083CF100E8920E /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
 		F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		3403A3002406B70F00D7B040 /* searchparty */ = {
 			isa = PBXGroup;
 			children = (
+				F27BC5DC2650CD150017B198 /* Utils */,
 				F2DBDDED264240B700E9C987 /* Resources */,
 				F2DBDDCC263B238600E9C987 /* LostPetImagesController */,
 				F233D3D92633E9DA00912F28 /* Account */,
@@ -400,6 +403,14 @@
 				F233D3DA2633E9EC00912F28 /* AccountScreen.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		F27BC5DC2650CD150017B198 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F2A9DBED25FC7ADB0055AC33 /* Extensions */ = {
@@ -707,6 +718,7 @@
 				34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */,
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
 				341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */,
+				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */,
