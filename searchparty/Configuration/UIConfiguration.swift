@@ -31,6 +31,6 @@ class UIConfiguration {
     static let colorPrimaryDark = UIColor(hexString: "#284b63")
     static let colorAccent = UIColor(hexString: "#d5905e")
     static let colorPrimaryDarker = UIColor(hexString: "#1d3647")
-    static let colorPrimaryTrans = UIColor(hexString: "#33424242")
-    static let colorPrimaryDarkTrans = UIColor(hexString: "#284b631b")
+    static let colorPrimaryTrans = UIColor(hexString: "#33284b63")
+    static let colorPrimaryDarkTrans = UIColor(hexString: "#28284b63")
 }

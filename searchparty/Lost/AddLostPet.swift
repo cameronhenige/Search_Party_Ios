@@ -11,8 +11,30 @@ import Combine
 import PhotosUI
 import iPhoneNumberField
 import FirebaseAuth
+import MapKit
 
 struct AddLostPet: View {
+    
+    
+    @State var map = MKMapView()
+    @State var manager = CLLocationManager()
+    @State var alert = false
+    @State var source : CLLocationCoordinate2D!
+    @State var destination : CLLocationCoordinate2D!
+    @State var distance = ""
+    @State var time = ""
+    @State var show = false
+    @State var loading = false
+    @State var book = false
+    @State var doc = ""
+    @State var data : Data = .init(count: 0)
+    @State var search = false
+    
+    
+    
+    
+    
+    
 
     @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
     @EnvironmentObject var modelData: ModelData
@@ -140,7 +162,10 @@ struct AddLostPet: View {
         Text("Lost Location")
 
         if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
-            AddLostPetMapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+//            AddLostPetMapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+            
+            AddLostPetMapView(map: self.$map, manager: self.$manager, alert: self.$alert, source: self.$source, destination: self.$destination, name: self.$name,distance: self.$distance,time: self.$time, show: self.$show, coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+            
         }
         
         TextField("Location Description", text: $lostLocationDescription)
