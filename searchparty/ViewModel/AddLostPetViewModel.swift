@@ -101,25 +101,14 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     
     addItemImageRef.putData(image.jpegData(compressionQuality: CGFloat(AddLostPetViewModel.LOST_PET_IMAGE_COMPRESSION))!, metadata: metaData) { (metadata, error) in
                 if error == nil{
-                    //uploadImageResult = .success(imageName)
-
-//                        self.showImage()
-                        self.imagesAdded.append(imageName)
-//                        self.imageCollectionView.reloadData()
-    
+                    self.imagesAdded.append(imageName)
                 }else{
-                   // uploadImageResult = .failure(error!)
-
+                    //todo handle error
                 }
         group.leave()
 
-
             }
-            
-
-            
-            //todo need to update pet images list
-        }
+            }
         
         group.notify(queue: .main) {
             print("all done adding images")

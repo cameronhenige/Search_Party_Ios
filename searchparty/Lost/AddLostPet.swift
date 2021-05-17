@@ -140,7 +140,7 @@ struct AddLostPet: View {
         Text("Lost Location")
 
         if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
-            MapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+            AddLostPetMapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
         }
         
         TextField("Location Description", text: $lostLocationDescription)

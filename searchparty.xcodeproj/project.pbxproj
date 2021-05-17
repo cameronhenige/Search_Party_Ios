@@ -14,7 +14,7 @@
 		3403A30E2406B71100D7B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3403A30C2406B71100D7B040 /* LaunchScreen.storyboard */; };
 		3403A31A2408099500D7B040 /* LostPets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403A3192408099500D7B040 /* LostPets.swift */; };
 		34041A8E245313F800722D9A /* ModalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34041A8D245313F800722D9A /* ModalHeader.swift */; };
-		340A1981249BB0C900D49461 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A1980249BB0C900D49461 /* MapView.swift */; };
+		340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A1980249BB0C900D49461 /* AddLostPetMapView.swift */; };
 		341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */; };
 		341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */; };
 		3445A798240A80AF0020561B /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3445A797240A80AF0020561B /* ColorPalette.xcassets */; };
@@ -116,7 +116,7 @@
 		3403A30F2406B71100D7B040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3403A3192408099500D7B040 /* LostPets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPets.swift; sourceTree = "<group>"; };
 		34041A8D245313F800722D9A /* ModalHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeader.swift; sourceTree = "<group>"; };
-		340A1980249BB0C900D49461 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		340A1980249BB0C900D49461 /* AddLostPetMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetMapView.swift; sourceTree = "<group>"; };
 		341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		3445A797240A80AF0020561B /* ColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPalette.xcassets; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 				344723C924ABCAC1003B9F50 /* Button */,
 				341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */,
 				344723C324ABC078003B9F50 /* Modifiers */,
-				340A1980249BB0C900D49461 /* MapView.swift */,
+				340A1980249BB0C900D49461 /* AddLostPetMapView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -723,7 +723,7 @@
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */,
 				3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */,
-				340A1981249BB0C900D49461 /* MapView.swift in Sources */,
+				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,

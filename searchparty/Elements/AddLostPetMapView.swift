@@ -9,7 +9,7 @@
 import SwiftUI
 import MapKit
 
-struct MapView: UIViewRepresentable {
+struct AddLostPetMapView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
@@ -19,15 +19,17 @@ struct MapView: UIViewRepresentable {
     var initialLocation: CLLocationCoordinate2D
     
     class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: MapView
+        var parent: AddLostPetMapView
         
-        init(_ parent: MapView) {
+        init(_ parent: AddLostPetMapView) {
             self.parent = parent
         }
         
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
+            var circle = MKCircle(center: mapView.centerCoordinate, radius: 1000)
+            mapView.addOverlay(circle)
         }
     }
     
