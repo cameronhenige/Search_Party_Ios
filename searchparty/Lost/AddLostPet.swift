@@ -193,7 +193,7 @@ struct AddLostPet: View {
                     self.isShowCamera = true },
                 .cancel()
             ])
-        }.navigationTitle("Add Lost Pet").navigationBarColor(Constant.color.tintColor.uiColor())
+        }.navigationTitle("Add Lost Pet")
         .sheet(isPresented: $isShowGallery) {
             MyImagePicker(images: $images, isShowGallery: self.$isShowGallery)
         }.sheet(isPresented: $isShowCamera) {

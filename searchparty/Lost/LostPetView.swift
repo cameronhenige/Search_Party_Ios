@@ -60,7 +60,6 @@ struct LostPetView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-        .navigationBarColor(Constant.color.tintColor.uiColor())
     }
     
     var LostPetData: some View {
