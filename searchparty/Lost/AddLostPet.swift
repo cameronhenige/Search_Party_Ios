@@ -78,7 +78,7 @@ struct AddLostPet: View {
             }
             
             TextField("Breed", text: $petBreed)
-            Text("Provide as many angles of /(name) pet as possible.")
+            Text("Provide as many angles of your pet as possible.")
                 LazyVGrid(columns: imageColumns, spacing: 10) {
                         ForEach(0..<images.count, id: \.self) { i in
 
