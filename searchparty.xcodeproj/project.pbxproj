@@ -54,6 +54,7 @@
 		F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */; };
 		F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */; };
 		F27BC5E4265454080017B198 /* LostViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E3265454080017B198 /* LostViewRouter.swift */; };
+		F27BC5E8265575DF0017B198 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
 		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
 		F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */; };
@@ -161,6 +162,7 @@
 		F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHashConverter.swift; sourceTree = "<group>"; };
 		F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
 		F27BC5E3265454080017B198 /* LostViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostViewRouter.swift; sourceTree = "<group>"; };
+		F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		F2A585452607BEDA00E8920E /* SearchPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyView.swift; sourceTree = "<group>"; };
 		F2A5854A26083CF100E8920E /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
 		F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 			children = (
 				F2A9DBEE25FC7AEB0055AC33 /* Error+Extension.swift */,
 				F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */,
+				F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */,
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
+				F27BC5E8265575DF0017B198 /* UINavigationControllerExtension.swift in Sources */,
 				F21E41B0264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
