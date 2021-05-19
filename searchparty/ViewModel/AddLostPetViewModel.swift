@@ -32,14 +32,17 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     
     @Published var isAddingLostPet = false
 
+    private var completionHandler: ((Result<String, Error>) -> Void)?
+
     
     override init() {
       super.init()
+        
       self.locationManager.delegate = self
     }
     
-    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [UIImage]) {
-        
+    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [UIImage], completionHandler: @escaping (Result<String, Error>) -> Void) {
+        self.completionHandler = completionHandler
         if(!name.isEmpty){
 
     
@@ -71,7 +74,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                     self.errorAddingLostPet = true
                 } else {
                     if(petImages.isEmpty) {
-                        //leave screen
+                        self.completionHandler!(.success("Added Lost Pet"))
                     }else {
                         self.addImages(lostPetDocumentId: ref!.documentID, petImages: petImages)
                     }
@@ -125,7 +128,8 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             } else {
                 print("Added item images to lost pet!")
             }
-        
+            self.completionHandler!(.success("Added Lost Pet"))
+
         self.isAddingLostPet = false
 
         }

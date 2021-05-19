@@ -171,9 +171,23 @@ struct AddLostPet: View {
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
-                //lostViewRouter.$isAddingLostPet = false
                                 
-                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images)
+                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images) { result in
+                    lostViewRouter.isAddingLostPet = false
+                
+                }
+                
+                
+//                self.authenticationService.updateDisplayName(displayName: displayName) { result in
+//                  switch result {
+//                  case .success(let user):
+//                    print("Succcessfully update the user's display name: \(String(describing: user.displayName))")
+//                  case .failure(let error):
+//                    print("Error when trying to update the display name: \(error.localizedDescription)")
+//                  }
+//                  self.callSignInHandler(user: user)
+//                }
+                
                 
             }) {
                 Text("Add Lost Pet")
