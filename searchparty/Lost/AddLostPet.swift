@@ -15,7 +15,8 @@ import MapKit
 
 struct AddLostPet: View {
     
-    
+    @EnvironmentObject var lostViewRouter: LostViewRouter
+
     @State var map = MKMapView()
     @State var manager = CLLocationManager()
     @State var alert = false
@@ -29,12 +30,6 @@ struct AddLostPet: View {
     @State var doc = ""
     @State var data : Data = .init(count: 0)
     @State var search = false
-    
-    
-    
-    
-    
-    
 
     @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
     @EnvironmentObject var modelData: ModelData
@@ -85,7 +80,7 @@ struct AddLostPet: View {
             
         Section(header: Text("Let's get some information about your lost pet.")) {
             TextField("Pet Name", text: $petName)
-
+            
             Picker(selection: $petType, label: Text("Pet Type")) {
                 ForEach(0 ..< petTypes.count) {
                     Text(self.petTypes[$0])
@@ -176,6 +171,7 @@ struct AddLostPet: View {
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
+                //lostViewRouter.$isAddingLostPet = false
                                 
                 addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images)
                 

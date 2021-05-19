@@ -11,6 +11,9 @@ import CoreLocation
 
 struct LostPets: View {
     
+    @EnvironmentObject var lostViewRouter: LostViewRouter
+
+    
     @ObservedObject private var lostPetsViewModel = LostPetsViewModel()
     
     @State var isShowingAlert = true
@@ -52,16 +55,18 @@ struct LostPets: View {
                         }
                     }
                     
+                    NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
+
+                    }
+                    
                     
                 }.toolbar {
                     ToolbarItem(placement: .primaryAction) {
-                        NavigationLink(destination: AddLostPet(), isActive: $isAddingLostPet) {
-                            Button(action: {
-                                self.isAddingLostPet = true
-                            }) {
-                                Text("Add Lost Pet")
-                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                        }
+                        Button(action: {
+                            self.lostViewRouter.isAddingLostPet = true
+                        }) {
+                            Text("Add Lost Pet")
+                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
                     }
                 }.navigationBarColor(Constant.color.tintColor.uiColor())
                 .navigationBarTitle(Text("Lost"), displayMode: .inline)
@@ -73,7 +78,7 @@ struct LostPets: View {
                 }
         
             }
-            .navigationViewStyle(StackNavigationViewStyle())
+.navigationViewStyle(StackNavigationViewStyle())
             
             
         }

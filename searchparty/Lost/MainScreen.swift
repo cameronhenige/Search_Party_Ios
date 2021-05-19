@@ -13,7 +13,7 @@ struct MainScreen: View {
     
     var body: some View {
         TabView() {
-            LostPets().tabItem {
+            LostPets().environmentObject(LostViewRouter()).tabItem {
                 Text("Lost")
                 Image("lost_icon").renderingMode(.template)
             }
