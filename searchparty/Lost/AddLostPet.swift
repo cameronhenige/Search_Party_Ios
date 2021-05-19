@@ -78,7 +78,7 @@ struct AddLostPet: View {
             }
             
             TextField("Breed", text: $petBreed)
-            Text("Provide as many angles of your pet as possible.")
+            Text("Provide as many angles of /(name) pet as possible.")
                 LazyVGrid(columns: imageColumns, spacing: 10) {
                         ForEach(0..<images.count, id: \.self) { i in
 
@@ -120,7 +120,7 @@ struct AddLostPet: View {
 
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
-    Section(header: Text("When and where was PET lost?")) {
+    Section(header: Text("When and where was your pet lost?")) {
         DatePicker(
             "Lost Date",
             selection: $lostDate,
@@ -128,6 +128,7 @@ struct AddLostPet: View {
         )
 
         Text("Lost Location")
+        Text("To obscure your exact location, only the bounding box is saved.").font(.caption)
 
         if(addLostPetViewModel.userLocation != nil) {
 
@@ -146,7 +147,7 @@ struct AddLostPet: View {
                 }
                 
             }) {
-                Text("Add Lost Pet")
+                Text("Post Lost Pet")
             }.buttonStyle(PrimaryButtonStyle()).padding()) {
         TextField("Name", text: $name).textContentType(.name)
         iPhoneNumberField("Phone Number", text: $phoneNumber)
