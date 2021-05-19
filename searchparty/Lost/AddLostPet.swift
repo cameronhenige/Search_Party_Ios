@@ -17,63 +17,38 @@ struct AddLostPet: View {
     
     @EnvironmentObject var lostViewRouter: LostViewRouter
 
-    @State var map = MKMapView()
-    @State var manager = CLLocationManager()
-    @State var alert = false
-    @State var source : CLLocationCoordinate2D!
-    @State var destination : CLLocationCoordinate2D!
-    @State var distance = ""
-    @State var time = ""
-    @State var show = false
-    @State var loading = false
-    @State var book = false
-    @State var doc = ""
-    @State var data : Data = .init(count: 0)
-    @State var search = false
-
     @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
-    @EnvironmentObject var modelData: ModelData
     
+    @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var lostDate = Date()
-
     @State private var showingActionSheet = false
     @State private var shouldPresentImagePicker = false
-
     @State private var backgroundColor = Color.white
-    
-    var items: [GridItem] {
-      Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
-    }
-
     @State var name = ""
     @State var phoneNumber = ""
     @State var email = ""
     @State var otherContactMethod = ""
-
-    
     @State var petName = ""
     @State var petAge = ""
     @State var petBreed = ""
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
     @State private var isShowGallery = false
-
     @State private var images : [UIImage] = []
     @State var picker = false
     @State private var petDescription: String = ""
-
     @State private var petType = 0
     var petTypes = ["Dog", "Cat", "Bird", "Other"]
-    
     @State private var petSex = 0
     var petSexes = ["Male", "Female"]
-    
     @State private var preferredContactMethod = 0
     var preferredContactMethods = ["Phone Number", "Email", "Other"]
-    
     @State var lostLocationDescription = ""
 
+    var imageColumns: [GridItem] {
+      Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+    }
 
     var AddLostPetSections: some View {
         Form {
@@ -102,11 +77,9 @@ struct AddLostPet: View {
                     }
             }
             
-            
-
             TextField("Breed", text: $petBreed)
             Text("Provide as many angles of your pet as possible.")
-                LazyVGrid(columns: items, spacing: 10) {
+                LazyVGrid(columns: imageColumns, spacing: 10) {
                         ForEach(0..<images.count, id: \.self) { i in
 
                         ZStack {
@@ -156,17 +129,13 @@ struct AddLostPet: View {
 
         Text("Lost Location")
 
-        if(addLostPetViewModel.userLocation != nil) { //todo set initial location first time.
-//            AddLostPetMapView(coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
-            
-            AddLostPetMapView(map: self.$map, manager: self.$manager, alert: self.$alert, source: self.$source, destination: self.$destination, name: self.$name,distance: self.$distance,time: self.$time, show: self.$show, coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+        if(addLostPetViewModel.userLocation != nil) {
+
+            AddLostPetMapView(map: self.$map, name: self.$name, coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
             
         }
         
         TextField("Location Description", text: $lostLocationDescription)
-
-        
-        
 
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
@@ -174,20 +143,7 @@ struct AddLostPet: View {
                                 
                 addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images) { result in
                     lostViewRouter.isAddingLostPet = false
-                
                 }
-                
-                
-//                self.authenticationService.updateDisplayName(displayName: displayName) { result in
-//                  switch result {
-//                  case .success(let user):
-//                    print("Succcessfully update the user's display name: \(String(describing: user.displayName))")
-//                  case .failure(let error):
-//                    print("Error when trying to update the display name: \(error.localizedDescription)")
-//                  }
-//                  self.callSignInHandler(user: user)
-//                }
-                
                 
             }) {
                 Text("Add Lost Pet")
@@ -209,15 +165,15 @@ struct AddLostPet: View {
 
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
-            
         }.alert(isPresented: $addLostPetViewModel.errorAddingLostPet) {
             Alert(title: Text("Error adding pet"), message: Text("There was an error adding your pet."), dismissButton: .default(Text("Ok")))
         }.alert(isPresented: $addLostPetViewModel.addNameError) {
             Alert(title: Text("Add a name"), message: Text("Add a name for your pet."), dismissButton: .default(Text("Ok")))
+        }.alert(isPresented: $addLostPetViewModel.errorAddingImage) {
+            Alert(title: Text("Error Adding Image"), message: Text("There was an error adding your image."), dismissButton: .default(Text("Ok")))
         }
         
     }
-    
 
     
     var body: some View {
@@ -243,9 +199,6 @@ struct AddLostPet: View {
             SUImagePickerView(sourceType: .camera, images: self.$images, isShowCamera: self.$isShowCamera)
             
         }
-        
-
-
         }
     
 }

@@ -16,28 +16,26 @@ import GeoFire
 import FlexibleGeohash
 
 class AddLostPetViewModel: NSObject, ObservableObject {
-    static let LOST_PET_IMAGE_COMPRESSION : Float = 0.4
-    var imagesAdded = [] as [String]
 
-@Published var isLoadingLocation = false
+
+    @Published var isLoadingLocation = false
     @Published var errorAddingLostPet = false
     @Published var addNameError = false
-
+    @Published var errorAddingImage = false
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
-    private var db = Firestore.firestore()
-    private let locationManager = CLLocationManager()
     @Published var userLatitude: Double = 0
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
-    
     @Published var isAddingLostPet = false
 
     private var completionHandler: ((Result<String, Error>) -> Void)?
-
+    private var db = Firestore.firestore()
+    private let locationManager = CLLocationManager()
+    static let LOST_PET_IMAGE_COMPRESSION : Float = 0.4
+    var imagesAdded = [] as [String]
     
     override init() {
       super.init()
-        
       self.locationManager.delegate = self
     }
     
@@ -49,7 +47,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         isAddingLostPet = true
                     //todo LostPet.GENERAL_IMAGES: imagesAdded,
 
-            var itemData : [String: Any] = [
+            let itemData : [String: Any] = [
                 LostPet.NAME : name,
                 LostPet.SEX: sex,
                 LostPet.AGE: age,
@@ -78,7 +76,6 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                     }else {
                         self.addImages(lostPetDocumentId: ref!.documentID, petImages: petImages)
                     }
-                    print("Added item!")
                 }
             
             self.isAddingLostPet = false
@@ -106,7 +103,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                 if error == nil{
                     self.imagesAdded.append(imageName)
                 }else{
-                    //todo handle error
+                    self.errorAddingImage = true
                 }
         group.leave()
 
@@ -114,8 +111,6 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             }
         
         group.notify(queue: .main) {
-            print("all done adding images")
-                // all data available, continue
             self.updateLostPetImages(lostPetDocumentId: lostPetDocumentId)
         }
     }
@@ -125,8 +120,6 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         Firestore.firestore().collection("Lost").document(lostPetDocumentId).updateData([LostPet.GENERAL_IMAGES: imagesAdded]) { err in
             if  err != nil {
                 self.errorAddingLostPet = true
-            } else {
-                print("Added item images to lost pet!")
             }
             self.completionHandler!(.success("Added Lost Pet"))
 

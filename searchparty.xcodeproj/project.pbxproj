@@ -99,7 +99,6 @@
 		F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */; };
 		F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */; };
 		F2DBDDE8263D0E4800E9C987 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */; };
-		F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDEB26423DE500E9C987 /* ModelData.swift */; };
 		F2DBDDEF264240D000E9C987 /* cats.json in Resources */ = {isa = PBXBuildFile; fileRef = F2DBDDEE264240D000E9C987 /* cats.json */; };
 		F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */; };
 		F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */; };
@@ -207,7 +206,6 @@
 		F2DBDDE3263B2FDE00E9C987 /* PetBackgroundSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackgroundSingle.swift; sourceTree = "<group>"; };
 		F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImagePage.swift; sourceTree = "<group>"; };
 		F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		F2DBDDEB26423DE500E9C987 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		F2DBDDEE264240D000E9C987 /* cats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cats.json; sourceTree = "<group>"; };
 		F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetViewModel.swift; sourceTree = "<group>"; };
 		F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLocations.swift; sourceTree = "<group>"; };
@@ -300,7 +298,6 @@
 		3403A31B240809CC00D7B040 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F2DBDDEB26423DE500E9C987 /* ModelData.swift */,
 				3461D3DA245C219B009D389E /* Extensions.swift */,
 				344723C024ABB098003B9F50 /* TabItem.swift */,
 				34ADED2B2584B48100A504F5 /* Constants.swift */,
@@ -725,7 +722,6 @@
 				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
-				F2DBDDEC26423DE500E9C987 /* ModelData.swift in Sources */,
 				3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */,
 				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,

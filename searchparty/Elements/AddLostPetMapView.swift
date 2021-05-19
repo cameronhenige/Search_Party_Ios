@@ -1,10 +1,4 @@
-//
-//  MapView.swift
-//  sketch-elements
-//
-//  Created by Filip Molcik on 18/06/2020.
-//  Copyright © 2020 Filip Molcik. All rights reserved.
-//
+
 
 import SwiftUI
 import MapKit
@@ -12,14 +6,7 @@ import MapKit
 struct AddLostPetMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
-    @Binding var manager : CLLocationManager
-    @Binding var alert : Bool
-    @Binding var source : CLLocationCoordinate2D!
-    @Binding var destination : CLLocationCoordinate2D!
     @Binding var name : String
-    @Binding var distance : String
-    @Binding var time : String
-    @Binding var show : Bool
     
     @Binding var coordinate: CLLocationCoordinate2D?
 
@@ -42,27 +29,23 @@ struct AddLostPetMapView: UIViewRepresentable {
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
             self.parent.map.removeOverlays(self.parent.map.overlays)
-//            let circle = MKCircle(center: mapView.centerCoordinate,
-//                                  radius: 1000)
             
-            var geoHash = mapView.centerCoordinate.geohash(length: 7)
+            let geoHash = mapView.centerCoordinate.geohash(length: 7)
             print("current geohash " + geoHash)
             
             print(GeoHashConverter.decode(hash: geoHash))
             
-            var geoHashSquare = GeoHashConverter.decode(hash: geoHash)
+            let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
+            
             let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
             let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
             let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
-
             let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
 
-            
-            var points = [topLeft, topRight, bottomRight, bottomLeft]
+            let points = [topLeft, topRight, bottomRight, bottomLeft]
             
             let polygon = MKPolygon(coordinates: points, count: points.count)
             
-            //self.parent.map.addOverlay(circle)
             self.parent.map.addOverlay(polygon)
 
             
