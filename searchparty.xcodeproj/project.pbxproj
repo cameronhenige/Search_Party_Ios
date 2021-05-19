@@ -55,6 +55,7 @@
 		F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */; };
 		F27BC5E4265454080017B198 /* LostViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E3265454080017B198 /* LostViewRouter.swift */; };
 		F27BC5E8265575DF0017B198 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */; };
+		F27BC5EB26557C680017B198 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = F27BC5EA26557C680017B198 /* BottomSheet */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
 		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
 		F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */; };
@@ -220,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34B255AA24081B3500599A4C /* SwiftUI.framework in Frameworks */,
+				F27BC5EB26557C680017B198 /* BottomSheet in Frameworks */,
 				EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */,
 				F2DBDDFD2646372900E9C987 /* iPhoneNumberField in Frameworks */,
 			);
@@ -550,6 +552,7 @@
 			name = searchparty;
 			packageProductDependencies = (
 				F2DBDDFC2646372900E9C987 /* iPhoneNumberField */,
+				F27BC5EA26557C680017B198 /* BottomSheet */,
 			);
 			productName = "sketch-elements";
 			productReference = 3403A2FE2406B70F00D7B040 /* searchparty.app */;
@@ -582,6 +585,7 @@
 			packageReferences = (
 				3445A794240839DE0020561B /* XCRemoteSwiftPackageReference "url-image" */,
 				F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+				F27BC5E926557C680017B198 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 3403A2FF2406B70F00D7B040 /* Products */;
 			projectDirPath = "";
@@ -953,6 +957,14 @@
 				minimumVersion = 0.9.10;
 			};
 		};
+		F27BC5E926557C680017B198 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
@@ -964,6 +976,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F27BC5EA26557C680017B198 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F27BC5E926557C680017B198 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
 		F2DBDDFC2646372900E9C987 /* iPhoneNumberField */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
