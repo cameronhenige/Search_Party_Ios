@@ -147,7 +147,7 @@ struct LostPetView: View {
 
         
         
-        NavigationLink(destination: SwiftUISearchViewControllerRepresentable(), isActive: $isOnSearchParty) {
+        NavigationLink(destination: SearchPartyView(), isActive: $isOnSearchParty) {
             Button(action: {
                 self.isOnSearchParty = true
             }) {

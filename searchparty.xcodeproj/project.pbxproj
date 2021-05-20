@@ -56,6 +56,8 @@
 		F27BC5E4265454080017B198 /* LostViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E3265454080017B198 /* LostViewRouter.swift */; };
 		F27BC5E8265575DF0017B198 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */; };
 		F27BC5EB26557C680017B198 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = F27BC5EA26557C680017B198 /* BottomSheet */; };
+		F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */; };
+		F27BC5F12655823C0017B198 /* SearchPartyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
 		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
 		F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */; };
@@ -164,6 +166,8 @@
 		F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
 		F27BC5E3265454080017B198 /* LostViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostViewRouter.swift; sourceTree = "<group>"; };
 		F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyMapView.swift; sourceTree = "<group>"; };
+		F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyViewModel.swift; sourceTree = "<group>"; };
 		F2A585452607BEDA00E8920E /* SearchPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyView.swift; sourceTree = "<group>"; };
 		F2A5854A26083CF100E8920E /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
 		F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 				F233D3DE2633EDF600912F28 /* AddLostPet.swift */,
 				F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */,
 				F27BC5E3265454080017B198 /* LostViewRouter.swift */,
+				F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */,
 				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
 				F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */,
+				F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -704,6 +710,7 @@
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
 				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
+				F27BC5F12655823C0017B198 /* SearchPartyViewModel.swift in Sources */,
 				F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
@@ -735,6 +742,7 @@
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
+				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
