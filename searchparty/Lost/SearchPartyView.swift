@@ -11,6 +11,9 @@ import MapKit
 import BottomSheet
 
 struct SearchPartyView: View {
+    
+    var lostPet: LostPet
+
     @ObservedObject var searchPartyViewModel = SearchPartyViewModel()
 
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -39,14 +42,12 @@ struct SearchPartyView: View {
 
                 
         
-//        Map(coordinateRegion: $region)
             }.bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, hasBottomPosition: false, content: {
-                        //The Numbers from 0 to 99 as Main Content in a Scroll View
             VStack {
             Button(action: {
                 searchPartyViewModel.startUpdatingLocationButtonAction()
             }) {
-                Text("Search")
+                Text("Search for \(lostPet.name)" )
             }.buttonStyle(PrimaryButtonStyle()).padding()
             
                         ScrollView {
@@ -59,7 +60,9 @@ struct SearchPartyView: View {
             }
             
             
-                    })
+                    }).onAppear() {
+                        self.searchPartyViewModel.fetchData()
+                      }
 
         
     }
@@ -67,6 +70,6 @@ struct SearchPartyView: View {
 
 struct SearchPartyView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchPartyView()
+        SearchPartyView(lostPet: LostPet(id: "TestContent", name: "Fido", sex: "TestContent", age: 3, chatSize: 3, breed: "TestContent", type: "TestContent", description: "TestContent", uniqueMarkings: "TestContent", temperament: "TestContent", healthCondition: "TestContent", generalImages: ["TestContent"], lostDateTime: nil, lostLocation: "TestContent", lostLocationDescription: "TestContent", ownerName: "TestContent", ownerEmail: "TestContent", ownerPhoneNumber: "TestContent", ownerOtherContactMethod: "TestContent", ownerPreferredContactMethod: "TestContent", foundPetDescription: "TestContent", foundPet: true, Owners: ["TestContent"]))
     }
 }

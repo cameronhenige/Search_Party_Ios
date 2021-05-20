@@ -147,7 +147,7 @@ struct LostPetView: View {
 
         
         
-        NavigationLink(destination: SearchPartyView(), isActive: $isOnSearchParty) {
+                NavigationLink(destination: SearchPartyView(lostPet: lostPet), isActive: $isOnSearchParty) {
             Button(action: {
                 self.isOnSearchParty = true
             }) {
