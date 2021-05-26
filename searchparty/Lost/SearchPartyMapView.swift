@@ -15,8 +15,10 @@ struct SearchPartyMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
     @Binding var name : String
+    
 
     @Binding var coordinate: CLLocationCoordinate2D?
+    @Binding var searchPartyUsers: [SearchPartyUser]
 
     
     func makeCoordinator() -> Coordinator {
@@ -55,6 +57,13 @@ struct SearchPartyMapView: UIViewRepresentable {
             let polygon = MKPolygon(coordinates: points, count: points.count)
             
             self.parent.map.addOverlay(polygon)
+            
+            
+            for user in self.parent.searchPartyUsers {
+                
+                print("Users!")
+                //self.parent.map.addAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
+            }
 
             
         }

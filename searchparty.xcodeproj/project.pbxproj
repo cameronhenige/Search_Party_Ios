@@ -58,6 +58,7 @@
 		F27BC5EB26557C680017B198 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = F27BC5EA26557C680017B198 /* BottomSheet */; };
 		F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */; };
 		F27BC5F12655823C0017B198 /* SearchPartyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */; };
+		F27BC5F3265E07D00017B198 /* SearchPartySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5F2265E07D00017B198 /* SearchPartySearch.swift */; };
 		F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A585452607BEDA00E8920E /* SearchPartyView.swift */; };
 		F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854A26083CF100E8920E /* ButtonSecondary.swift */; };
 		F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */; };
@@ -168,6 +169,7 @@
 		F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyMapView.swift; sourceTree = "<group>"; };
 		F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyViewModel.swift; sourceTree = "<group>"; };
+		F27BC5F2265E07D00017B198 /* SearchPartySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartySearch.swift; sourceTree = "<group>"; };
 		F2A585452607BEDA00E8920E /* SearchPartyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyView.swift; sourceTree = "<group>"; };
 		F2A5854A26083CF100E8920E /* ButtonSecondary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSecondary.swift; sourceTree = "<group>"; };
 		F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 				F2791A6C2600759E00C056A6 /* Chat.swift */,
 				F2DBDDE5263B39AE00E9C987 /* PetImagePage.swift */,
 				F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */,
+				F27BC5F2265E07D00017B198 /* SearchPartySearch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -717,6 +720,7 @@
 				F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */,
 				F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
+				F27BC5F3265E07D00017B198 /* SearchPartySearch.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
 				F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */,
 				F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */,

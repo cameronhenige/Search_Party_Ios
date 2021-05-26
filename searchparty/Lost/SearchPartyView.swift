@@ -36,12 +36,8 @@ struct SearchPartyView: View {
     var body: some View {
             VStack {
                 
-                SearchPartyMapView(map: self.$map, name: self.$name, coordinate: self.$currentLocation)
+                SearchPartyMapView(map: self.$map, name: self.$name, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers)
                 
-                
-
-                
-        
             }.bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, hasBottomPosition: false, content: {
             VStack {
             Button(action: {
@@ -51,17 +47,26 @@ struct SearchPartyView: View {
             }.buttonStyle(PrimaryButtonStyle()).padding()
             
                         ScrollView {
-                            ForEach(0..<100) { index in
-                                Text(String(index))
-                            }
-                            .frame(maxWidth: .infinity)
+//                            ForEach(0..<100) { index in
+//                                Text(String(index))
+//                            }
+//                            .frame(maxWidth: .infinity)
+                            
+                            ForEach(searchPartyViewModel.searchPartyUsers) { user in
+                                Text(String("User"))
+                                Text(String(reflecting: user.searches))
+
+                                Text(String(user.name ?? "Private"))
+
+                            }.frame(maxWidth: .infinity)
+                            
                         }
             
             }
             
             
                     }).onAppear() {
-                        self.searchPartyViewModel.fetchData()
+                        self.searchPartyViewModel.fetchData(lostPet: lostPet)
                       }
 
         
