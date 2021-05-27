@@ -10,6 +10,7 @@
 
 import SwiftUI
 import MapKit
+import FirebaseFirestore
 
 struct SearchPartyMapView: UIViewRepresentable {
     
@@ -62,7 +63,7 @@ struct SearchPartyMapView: UIViewRepresentable {
             for user in self.parent.searchPartyUsers {
                 
                 print("Users!")
-                //self.parent.map.addAnnotation(<#T##annotation: MKAnnotation##MKAnnotation#>)
+                //self.parent.map.addAnnotation(T##annotation: MKAnnotation##MKAnnotation)
             }
 
             
@@ -70,11 +71,30 @@ struct SearchPartyMapView: UIViewRepresentable {
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             
+            if let polyline = overlay as? PathPolyline {
+                        let testlineRenderer = MKPolylineRenderer(polyline: polyline)
+                        //testlineRenderer.strokeColor = .blue
+                testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
+
+                        testlineRenderer.lineWidth = 2.0
+                        return testlineRenderer
+            }
+            
+            if let polyline = overlay as? MKPolygon {
+                let over = MKPolygonRenderer(overlay: overlay)
+                over.strokeColor = UIConfiguration.colorPrimary
+                over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
+                over.lineWidth = 3
+                return over
+                    
+            }
+            
             let over = MKPolygonRenderer(overlay: overlay)
             over.strokeColor = UIConfiguration.colorPrimary
             over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
             over.lineWidth = 3
             return over
+
         }
         
         
@@ -89,8 +109,53 @@ struct SearchPartyMapView: UIViewRepresentable {
         
         return map
     }
+    
+    private func getLatLngsFromPath(path: [GeoPoint]) -> [CLLocationCoordinate2D] {
+        var latLngsOnPath = [CLLocationCoordinate2D]()
+
+        for point in path {
+            let latLng = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+
+            latLngsOnPath.append(latLng)
+        }
+        return latLngsOnPath
+    }
 
     func updateUIView(_ view: MKMapView, context: Context) {
+        print("Update ui view")
+        
+        
+        
+        for user in self.searchPartyUsers {
+
+            if(user.searches != nil) {
+                
+                for search in user.searches ?? []{
+                    if(search.path != nil && !search.path.isEmpty) {
+                        let latLngsOnPath = getLatLngsFromPath(path: search.path)
+                        
+                    
+                        let testline = PathPolyline(coordinates: latLngsOnPath, count: latLngsOnPath.count)
+                        testline.color = "#ff0000" //todo
+                        //Add `MKPolyLine` as an overlay.
+                        self.map.addOverlay(testline)
+                        
+                    }
+                }
+            }
+        }
+        
+
+
+
+                   
+            
+
+    
+        
+        
+        
+        
     }
 }
 
