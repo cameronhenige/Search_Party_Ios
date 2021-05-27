@@ -9,13 +9,16 @@
 import Foundation
 import CoreLocation
 import MapKit
+import FirebaseCore
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var locations: [MKPointAnnotation] = []
     
     @Published var searchPartyUsers = [SearchPartyUser]()
     @Published var searchPartySearches = [SearchPartySearch]()
+    var lostPet: LostPet?
 
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -29,6 +32,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     private var db = Firestore.firestore()
     
     func fetchData(lostPet: LostPet) {
+        self.lostPet = lostPet
         //todo correct this call
         db.collection("Lost").document(lostPet.id!).collection("SearchPartyUsers").addSnapshotListener { (querySnapshot, error) in
         guard let documents = querySnapshot?.documents else {
@@ -83,6 +87,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     }
 
     private func getSearchesForUser(user: SearchPartyUser, searches: [SearchPartySearch]) -> [SearchPartySearch]{
+        //todo filter these
 //        var matchingSearches: ArrayList<SearchPartySearch> = arrayListOf()
 //
 //        for(search in searches){
@@ -99,6 +104,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         //sender.isSelected = !sender.isSelected
         //if sender.isSelected {
             locationManager.startUpdatingLocation()
+        
         //} else {
             //locationManager.stopUpdatingLocation()
         //}
@@ -132,11 +138,44 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
             //mapView.removeAnnotation(annotationToRemove)
         }
         
+        print(self.locations.first)
+        print("New location!")
+        
+        updatePathToBackend(location: mostRecentLocation)
+        
 //        if UIApplication.shared.applicationState == .active {
 //            self.mapView.showAnnotations(self.locations, animated: true)
 //        } else {
 //            print("App is in background mode at location: \(mostRecentLocation)")
 //        }
+        
+    }
+    
+    func updatePathToBackend(location: CLLocation) {
+        
+        let geoPoint = GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        print(lostPet?.id)
+        db.collection("Lost").document(lostPet!.id!).collection("Searches").document("v4el89bTn19Ka5RSZLXR").updateData(["path" : FieldValue.arrayUnion([geoPoint])]){ err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+        
+        
+//        NewFirestoreUtil().getUserSearchPartyReference(lostPetId!!, currentSearchId!!).update("path", FieldValue.arrayUnion(geoPoint)).addOnSuccessListener {
+//            numberOfUpdates++
+//
+//            if(numberOfUpdates >= MAX_NUMBER_OF_UPDATES){
+//                endSearch()
+//            }
+//        }.addOnFailureListener {
+//            Toast.makeText(applicationContext, "Failure adding latest location.", Toast.LENGTH_SHORT).show()
+//        }
+        
+        
         
     }
     
