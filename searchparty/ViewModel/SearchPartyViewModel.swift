@@ -15,6 +15,10 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class SearchPartyViewModel: NSObject, ObservableObject {
+    
+    @Published var currentLocation: CLLocation?
+    @Published var initialLocationGeoHash: String?
+
     @Published var locations: [MKPointAnnotation] = []
     
     @Published var searchPartyUsers = [SearchPartyUser]()
@@ -32,6 +36,9 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     }()
         
     func fetchData(lostPet: LostPet) {
+        
+        //todo locationManager.requestLocation()
+
         self.lostPet = lostPet
         //todo correct this call
         Firestore.firestore().collection("Lost").document(lostPet.id!).collection("SearchPartyUsers").addSnapshotListener { (querySnapshot, error) in
@@ -39,17 +46,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
           print("No documents")
           return
         }
-//        self.searchPartyUsers = documents.map { queryDocumentSnapshot -> SearchPartyUser in
-//
-//            return try queryDocumentSnapshot.data(as: SearchPartyUser.self)!
-//
-////          let data = queryDocumentSnapshot.data()
-////          let title = data["title"] as? String ?? ""
-////          let author = data["author"] as? String ?? ""
-////          let numberOfPages = data["pages"] as? Int ?? 0
-////          return Book(id: .init(), title: title, author: author, numberOfPages: numberOfPages)
-//        }
-            
+
             self.searchPartyUsers = documents.compactMap { document -> SearchPartyUser? in
               try? document.data(as: SearchPartyUser.self)
             }
@@ -98,17 +95,88 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     
     func startUpdatingLocationButtonAction() {
         
-        //sender.isSelected = !sender.isSelected
         if isSearching {
             locationManager.stopUpdatingLocation()
             isSearching = false
         } else {
-            locationManager.startUpdatingLocation()
-            isSearching = true
+            
+            if(currentLocation != nil){
+            checkForJoined()
+            }else{
+                //todo tell user to wait for current location
+            }
+            
+
         }
         
        // startUpdatingLocationButton.setTitle(startUpdatingLocationButton.isSelected ? "Stop Updating Location" : "Start Updating Location", for: .normal)
         
+    }
+    
+    private func checkForJoined() {
+        
+        Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("SearchPartyUsers").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+            if let document = document {
+                
+                if(document.exists) {
+                    self.addNewSearch()
+
+                }else {
+//                    NewFirestoreUtil().getLostPetUser(lostPet.id!!).set(getSearchPartyUser(), SetOptions.merge()).addOnSuccessListener {
+//                        addNewSearch()
+//
+//                    }.addOnFailureListener {
+//                        Toast.makeText(requireContext(), "There was an issue joining this search party.", Toast.LENGTH_SHORT).show()
+//                    }
+                }
+                
+            } else {
+                print("Document does not exist") //todo handle failure
+            }
+        }
+    }
+        
+    private func addNewSearch() {
+        
+        Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("SearchPartyUsers").addDocument(data: [
+            "uid": Auth.auth().currentUser!.uid
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)") //todo
+            } else {
+                
+                self.initialLocationGeoHash = self.currentLocation?.coordinate.geohash(length: 7)
+                
+                
+                Firestore.firestore().collection("User").document(Auth.auth().currentUser!.uid).updateData([
+                    "searchStartLocations": FieldValue.arrayUnion([self.initialLocationGeoHash])
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        
+                        
+                        print("Document successfully updated")
+
+                        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+                            if let document = document {
+                                
+                                if(document.exists) {
+                                    //start searching
+                                    
+                                    self.locationManager.startUpdatingLocation()
+                                    self.isSearching = true
+
+                                }else {
+                                    //todo handle error
+                                }
+
+                }
+            }
+        }
+    }
+            }
+        }
     }
     
 }
@@ -119,6 +187,8 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
         guard let mostRecentLocation = locations.last else {
             return
         }
+        
+        currentLocation = mostRecentLocation
         
         // Add another annotation to the map.
         let annotation = MKPointAnnotation()
