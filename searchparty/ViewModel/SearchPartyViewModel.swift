@@ -12,6 +12,7 @@ import MapKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var locations: [MKPointAnnotation] = []
@@ -19,6 +20,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var searchPartyUsers = [SearchPartyUser]()
     @Published var searchPartySearches = [SearchPartySearch]()
     var lostPet: LostPet?
+    @Published var isSearching: Bool = false
 
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -28,13 +30,11 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         manager.allowsBackgroundLocationUpdates = true
         return manager
     }()
-    
-    private var db = Firestore.firestore()
-    
+        
     func fetchData(lostPet: LostPet) {
         self.lostPet = lostPet
         //todo correct this call
-        db.collection("Lost").document(lostPet.id!).collection("SearchPartyUsers").addSnapshotListener { (querySnapshot, error) in
+        Firestore.firestore().collection("Lost").document(lostPet.id!).collection("SearchPartyUsers").addSnapshotListener { (querySnapshot, error) in
         guard let documents = querySnapshot?.documents else {
           print("No documents")
           return
@@ -54,11 +54,10 @@ class SearchPartyViewModel: NSObject, ObservableObject {
               try? document.data(as: SearchPartyUser.self)
             }
             
-            print(self.searchPartyUsers)
             
       }
         
-        db.collection("Lost").document(lostPet.id!).collection("Searches").addSnapshotListener { (querySnapshot, error) in
+        Firestore.firestore().collection("Lost").document(lostPet.id!).collection("Searches").addSnapshotListener { (querySnapshot, error) in
         guard let documents = querySnapshot?.documents else {
           print("No documents")
           return
@@ -69,8 +68,6 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             }
 
             self.updateSearchesForUser(searches: self.searchPartySearches)
-
-            print(self.searchPartyUsers)
 
       }
         
@@ -102,12 +99,13 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     func startUpdatingLocationButtonAction() {
         
         //sender.isSelected = !sender.isSelected
-        //if sender.isSelected {
+        if isSearching {
+            locationManager.stopUpdatingLocation()
+            isSearching = false
+        } else {
             locationManager.startUpdatingLocation()
-        
-        //} else {
-            //locationManager.stopUpdatingLocation()
-        //}
+            isSearching = true
+        }
         
        // startUpdatingLocationButton.setTitle(startUpdatingLocationButton.isSelected ? "Stop Updating Location" : "Start Updating Location", for: .normal)
         
@@ -138,7 +136,6 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
             //mapView.removeAnnotation(annotationToRemove)
         }
         
-        print(self.locations.first)
         print("New location!")
         
         updatePathToBackend(location: mostRecentLocation)
@@ -154,8 +151,10 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
     func updatePathToBackend(location: CLLocation) {
         
         let geoPoint = GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        print(lostPet?.id)
-        db.collection("Lost").document(lostPet!.id!).collection("Searches").document("v4el89bTn19Ka5RSZLXR").updateData(["path" : FieldValue.arrayUnion([geoPoint])]){ err in
+        print(location.coordinate.latitude)
+        print(location.coordinate.longitude)
+
+        Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("Searches").document("v4el89bTn19Ka5RSZLXR").updateData(["path" : FieldValue.arrayUnion([geoPoint])]){ err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {

@@ -32,6 +32,13 @@ struct SearchPartyView: View {
 
     @State var map = MKMapView()
 
+    var SearchingButtonText: some View {
+                        if(searchPartyViewModel.isSearching) {
+                            return Text("Stop Searching" )
+                        } else {
+                            return Text("Search for \(lostPet.name)" )
+                        }
+    }
     
     var body: some View {
             VStack {
@@ -43,7 +50,10 @@ struct SearchPartyView: View {
             Button(action: {
                 searchPartyViewModel.startUpdatingLocationButtonAction()
             }) {
-                Text("Search for \(lostPet.name)" )
+
+                
+                SearchingButtonText
+                
             }.buttonStyle(PrimaryButtonStyle()).padding()
             
                         ScrollView {
@@ -54,9 +64,8 @@ struct SearchPartyView: View {
                             
                             ForEach(searchPartyViewModel.searchPartyUsers) { user in
                                 Text(String("User"))
-                                Text(String(reflecting: user.searches))
 
-                                Text(String(user.name ?? "Private"))
+                                Text(String(user.name ?? "Private")) //todo
 
                             }.frame(maxWidth: .infinity)
                             
