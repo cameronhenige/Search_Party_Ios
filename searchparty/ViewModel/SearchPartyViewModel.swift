@@ -25,6 +25,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var searchPartySearches = [SearchPartySearch]()
     var lostPet: LostPet?
     @Published var isSearching: Bool = false
+    
+    var currentSearchId: String = ""
 
     private lazy var locationManager: CLLocationManager = {
         let manager = CLLocationManager()
@@ -37,7 +39,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         
     func fetchData(lostPet: LostPet) {
         
-        //todo locationManager.requestLocation()
+        locationManager.requestLocation()
 
         self.lostPet = lostPet
         //todo correct this call
@@ -122,12 +124,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                     self.addNewSearch()
 
                 }else {
-//                    NewFirestoreUtil().getLostPetUser(lostPet.id!!).set(getSearchPartyUser(), SetOptions.merge()).addOnSuccessListener {
-//                        addNewSearch()
-//
-//                    }.addOnFailureListener {
-//                        Toast.makeText(requireContext(), "There was an issue joining this search party.", Toast.LENGTH_SHORT).show()
-//                    }
+                    self.joinSearchParty()
+
                 }
                 
             } else {
@@ -135,61 +133,86 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             }
         }
     }
+    
         
-    private func addNewSearch() {
+    private func joinSearchParty() {
         
-        Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("SearchPartyUsers").addDocument(data: [
-            "uid": Auth.auth().currentUser!.uid
-        ]) { err in
+    Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("SearchPartyUsers").document(Auth.auth().currentUser!.uid).setData([
+        "uid": Auth.auth().currentUser!.uid
+    ], merge: true) { err in
             if let err = err {
                 print("Error adding document: \(err)") //todo
             } else {
                 
-                self.initialLocationGeoHash = self.currentLocation?.coordinate.geohash(length: 7)
-                
-                
-                Firestore.firestore().collection("User").document(Auth.auth().currentUser!.uid).updateData([
-                    "searchStartLocations": FieldValue.arrayUnion([self.initialLocationGeoHash])
-                ]) { err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        
-                        
-                        print("Document successfully updated")
+                self.addNewSearch()
 
-                        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
-                            if let document = document {
-                                
-                                if(document.exists) {
-                                    //start searching
-                                    
+            }
+        }
+    }
+    
+    func addNewSearch() {
+        self.initialLocationGeoHash = self.currentLocation?.coordinate.geohash(length: 7)
+        
+        
+        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).updateData([
+            "searchStartLocations": FieldValue.arrayUnion([self.initialLocationGeoHash])
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                
+                
+                print("Document successfully updated")
+
+                Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+                    if let document = document {
+                        
+                        if(document.exists) {
+                            //start searching
+                            var ref: DocumentReference? = Firestore.firestore().collection("Lost").document(self.lostPet!.id!).collection("Searches").addDocument(data: [
+                                "uid": Auth.auth().currentUser!.uid
+                            ]) { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)") //todo
+                                } else {
+                                    self.currentSearchId = ref!.documentID
+                                    //todo get search start locations
                                     self.locationManager.startUpdatingLocation()
                                     self.isSearching = true
-
-                                }else {
-                                    //todo handle error
                                 }
+                            }
+                            
+                            
 
-                }
-            }
+
+                        }else {
+                            //todo handle error
+                        }
+
         }
     }
-            }
-        }
+}
+}
     }
+        
+
     
 }
 
 extension SearchPartyViewModel: CLLocationManagerDelegate {
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let mostRecentLocation = locations.last else {
             return
         }
-        
+                
         currentLocation = mostRecentLocation
         
+        if(isSearching) {
         // Add another annotation to the map.
         let annotation = MKPointAnnotation()
         annotation.coordinate = mostRecentLocation.coordinate
@@ -215,6 +238,8 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
 //        } else {
 //            print("App is in background mode at location: \(mostRecentLocation)")
 //        }
+            
+        }
         
     }
     
@@ -224,7 +249,7 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
         print(location.coordinate.latitude)
         print(location.coordinate.longitude)
 
-        Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("Searches").document("v4el89bTn19Ka5RSZLXR").updateData(["path" : FieldValue.arrayUnion([geoPoint])]){ err in
+        Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("Searches").document(currentSearchId).updateData(["path" : FieldValue.arrayUnion([geoPoint])]){ err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
