@@ -16,11 +16,12 @@ struct SearchPartyMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
     @Binding var name : String
-    
+        
 
     @Binding var coordinate: CLLocationCoordinate2D?
     @Binding var searchPartyUsers: [SearchPartyUser]
 
+    
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -41,6 +42,7 @@ struct SearchPartyMapView: UIViewRepresentable {
             self.parent.coordinate = mapView.centerCoordinate
             self.parent.map.removeOverlays(self.parent.map.overlays)
             
+            
             let geoHash = mapView.centerCoordinate.geohash(length: 7)
             print("current geohash " + geoHash)
             
@@ -60,11 +62,14 @@ struct SearchPartyMapView: UIViewRepresentable {
             self.parent.map.addOverlay(polygon)
             
             
+            
             for user in self.parent.searchPartyUsers {
                 
                 print("Users!")
                 //self.parent.map.addAnnotation(T##annotation: MKAnnotation##MKAnnotation)
             }
+            
+
 
             
         }
@@ -102,6 +107,7 @@ struct SearchPartyMapView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         map.delegate = context.coordinator
+        map.showsUserLocation = true
 //        let centerCoordinate = coordinate ?? initialLocation
 //        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
 //        let region = MKCoordinateRegion(center: centerCoordinate, span: span)
@@ -124,7 +130,8 @@ struct SearchPartyMapView: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         print("Update ui view")
         
-        
+        var overlays = [MKOverlay]()
+
         
         for user in self.searchPartyUsers {
 
@@ -138,12 +145,29 @@ struct SearchPartyMapView: UIViewRepresentable {
                         let testline = PathPolyline(coordinates: latLngsOnPath, count: latLngsOnPath.count)
                         testline.color = "#ff0000" //todo
                         //Add `MKPolyLine` as an overlay.
-                        self.map.addOverlay(testline)
+                        overlays.append(testline)
                         
                     }
                 }
             }
         }
+        
+        self.map.addOverlays(overlays)
+
+//        print("sacsdsd")
+//        print(overlays.count)
+//
+//        if(!self.hasScrolledToInitialSearches && !overlays.isEmpty) {
+////            //scroll to all searches
+////
+////                    //let centerCoordinate = coordinate ?? initialLocation
+////                    let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+////            let region = MKCoordinateRegion(center: overlays[0].coordinate, span: span)
+////                    map.setRegion(region, animated: false)
+//            print(overlays.count)
+//            print("Scrolling to overlays")
+//            map.showAnnotations(overlays, animated: false)
+//        }
         
 
 

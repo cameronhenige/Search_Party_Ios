@@ -13,6 +13,7 @@ import FirebaseCore
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import UserNotifications
 
 class SearchPartyViewModel: NSObject, ObservableObject {
     
@@ -22,6 +23,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var locations: [MKPointAnnotation] = []
     
     @Published var searchPartyUsers = [SearchPartyUser]()
+    @Published var hasScrolledToInitialSearches = false
+    
     @Published var searchPartySearches = [SearchPartySearch]()
     var lostPet: LostPet?
     @Published var isSearching: Bool = false
@@ -78,6 +81,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             self.searchPartyUsers[index].searches = getSearchesForUser(user: self.searchPartyUsers[index], searches: searches)
         }
         
+        hasScrolledToInitialSearches = true
+        
 
         
     }
@@ -100,6 +105,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         if isSearching {
             locationManager.stopUpdatingLocation()
             isSearching = false
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["identifier"])
+
         } else {
             
             if(currentLocation != nil){
@@ -177,6 +184,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                                 } else {
                                     self.currentSearchId = ref!.documentID
                                     //todo get search start locations
+                                    
+                                    self.sendSearchingNotification()
                                     self.locationManager.startUpdatingLocation()
                                     self.isSearching = true
                                 }
@@ -194,6 +203,73 @@ class SearchPartyViewModel: NSObject, ObservableObject {
 }
 }
     }
+    
+    func sendSearchingNotification() {
+//        let content = UNMutableNotificationContent()
+//        content.title = NSString.localizedUserNotificationString(forKey: "Wake up!", arguments: nil)
+//        content.body = NSString.localizedUserNotificationString(forKey: "Rise and shine! It's morning time!",
+//                                                                arguments: nil)
+//
+//        // Configure the trigger for a 7am wakeup.
+////        var dateInfo = DateComponents()
+////        dateInfo.hour = 7
+////        dateInfo.minute = 0
+//            //let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+//
+//        // Create the request object.
+//        let request = UNNotificationRequest(identifier: "MorningAlarm", content: content, trigger: nil)
+//
+//        // Schedule the request.
+//        let center = UNUserNotificationCenter.current()
+//        center.add(request) { (error : Error?) in
+//            if let theError = error {
+//                print(theError.localizedDescription)
+//            }
+//        }
+
+        
+        let content = UNMutableNotificationContent()
+        let categoryIdentifire = "Delete Notification Type"
+        
+        content.title = "notificationType"
+        content.body = "This is example how to create "
+        content.sound = UNNotificationSound.default
+        content.badge = 1
+        content.categoryIdentifier = categoryIdentifire
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let identifier = "Local Notification"
+        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+        }
+        
+        
+    }
+    
+//    func sendSearchingNotification() {
+//        let center = UNUserNotificationCenter.current()
+//
+//        let content = UNMutableNotificationContent()
+//        content.title = "Late wake up call"
+//        content.body = "The early bird catches the worm, but the second mouse gets the cheese."
+//        content.categoryIdentifier = "alarm"
+//        content.userInfo = ["customData": "fizzbuzz"]
+//        content.sound = UNNotificationSound.default
+//
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 10
+//        dateComponents.minute = 30
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+//
+//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
+//        center.add(request)
+//
+//
+//
+//    }
         
 
     
