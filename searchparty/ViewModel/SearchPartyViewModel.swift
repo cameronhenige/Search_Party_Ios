@@ -87,17 +87,17 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         
     }
 
-    private func getSearchesForUser(user: SearchPartyUser, searches: [SearchPartySearch]) -> [SearchPartySearch]{
-        //todo filter these
-//        var matchingSearches: ArrayList<SearchPartySearch> = arrayListOf()
-//
-//        for(search in searches){
-//            if(search.uid == user.id){
-//                matchingSearches.add(search)
-//            }
-//        }
-//        return matchingSearches
-        return searches
+    private func getSearchesForUser(user: SearchPartyUser, searches: [SearchPartySearch]) -> [SearchPartySearch] {
+        
+        var matchingSearches: [SearchPartySearch] = []
+        
+        for search in searches {
+            if(search.uid == user.id){
+                matchingSearches.append(search)
+            }
+        }
+        return matchingSearches
+
     }
     
     func startUpdatingLocationButtonAction() {
@@ -162,9 +162,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         let greenValue = CGFloat(drand48())
         let blueValue = CGFloat(drand48())
             
-        let randomColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
+        return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
             
-        return randomColor
         }
     
     func addNewSearch() {

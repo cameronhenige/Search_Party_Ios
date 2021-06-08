@@ -68,10 +68,9 @@ struct SearchPartyMapView: UIViewRepresentable {
             
             if let polyline = overlay as? PathPolyline {
                         let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-                        //testlineRenderer.strokeColor = .blue
                 testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
-
-                        testlineRenderer.lineWidth = 2.0
+                
+                        testlineRenderer.lineWidth = 3.0
                         return testlineRenderer
             }
             
@@ -134,9 +133,7 @@ struct SearchPartyMapView: UIViewRepresentable {
                     
                         let testline = PathPolyline(coordinates: latLngsOnPath, count: latLngsOnPath.count)
                         //generateRandomColor().toHexString()
-                        
                         testline.color = user.color ?? "#FF0000"
-                        
                         
                         //Add `MKPolyLine` as an overlay.
                         overlays.append(testline)
@@ -144,6 +141,7 @@ struct SearchPartyMapView: UIViewRepresentable {
                     }
                 }
             }
+            //print(user.color)
         }
         
         self.map.addOverlays(overlays)
