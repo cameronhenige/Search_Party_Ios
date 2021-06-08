@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 struct SearchPartyUser: Codable, Identifiable {
     @DocumentID var id: String?
-    var color: Int?
+    var color: String?
     var name: String?
     var searches: [SearchPartySearch]?
 }

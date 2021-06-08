@@ -16,20 +16,13 @@ struct SearchPartyMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
     @Binding var name : String
-        
-
     @Binding var coordinate: CLLocationCoordinate2D?
     @Binding var searchPartyUsers: [SearchPartyUser]
-
-    
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
-    
-
-    //var initialLocation: CLLocationCoordinate2D
-    
+        
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: SearchPartyMapView
         
@@ -44,10 +37,7 @@ struct SearchPartyMapView: UIViewRepresentable {
             
             
             let geoHash = mapView.centerCoordinate.geohash(length: 7)
-            print("current geohash " + geoHash)
-            
-            print(GeoHashConverter.decode(hash: geoHash))
-            
+                        
             let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
             
             let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
@@ -143,7 +133,11 @@ struct SearchPartyMapView: UIViewRepresentable {
                         
                     
                         let testline = PathPolyline(coordinates: latLngsOnPath, count: latLngsOnPath.count)
-                        testline.color = "#ff0000" //todo
+                        //generateRandomColor().toHexString()
+                        
+                        testline.color = user.color ?? "#FF0000"
+                        
+                        
                         //Add `MKPolyLine` as an overlay.
                         overlays.append(testline)
                         
@@ -181,6 +175,16 @@ struct SearchPartyMapView: UIViewRepresentable {
         
         
     }
+    
+    func generateRandomColor() -> UIColor {
+        let redValue = CGFloat(drand48())
+        let greenValue = CGFloat(drand48())
+        let blueValue = CGFloat(drand48())
+            
+        let randomColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
+            
+        return randomColor
+        }
 }
 
 //struct MapView_Previews: PreviewProvider {
