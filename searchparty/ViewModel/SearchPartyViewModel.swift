@@ -76,12 +76,13 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     }
     
     private func updateSearchesForUser(searches: [SearchPartySearch]) {
+        var newSearchPartyUsers: [SearchPartyUser] = self.searchPartyUsers
         
         for (index, element) in self.searchPartyUsers.enumerated() {
-            self.searchPartyUsers[index].searches = getSearchesForUser(user: self.searchPartyUsers[index], searches: searches)
+            newSearchPartyUsers[index].searches = getSearchesForUser(user: self.searchPartyUsers[index], searches: searches)
         }
         
-        hasScrolledToInitialSearches = true
+        self.searchPartyUsers = newSearchPartyUsers
         
 
         

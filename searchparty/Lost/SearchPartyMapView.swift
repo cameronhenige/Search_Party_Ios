@@ -25,7 +25,8 @@ struct SearchPartyMapView: UIViewRepresentable {
         
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: SearchPartyMapView
-        
+        var hasZoomed = false
+
         init(_ parent: SearchPartyMapView) {
             self.parent = parent
         }
@@ -34,31 +35,31 @@ struct SearchPartyMapView: UIViewRepresentable {
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
             self.parent.map.removeOverlays(self.parent.map.overlays)
-            
-            
+
+
             let geoHash = mapView.centerCoordinate.geohash(length: 7)
-                        
+
             let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
-            
+
             let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
             let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
             let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
             let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
 
             let points = [topLeft, topRight, bottomRight, bottomLeft]
-            
+
             let polygon = MKPolygon(coordinates: points, count: points.count)
-            
+
             self.parent.map.addOverlay(polygon)
-            
-            
-            
+
+
+
             for user in self.parent.searchPartyUsers {
-                
+
                 print("Users!")
                 //self.parent.map.addAnnotation(T##annotation: MKAnnotation##MKAnnotation)
             }
-            
+
 
 
             
@@ -69,19 +70,11 @@ struct SearchPartyMapView: UIViewRepresentable {
             if let polyline = overlay as? PathPolyline {
                         let testlineRenderer = MKPolylineRenderer(polyline: polyline)
                 testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
-                
+                        
                         testlineRenderer.lineWidth = 3.0
                         return testlineRenderer
             }
             
-            if let polyline = overlay as? MKPolygon {
-                let over = MKPolygonRenderer(overlay: overlay)
-                over.strokeColor = UIConfiguration.colorPrimary
-                over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
-                over.lineWidth = 3
-                return over
-                    
-            }
             
             let over = MKPolygonRenderer(overlay: overlay)
             over.strokeColor = UIConfiguration.colorPrimary
@@ -119,7 +112,7 @@ struct SearchPartyMapView: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         print("Update ui view")
         
-        var overlays = [MKOverlay]()
+        var overlays = [PathPolyline]()
 
         
         for user in self.searchPartyUsers {
@@ -127,9 +120,8 @@ struct SearchPartyMapView: UIViewRepresentable {
             if(user.searches != nil) {
                 
                 for search in user.searches ?? []{
-                    if(search.path != nil && !search.path.isEmpty) {
+                    if(!search.path.isEmpty) {
                         let latLngsOnPath = getLatLngsFromPath(path: search.path)
-                        
                     
                         let testline = PathPolyline(coordinates: latLngsOnPath, count: latLngsOnPath.count)
                         //generateRandomColor().toHexString()
@@ -141,35 +133,43 @@ struct SearchPartyMapView: UIViewRepresentable {
                     }
                 }
             }
-            //print(user.color)
         }
         
+        print(overlays)
         self.map.addOverlays(overlays)
-
-//        print("sacsdsd")
-//        print(overlays.count)
-//
-//        if(!self.hasScrolledToInitialSearches && !overlays.isEmpty) {
-////            //scroll to all searches
-////
-////                    //let centerCoordinate = coordinate ?? initialLocation
-////                    let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-////            let region = MKCoordinateRegion(center: overlays[0].coordinate, span: span)
-////                    map.setRegion(region, animated: false)
-//            print(overlays.count)
-//            print("Scrolling to overlays")
-//            map.showAnnotations(overlays, animated: false)
-//        }
         
-
-
-
-                   
-            
-
+        if(!context.coordinator.hasZoomed && !overlays.isEmpty) {
+            var allRects :MKMapRect = overlays[0].boundingMapRect
+            for overlay in overlays {
+                allRects = allRects.union(overlay.boundingMapRect)
+            }
+            let rect = map.mapRectThatFits(allRects, edgePadding: UIEdgeInsets(top: 70, left: 70, bottom: 170, right: 70))
+            map.setVisibleMapRect(rect, animated: false)
+            context.coordinator.hasZoomed = true
+        }
+  
+    }
     
+    func getMkMapRectFromSearches(polyLines: [PathPolyline]) -> MKMapRect{
+        
+//        // these are your two lat/long coordinates
+//        let coordinate1 = CLLocationCoordinate2DMake(52.5200,long1);
+//        let coordinate2 = CLLocationCoordinate2DMake(lat2,long2);
+//
+//        // convert them to MKMapPoint
+//        let p1 = MKMapPointForCoordinate (coordinate1);
+//        let p2 = MKMapPointForCoordinate (coordinate2);
+//
+//        // and make a MKMapRect using mins and spans
+//        let mapRect = MKMapRectMake(fmin(p1.x,p2.x), fmin(p1.y,p2.y), fabs(p1.x-p2.x), fabs(p1.y-p2.y));
+//
+//        return mapRect
         
         
+        //return MKMapRect.init(x: 52.5200, y: 13.4050, width: 100000, height: 100000);
+        
+        return MKMapRect(x: 52.5200, y: 13.4050, width: 0.1, height: 0.1);
+
         
         
     }
