@@ -22,6 +22,11 @@ class SearchPartyViewModel: NSObject, ObservableObject {
 
     @Published var locations: [MKPointAnnotation] = []
     
+    @Published var searchDates: [Timestamp] = []
+    
+    @Published var listOfDays: [Date] = []
+
+
     @Published var searchPartyUsers = [SearchPartyUser]()
     @Published var hasScrolledToInitialSearches = false
     
@@ -68,10 +73,26 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             self.searchPartySearches = documents.compactMap { document -> SearchPartySearch? in
               try? document.data(as: SearchPartySearch.self)
             }
+            self.updateTabDays(searches: self.searchPartySearches)
 
             self.updateSearchesForUser(searches: self.searchPartySearches)
 
       }
+        
+    }
+    
+    func updateTabDays(searches: [SearchPartySearch]) {
+    
+        self.listOfDays.removeAll()
+        for search in searches {
+            if( search.created != nil){
+                let date = search.created?.dateValue().removeTimeStamp
+                
+                if(!self.listOfDays.contains(date!)){
+                    self.listOfDays.append(date!)
+                }
+            }
+        }
         
     }
     

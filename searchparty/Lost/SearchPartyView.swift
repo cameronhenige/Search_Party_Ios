@@ -51,15 +51,19 @@ struct SearchPartyView: View {
                                         
                     
                     
-                    ScrollView(.horizontal) {
+                    ScrollView(.horizontal, showsIndicators: false) {
                         
-                        
+                        ZStack {
+                                    RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                        .fill(Color.white)
                                 LazyHStack {
-                                    
-                                    ForEach(0...50, id: \.self) { index in
-                                        Text(String(index))
+                                    ForEach(searchPartyViewModel.listOfDays, id: \.self) { day in
+                                        Text(String(day.description))
                                     }
-                                }.frame(height: 100, alignment: .top)
+                                    
+                                }
+                            
+                        }.frame(height: 50, alignment: .top).padding()
                         
                     }
                 }

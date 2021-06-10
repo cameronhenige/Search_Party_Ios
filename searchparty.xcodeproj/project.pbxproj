@@ -44,6 +44,7 @@
 		F220A6A7265F4FDB00319F2F /* PathPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6A6265F4FDB00319F2F /* PathPolyline.swift */; };
 		F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C7266F220A00319F2F /* ColorExtension.swift */; };
 		F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C92671B4EA00319F2F /* TestUIFile.swift */; };
+		F220A6CE2671C13B00319F2F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6CD2671C13B00319F2F /* DateExtension.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -159,6 +160,7 @@
 		F220A6A6265F4FDB00319F2F /* PathPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathPolyline.swift; sourceTree = "<group>"; };
 		F220A6C7266F220A00319F2F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F220A6C92671B4EA00319F2F /* TestUIFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIFile.swift; sourceTree = "<group>"; };
+		F220A6CD2671C13B00319F2F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */,
 				F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */,
 				F220A6C7266F220A00319F2F /* ColorExtension.swift */,
+				F220A6CD2671C13B00319F2F /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				F2D7459725FB2484003C5157 /* Subview.swift in Sources */,
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
 				F21E41AE264B0D4400199197 /* LocationViewController.swift in Sources */,
+				F220A6CE2671C13B00319F2F /* DateExtension.swift in Sources */,
 				F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */,
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
