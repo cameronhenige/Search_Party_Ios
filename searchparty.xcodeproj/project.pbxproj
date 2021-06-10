@@ -43,6 +43,7 @@
 		F21E41B0264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */; };
 		F220A6A7265F4FDB00319F2F /* PathPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6A6265F4FDB00319F2F /* PathPolyline.swift */; };
 		F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C7266F220A00319F2F /* ColorExtension.swift */; };
+		F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C92671B4EA00319F2F /* TestUIFile.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -157,6 +158,7 @@
 		F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISearchViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		F220A6A6265F4FDB00319F2F /* PathPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathPolyline.swift; sourceTree = "<group>"; };
 		F220A6C7266F220A00319F2F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		F220A6C92671B4EA00319F2F /* TestUIFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIFile.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 				F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */,
 				F27BC5E3265454080017B198 /* LostViewRouter.swift */,
 				F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */,
+				F220A6C92671B4EA00319F2F /* TestUIFile.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
+				F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
 				344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */,
 				34B4B12524AB668100B092A8 /* Card.swift in Sources */,

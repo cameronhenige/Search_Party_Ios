@@ -50,12 +50,16 @@ struct SearchPartyView: View {
                 SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers)
                                         
                     
+                    
                     ScrollView(.horizontal) {
+                        
+                        
                                 LazyHStack {
+                                    
                                     ForEach(0...50, id: \.self) { index in
                                         Text(String(index))
                                     }
-                                }
+                                }.frame(height: 100, alignment: .top)
                         
                     }
                 }
