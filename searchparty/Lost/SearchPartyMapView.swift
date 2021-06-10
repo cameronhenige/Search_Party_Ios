@@ -99,7 +99,7 @@ struct SearchPartyMapView: UIViewRepresentable {
 //        map.setRegion(region, animated: true)
         
         let buttonItem = MKUserTrackingButton(mapView: map)
-            buttonItem.frame = CGRect(origin: CGPoint(x:25, y: 25), size: CGSize(width: 35, height: 35))
+            buttonItem.frame = CGRect(origin: CGPoint(x:25, y: 80), size: CGSize(width: 35, height: 35))
 
             map.addSubview(buttonItem)
         
@@ -118,7 +118,6 @@ struct SearchPartyMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        print("Update ui view")
         
         var overlays = [PathPolyline]()
 
@@ -143,29 +142,11 @@ struct SearchPartyMapView: UIViewRepresentable {
             }
         }
         
-//        if(isSearching && context.coordinator.currentOverlays.count != overlays.count){
-//
-//            context.coordinator.currentOverlays = overlays
-//            self.map.setUserTrackingMode(.follow, animated: true)
-//            let minZoom: CLLocationDistance = 10000 // desired visible radius from user in metres
-//            let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: minZoom)
-//self.map.setCameraZoomRange(zoomRange, animated: true)
-//        }
 
         
         if(isSearching && !context.coordinator.currentlySearching) {
-            print("start tracking")
 
-
-            
-            //let minZoom: CLLocationDistance = 10000 // desired visible radius from user in metres
-            //let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: minZoom)
-            //self.map.setCameraZoomRange(zoomRange, animated: true)
-//            var currentRegion = self.map.region
-//            currentRegion.span.latitudeDelta = 0.05
-//            currentRegion.span.longitudeDelta = 0.05
-//
-//            self.map.setRegion(currentRegion, animated: false)
+        
             self.map.setUserTrackingMode(.follow, animated: true)
 
             context.coordinator.currentlySearching = true
@@ -173,17 +154,12 @@ struct SearchPartyMapView: UIViewRepresentable {
         
         
         if(!isSearching && context.coordinator.currentlySearching) {
-            print("stop tracking")
             self.map.setUserTrackingMode(.none, animated: true)
             context.coordinator.currentlySearching = false
         }
         
         self.map.addOverlays(overlays)
 
-            //go to location
-//        if(coordinate != nil){
-//        map.setCenter(coordinate!, animated: true)
-//        }
         
         if(!context.coordinator.hasZoomed && !overlays.isEmpty) {
             var allRects :MKMapRect = overlays[0].boundingMapRect

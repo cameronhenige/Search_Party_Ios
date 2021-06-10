@@ -12,6 +12,8 @@ import BottomSheet
 
 struct SearchPartyView: View {
     
+
+    
     var lostPet: LostPet
 
     @ObservedObject var searchPartyViewModel = SearchPartyViewModel()
@@ -20,7 +22,7 @@ struct SearchPartyView: View {
     //@State private var bottomSheetPosition: BottomSheetPosition = .middle
 
     enum CustomBottomSheetPosition: CGFloat, CaseIterable {
-        case top = 0.975, middle = 0.4, bottom = 0.125
+        case top = 0.975, middle = 0.4, bottom = 0.165
     }
     
     @State private var bottomSheetPosition: CustomBottomSheetPosition = .bottom
@@ -34,13 +36,19 @@ struct SearchPartyView: View {
 
     var SearchingButtonText: some View {
                         if(searchPartyViewModel.isSearching) {
-                            return Text("Stop Searching" )
+                            return Text("Stop" )
                         } else {
-                            return Text("Search for \(lostPet.name)" )
+                            return Text("Search" )
                         }
     }
     
     var body: some View {
+        
+        let taskDateFormat: DateFormatter = {
+                let formatter = DateFormatter()
+            formatter.dateStyle = .short
+                return formatter
+            }()
             VStack {
 
                 ZStack(alignment: .top) {
@@ -58,7 +66,7 @@ struct SearchPartyView: View {
                                         .fill(Color.white)
                                 LazyHStack {
                                     ForEach(searchPartyViewModel.listOfDays, id: \.self) { day in
-                                        Text(String(day.description))
+                                        Text(String(taskDateFormat.string(from: day))).padding()
                                     }
                                     
                                 }
@@ -70,15 +78,33 @@ struct SearchPartyView: View {
                 
                 
             }.bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, hasBottomPosition: false, content: {
-            VStack {
-            Button(action: {
-                searchPartyViewModel.startUpdatingLocationButtonAction()
-            }) {
+                VStack {
+                
+                HStack {
+                    Image("cat").resizable()
+                        .frame(width: 100.0, height: 100.0)
 
+                    Text(lostPet.name)
+                    Spacer()
+                    Button(action: {
+                        searchPartyViewModel.startUpdatingLocationButtonAction()
+                    }) {
+
+                        
+                    
+                        SearchingButtonText
+                        
+                    }.buttonStyle(PrimaryButtonStyle()).frame(width: 150)
+                    
+                }
                 
-                SearchingButtonText
-                
-            }.buttonStyle(PrimaryButtonStyle()).padding()
+                    Button(action: {
+                        //todo contact searchPartyViewModel.startUpdatingLocationButtonAction()
+                    }) {
+
+                        Text("Contact Owner")
+                        
+                    }.buttonStyle(PrimaryButtonStyle())
             
                         ScrollView {
 //                            ForEach(0..<100) { index in
@@ -95,7 +121,7 @@ struct SearchPartyView: View {
                             
                         }
             
-            }
+            }.padding(.horizontal)
             
             
                     }).onAppear() {
