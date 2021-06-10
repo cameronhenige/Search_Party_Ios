@@ -111,11 +111,12 @@ struct SearchPartyView: View {
 //                                Text(String(index))
 //                            }
 //                            .frame(maxWidth: .infinity)
-                            
+                            Text("People Searching").padding(.vertical)
+
                             ForEach(searchPartyViewModel.searchPartyUsers) { user in
                                 Text(String("User"))
 
-                                Text(String(user.name ?? "Private")) //todo
+                                Text(String(user.name ?? "Private")).foregroundColor(Color(UIColor(hexString: user.color!)))
 
                             }.frame(maxWidth: .infinity)
                             
