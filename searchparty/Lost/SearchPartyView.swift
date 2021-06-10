@@ -42,8 +42,24 @@ struct SearchPartyView: View {
     
     var body: some View {
             VStack {
+
+                ZStack(alignment: .top) {
                 
-                SearchPartyMapView(map: self.$map, name: self.$name, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers)
+
+                    
+                SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers)
+                                        
+                    
+                    ScrollView(.horizontal) {
+                                LazyHStack {
+                                    ForEach(0...50, id: \.self) { index in
+                                        Text(String(index))
+                                    }
+                                }
+                        
+                    }
+                }
+                
                 
             }.bottomSheet(bottomSheetPosition: self.$bottomSheetPosition, hasBottomPosition: false, content: {
             VStack {

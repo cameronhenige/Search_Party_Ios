@@ -16,9 +16,11 @@ struct SearchPartyMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
     @Binding var name : String
+    @Binding var isSearching : Bool
+
     @Binding var coordinate: CLLocationCoordinate2D?
     @Binding var searchPartyUsers: [SearchPartyUser]
-    
+
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
@@ -26,40 +28,41 @@ struct SearchPartyMapView: UIViewRepresentable {
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: SearchPartyMapView
         var hasZoomed = false
-
+        var currentlySearching = false
+        var currentOverlays = [PathPolyline]()
         init(_ parent: SearchPartyMapView) {
             self.parent = parent
         }
         
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            self.parent.coordinate = mapView.centerCoordinate
-            self.parent.map.removeOverlays(self.parent.map.overlays)
-
-
-            let geoHash = mapView.centerCoordinate.geohash(length: 7)
-
-            let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
-
-            let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
-            let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
-            let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
-            let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
-
-            let points = [topLeft, topRight, bottomRight, bottomLeft]
-
-            let polygon = MKPolygon(coordinates: points, count: points.count)
-
-            self.parent.map.addOverlay(polygon)
-
-
-
-            for user in self.parent.searchPartyUsers {
-
-                print("Users!")
-                //self.parent.map.addAnnotation(T##annotation: MKAnnotation##MKAnnotation)
-            }
-
+//            self.parent.coordinate = mapView.centerCoordinate
+//            self.parent.map.removeOverlays(self.parent.map.overlays)
+//
+//
+//            let geoHash = mapView.centerCoordinate.geohash(length: 7)
+//
+//            let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
+//
+//            let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
+//            let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
+//            let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
+//            let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
+//
+//            let points = [topLeft, topRight, bottomRight, bottomLeft]
+//
+//            let polygon = MKPolygon(coordinates: points, count: points.count)
+//
+//            self.parent.map.addOverlay(polygon)
+//
+//
+//
+//            for user in self.parent.searchPartyUsers {
+//
+//                print("Users!")
+//                //self.parent.map.addAnnotation(T##annotation: MKAnnotation##MKAnnotation)
+//            }
+//
 
 
             
@@ -94,6 +97,11 @@ struct SearchPartyMapView: UIViewRepresentable {
 //        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
 //        let region = MKCoordinateRegion(center: centerCoordinate, span: span)
 //        map.setRegion(region, animated: true)
+        
+        let buttonItem = MKUserTrackingButton(mapView: map)
+            buttonItem.frame = CGRect(origin: CGPoint(x:25, y: 25), size: CGSize(width: 35, height: 35))
+
+            map.addSubview(buttonItem)
         
         return map
     }
@@ -135,8 +143,47 @@ struct SearchPartyMapView: UIViewRepresentable {
             }
         }
         
-        print(overlays)
+//        if(isSearching && context.coordinator.currentOverlays.count != overlays.count){
+//
+//            context.coordinator.currentOverlays = overlays
+//            self.map.setUserTrackingMode(.follow, animated: true)
+//            let minZoom: CLLocationDistance = 10000 // desired visible radius from user in metres
+//            let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: minZoom)
+//self.map.setCameraZoomRange(zoomRange, animated: true)
+//        }
+
+        
+        if(isSearching && !context.coordinator.currentlySearching) {
+            print("start tracking")
+
+
+            
+            //let minZoom: CLLocationDistance = 10000 // desired visible radius from user in metres
+            //let zoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: minZoom)
+            //self.map.setCameraZoomRange(zoomRange, animated: true)
+//            var currentRegion = self.map.region
+//            currentRegion.span.latitudeDelta = 0.05
+//            currentRegion.span.longitudeDelta = 0.05
+//
+//            self.map.setRegion(currentRegion, animated: false)
+            self.map.setUserTrackingMode(.follow, animated: true)
+
+            context.coordinator.currentlySearching = true
+        }
+        
+        
+        if(!isSearching && context.coordinator.currentlySearching) {
+            print("stop tracking")
+            self.map.setUserTrackingMode(.none, animated: true)
+            context.coordinator.currentlySearching = false
+        }
+        
         self.map.addOverlays(overlays)
+
+            //go to location
+//        if(coordinate != nil){
+//        map.setCenter(coordinate!, animated: true)
+//        }
         
         if(!context.coordinator.hasZoomed && !overlays.isEmpty) {
             var allRects :MKMapRect = overlays[0].boundingMapRect

@@ -241,46 +241,21 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         let content = UNMutableNotificationContent()
         let categoryIdentifire = "Delete Notification Type"
         
-        content.title = "notificationType"
-        content.body = "This is example how to create "
+        content.title = "Searching for pet"
+        content.body = "Your location is being tracked."
         content.sound = UNNotificationSound.default
         content.badge = 1
         content.categoryIdentifier = categoryIdentifire
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let identifier = "Local Notification"
-        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request) { (error) in
             if let error = error {
                 print("Error \(error.localizedDescription)")
             }
         }
         
-        
     }
-    
-//    func sendSearchingNotification() {
-//        let center = UNUserNotificationCenter.current()
-//
-//        let content = UNMutableNotificationContent()
-//        content.title = "Late wake up call"
-//        content.body = "The early bird catches the worm, but the second mouse gets the cheese."
-//        content.categoryIdentifier = "alarm"
-//        content.userInfo = ["customData": "fizzbuzz"]
-//        content.sound = UNNotificationSound.default
-//
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 10
-//        dateComponents.minute = 30
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-//
-//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-//        center.add(request)
-//
-//
-//
-//    }
-        
 
     
 }
