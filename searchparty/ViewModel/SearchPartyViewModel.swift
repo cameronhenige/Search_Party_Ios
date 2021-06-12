@@ -23,7 +23,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var locations: [MKPointAnnotation] = []
     
     @Published var searchDates: [Timestamp] = []
-    
+    @Published var listOfPrivateGeoHashes: [String]? = []
+
     @Published var listOfDays: [Date] = []
 
 
@@ -33,7 +34,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var searchPartySearches = [SearchPartySearch]()
     var lostPet: LostPet?
     @Published var isSearching: Bool = false
-    
+    @Published var isInsideOfAPrivateGeoHash = false
+
     var currentSearchId: String = ""
 
     private lazy var locationManager: CLLocationManager = {
@@ -203,9 +205,15 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                 print("Document successfully updated")
 
                 Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
-                    if let document = document {
+                    if(document!.exists) {
+                    if let user = try? document!.data(as: SPUser.self) {
+                        self.listOfPrivateGeoHashes = user.searchStartLocations
+
+
+                    
+                    
+
                         
-                        if(document.exists) {
                             //start searching
                             var ref: DocumentReference? = Firestore.firestore().collection("Lost").document(self.lostPet!.id!).collection("Searches").addDocument(data: [
                                 "uid": Auth.auth().currentUser!.uid
@@ -213,6 +221,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                                 if let err = err {
                                     print("Error adding document: \(err)") //todo
                                 } else {
+                                    
                                     self.currentSearchId = ref!.documentID
                                     //todo get search start locations
                                     
@@ -228,8 +237,12 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                         }else {
                             //todo handle error
                         }
+                        
+                    }else {
+                        //todo show error
+                    }
 
-        }
+        
     }
 }
 }
@@ -287,12 +300,26 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
         print(error)
     }
     
+    func isInsideOfPrivateGeoHash()-> Bool {
+        print(self.currentLocation?.coordinate.geohash(length: 7))
+        
+        print(self.listOfPrivateGeoHashes)
+        
+        let currentLocationGeoHash = self.currentLocation?.coordinate.geohash(length: 7)
+        
+        
+        return (self.listOfPrivateGeoHashes!.contains((currentLocationGeoHash)!))
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let mostRecentLocation = locations.last else {
             return
         }
                 
         currentLocation = mostRecentLocation
+        
+        self.isInsideOfAPrivateGeoHash = self.isInsideOfPrivateGeoHash()
+        print(self.isInsideOfAPrivateGeoHash)
         
         if(isSearching) {
         // Add another annotation to the map.

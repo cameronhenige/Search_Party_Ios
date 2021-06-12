@@ -20,7 +20,10 @@ struct SearchPartyMapView: UIViewRepresentable {
 
     @Binding var coordinate: CLLocationCoordinate2D?
     @Binding var searchPartyUsers: [SearchPartyUser]
+    
+    @Binding var listOfPrivateGeoHashes: [String]?
 
+    
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
@@ -62,7 +65,7 @@ struct SearchPartyMapView: UIViewRepresentable {
 //                print("Users!")
 //                //self.parent.map.addAnnotation(T##annotation: MKAnnotation##MKAnnotation)
 //            }
-//
+
 
 
             
@@ -79,6 +82,23 @@ struct SearchPartyMapView: UIViewRepresentable {
             }
             
             
+            if let polygon = overlay as? ColoredPolygon {
+//                        let testlineRenderer = MKPolylineRenderer(polyline: polyline)
+//                testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
+//
+//                        testlineRenderer.lineWidth = 3.0
+//                        return testlineRenderer
+                
+                
+                let over = MKPolygonRenderer(overlay: overlay)
+                over.strokeColor = UIColor(hexString: polygon.color!)
+                over.fillColor = UIColor(hexString: polygon.color!).withAlphaComponent(0.3)
+                over.lineWidth = 3
+                return over
+                
+            }
+            
+            
             let over = MKPolygonRenderer(overlay: overlay)
             over.strokeColor = UIConfiguration.colorPrimary
             over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
@@ -91,6 +111,7 @@ struct SearchPartyMapView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> MKMapView {
+    
         map.delegate = context.coordinator
         map.showsUserLocation = true
 //        let centerCoordinate = coordinate ?? initialLocation
@@ -120,7 +141,7 @@ struct SearchPartyMapView: UIViewRepresentable {
     func updateUIView(_ view: MKMapView, context: Context) {
         
         var overlays = [PathPolyline]()
-
+        self.map.removeOverlays(self.map.overlays)
         
         for user in self.searchPartyUsers {
 
@@ -170,6 +191,38 @@ struct SearchPartyMapView: UIViewRepresentable {
             map.setVisibleMapRect(rect, animated: false)
             context.coordinator.hasZoomed = true
         }
+        
+        
+        //self.parent.coordinate = map.centerCoordinate
+        //self.parent.map.removeOverlays(self.parent.map.overlays)
+
+
+        if(isSearching) {
+        if(listOfPrivateGeoHashes != nil && !listOfPrivateGeoHashes!.isEmpty){
+
+            for privateHash in self.listOfPrivateGeoHashes! {
+                
+            
+            let geoHashSquare = GeoHashConverter.decode(hash: privateHash)
+
+        let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
+        let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
+        let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
+        let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
+
+        let points = [topLeft, topRight, bottomRight, bottomLeft]
+
+        let polygon = ColoredPolygon(coordinates: points, count: points.count)
+                polygon.color = "#FF0000"
+
+        self.map.addOverlay(polygon)
+            }
+            
+        }
+
+        }
+
+        
   
     }
     

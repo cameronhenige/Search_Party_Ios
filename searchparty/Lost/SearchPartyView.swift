@@ -19,7 +19,6 @@ struct SearchPartyView: View {
     @ObservedObject var searchPartyViewModel = SearchPartyViewModel()
 
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    //@State private var bottomSheetPosition: BottomSheetPosition = .middle
 
     enum CustomBottomSheetPosition: CGFloat, CaseIterable {
         case top = 0.975, middle = 0.4, bottom = 0.165
@@ -29,16 +28,15 @@ struct SearchPartyView: View {
 
     @State var currentLocation: CLLocationCoordinate2D?
 
-    //@State var initialLocation: CLLocationCoordinate2D
     @State var name = ""
 
     @State var map = MKMapView()
 
     var SearchingButtonText: some View {
                         if(searchPartyViewModel.isSearching) {
-                            return Text("Stop" )
+                            return Text("Stop")
                         } else {
-                            return Text("Search" )
+                            return Text("Search")
                         }
     }
     
@@ -55,7 +53,7 @@ struct SearchPartyView: View {
                 
 
                     
-                SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers)
+                    SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes)
                                         
                     
                     
@@ -73,6 +71,9 @@ struct SearchPartyView: View {
                             
                         }.frame(height: 50, alignment: .top).padding()
                         
+                    }
+                    if(searchPartyViewModel.isInsideOfAPrivateGeoHash){
+                    Text("Leave the privacy square")
                     }
                 }
                 
