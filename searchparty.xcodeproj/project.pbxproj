@@ -46,6 +46,9 @@
 		F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C92671B4EA00319F2F /* TestUIFile.swift */; };
 		F220A6CE2671C13B00319F2F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6CD2671C13B00319F2F /* DateExtension.swift */; };
 		F220A6D02675706D00319F2F /* ColoredPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6CF2675706D00319F2F /* ColoredPolygon.swift */; };
+		F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */; };
+		F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */; };
+		F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -163,6 +166,10 @@
 		F220A6C92671B4EA00319F2F /* TestUIFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIFile.swift; sourceTree = "<group>"; };
 		F220A6CD2671C13B00319F2F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F220A6CF2675706D00319F2F /* ColoredPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredPolygon.swift; sourceTree = "<group>"; };
+		F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocation.swift; sourceTree = "<group>"; };
+		F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationMapView.swift; sourceTree = "<group>"; };
+		F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationViewModel.swift; sourceTree = "<group>"; };
+		F220A6DA267C4D1800319F2F /* searchparty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = searchparty.entitlements; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -279,6 +286,7 @@
 		3403A3002406B70F00D7B040 /* searchparty */ = {
 			isa = PBXGroup;
 			children = (
+				F220A6DA267C4D1800319F2F /* searchparty.entitlements */,
 				F27BC5DC2650CD150017B198 /* Utils */,
 				F2DBDDED264240B700E9C987 /* Resources */,
 				F2DBDDCC263B238600E9C987 /* LostPetImagesController */,
@@ -355,6 +363,8 @@
 				F27BC5E3265454080017B198 /* LostViewRouter.swift */,
 				F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */,
 				F220A6C92671B4EA00319F2F /* TestUIFile.swift */,
+				F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */,
+				F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -472,6 +482,7 @@
 				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
 				F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */,
 				F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */,
+				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -724,6 +735,7 @@
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
 				F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */,
+				F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
@@ -744,6 +756,7 @@
 				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
 				F2DBDDE8263D0E4800E9C987 /* ImagePicker.swift in Sources */,
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
+				F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */,
 				F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */,
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
 				F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */,
@@ -753,6 +766,7 @@
 				341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */,
 				34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */,
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
+				F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */,
 				341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */,
 				F220A6A7265F4FDB00319F2F /* PathPolyline.swift in Sources */,
 				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
@@ -918,6 +932,7 @@
 			baseConfigurationReference = 8D8137A38D55DA01ED477E73 /* Pods-searchparty.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = searchparty/searchparty.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"searchparty/Preview Content\"";
 				DEVELOPMENT_TEAM = MWZP6Z24DW;
@@ -940,6 +955,7 @@
 			baseConfigurationReference = 3C5FA00BB9469F4898CBFCB0 /* Pods-searchparty.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = searchparty/searchparty.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"searchparty/Preview Content\"";
 				DEVELOPMENT_TEAM = MWZP6Z24DW;

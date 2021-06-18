@@ -42,6 +42,11 @@ struct SearchPartyView: View {
     
     var body: some View {
         
+        NavigationLink(destination: AddHouseLocation(), isActive: $searchPartyViewModel.isOnAddHomeScreen) {
+
+        }
+        
+        
         let taskDateFormat: DateFormatter = {
                 let formatter = DateFormatter()
             formatter.dateStyle = .short
@@ -56,7 +61,7 @@ struct SearchPartyView: View {
                     SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes)
                                         
                     
-                    
+                    VStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         
                         ZStack {
@@ -72,9 +77,23 @@ struct SearchPartyView: View {
                         }.frame(height: 50, alignment: .top).padding()
                         
                     }
-                    if(searchPartyViewModel.isInsideOfAPrivateGeoHash){
-                    Text("Leave the privacy square")
+                        
+                        if(searchPartyViewModel.isInsideOfAPrivateGeoHash){
+                            
+                            ZStack {
+                                        RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                            .fill(Color.white)
+                                Text("Leave the privacy square to start searching").foregroundColor(Color.red)
+
+                                
+                            }.frame(height: 50, alignment: .top).padding().padding(.top)
+                            
+                        }
+                     
+                        
+                        
                     }
+                    
                 }
                 
                 

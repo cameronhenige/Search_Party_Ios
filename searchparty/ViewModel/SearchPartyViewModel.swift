@@ -35,6 +35,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     var lostPet: LostPet?
     @Published var isSearching: Bool = false
     @Published var isInsideOfAPrivateGeoHash = false
+    @Published var isOnAddHomeScreen: Bool = false
 
     var currentSearchId: String = ""
 
@@ -123,24 +124,45 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         return matchingSearches
 
     }
+    func hasSeenSearchPartyShowcase() -> Bool{
+                
+        let hasSeenSearchPartyIntro = UserDefaults.standard.bool(forKey: "HAS_SEEN_SEARCH_PARTY_INTRO")
+        if(hasSeenSearchPartyIntro == nil || hasSeenSearchPartyIntro == false){
+            return false
+        }else{
+            return true
+        }
+    }
     
     func startUpdatingLocationButtonAction() {
         
-        if isSearching {
-            locationManager.stopUpdatingLocation()
-            isSearching = false
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["identifier"])
+        
+        if(self.hasSeenSearchPartyShowcase()) {
+            if isSearching {
+                locationManager.stopUpdatingLocation()
+                isSearching = false
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["identifier"])
 
+            } else {
+
+                if(currentLocation != nil){
+                checkForJoined()
+                }else{
+                    //todo tell user to wait for current location
+                }
+
+
+            }
         } else {
             
-            if(currentLocation != nil){
-            checkForJoined()
-            }else{
-                //todo tell user to wait for current location
-            }
+            UserDefaults.standard.setValue(true, forKey: "HAS_SEEN_SEARCH_PARTY_INTRO")
             
-
+            self.isOnAddHomeScreen = true
         }
+        
+        
+        
+
         
        // startUpdatingLocationButton.setTitle(startUpdatingLocationButton.isSelected ? "Stop Updating Location" : "Start Updating Location", for: .normal)
         
@@ -301,13 +323,7 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
     }
     
     func isInsideOfPrivateGeoHash()-> Bool {
-        print(self.currentLocation?.coordinate.geohash(length: 7))
-        
-        print(self.listOfPrivateGeoHashes)
-        
         let currentLocationGeoHash = self.currentLocation?.coordinate.geohash(length: 7)
-        
-        
         return (self.listOfPrivateGeoHashes!.contains((currentLocationGeoHash)!))
     }
     
@@ -321,7 +337,7 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
         self.isInsideOfAPrivateGeoHash = self.isInsideOfPrivateGeoHash()
         print(self.isInsideOfAPrivateGeoHash)
         
-        if(isSearching) {
+        if(isSearching && !isInsideOfPrivateGeoHash()) {
         // Add another annotation to the map.
         let annotation = MKPointAnnotation()
         annotation.coordinate = mostRecentLocation.coordinate
