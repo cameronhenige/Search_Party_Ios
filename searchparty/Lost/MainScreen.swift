@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct MainScreen: View {
-    
+    @ObservedObject var syncFcmTokenViewModel: SyncFcmTokenViewModel
+
     
     var body: some View {
         TabView() {
@@ -26,7 +27,11 @@ struct MainScreen: View {
                 Image(systemName: "person.circle").renderingMode(.template)
             }
         }
-        .accentColor(Constant.color.foodPrimary)
+        .accentColor(Constant.color.foodPrimary).onAppear {
+            syncFcmTokenViewModel.syncFcmTokenIfNeeded()
+        
+    }
+        
         
     }
 }

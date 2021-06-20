@@ -49,6 +49,7 @@
 		F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */; };
 		F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */; };
 		F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */; };
+		F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -170,6 +171,7 @@
 		F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationMapView.swift; sourceTree = "<group>"; };
 		F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationViewModel.swift; sourceTree = "<group>"; };
 		F220A6DA267C4D1800319F2F /* searchparty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = searchparty.entitlements; sourceTree = "<group>"; };
+		F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFcmTokenViewModel.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */,
 				F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */,
 				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
+				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				F2D7459425FB2484003C5157 /* LottieSubview.swift in Sources */,
 				F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */,
 				3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */,
+				F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */,
 				345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */,
 				F2D7457125FAF6AC003C5157 /* SignInViewModel.swift in Sources */,
 				34ADED2C2584B48100A504F5 /* Constants.swift in Sources */,

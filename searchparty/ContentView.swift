@@ -21,7 +21,7 @@ struct ContentView: View {
                 OnboardingView().environmentObject(viewRouter)
             }else{
                 if authState.loggedInUser != nil  && !authState.isAuthenticating {
-                    MainScreen()
+                    MainScreen(syncFcmTokenViewModel: SyncFcmTokenViewModel())
                     
 
                 //if(Auth.auth().currentUser == nil){
