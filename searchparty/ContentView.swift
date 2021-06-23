@@ -9,29 +9,28 @@
 import SwiftUI
 import FirebaseAuth
 
+@main
+struct ContentView: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-struct ContentView: View {
-    @EnvironmentObject var authState: AuthenticationState
-    @EnvironmentObject var viewRouter: OnboardingRouter
+    
 
-    var body: some View {
-                
-        
-            if viewRouter.currentPage == "onboardingView" {
-                OnboardingView().environmentObject(viewRouter)
-            }else{
-                if authState.loggedInUser != nil  && !authState.isAuthenticating {
-                    MainScreen(syncFcmTokenViewModel: SyncFcmTokenViewModel())
-                    
+    
+    
+//    let loginState = AuthenticationState.shared
+//    // Create the SwiftUI view that provides the window contents.
+//    let contentView = ContentView()
+//        .environmentObject(ModalManager())
+//        .environmentObject(OnboardingRouter())
+//        .environmentObject(loginState)
+    
+    var body: some Scene {
+        WindowGroup {
+            MainView().environmentObject(ModalManager())
+                .environmentObject(OnboardingRouter())
+                .environmentObject(AuthenticationState.shared)
 
-                //if(Auth.auth().currentUser == nil){
-                }else{
-                    
-                    SplashView(state: AppState())
-
-                    //ModalAnchorView()
-
-                }
         }
         
         

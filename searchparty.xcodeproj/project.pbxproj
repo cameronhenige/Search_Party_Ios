@@ -50,6 +50,7 @@
 		F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */; };
 		F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */; };
 		F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */; };
+		F220A6FB2682F14600319F2F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FA2682F14600319F2F /* MainView.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -172,6 +173,7 @@
 		F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationViewModel.swift; sourceTree = "<group>"; };
 		F220A6DA267C4D1800319F2F /* searchparty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = searchparty.entitlements; sourceTree = "<group>"; };
 		F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFcmTokenViewModel.swift; sourceTree = "<group>"; };
+		F220A6FA2682F14600319F2F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				F2D7458325FAFC8C003C5157 /* GoogleService-Info.plist */,
 				3403A30F2406B71100D7B040 /* Info.plist */,
 				3403A3092406B71100D7B040 /* Preview Content */,
+				F220A6FA2682F14600319F2F /* MainView.swift */,
 			);
 			path = searchparty;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
 				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
+				F220A6FB2682F14600319F2F /* MainView.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
 				F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
