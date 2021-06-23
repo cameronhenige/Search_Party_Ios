@@ -138,7 +138,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
       let userInfo = response.notification.request.content.userInfo
-        print("did receive")
+        
+        print("user clicked on notification" + response.notification.request.content.userInfo.debugDescription)
+        
       Messaging.messaging().appDidReceiveMessage(userInfo)
 
       completionHandler()
