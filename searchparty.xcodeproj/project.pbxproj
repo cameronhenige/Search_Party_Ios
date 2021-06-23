@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403A3012406B70F00D7B040 /* AppDelegate.swift */; };
-		3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3403A3032406B70F00D7B040 /* SceneDelegate.swift */; };
 		3403A3082406B71100D7B040 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3403A3072406B71100D7B040 /* Assets.xcassets */; };
 		3403A30B2406B71100D7B040 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3403A30A2406B71100D7B040 /* Preview Assets.xcassets */; };
 		3403A30E2406B71100D7B040 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3403A30C2406B71100D7B040 /* LaunchScreen.storyboard */; };
@@ -124,7 +123,6 @@
 /* Begin PBXFileReference section */
 		3403A2FE2406B70F00D7B040 /* searchparty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = searchparty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3403A3012406B70F00D7B040 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3403A3032406B70F00D7B040 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3403A3072406B71100D7B040 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3403A30A2406B71100D7B040 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3403A30D2406B71100D7B040 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 				F2D7456025FAF6AC003C5157 /* ViewModel */,
 				F2D7454425FAF228003C5157 /* login */,
 				3403A3012406B70F00D7B040 /* AppDelegate.swift */,
-				3403A3032406B70F00D7B040 /* SceneDelegate.swift */,
 				345AE3AF241A7ABD004EBE8C /* ContentView.swift */,
 				3445A79B240B03D70020561B /* Lost */,
 				349E4BD62415227E0079BF04 /* Elements */,
@@ -780,7 +777,6 @@
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
-				3403A3042406B70F00D7B040 /* SceneDelegate.swift in Sources */,
 				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
