@@ -20,7 +20,8 @@ class OnboardingRouter: ObservableObject {
         }
     }
     
-    
+    //@Published var selectedTab: ContentView.Tab = .home
+
     @Published var currentPage: String
     
 }

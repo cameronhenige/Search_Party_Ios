@@ -44,11 +44,15 @@ class SyncFcmTokenViewModel: ObservableObject {
         }
 
         private func latestTokenHasBeenSyncedToCloud() -> Bool {
+            
             let latestFcmToken = UserDefaults.standard.string(forKey: "LATEST_FCM_TOKEN")
-        
+            if(latestFcmToken != nil){
             let hasSeenSearchPartyIntro = UserDefaults.standard.bool(forKey: latestFcmToken! + "_" + Auth.auth().currentUser!.uid)
             
             return hasSeenSearchPartyIntro
+            }else {
+                return true
+            }
         }
 
         private func updateTokenOnBackend(token: String) {
