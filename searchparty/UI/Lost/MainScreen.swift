@@ -10,23 +10,24 @@ import SwiftUI
 
 struct MainScreen: View {
     @ObservedObject var syncFcmTokenViewModel: SyncFcmTokenViewModel
+    @EnvironmentObject var appState: SearchPartyAppState
 
     
     var body: some View {
-        TabView() {
+        TabView(selection: $appState.selectedTab) {
             LostPets().environmentObject(LostViewRouter()).tabItem {
                 Text("Lost")
                 Image("lost_icon").renderingMode(.template)
-            }
+            }.tag(1)
             AccountScreen().tabItem {
                 Text("Found")
                 Image("found_icon").renderingMode(.template)
-            }
+            }.tag(2)
             AccountScreen().tabItem {
                 Text("Account")
                 Image(systemName: "person.circle").renderingMode(.template)
-            }
-        }
+            }.tag(3)
+        }.environmentObject(appState)
         .accentColor(Constant.color.foodPrimary).onAppear {
             syncFcmTokenViewModel.syncFcmTokenIfNeeded()
         

@@ -9,6 +9,6 @@
 import Foundation
 
 class SearchPartyAppState: ObservableObject {
-//    @Published var selectedTab: ContentView.Tab = .home
+    @Published var selectedTab: Int = 1
 //    @Published var showActionSheet: Bool = false
 }
