@@ -57,6 +57,8 @@
 		F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D62633D89000912F28 /* EditLostPet.swift */; };
 		F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DA2633E9EC00912F28 /* AccountScreen.swift */; };
 		F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DE2633EDF600912F28 /* AddLostPet.swift */; };
+		F23D72342687646C00CB80C6 /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72332687646C00CB80C6 /* PetView.swift */; };
+		F23D7236268764D800CB80C6 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7235268764D800CB80C6 /* Pet.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -180,6 +182,8 @@
 		F233D3D62633D89000912F28 /* EditLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLostPet.swift; sourceTree = "<group>"; };
 		F233D3DA2633E9EC00912F28 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		F233D3DE2633EDF600912F28 /* AddLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPet.swift; sourceTree = "<group>"; };
+		F23D72332687646C00CB80C6 /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
+		F23D7235268764D800CB80C6 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -344,6 +348,7 @@
 				F27BC5F2265E07D00017B198 /* SearchPartySearch.swift */,
 				F220A6A6265F4FDB00319F2F /* PathPolyline.swift */,
 				F220A6CF2675706D00319F2F /* ColoredPolygon.swift */,
+				F23D7235268764D800CB80C6 /* Pet.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				F220A6C92671B4EA00319F2F /* TestUIFile.swift */,
 				F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */,
 				F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */,
+				F23D72332687646C00CB80C6 /* PetView.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -737,6 +743,7 @@
 				345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */,
 				F2D7457125FAF6AC003C5157 /* SignInViewModel.swift in Sources */,
 				34ADED2C2584B48100A504F5 /* Constants.swift in Sources */,
+				F23D72342687646C00CB80C6 /* PetView.swift in Sources */,
 				F2D7459725FB2484003C5157 /* Subview.swift in Sources */,
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
 				F21E41AE264B0D4400199197 /* LocationViewController.swift in Sources */,
@@ -796,6 +803,7 @@
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F220A6FB2682F14600319F2F /* MainView.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
+				F23D7236268764D800CB80C6 /* Pet.swift in Sources */,
 				F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
 				344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */,

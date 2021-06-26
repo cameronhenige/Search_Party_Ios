@@ -12,7 +12,6 @@ import Kingfisher
 
 struct LostPetView: View {
 
-    var lostPet: LostPet
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
@@ -42,11 +41,21 @@ struct LostPetView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center, spacing: 0, content: {
-                        PetBackground(generalImages: self.lostPet.generalImages, hasPicture: self.hasPicture, petType: lostPet.type, lostPetId: self.lostPet.id!)
+
                             
-                        Text(lostPet.name)
-                            .fontWeight(.bold)
-                            .font(.title).padding(.top)
+
+                        
+                        if let pet = searchPartyAppState.selectedLostPet {
+                                PetBackground(generalImages: pet.generalImages, hasPicture: self.hasPicture, petType: pet.type, lostPetId: pet.id!)
+                            
+                                                    Text(pet.name)
+                                                        .fontWeight(.bold)
+                                                        .font(.title).padding(.top)
+                            
+                        } else {
+                            EmptyView()
+                        }
+                        
                     })
                     
                     VStack(alignment: .leading, spacing:0) {
@@ -66,50 +75,59 @@ struct LostPetView: View {
     var LostPetData: some View {
         return
             VStack(alignment: .leading) {
+        if let pet = searchPartyAppState.selectedLostPet {
+                            if let description = pet.description, !description.isEmpty {
+                                Text(description).padding(.bottom)
+                            }
+                            
+                            if let type = pet.type, !type.isEmpty {
+                                Text("Pet Type").font(.caption)
+                                Text(type).padding(.bottom)
+                            }
+            
+                            if let lostLocationDescription = pet.lostLocationDescription, !lostLocationDescription.isEmpty {
+                                Text("Lost Location").font(.caption)
+                                Text(lostLocationDescription).padding(.bottom)
+                            }
+            
+                            if let lostDateTime = pet.lostDateTime {
+                                Text("Lost Date").font(.caption)
+                                Text("Todo").padding(.bottom)
+                            }
+            
+                            if let ownersName = pet.ownerName, !ownersName.isEmpty {
+                                Text("Owners' Name").font(.caption)
+                                Text(ownersName).padding(.bottom)
+                            }
+            
+                            if let ownerEmail = pet.ownerEmail, !ownerEmail.isEmpty {
+                                Text("Owners' Email").font(.caption)
+                                Text(ownerEmail).padding(.bottom)
+                            }
+            
+                            if let ownerPhoneNumber = pet.ownerPhoneNumber, !ownerPhoneNumber.isEmpty {
+                                Text("Owners' Phone Number").font(.caption)
+                                Text(ownerPhoneNumber).padding(.bottom)
+                            }
+            
+                            if let ownerOtherContactMethod = pet.ownerOtherContactMethod, !ownerOtherContactMethod.isEmpty {
+                                Text("Other Contact Method").font(.caption)
+                                Text(ownerOtherContactMethod).padding(.bottom)
+                            }
+            
+                            if let ownerPreferredContactMethod = pet.ownerPreferredContactMethod, !ownerPreferredContactMethod.isEmpty {
+                                Text("Preferred Contact Method").font(.caption)
+                                Text(ownerPreferredContactMethod).padding(.bottom)
+                            }
+            
+        } else {
+            EmptyView()
+        }
+        
 
-                if let description = lostPet.description, !description.isEmpty {
-                    Text(description).padding(.bottom)
-                }
                 
-                if let type = lostPet.type, !type.isEmpty {
-                    Text("Pet Type").font(.caption)
-                    Text(type).padding(.bottom)
-                }
-                
-                if let lostLocationDescription = lostPet.lostLocationDescription, !lostLocationDescription.isEmpty {
-                    Text("Lost Location").font(.caption)
-                    Text(lostLocationDescription).padding(.bottom)
-                }
-                
-                if let lostDateTime = lostPet.lostDateTime {
-                    Text("Lost Date").font(.caption)
-                    Text("Todo").padding(.bottom)
-                }
-                
-                if let ownersName = lostPet.ownerName, !ownersName.isEmpty {
-                    Text("Owners' Name").font(.caption)
-                    Text(ownersName).padding(.bottom)
-                }
-                
-                if let ownerEmail = lostPet.ownerEmail, !ownerEmail.isEmpty {
-                    Text("Owners' Email").font(.caption)
-                    Text(ownerEmail).padding(.bottom)
-                }
-                
-                if let ownerPhoneNumber = lostPet.ownerPhoneNumber, !ownerPhoneNumber.isEmpty {
-                    Text("Owners' Phone Number").font(.caption)
-                    Text(ownerPhoneNumber).padding(.bottom)
-                }
-                
-                if let ownerOtherContactMethod = lostPet.ownerOtherContactMethod, !ownerOtherContactMethod.isEmpty {
-                    Text("Other Contact Method").font(.caption)
-                    Text(ownerOtherContactMethod).padding(.bottom)
-                }
-                
-                if let ownerPreferredContactMethod = lostPet.ownerPreferredContactMethod, !ownerPreferredContactMethod.isEmpty {
-                    Text("Preferred Contact Method").font(.caption)
-                    Text(ownerPreferredContactMethod).padding(.bottom)
-                }
+
+
                 
             }
     }
@@ -146,15 +164,17 @@ struct LostPetView: View {
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
         }
 
+                if let pet = searchPartyAppState.selectedLostPet {
+
         
-        
-                NavigationLink(destination: SearchPartyView(lostPet: lostPet), isActive: $isOnSearchParty) {
+                NavigationLink(destination: SearchPartyView(lostPet: pet), isActive: $isOnSearchParty) {
             Button(action: {
                 self.isOnSearchParty = true
             }) {
                 Text("Join Search Party")
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
         }
+                }
         
         NavigationLink(destination: EditLostPet(), isActive: $isOnEditPet) {
             Button(action: {
@@ -167,9 +187,9 @@ struct LostPetView: View {
     }
 }
 
-
-struct LostPetView_Previews: PreviewProvider {
-    static var previews: some View {
-        LostPetView(lostPet: LostPet(id: "TestContent", name: "TestContent", sex: "TestContent", age: 3, chatSize: 3, breed: "TestContent", type: "TestContent", description: "TestContent", uniqueMarkings: "TestContent", temperament: "TestContent", healthCondition: "TestContent", generalImages: ["TestContent"], lostDateTime: nil, lostLocation: "TestContent", lostLocationDescription: "TestContent", ownerName: "TestContent", ownerEmail: "TestContent", ownerPhoneNumber: "TestContent", ownerOtherContactMethod: "TestContent", ownerPreferredContactMethod: "TestContent", foundPetDescription: "TestContent", foundPet: true, Owners: ["TestContent"]))
-    }
-}
+//
+//struct LostPetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LostPetView(lostPet: LostPet(id: "TestContent", name: "TestContent", sex: "TestContent", age: 3, chatSize: 3, breed: "TestContent", type: "TestContent", description: "TestContent", uniqueMarkings: "TestContent", temperament: "TestContent", healthCondition: "TestContent", generalImages: ["TestContent"], lostDateTime: nil, lostLocation: "TestContent", lostLocationDescription: "TestContent", ownerName: "TestContent", ownerEmail: "TestContent", ownerPhoneNumber: "TestContent", ownerOtherContactMethod: "TestContent", ownerPreferredContactMethod: "TestContent", foundPetDescription: "TestContent", foundPet: true, Owners: ["TestContent"]))
+//    }
+//}

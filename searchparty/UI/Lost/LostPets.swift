@@ -12,10 +12,9 @@ import CoreLocation
 struct LostPets: View {
     
     @EnvironmentObject var lostViewRouter: LostViewRouter
+    @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
-    
-    @ObservedObject private var lostPetsViewModel = LostPetsViewModel()
-    
+        
     @State var isShowingAlert = true
 
     @State var isAddingLostPet = false
@@ -24,41 +23,41 @@ struct LostPets: View {
     var body: some View {
         
         
-        if(lostPetsViewModel.permissionStatus == nil){
+        if(searchPartyAppState.permissionStatus == nil){
             AnyView(Text("Waiting on permission")).onAppear(){
                 //locationManager.delegate = lostPetsViewModel
              }
-        }else if(lostPetsViewModel.permissionStatus == .notDetermined){
+        }else if(searchPartyAppState.permissionStatus == .notDetermined){
             AnyView(Text("Permission not determined")).onAppear(){
                 //locationManager.delegate = lostPetsViewModel
-                self.lostPetsViewModel.requestLocationPermission()
+                self.searchPartyAppState.requestLocationPermission()
              }
-        }else if(lostPetsViewModel.permissionStatus == .denied){
+        }else if(searchPartyAppState.permissionStatus == .denied){
             AnyView(Text("Permission denied!")).alert(isPresented: $isShowingAlert, content: {
                 Alert(title: Text("Permission Denied"), message: Text("Please Enable Permission in App Settings"), dismissButton: .default(Text("Go to Settings"), action: {
                     UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
                 }))
             })
         }else{
+            
+            
             NavigationView {
-                
-                
                 ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(lostPetsViewModel.lostPets) { lostPet in
-                        
-                        
-                        NavigationLink(
-                            destination: LostPetView(lostPet: lostPet)
-                        ) {
-                            
-                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
-                        }
+                    ForEach(searchPartyAppState.lostPets) { lostPet in
+                        NavigationLink(destination: LostPetView(),
+                                       tag: lostPet,
+                                       selection: $searchPartyAppState.selectedLostPet,
+                                       label: {
+                                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
+                        })
                     }
                     
                     NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
-
+                
+                            }
+                    Button("Go to first pet.") {
+                        searchPartyAppState.selectedLostPet = searchPartyAppState.lostPets[0]
                     }
-                    
                     
                 }.toolbar {
                     ToolbarItem(placement: .primaryAction) {
@@ -74,13 +73,53 @@ struct LostPets: View {
                 .onAppear(){
                     //locationManager.delegate = lostPetsViewModel
 
-                    self.lostPetsViewModel.fetchLostPets()
+                    self.searchPartyAppState.fetchLostPets()
                 }
-        
+                
+                    
             }
-.navigationViewStyle(StackNavigationViewStyle())
             
-            
+//            NavigationView {
+//
+//
+//                ScrollView(.vertical, showsIndicators: false) {
+//                    ForEach(searchPartyAppState.lostPets) { lostPet in
+//
+//
+//                        NavigationLink(
+//                            destination: LostPetView()
+//                        ) {
+//
+//                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
+//                        }
+//                    }
+//
+//                    NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
+//
+//                    }
+//
+//
+//                }.toolbar {
+//                    ToolbarItem(placement: .primaryAction) {
+//                        Button(action: {
+//                            self.lostViewRouter.isAddingLostPet = true
+//                        }) {
+//                            Text("Add Lost Pet")
+//                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+//                    }
+//                }.navigationBarColor(Constant.color.tintColor.uiColor())
+//                .navigationBarTitle(Text("Lost"), displayMode: .inline)
+//                .background(Constant.color.gray)
+//                .onAppear(){
+//                    //locationManager.delegate = lostPetsViewModel
+//
+//                    self.searchPartyAppState.fetchLostPets()
+//                }
+//
+//            }
+//.navigationViewStyle(StackNavigationViewStyle())
+
+
         }
 
     }
