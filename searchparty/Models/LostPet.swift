@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-struct LostPet: Codable, Identifiable {
+struct LostPet: Codable, Identifiable, Hashable {
     
     public static var NAME : String = "name"
     public static var SEX : String = "sex"

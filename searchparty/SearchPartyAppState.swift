@@ -10,5 +10,7 @@ import Foundation
 
 class SearchPartyAppState: ObservableObject {
     @Published var selectedTab: Int = 1
-//    @Published var showActionSheet: Bool = false
+    @Published var selectedLostPet: LostPet? = nil
+
+    //@Published var isOnChat = false
 }

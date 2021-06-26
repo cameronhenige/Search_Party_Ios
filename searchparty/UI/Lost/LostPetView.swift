@@ -15,7 +15,8 @@ struct LostPetView: View {
     var lostPet: LostPet
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
-    
+    @EnvironmentObject var searchPartyAppState: SearchPartyAppState
+
     @State var isOnSearchParty = false
     @State var isOnLostPetIsFound = false
     @State var isOnChat = false

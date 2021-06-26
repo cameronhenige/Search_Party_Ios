@@ -27,7 +27,7 @@ struct MainScreen: View {
                 Text("Account")
                 Image(systemName: "person.circle").renderingMode(.template)
             }.tag(3)
-        }.environmentObject(appState)
+        }
         .accentColor(Constant.color.foodPrimary).onAppear {
             syncFcmTokenViewModel.syncFcmTokenIfNeeded()
         
