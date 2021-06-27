@@ -1,9 +1,3 @@
-//
-//  ChatRow.swift
-//  Messenger
-//
-//  Created by Afraz Siddiqui on 4/17/21.
-//
 
 import SwiftUI
 
@@ -23,17 +17,6 @@ struct ChatRow: View {
         HStack {
             if sender { Spacer() }
 
-            if !sender {
-                VStack {
-                    Spacer()
-                    Image(model.currentUsername == "Matt" ? "photo1" : "photo2")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 45, height: 45)
-                        .foregroundColor(Color.pink)
-                        .clipShape(Circle())
-                }
-            }
 
             HStack {
                 Text(text)
@@ -41,8 +24,6 @@ struct ChatRow: View {
                     .padding()
             }
             .background(sender ? Color.blue : Color(.systemGray4))
-            .padding(sender ? .leading : .trailing,
-                     sender ? UIScreen.main.bounds.width/3 : UIScreen.main.bounds.width/5)
             .cornerRadius(6)
 
             if !sender { Spacer() }

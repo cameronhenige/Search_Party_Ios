@@ -35,7 +35,12 @@ struct ChatView: View {
                 TextField("Message...", text: $message)
                     .modifier(CustomField())
 
-                SendButton(text: $message)
+                
+                if(model.isAddingMessage){
+                    ProgressView()
+                }else{
+                    SendButton(text: $message)
+                }
             }
             .padding()
         }

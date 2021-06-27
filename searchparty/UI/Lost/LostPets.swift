@@ -1,10 +1,4 @@
-//
-//  Recipes.swift
-//  sketch-elements
-//
-//  Created by Filip Molcik on 27/02/2020.
-//  Copyright © 2020 Filip Molcik. All rights reserved.
-//
+
 
 import SwiftUI
 import CoreLocation
@@ -75,55 +69,12 @@ struct LostPets: View {
                 
                     
             }
-            
-//            NavigationView {
-//
-//
-//                ScrollView(.vertical, showsIndicators: false) {
-//                    ForEach(searchPartyAppState.lostPets) { lostPet in
-//
-//
-//                        NavigationLink(
-//                            destination: LostPetView()
-//                        ) {
-//
-//                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
-//                        }
-//                    }
-//
-//                    NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
-//
-//                    }
-//
-//
-//                }.toolbar {
-//                    ToolbarItem(placement: .primaryAction) {
-//                        Button(action: {
-//                            self.lostViewRouter.isAddingLostPet = true
-//                        }) {
-//                            Text("Add Lost Pet")
-//                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-//                    }
-//                }.navigationBarColor(Constant.color.tintColor.uiColor())
-//                .navigationBarTitle(Text("Lost"), displayMode: .inline)
-//                .background(Constant.color.gray)
-//                .onAppear(){
-//                    //locationManager.delegate = lostPetsViewModel
-//
-//                    self.searchPartyAppState.fetchLostPets()
-//                }
-//
-//            }
-//.navigationViewStyle(StackNavigationViewStyle())
-
+        
 
         }
 
     }
     
-    private func doSomething() {
-        print("something")
-    }
 }
 
 struct Recipes_Previews: PreviewProvider {

@@ -15,7 +15,7 @@ class ChatViewModel: ObservableObject {
     @AppStorage("currentUsername") var currentUsername: String = ""
     @AppStorage("currentEmail") var currentEmail: String = ""
     @Published var hasJoinedSearchparty: Bool = false
-    @Published var isLoadingMessages: Bool? = false
+    @Published var isAddingMessage: Bool = false
     @Published var isSendingMessage: Bool? = false
     @Published var errorSendingMessage: Bool? = false
     @Published var showingSignIn: Bool = true
@@ -80,6 +80,8 @@ extension ChatViewModel {
     static var SENDER_NAME = "senderName"
 
     func addMessage(text: String, lostPetId: String) {
+        
+        isAddingMessage = true
         let messageData : [String: Any] = [
             ChatViewModel.MESSAGE_KEY: text,
             ChatViewModel.SENDER_KEY: Auth.auth().currentUser!.uid,
@@ -93,10 +95,9 @@ extension ChatViewModel {
             } else {
                 //todo successfully sent
             }
-            
             self.isSendingMessage = false
         
-        self.isLoadingMessages = false
+        self.isAddingMessage = false
 
         }
     }
@@ -119,7 +120,7 @@ Firestore.firestore().collection("Lost").document(lostPetId).collection("SearchP
 
     func sendMessage(text: String, lostPetId: String) {
         
-        isLoadingMessages = true
+        isAddingMessage = true
         if(self.hasJoinedSearchparty){
                 addMessage(text: text, lostPetId: lostPetId)
            }else{
