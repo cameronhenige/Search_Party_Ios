@@ -31,7 +31,6 @@ struct ChatView: View {
                         .padding(3)
                 }.onChange(of: model.messages.count) { _ in
                     scrollView.scrollTo(model.messages[model.messages.endIndex - 1])
-                    //value.scrollTo(model.messages.count)
                 }
                     
                 }
