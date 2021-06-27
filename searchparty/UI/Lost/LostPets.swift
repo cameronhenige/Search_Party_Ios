@@ -55,9 +55,6 @@ struct LostPets: View {
                     NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
                 
                             }
-                    Button("Go to first pet.") {
-                        searchPartyAppState.selectedLostPet = searchPartyAppState.lostPets[0]
-                    }
                     
                 }.toolbar {
                     ToolbarItem(placement: .primaryAction) {

@@ -142,7 +142,7 @@ struct LostPetView: View {
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
             
         
-                NavigationLink(destination: ChatView(otherUsername: "Username-todo"), isActive: $isOnChat) {
+                NavigationLink(destination: ChatView(otherUsername: "Chat with Search Party"), isActive: $isOnChat) {
                 Button(action: {
                     self.isOnChat = true
                 }) {
