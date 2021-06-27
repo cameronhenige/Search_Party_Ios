@@ -62,7 +62,7 @@
 		F23D72402688299900CB80C6 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D723F2688299900CB80C6 /* ChatView.swift */; };
 		F23D724326882A5700CB80C6 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724226882A5700CB80C6 /* CustomField.swift */; };
 		F23D724526882AE500CB80C6 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724426882AE500CB80C6 /* ChatRow.swift */; };
-		F23D724826882B1500CB80C6 /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724626882B1500CB80C6 /* AppStateModel.swift */; };
+		F23D724826882B1500CB80C6 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724626882B1500CB80C6 /* ChatViewModel.swift */; };
 		F23D724926882B1500CB80C6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724726882B1500CB80C6 /* Message.swift */; };
 		F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724A26882B2F00CB80C6 /* SendButton.swift */; };
 		F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724B26882B2F00CB80C6 /* SearchView.swift */; };
@@ -194,7 +194,7 @@
 		F23D723F2688299900CB80C6 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		F23D724226882A5700CB80C6 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
 		F23D724426882AE500CB80C6 /* ChatRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
-		F23D724626882B1500CB80C6 /* AppStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
+		F23D724626882B1500CB80C6 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		F23D724726882B1500CB80C6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F23D724A26882B2F00CB80C6 /* SendButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -479,7 +479,7 @@
 			children = (
 				F23D724B26882B2F00CB80C6 /* SearchView.swift */,
 				F23D724A26882B2F00CB80C6 /* SendButton.swift */,
-				F23D724626882B1500CB80C6 /* AppStateModel.swift */,
+				F23D724626882B1500CB80C6 /* ChatViewModel.swift */,
 				F23D724726882B1500CB80C6 /* Message.swift */,
 				F23D724426882AE500CB80C6 /* ChatRow.swift */,
 				F23D723F2688299900CB80C6 /* ChatView.swift */,
@@ -780,7 +780,7 @@
 				F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */,
 				3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */,
 				F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */,
-				F23D724826882B1500CB80C6 /* AppStateModel.swift in Sources */,
+				F23D724826882B1500CB80C6 /* ChatViewModel.swift in Sources */,
 				345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */,
 				F2D7457125FAF6AC003C5157 /* SignInViewModel.swift in Sources */,
 				34ADED2C2584B48100A504F5 /* Constants.swift in Sources */,

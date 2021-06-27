@@ -7,10 +7,11 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ChatView: View {
     @State var message: String = ""
-    @EnvironmentObject var model: AppStateModel
+    @EnvironmentObject var model: ChatViewModel
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
     let otherUsername: String
@@ -24,7 +25,7 @@ struct ChatView: View {
             ScrollView(.vertical) {
                 ForEach(model.messages, id: \.self) { message in
                     ChatRow(text: message.message!,
-                            sender: message.sender!)
+                            sender: message.sender == Auth.auth().currentUser?.uid)
                         .padding(3)
                 }
             }

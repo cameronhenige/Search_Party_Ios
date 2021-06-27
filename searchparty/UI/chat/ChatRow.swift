@@ -8,25 +8,22 @@
 import SwiftUI
 
 struct ChatRow: View {
-    let sender: String
-    @EnvironmentObject var model: AppStateModel
+    let sender: Bool
+    @EnvironmentObject var model: ChatViewModel
 
-    var isSender: Bool {
-        return true
-    }
 
     let text: String
 
-    init(text: String, sender: String) {
+    init(text: String, sender: Bool) {
         self.text = text
         self.sender = sender
     }
 
     var body: some View {
         HStack {
-            if isSender { Spacer() }
+            if sender { Spacer() }
 
-            if !isSender {
+            if !sender {
                 VStack {
                     Spacer()
                     Image(model.currentUsername == "Matt" ? "photo1" : "photo2")
@@ -40,15 +37,15 @@ struct ChatRow: View {
 
             HStack {
                 Text(text)
-                    .foregroundColor(isSender ? Color.white : Color(.label))
+                    .foregroundColor(sender ? Color.white : Color(.label))
                     .padding()
             }
-            .background(isSender ? Color.blue : Color(.systemGray4))
-            .padding(isSender ? .leading : .trailing,
-                     isSender ? UIScreen.main.bounds.width/3 : UIScreen.main.bounds.width/5)
+            .background(sender ? Color.blue : Color(.systemGray4))
+            .padding(sender ? .leading : .trailing,
+                     sender ? UIScreen.main.bounds.width/3 : UIScreen.main.bounds.width/5)
             .cornerRadius(6)
 
-            if !isSender { Spacer() }
+            if !sender { Spacer() }
 
         }
     }
@@ -57,9 +54,9 @@ struct ChatRow: View {
 struct ChatRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ChatRow(text: "Test", sender: "Cam")
+            ChatRow(text: "Test", sender: true)
                 .preferredColorScheme(.dark)
-            ChatRow(text: "Test", sender: "Hannah")
+            ChatRow(text: "Test", sender: false)
                 .preferredColorScheme(.light)
 
         }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var model: AppStateModel
+    @EnvironmentObject var model: ChatViewModel
     @State var text: String = ""
 
     @State var usernames: [String] = []

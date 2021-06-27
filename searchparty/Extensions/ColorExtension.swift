@@ -30,4 +30,13 @@ extension UIColor {
             return nil
         }
     }
+    
+    static func generateRandomColor() -> UIColor {
+        let redValue = CGFloat(drand48())
+        let greenValue = CGFloat(drand48())
+        let blueValue = CGFloat(drand48())
+            
+        return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
+            
+        }
 }

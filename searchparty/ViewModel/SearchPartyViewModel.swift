@@ -190,7 +190,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     private func joinSearchParty() {
         
     Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("SearchPartyUsers").document(Auth.auth().currentUser!.uid).setData([
-        "uid": Auth.auth().currentUser!.uid, "color": generateRandomColor().toHexString()
+        "uid": Auth.auth().currentUser!.uid, "color": UIColor.generateRandomColor().toHexString()
     ], merge: true) { err in
             if let err = err {
                 print("Error adding document: \(err)") //todo
@@ -202,14 +202,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         }
     }
     
-    func generateRandomColor() -> UIColor {
-        let redValue = CGFloat(drand48())
-        let greenValue = CGFloat(drand48())
-        let blueValue = CGFloat(drand48())
-            
-        return UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
-            
-        }
+
     
     func addNewSearch() {
         self.initialLocationGeoHash = self.currentLocation?.coordinate.geohash(length: 7)
