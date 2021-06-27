@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 
-struct Chat: Codable, Identifiable {
+struct Chat: Hashable, Codable, Identifiable {
 
 @DocumentID var id: String?
 var created: Timestamp?

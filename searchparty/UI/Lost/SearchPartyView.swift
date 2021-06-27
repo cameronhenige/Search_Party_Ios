@@ -13,7 +13,8 @@ import BottomSheet
 struct SearchPartyView: View {
     
 
-    
+    @EnvironmentObject var searchPartyAppState: SearchPartyAppState
+
     var lostPet: LostPet
 
     @ObservedObject var searchPartyViewModel = SearchPartyViewModel()
@@ -62,6 +63,14 @@ struct SearchPartyView: View {
                                         
                     
                     VStack {
+                        
+                        
+                        Button(action: {
+                            self.searchPartyAppState.isOnSearchParty = false
+                        }) {
+                            Text("X")
+                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                        
                     ScrollView(.horizontal, showsIndicators: false) {
                         
                         ZStack {

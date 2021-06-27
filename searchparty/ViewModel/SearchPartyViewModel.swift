@@ -108,10 +108,9 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         
         self.searchPartyUsers = newSearchPartyUsers
         
-
-        
     }
 
+    
     private func getSearchesForUser(user: SearchPartyUser, searches: [SearchPartySearch]) -> [SearchPartySearch] {
         
         var matchingSearches: [SearchPartySearch] = []

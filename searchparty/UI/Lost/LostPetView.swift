@@ -16,7 +16,6 @@ struct LostPetView: View {
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
-    @State var isOnSearchParty = false
     @State var isOnLostPetIsFound = false
     @State var isOnChat = false
     @State var isOnEditPet = false
@@ -143,7 +142,7 @@ struct LostPetView: View {
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
             
         
-            NavigationLink(destination: ChatScreen(), isActive: $isOnChat) {
+                NavigationLink(destination: ChatView(otherUsername: "Username-todo"), isActive: $isOnChat) {
                 Button(action: {
                     self.isOnChat = true
                 }) {
@@ -167,13 +166,22 @@ struct LostPetView: View {
                 if let pet = searchPartyAppState.selectedLostPet {
 
         
-                NavigationLink(destination: SearchPartyView(lostPet: pet), isActive: $isOnSearchParty) {
+                    NavigationLink(destination: SearchPartyView(lostPet: pet), isActive: $searchPartyAppState.isOnSearchParty) {
             Button(action: {
-                self.isOnSearchParty = true
+                self.searchPartyAppState.isOnSearchParty = true
             }) {
                 Text("Join Search Party")
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
         }
+                    
+//                    Button("Full Screen Join Search Party") {
+//                        self.searchPartyAppState.isOnSearchParty.toggle()
+//                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing]).fullScreenCover(isPresented: self.$searchPartyAppState.isOnSearchParty) {
+//
+//                                SearchPartyView(lostPet: pet)
+//                            }
+                    
+                    
                 }
         
         NavigationLink(destination: EditLostPet(), isActive: $isOnEditPet) {

@@ -17,6 +17,8 @@ class SearchPartyAppState: NSObject, ObservableObject {
     
     private var db = Firestore.firestore()
     @Published var isLoadingLostPets = false
+    @Published var isOnSearchParty = false
+
 
     @Published var selectedTab: Int = 1
     @Published var selectedLostPet: LostPet? = nil

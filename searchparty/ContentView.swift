@@ -22,6 +22,7 @@ struct ContentView: App {
                 .environmentObject(OnboardingRouter())
                 .environmentObject(AuthenticationState.shared)
                 .environmentObject(SearchPartyAppState())
+                .environmentObject(AppStateModel())
 
         }.onChange(of: scenePhase) { newScenePhase in
             switch newScenePhase {

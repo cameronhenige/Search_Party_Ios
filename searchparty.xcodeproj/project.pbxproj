@@ -59,6 +59,13 @@
 		F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DE2633EDF600912F28 /* AddLostPet.swift */; };
 		F23D72342687646C00CB80C6 /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72332687646C00CB80C6 /* PetView.swift */; };
 		F23D7236268764D800CB80C6 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7235268764D800CB80C6 /* Pet.swift */; };
+		F23D72402688299900CB80C6 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D723F2688299900CB80C6 /* ChatView.swift */; };
+		F23D724326882A5700CB80C6 /* CustomField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724226882A5700CB80C6 /* CustomField.swift */; };
+		F23D724526882AE500CB80C6 /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724426882AE500CB80C6 /* ChatRow.swift */; };
+		F23D724826882B1500CB80C6 /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724626882B1500CB80C6 /* AppStateModel.swift */; };
+		F23D724926882B1500CB80C6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724726882B1500CB80C6 /* Message.swift */; };
+		F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724A26882B2F00CB80C6 /* SendButton.swift */; };
+		F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724B26882B2F00CB80C6 /* SearchView.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -184,6 +191,13 @@
 		F233D3DE2633EDF600912F28 /* AddLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPet.swift; sourceTree = "<group>"; };
 		F23D72332687646C00CB80C6 /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
 		F23D7235268764D800CB80C6 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		F23D723F2688299900CB80C6 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F23D724226882A5700CB80C6 /* CustomField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomField.swift; sourceTree = "<group>"; };
+		F23D724426882AE500CB80C6 /* ChatRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
+		F23D724626882B1500CB80C6 /* AppStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
+		F23D724726882B1500CB80C6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		F23D724A26882B2F00CB80C6 /* SendButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
+		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -443,6 +457,8 @@
 		F220A7002684311C00319F2F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F23D724126882A4700CB80C6 /* customviews */,
+				F23D723C2688245800CB80C6 /* chat */,
 				F2D7458A25FB2476003C5157 /* onboarding */,
 				F2D7454425FAF228003C5157 /* login */,
 				3445A79B240B03D70020561B /* Lost */,
@@ -456,6 +472,27 @@
 				F233D3DA2633E9EC00912F28 /* AccountScreen.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		F23D723C2688245800CB80C6 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				F23D724B26882B2F00CB80C6 /* SearchView.swift */,
+				F23D724A26882B2F00CB80C6 /* SendButton.swift */,
+				F23D724626882B1500CB80C6 /* AppStateModel.swift */,
+				F23D724726882B1500CB80C6 /* Message.swift */,
+				F23D724426882AE500CB80C6 /* ChatRow.swift */,
+				F23D723F2688299900CB80C6 /* ChatView.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		F23D724126882A4700CB80C6 /* customviews */ = {
+			isa = PBXGroup;
+			children = (
+				F23D724226882A5700CB80C6 /* CustomField.swift */,
+			);
+			path = customviews;
 			sourceTree = "<group>";
 		};
 		F27BC5DC2650CD150017B198 /* Utils */ = {
@@ -731,15 +768,19 @@
 				F2D7459325FB2484003C5157 /* OnboardingView.swift in Sources */,
 				F2D7457925FAF6AC003C5157 /* AuthAPI.swift in Sources */,
 				F2DBDDD1263B238600E9C987 /* SingleLostPetImage.swift in Sources */,
+				F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */,
 				F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */,
 				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
 				3461D3DB245C219B009D389E /* Extensions.swift in Sources */,
 				345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */,
+				F23D724926882B1500CB80C6 /* Message.swift in Sources */,
+				F23D724326882A5700CB80C6 /* CustomField.swift in Sources */,
 				F27BC5E4265454080017B198 /* LostViewRouter.swift in Sources */,
 				F2D7459425FB2484003C5157 /* LottieSubview.swift in Sources */,
 				F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */,
 				3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */,
 				F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */,
+				F23D724826882B1500CB80C6 /* AppStateModel.swift in Sources */,
 				345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */,
 				F2D7457125FAF6AC003C5157 /* SignInViewModel.swift in Sources */,
 				34ADED2C2584B48100A504F5 /* Constants.swift in Sources */,
@@ -760,6 +801,7 @@
 				F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
+				F23D72402688299900CB80C6 /* ChatView.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
 				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
@@ -790,6 +832,7 @@
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
 				F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */,
 				341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */,
+				F23D724526882AE500CB80C6 /* ChatRow.swift in Sources */,
 				F220A6A7265F4FDB00319F2F /* PathPolyline.swift in Sources */,
 				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
@@ -804,6 +847,7 @@
 				F220A6FB2682F14600319F2F /* MainView.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
 				F23D7236268764D800CB80C6 /* Pet.swift in Sources */,
+				F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */,
 				F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
 				344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */,
