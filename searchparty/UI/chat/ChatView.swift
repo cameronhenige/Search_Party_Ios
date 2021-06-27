@@ -23,10 +23,17 @@ struct ChatView: View {
     var body: some View {
         VStack {
             ScrollView(.vertical) {
+                ScrollViewReader { scrollView in
+
                 ForEach(model.messages, id: \.self) { message in
                     ChatRow(text: message.message!,
                             sender: message.sender == Auth.auth().currentUser?.uid)
                         .padding(3)
+                }.onChange(of: model.messages.count) { _ in
+                    scrollView.scrollTo(model.messages[model.messages.endIndex - 1])
+                    //value.scrollTo(model.messages.count)
+                }
+                    
                 }
             }
 
