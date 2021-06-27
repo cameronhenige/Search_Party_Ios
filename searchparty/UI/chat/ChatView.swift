@@ -30,7 +30,6 @@ struct ChatView: View {
                 }
             }
 
-            // Field, send button
             HStack {
                 TextField("Message...", text: $message)
                     .modifier(CustomField())
