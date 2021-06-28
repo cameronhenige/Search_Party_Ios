@@ -25,7 +25,6 @@ class ChatViewModel: ObservableObject {
     let database = Firestore.firestore()
     let auth = Auth.auth()
 
-    var otherUsername = ""
 
     var conversationListener: ListenerRegistration?
     var chatListener: ListenerRegistration?

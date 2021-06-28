@@ -8,12 +8,6 @@ struct ChatView: View {
 
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
-    let otherUsername: String
-
-    init(otherUsername: String) {
-        self.otherUsername = otherUsername
-    }
-
     var body: some View {
         VStack {
             ScrollView(.vertical) {
@@ -47,9 +41,8 @@ struct ChatView: View {
             }
             .padding()
         }
-        .navigationBarTitle(otherUsername, displayMode: .inline)
+        .navigationBarTitle("Chat with Search Party", displayMode: .inline)
         .onAppear {
-            model.otherUsername = otherUsername
             model.getMessages(lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
         }
     }
@@ -57,7 +50,7 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView(otherUsername: "Samantha")
+        ChatView()
             .preferredColorScheme(.dark)
     }
 }
