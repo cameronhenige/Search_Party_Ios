@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "TPPDF",
+        "repositoryURL": "https://github.com/techprimate/TPPDF",
+        "state": {
+          "branch": null,
+          "revision": "e4577f5ac161d35fd4ad41e401b639ef68b81315",
+          "version": "2.3.5"
+        }
+      },
+      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image.git",
         "state": {

@@ -9,6 +9,7 @@ struct LostPetView: View {
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
+    @ObservedObject var generateFlyerViewModel = GenerateFlyerViewModel()
 
     @State var isOnLostPetIsFound = false
     @State var isOnChat = false
@@ -130,7 +131,9 @@ struct LostPetView: View {
             VStack{
             HStack {
             Button(action: {
-                self.isOnLostPetIsFound = true
+                //self.isOnLostPetIsFound = true
+                
+                generateFlyerViewModel.generateFlyer(lostPet: searchPartyAppState.selectedLostPet!)
             }) {
                 Text("Generate Flyer")
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])

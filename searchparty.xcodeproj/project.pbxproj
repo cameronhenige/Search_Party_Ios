@@ -66,6 +66,8 @@
 		F23D724926882B1500CB80C6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724726882B1500CB80C6 /* Message.swift */; };
 		F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724A26882B2F00CB80C6 /* SendButton.swift */; };
 		F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724B26882B2F00CB80C6 /* SearchView.swift */; };
+		F23D724F2689621900CB80C6 /* GenerateFlyerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */; };
+		F23D72522689637C00CB80C6 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = F23D72512689637C00CB80C6 /* TPPDF */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -198,6 +200,7 @@
 		F23D724726882B1500CB80C6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F23D724A26882B2F00CB80C6 /* SendButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFlyerViewModel.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -265,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23D72522689637C00CB80C6 /* TPPDF in Frameworks */,
 				34B255AA24081B3500599A4C /* SwiftUI.framework in Frameworks */,
 				F27BC5EB26557C680017B198 /* BottomSheet in Frameworks */,
 				EB070D4687FDECC820081A9F /* Pods_searchparty.framework in Frameworks */,
@@ -540,6 +544,7 @@
 				F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */,
 				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
 				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
+				F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -645,6 +650,7 @@
 			packageProductDependencies = (
 				F2DBDDFC2646372900E9C987 /* iPhoneNumberField */,
 				F27BC5EA26557C680017B198 /* BottomSheet */,
+				F23D72512689637C00CB80C6 /* TPPDF */,
 			);
 			productName = "sketch-elements";
 			productReference = 3403A2FE2406B70F00D7B040 /* searchparty.app */;
@@ -678,6 +684,7 @@
 				3445A794240839DE0020561B /* XCRemoteSwiftPackageReference "url-image" */,
 				F2DBDDFB2646372900E9C987 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				F27BC5E926557C680017B198 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				F23D72502689637C00CB80C6 /* XCRemoteSwiftPackageReference "TPPDF" */,
 			);
 			productRefGroup = 3403A2FF2406B70F00D7B040 /* Products */;
 			projectDirPath = "";
@@ -837,6 +844,7 @@
 				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */,
+				F23D724F2689621900CB80C6 /* GenerateFlyerViewModel.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
@@ -1073,6 +1081,14 @@
 				minimumVersion = 0.9.10;
 			};
 		};
+		F23D72502689637C00CB80C6 /* XCRemoteSwiftPackageReference "TPPDF" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/techprimate/TPPDF";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.5;
+			};
+		};
 		F27BC5E926557C680017B198 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
@@ -1092,6 +1108,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F23D72512689637C00CB80C6 /* TPPDF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F23D72502689637C00CB80C6 /* XCRemoteSwiftPackageReference "TPPDF" */;
+			productName = TPPDF;
+		};
 		F27BC5EA26557C680017B198 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F27BC5E926557C680017B198 /* XCRemoteSwiftPackageReference "BottomSheet" */;
