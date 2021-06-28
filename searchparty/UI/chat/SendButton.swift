@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SendButton: View {
     @Binding var text: String
-    @EnvironmentObject var model: ChatViewModel
+    @ObservedObject var model: ChatViewModel
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
     var body: some View {

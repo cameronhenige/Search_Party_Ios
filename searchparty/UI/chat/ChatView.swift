@@ -1,10 +1,3 @@
-//
-//  ChatView.swift
-//  searchparty
-//
-//  Created by Hannah Krolewski on 6/26/21.
-//  Copyright © 2021 Filip Molcik. All rights reserved.
-//
 
 import SwiftUI
 import FirebaseAuth
@@ -49,7 +42,7 @@ struct ChatView: View {
                 if(model.isAddingMessage){
                     ProgressView()
                 }else{
-                    SendButton(text: $message)
+                    SendButton(text: $message, model: model)
                 }
             }
             .padding()
