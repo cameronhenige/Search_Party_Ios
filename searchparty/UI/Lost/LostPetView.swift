@@ -1,10 +1,4 @@
-//
-//  RestaurantDetail.swift
-//  sketch-elements
-//
-//  Created by Filip Molcik on 30/06/2020.
-//  Copyright © 2020 Filip Molcik. All rights reserved.
-//
+
 
 import SwiftUI
 import FirebaseStorage
@@ -142,7 +136,7 @@ struct LostPetView: View {
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
             
         
-                NavigationLink(destination: ChatView(otherUsername: "Chat with Search Party").environmentObject(ChatViewModel()), isActive: $isOnChat) {
+                NavigationLink(destination: ChatView(otherUsername: "Chat with Search Party"), isActive: $isOnChat) {
                 Button(action: {
                     self.isOnChat = true
                 }) {

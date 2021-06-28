@@ -11,7 +11,8 @@ import FirebaseAuth
 
 struct ChatView: View {
     @State var message: String = ""
-    @EnvironmentObject var model: ChatViewModel
+    @ObservedObject var model = ChatViewModel()
+
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
     let otherUsername: String
@@ -29,8 +30,12 @@ struct ChatView: View {
                     ChatRow(text: message.message!,
                             sender: message.sender == Auth.auth().currentUser?.uid)
                         .padding(3)
-                }.onChange(of: model.messages.count) { _ in
+                }.onChange(of: model.messages) { _ in
                     scrollView.scrollTo(model.messages[model.messages.endIndex - 1])
+                }.onAppear(){
+                    if(model.messages.count>0){
+                    scrollView.scrollTo(model.messages[model.messages.endIndex - 1])
+                    }
                 }
                     
                 }
