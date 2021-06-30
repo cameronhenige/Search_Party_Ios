@@ -1,5 +1,5 @@
 
-
+import UIKit
 import SwiftUI
 import FirebaseStorage
 import Kingfisher
@@ -10,14 +10,14 @@ struct LostPetView: View {
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     @ObservedObject var generateFlyerViewModel = GenerateFlyerViewModel()
-
     @State var isOnLostPetIsFound = false
-    @State var isOnChat = false
     @State var isOnEditPet = false
     @State var selectedView = 1
     @State private var isPresented = false
     @State var pictureUrl: URL?
     @State var hasPicture: Bool = false
+    @State private var isShareFlyerPresented: Bool = false
+
     private func goToSearchParty() {
         self.isPresented.toggle()
     }
@@ -138,10 +138,18 @@ struct LostPetView: View {
                 Text("Generate Flyer")
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
             
+//            .sheet(isPresented: $generateFlyerViewModel.isShowingFlyer, onDismiss: {
+//                print("Dismiss")
+//            }, content: {
+//                ActivityViewController(activityItems: [$generateFlyerViewModel.flyerURL])
+//            })
+            
+                
+                
         
-                NavigationLink(destination: ChatView(), isActive: $isOnChat) {
+                NavigationLink(destination: ChatView(), isActive: $searchPartyAppState.isOnChat) {
                 Button(action: {
-                    self.isOnChat = true
+                    self.searchPartyAppState.isOnChat = true
                 }) {
                     Text("Chat")
                 }.buttonStyle(PrimaryButtonStyle()).padding([.top, .trailing])

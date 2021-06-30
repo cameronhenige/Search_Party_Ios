@@ -14,6 +14,8 @@ struct ContentView: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) var scenePhase
+    
+    var searchPartyAppState = SearchPartyAppState()
 
     
     var body: some Scene {
@@ -21,7 +23,7 @@ struct ContentView: App {
             MainView().environmentObject(ModalManager())
                 .environmentObject(OnboardingRouter())
                 .environmentObject(AuthenticationState.shared)
-                .environmentObject(SearchPartyAppState())
+                .environmentObject(searchPartyAppState).onAppear(perform:setUpAppDelegate)
                 
 
         }.onChange(of: scenePhase) { newScenePhase in
@@ -42,4 +44,8 @@ struct ContentView: App {
         
         
     }
+    
+    func setUpAppDelegate(){
+            appDelegate.searchPartyAppState = searchPartyAppState
+        }
 }

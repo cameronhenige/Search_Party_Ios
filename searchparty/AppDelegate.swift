@@ -6,6 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let notificationCenter = UNUserNotificationCenter.current()
     let gcmMessageIDKey = "gcm.message_id"
+    weak var searchPartyAppState: SearchPartyAppState?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -136,12 +137,23 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
-      let userInfo = response.notification.request.content.userInfo
         
-        print("user clicked on notification" + response.notification.request.content.userInfo.debugDescription)
-        
-      Messaging.messaging().appDidReceiveMessage(userInfo)
+        let userInfo = response.notification.request.content.userInfo
 
+        let lostPetId = userInfo["lostPetId"] as! String
+        let messageType = userInfo["messageType"] as! String
+        let lostPetname = userInfo["lostPetName"]
+        let message = userInfo["message"]
+
+      Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        if(messageType == "3"){
+            searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: true)
+
+        }else {
+            searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: false)
+
+        }
       completionHandler()
     }
 

@@ -15,7 +15,8 @@ struct LostPets: View {
 
 
     var body: some View {
-        
+        NavigationView {
+
         
         if(searchPartyAppState.permissionStatus == nil){
             AnyView(Text("Waiting on permission")).onAppear(){
@@ -33,9 +34,8 @@ struct LostPets: View {
                 }))
             })
         }else{
+
             
-            
-            NavigationView {
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(searchPartyAppState.lostPets) { lostPet in
                         NavigationLink(destination: LostPetView(),
@@ -49,6 +49,11 @@ struct LostPets: View {
                     NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
                 
                             }
+                    
+                    NavigationLink(destination: LostPetView(),
+                                   isActive: self.$searchPartyAppState.isOnLostPet) {
+                                    EmptyView()
+                    }
                     
                 }.toolbar {
                     ToolbarItem(placement: .primaryAction) {
@@ -71,7 +76,7 @@ struct LostPets: View {
             }
         
 
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
 
     }
     

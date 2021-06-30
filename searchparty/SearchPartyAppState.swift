@@ -15,10 +15,16 @@ import FlexibleGeohash
 
 class SearchPartyAppState: NSObject, ObservableObject {
     
-    private var db = Firestore.firestore()
     @Published var isLoadingLostPets = false
     @Published var isOnSearchParty = false
+    @Published var isOnChat = false
 
+    @Published var isLoadingLostPetFromNotification = false
+    
+    @Published var isOnLostPet = false
+
+    
+    
 
     @Published var selectedTab: Int = 1
     @Published var selectedLostPet: LostPet? = nil
@@ -59,7 +65,7 @@ class SearchPartyAppState: NSObject, ObservableObject {
         
         func saveLocationToUser(location: CLLocation) {
             
-            db.collection("Users").document(Auth.auth().currentUser!.uid).setData([
+            Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).setData([
                 "filterLocation": GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             ], merge: true) { err in
                 if let err = err {
@@ -70,10 +76,38 @@ class SearchPartyAppState: NSObject, ObservableObject {
             }
         }
     
+    func navigateToLostPet(lostPetId: String, goToChat: Bool) {
+        self.isLoadingLostPetFromNotification = true
+        
+        Firestore.firestore().collection("Lost").document(lostPetId).getDocument { (DocumentSnapshot, Error) in
+
+            if(Error == nil){
+                let lostPet = try? DocumentSnapshot!.data(as: LostPet.self)
+                if(lostPet != nil) {
+                    self.selectedLostPet = lostPet
+                    self.isOnLostPet = true
+                    
+                    if(goToChat){
+                        self.isOnChat = true
+                    }
+
+                } else {
+                    //todo show failed to load lost pet
+                }
+            } else {
+                self.isLoadingLostPets = false
+                //todo
+            }
+        }
+        
+        //todo load lost pet
+    }
+    
+    
     
     func fetchLostPets() {
         
-        let userDocument = db.collection("Users").document(Auth.auth().currentUser!.uid)
+        let userDocument = Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid)
         isLoadingLostPets = true
         userDocument.getDocument { (DocumentSnapshot, Error) in
 
@@ -102,7 +136,7 @@ class SearchPartyAppState: NSObject, ObservableObject {
         let queries = queryBounds.compactMap { (any) -> Query? in
             guard let bound = any as? GFGeoQueryBounds else { return nil }
             
-            return db.collection("Lost")
+            return Firestore.firestore().collection("Lost")
                 .order(by: "lostLocation")
                 .start(at: [bound.startValue])
                 .end(at: [bound.endValue])
