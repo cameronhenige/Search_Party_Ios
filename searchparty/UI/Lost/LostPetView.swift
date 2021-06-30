@@ -131,7 +131,6 @@ struct LostPetView: View {
             VStack{
             HStack {
             Button(action: {
-                //self.isOnLostPetIsFound = true
                 
                 generateFlyerViewModel.generateFlyer(lostPet: searchPartyAppState.selectedLostPet!)
             }) {

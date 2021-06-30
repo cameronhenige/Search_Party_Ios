@@ -15,7 +15,7 @@ struct MainScreen: View {
     
     var body: some View {
         TabView(selection: $appState.selectedTab) {
-            LostPets().environmentObject(LostViewRouter()).tabItem {
+            LostPets().tabItem {
                 Text("Lost")
                 Image("lost_icon").renderingMode(.template)
             }.tag(1)

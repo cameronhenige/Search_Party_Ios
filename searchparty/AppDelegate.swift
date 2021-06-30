@@ -147,13 +147,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
       Messaging.messaging().appDidReceiveMessage(userInfo)
         
-        if(messageType == "3"){
-            searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: true)
-
-        }else {
+        if(messageType == "1"){
             searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: false)
-
+        }else if(messageType == "2") {
+            searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: false)
+        }else if(messageType == "3") {
+            searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: true)
+        }else if(messageType == "4") {
+            searchPartyAppState?.navigateToLostPet(lostPetId: lostPetId, goToChat: false)
         }
+        
       completionHandler()
     }
 

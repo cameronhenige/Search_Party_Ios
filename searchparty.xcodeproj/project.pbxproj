@@ -69,13 +69,13 @@
 		F23D724F2689621900CB80C6 /* GenerateFlyerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */; };
 		F23D72522689637C00CB80C6 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = F23D72512689637C00CB80C6 /* TPPDF */; };
 		F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72532689667800CB80C6 /* ActivityViewController.swift */; };
+		F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* Filter.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
 		F2791A6D2600759E00C056A6 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6C2600759E00C056A6 /* Chat.swift */; };
 		F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */; };
 		F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */; };
-		F27BC5E4265454080017B198 /* LostViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E3265454080017B198 /* LostViewRouter.swift */; };
 		F27BC5E8265575DF0017B198 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */; };
 		F27BC5EB26557C680017B198 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = F27BC5EA26557C680017B198 /* BottomSheet */; };
 		F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */; };
@@ -203,13 +203,13 @@
 		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFlyerViewModel.swift; sourceTree = "<group>"; };
 		F23D72532689667800CB80C6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		F23D7255268C2EA100CB80C6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
 		F2791A6C2600759E00C056A6 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		F2791AA42601B3B200C056A6 /* GeoHashConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoHashConverter.swift; sourceTree = "<group>"; };
 		F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
-		F27BC5E3265454080017B198 /* LostViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostViewRouter.swift; sourceTree = "<group>"; };
 		F27BC5E7265575DF0017B198 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyMapView.swift; sourceTree = "<group>"; };
 		F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyViewModel.swift; sourceTree = "<group>"; };
@@ -387,7 +387,6 @@
 				F233D3D62633D89000912F28 /* EditLostPet.swift */,
 				F233D3DE2633EDF600912F28 /* AddLostPet.swift */,
 				F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */,
-				F27BC5E3265454080017B198 /* LostViewRouter.swift */,
 				F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */,
 				F220A6C92671B4EA00319F2F /* TestUIFile.swift */,
 				F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */,
@@ -469,6 +468,7 @@
 				F2D7458A25FB2476003C5157 /* onboarding */,
 				F2D7454425FAF228003C5157 /* login */,
 				3445A79B240B03D70020561B /* Lost */,
+				F23D7255268C2EA100CB80C6 /* Filter.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -785,7 +785,6 @@
 				345AE3AC241A7A8E004EBE8C /* ModalView.swift in Sources */,
 				F23D724926882B1500CB80C6 /* Message.swift in Sources */,
 				F23D724326882A5700CB80C6 /* CustomField.swift in Sources */,
-				F27BC5E4265454080017B198 /* LostViewRouter.swift in Sources */,
 				F2D7459425FB2484003C5157 /* LottieSubview.swift in Sources */,
 				F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */,
 				3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */,
@@ -855,6 +854,7 @@
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
 				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
+				F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F220A6FB2682F14600319F2F /* MainView.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,

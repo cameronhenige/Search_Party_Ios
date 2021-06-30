@@ -18,14 +18,10 @@ class SearchPartyAppState: NSObject, ObservableObject {
     @Published var isLoadingLostPets = false
     @Published var isOnSearchParty = false
     @Published var isOnChat = false
-
+    @Published var isAddingLostPet = false
+    @Published var isFiltering = false
     @Published var isLoadingLostPetFromNotification = false
-    
     @Published var isOnLostPet = false
-
-    
-    
-
     @Published var selectedTab: Int = 1
     @Published var selectedLostPet: LostPet? = nil
     @Published var pets: [Pet] = [Pet(name: "Louie"), Pet(name: "Fred"), Pet(name: "Stanley")]

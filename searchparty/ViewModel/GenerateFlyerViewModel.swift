@@ -31,23 +31,9 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         DispatchQueue.global().async { [self] in
 
             document = PDFDocument(format: .a4)
-            
-//            let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
-//                                        size: CGSize(width: 100, height: 100), options: [.none])
-//            document.add(.contentCenter, image: houseBookIcon)
-//            document.add(space: 10)
+            document.set(font: UIFont.systemFont(ofSize: 40.0))
+
             addFirstPage(lostPet: lostPet)
-//
-//        for (index, room) in everyThing.rooms.enumerated() {
-//            DispatchQueue.main.async {
-//                statusLabel.text = "Exporting \(room.name) " + String(index+1) + "/\(everyThing.rooms.count)"
-//            }
-//            self.addRoom(room: room)
-//        }
-//
-//            DispatchQueue.main.async {
-//                statusLabel.text = "Saving File."
-//            }
             
             let generator = PDFGenerator(document: document)
             let url = try? generator.generateURL(filename: "Flyer.pdf")
@@ -65,9 +51,7 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
     }
     
     func addFirstPage(lostPet: LostPet) {
-        let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
-                                    size: CGSize(width: 100, height: 100), options: [.none])
-        document.add(.contentCenter, image: houseBookIcon)
+
         document.add(space: 10)
 
             let formatter = DateFormatter()
@@ -81,22 +65,89 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         } else {
             lostPetName = lostPet.type ?? "PET"
         }
-        document.add(.contentCenter, text: "LOST " + lostPetName.uppercased()) //todo handle OTHER type
+        
+        
+        document.add(text: "LOST \(lostPetName.uppercased())") //todo handle OTHER type
         document.add(space: 10)
         
+        document.resetFont()
+        let section = PDFSection(columnWidths: [0.5, 0.5])
         
-        lostPet.description
+        let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
+                                     size: CGSize(width: 500, height: 500), options: [.resize])
+        section.columns[0].add(image: houseBookIcon)
         
         if(lostPet.description != nil){
-            document.add(.contentCenter, text: lostPet.description!)
-            document.add(space: 60)
+            section.columns[1].add(text: lostPet.description!)
+            section.columns[1].add(space: 10)
+
+        }
+
+        section.columns[1].add(text: "Name: " + lostPet.name)
+        section.columns[1].add(space: 10)
+
+
+        if(lostPet.breed != nil) {
+            section.columns[1].add(text: "Breed: " + lostPet.breed!)
+            section.columns[1].add(space: 10)
+
+        }
+
+        if(lostPet.age != nil) {
+            section.columns[1].add(text: "Age: \(lostPet.age)")
+            section.columns[1].add(space: 10)
+
+        }
+
+        if(lostPet.sex != nil) {
+            section.columns[1].add(text: "Sex: " + lostPet.sex!)
+            section.columns[1].add(space: 10)
+
+        }
+
+        if(lostPet.description != nil) {
+            section.columns[1].add(text: "Description: " + lostPet.description!)
+            section.columns[1].add(space: 10)
+
+        }
+
+        if(lostPet.lostDateTime != nil) {
+            section.columns[1].add(text: "Date Lost: \(lostPet.lostDateTime)")
+            section.columns[1].add(space: 10)
+
+        }
+
+        if(lostPet.lostLocationDescription != nil) {
+            section.columns[1].add(text: "Location Lost: " + lostPet.lostLocationDescription!)
+            section.columns[1].add(space: 10)
+
         }
         
-//        val lostTextParagraph = Paragraph(lostText, superLarge)
-//               lostTextParagraph.alignment = Element.ALIGN_CENTER
-//
-//               lostTextParagraph.spacingAfter = 60f
-//               document.add(lostTextParagraph)
+        document.add(section: section)
+        document.add(space: 20)
+        
+        if(lostPet.ownerName != nil) {
+            document.add(.contentCenter, text: "Contact: " + lostPet.ownerName!)
+            document.add(space: 10)
+
+        }
+
+        if(lostPet.ownerPhoneNumber != nil) {
+            document.add(.contentCenter, text: lostPet.ownerPhoneNumber!)
+            document.add(space: 10)
+
+        }
+
+        if(lostPet.ownerEmail != nil){
+            document.add(.contentCenter, text: lostPet.ownerEmail!)
+            document.add(space: 10)
+
+        }
+
+        //todo document.add(createQrCode(qrCodeLink))
+        document.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
+
+        
 //
 //
 //

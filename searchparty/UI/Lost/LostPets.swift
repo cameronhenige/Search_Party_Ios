@@ -5,13 +5,10 @@ import CoreLocation
 
 struct LostPets: View {
     
-    @EnvironmentObject var lostViewRouter: LostViewRouter
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
         
     @State var isShowingAlert = true
-
-    @State var isAddingLostPet = false
 
 
     var body: some View {
@@ -46,7 +43,11 @@ struct LostPets: View {
                         })
                     }
                     
-                    NavigationLink(destination: AddLostPet().environmentObject(lostViewRouter), isActive: $lostViewRouter.isAddingLostPet) {
+                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isAddingLostPet) {
+                
+                            }
+                    
+                    NavigationLink(destination: Filter().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isFiltering) {
                 
                             }
                     
@@ -58,9 +59,17 @@ struct LostPets: View {
                 }.toolbar {
                     ToolbarItem(placement: .primaryAction) {
                         Button(action: {
-                            self.lostViewRouter.isAddingLostPet = true
+                            self.searchPartyAppState.isAddingLostPet = true
                         }) {
                             Text("Add Lost Pet")
+                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                    }
+                    
+                    ToolbarItem(placement: .primaryAction) {
+                        Button(action: {
+                            self.searchPartyAppState.isFiltering = true
+                        }) {
+                            Text("Filter")
                         }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
                     }
                 }.navigationBarColor(Constant.color.tintColor.uiColor())

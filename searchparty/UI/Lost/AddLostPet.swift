@@ -15,7 +15,7 @@ import MapKit
 
 struct AddLostPet: View {
     
-    @EnvironmentObject var lostViewRouter: LostViewRouter
+    @EnvironmentObject var lostViewRouter: SearchPartyAppState
 
     @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
     
