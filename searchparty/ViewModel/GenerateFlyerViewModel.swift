@@ -9,6 +9,8 @@
 import Foundation
 import TPPDF
 import UIKit
+import Kingfisher
+import FirebaseStorage
 
 class GenerateFlyerViewModel: NSObject, ObservableObject {
     @Published var isGeneratingFlyer = false
@@ -73,9 +75,14 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         document.resetFont()
         let section = PDFSection(columnWidths: [0.5, 0.5])
         
-        let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
-                                     size: CGSize(width: 500, height: 500), options: [.resize])
-        section.columns[0].add(image: houseBookIcon)
+        if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+            addImage(column: section.columns[0], lostPet: lostPet)
+
+        }else {
+            let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
+                                         size: CGSize(width: 500, height: 500), options: [.resize])
+            section.columns[0].add(image: houseBookIcon)
+        }
         
         if(lostPet.description != nil){
             section.columns[1].add(text: lostPet.description!)
@@ -197,7 +204,66 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         
     }
     
+    func addImage(column: PDFSectionColumn, lostPet: LostPet){
+
+
+        if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+
+            let imageReference : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages![0]
+            let storage = Storage.storage().reference().child(imageReference)
+            let roomImageResult = self.getImage(imageReference: storage)
+            
+        switch roomImageResult {
+          case let .success(data):
+
+//            let heightRatio = roomImageHeight / data.size.height
+//            let newWidth = data.size.width * heightRatio
+            let imageElement = PDFImage(image: data,
+                                        size: CGSize(width: data.size.width, height: data.size.height), options: [.none])
+            column.add(image: imageElement)
+
+        case .failure(_):
+            showErrorGettingLostPetImage()
+           }
+        }
+
+
+    }
     
+    func showErrorGettingLostPetImage() {
+        
+    }
+    
+    func getImage(imageReference: StorageReference) -> Result<KFCrossPlatformImage, Error> {
+        
+        var getImageResult: Result<KFCrossPlatformImage, Error>!
+
+        let semaphore = DispatchSemaphore(value: 0)
+        
+
+        imageReference.downloadURL { (url: URL?, error: Error?) in
+            let resource = ImageResource(downloadURL: url!)
+
+            
+            KingfisherManager.shared.retrieveImage(with: resource, completionHandler: { result in
+                switch result {
+                case .success(let value):
+                    getImageResult = .success(value.image)
+
+                case .failure(let error):
+                    getImageResult = .failure(error)
+                }
+                semaphore.signal()
+
+            })
+        }
+
+        
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        return getImageResult
+    }
     
     func savePdf(url: URL) {
 
