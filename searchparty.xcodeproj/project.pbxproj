@@ -70,6 +70,7 @@
 		F23D72522689637C00CB80C6 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = F23D72512689637C00CB80C6 /* TPPDF */; };
 		F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72532689667800CB80C6 /* ActivityViewController.swift */; };
 		F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* Filter.swift */; };
+		F255CBA526901AD3005AB259 /* DynamicLinkGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -204,6 +205,7 @@
 		F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFlyerViewModel.swift; sourceTree = "<group>"; };
 		F23D72532689667800CB80C6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F23D7255268C2EA100CB80C6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinkGenerator.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */,
+				F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */,
 				F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */,
 				F216C05D25FD5F560026B180 /* LostPetsViewModel.swift in Sources */,
+				F255CBA526901AD3005AB259 /* DynamicLinkGenerator.swift in Sources */,
 				F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */,
 				F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,

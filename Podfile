@@ -11,6 +11,8 @@ target 'searchparty' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
+
   pod 'FirebaseFirestoreSwift'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'

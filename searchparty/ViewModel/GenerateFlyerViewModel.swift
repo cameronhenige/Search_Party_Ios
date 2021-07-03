@@ -11,6 +11,7 @@ import TPPDF
 import UIKit
 import Kingfisher
 import FirebaseStorage
+import CoreImage.CIFilterBuiltins
 
 class GenerateFlyerViewModel: NSObject, ObservableObject {
     @Published var isGeneratingFlyer = false
@@ -150,8 +151,15 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
             document.add(space: 10)
 
         }
+        
+        var link = DynamicLinkGenerator.getShareLink(lostPetName: lostPet.name, lostPetId: lostPet.id!)
+        
 
         //todo document.add(createQrCode(qrCodeLink))
+        let imageElement = PDFImage(image: createQRCodeImage(lostPet: lostPet, url: link!.link.absoluteString)!,
+                                    size: CGSize(width: 80, height: 80), options: [.none]) //todo use correct url
+        document.add(.contentCenter, image: imageElement)
+
         document.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
 
         
@@ -201,6 +209,22 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
 //               document.add(createQrCode(qrCodeLink))
 //               document.add(addSmallCenteredLine("Scan QR Code to help find " + lostPet.name + " in the Search Party App."))
 //
+        
+    }
+    
+    func createQRCodeImage(lostPet: LostPet, url: String) -> UIImage? {
+        let data = Data(url.utf8)
+        
+        let filter = CIFilter.qrCodeGenerator()
+        filter.setValue(data, forKey: "inputMessage")
+        
+        if let qrCodeImage = filter.outputImage {
+            if let qrCodeCGImage = CIContext().createCGImage(qrCodeImage, from: qrCodeImage.extent) {
+                return UIImage(cgImage: qrCodeCGImage)
+            }
+        }
+        
+        return nil
         
     }
     
