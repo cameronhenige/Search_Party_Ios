@@ -22,6 +22,12 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
 
     
     var document: PDFDocument!
+    
+    let taskDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+        formatter.dateStyle = .short
+            return formatter
+        }()
 
     func generateFlyer(lostPet: LostPet) {
         self.isGeneratingFlyer = true
@@ -102,7 +108,7 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         }
 
         if(lostPet.age != nil) {
-            section.columns[1].add(text: "Age: \(lostPet.age)")
+            section.columns[1].add(text: "Age: \(lostPet.age!)")
             section.columns[1].add(space: 10)
 
         }
@@ -120,7 +126,7 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         }
 
         if(lostPet.lostDateTime != nil) {
-            section.columns[1].add(text: "Date Lost: \(lostPet.lostDateTime)")
+            section.columns[1].add(text: "Date Lost: \(taskDateFormat.string(from: (lostPet.lostDateTime?.dateValue())!))")
             section.columns[1].add(space: 10)
 
         }
@@ -161,54 +167,6 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
         document.add(.contentCenter, image: imageElement)
 
         document.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
-
-        
-//
-//
-//
-//               var numberOfColumns =0
-//
-//               if(lostPet.generalImages.size > 0){
-//                   numberOfColumns = 2
-//               }else{
-//                   numberOfColumns = 1
-//               }
-//               val table = PdfPTable(numberOfColumns)
-//
-//               if(lostPet.generalImages.size > 0){
-//                   table.setWidths(intArrayOf(1, 1))
-//                   addLostPetImage(table, lostPet, context)
-//               }else{
-//                   table.setWidths(intArrayOf(1))
-//               }
-//
-//               table.widthPercentage = 100f
-//               table.spacingAfter = 25f
-//               table.addCell(createPetDescriptionCell(lostPet))
-//
-//               document.add(table)
-//
-//               if(lostPet.ownerName != null) {
-//                   val ownerName = addMediumCenterLine("Contact: " + lostPet.ownerName!!)
-//                   ownerName.spacingAfter = 20f
-//                   document.add(ownerName)
-//               }
-//
-//               if(lostPet.ownerPhoneNumber != null) {
-//                   val ownerLine = addMediumCenterLine(lostPet.ownerPhoneNumber!!)
-//                   ownerLine.leading = 25f
-//                   document.add(ownerLine)
-//               }
-//
-//               if(lostPet.ownerEmail != null){
-//                   val ownerEmail = addMediumCenterLine(lostPet.ownerEmail!!)
-//                   ownerEmail.leading = 25f
-//                   document.add(ownerEmail)
-//               }
-//
-//               document.add(createQrCode(qrCodeLink))
-//               document.add(addSmallCenteredLine("Scan QR Code to help find " + lostPet.name + " in the Search Party App."))
-//
         
     }
     

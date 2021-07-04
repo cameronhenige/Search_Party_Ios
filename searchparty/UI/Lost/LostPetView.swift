@@ -17,7 +17,12 @@ struct LostPetView: View {
     @State var pictureUrl: URL?
     @State var hasPicture: Bool = false
     @State private var isShareFlyerPresented: Bool = false
-
+    let taskDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+        formatter.dateStyle = .short
+            return formatter
+        }()
+    
     private func goToSearchParty() {
         self.isPresented.toggle()
     }
@@ -86,7 +91,7 @@ struct LostPetView: View {
             
                             if let lostDateTime = pet.lostDateTime {
                                 Text("Lost Date").font(.caption)
-                                Text("Todo").padding(.bottom)
+                                Text(taskDateFormat.string(from: (lostDateTime.dateValue()))).padding(.bottom)
                             }
             
                             if let ownersName = pet.ownerName, !ownersName.isEmpty {

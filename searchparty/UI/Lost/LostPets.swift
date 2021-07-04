@@ -57,23 +57,29 @@ struct LostPets: View {
                     }
                     
                 }.toolbar {
-                    ToolbarItem(placement: .primaryAction) {
-                        Button(action: {
-                            self.searchPartyAppState.isAddingLostPet = true
-                        }) {
-                            Text("Add Lost Pet")
-                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                    }
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+
+                    Button(action: {
+                        self.searchPartyAppState.isAddingLostPet = true
+                    }) {
+                        Text("Add Lost Pet")
+                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
                     
-                    ToolbarItem(placement: .primaryAction) {
-                        Button(action: {
-                            self.searchPartyAppState.isFiltering = true
-                        }) {
-                            Text("Filter")
-                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
                     }
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+
+                        
+                        
+                            Button(action: {
+                                self.searchPartyAppState.isFiltering = true
+                            }) {
+                                Text("Filter")
+                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                        
+                    }
+
                 }.navigationBarColor(Constant.color.tintColor.uiColor())
-                .navigationBarTitle(Text("Lost"), displayMode: .inline)
+                .navigationBarTitle(Text(""), displayMode: .inline)
                 .background(Constant.color.gray)
                 .onAppear(){
                     //locationManager.delegate = lostPetsViewModel
