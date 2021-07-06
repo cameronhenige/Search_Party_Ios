@@ -158,15 +158,23 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
 
         }
         
-        var link = DynamicLinkGenerator.getShareLink(lostPetName: lostPet.name, lostPetId: lostPet.id!)
+        var link = DynamicLinkGenerator().getShareLink(lostPetName: lostPet.name, lostPetId: lostPet.id!)
+        
+        switch link {
+          case let .success(data):
+            let imageElement = PDFImage(image: createQRCodeImage(lostPet: lostPet, url: data.absoluteString)!,
+                                        size: CGSize(width: 80, height: 80), options: [.none]) //todo use correct url
+            document.add(.contentCenter, image: imageElement)
+
+            document.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
+
+        case .failure(_):
+            print("failure!")
+            //todo show failed getting link
+           }
         
 
-        //todo document.add(createQrCode(qrCodeLink))
-        let imageElement = PDFImage(image: createQRCodeImage(lostPet: lostPet, url: link!.link.absoluteString)!,
-                                    size: CGSize(width: 80, height: 80), options: [.none]) //todo use correct url
-        document.add(.contentCenter, image: imageElement)
 
-        document.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
         
     }
     
