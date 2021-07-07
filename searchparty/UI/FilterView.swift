@@ -1,10 +1,4 @@
-//
-//  Filter.swift
-//  searchparty
-//
-//  Created by Hannah Krolewski on 6/30/21.
-//  Copyright © 2021 Filip Molcik. All rights reserved.
-//
+
 
 import SwiftUI
 import MapKit
@@ -15,7 +9,7 @@ struct FilterView: View {
     @State var currentLocation: CLLocationCoordinate2D?
 
     var distances = ["1/4 Mile", "1/2 Mile", "1 Mile", "2 Miles", "5 Miles"]
-    @State private var distanceSelected = 0
+    @State var distanceSelected = 0
 
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     @ObservedObject private var filterViewModel = FilterViewModel()
@@ -33,7 +27,7 @@ struct FilterView: View {
             
         if(filterViewModel.userLocation != nil) {
 
-            FilterMapView(map: self.$map, coordinate: self.$currentLocation, initialLocation: filterViewModel.userLocation!).frame(height: 300).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0))
+            FilterMapView(map: self.$map, coordinate: self.$currentLocation, distanceSelected: self.$distanceSelected, initialLocation: filterViewModel.userLocation!).frame(height: 300).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0))
         }
             
             Button(action: {

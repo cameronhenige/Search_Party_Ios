@@ -14,6 +14,8 @@ struct FilterMapView: UIViewRepresentable {
     
     @Binding var coordinate: CLLocationCoordinate2D?
 
+    @Binding var distanceSelected: Int
+
     
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -33,9 +35,13 @@ struct FilterMapView: UIViewRepresentable {
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
             self.parent.map.removeOverlays(self.parent.map.overlays)
-            let circle = MKCircle(center: mapView.centerCoordinate, radius: 100)
+            
+            let radius = self.parent.getRadiusForDistanceSelected(distanceSelected: self.parent.distanceSelected)
+            let circle = MKCircle(center: mapView.centerCoordinate, radius: radius)
             self.parent.map.addOverlay(circle)
         }
+        
+
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             
@@ -60,6 +66,33 @@ struct FilterMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
+        print("Update ui view")
+        
+        coordinate = view.centerCoordinate
+        view.removeOverlays(view.overlays)
+        
+        let radius = getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
+        let circle = MKCircle(center: view.centerCoordinate, radius: radius)
+        view.addOverlay(circle)
+        
+    }
+    
+    func getRadiusForDistanceSelected(distanceSelected: Int) -> Double {
+    
+        switch distanceSelected {
+        case 0:
+            return 402.335
+        case 1:
+            return 804.67
+        case 2:
+            return 1609.34
+        case 3:
+            return 3218.68
+        case 4:
+            return 8046.70
+        default:
+            return 0
+        }
     }
 }
 
