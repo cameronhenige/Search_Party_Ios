@@ -47,7 +47,7 @@ struct LostPets: View {
                 
                             }
                     
-                    NavigationLink(destination: Filter().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isFiltering) {
+                    NavigationLink(destination: FilterView().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isFiltering) {
                 
                             }
                     

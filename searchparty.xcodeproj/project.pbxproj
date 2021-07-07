@@ -68,10 +68,12 @@
 		F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724B26882B2F00CB80C6 /* SearchView.swift */; };
 		F23D72522689637C00CB80C6 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = F23D72512689637C00CB80C6 /* TPPDF */; };
 		F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72532689667800CB80C6 /* ActivityViewController.swift */; };
-		F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* Filter.swift */; };
+		F23D7256268C2EA100CB80C6 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* FilterView.swift */; };
 		F255CBA526901AD3005AB259 /* DynamicLinkGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */; };
 		F255CBA72695297F005AB259 /* GenerateFlyerViewModelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */; };
 		F255CBA926954CC8005AB259 /* PetImageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA826954CC8005AB259 /* PetImageTypes.swift */; };
+		F255CBAB2695F8B0005AB259 /* FilterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAA2695F8B0005AB259 /* FilterMapView.swift */; };
+		F255CBAD2695F9F2005AB259 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -204,10 +206,12 @@
 		F23D724A26882B2F00CB80C6 /* SendButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F23D72532689667800CB80C6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
-		F23D7255268C2EA100CB80C6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		F23D7255268C2EA100CB80C6 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinkGenerator.swift; sourceTree = "<group>"; };
 		F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFlyerViewModelX.swift; sourceTree = "<group>"; };
 		F255CBA826954CC8005AB259 /* PetImageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageTypes.swift; sourceTree = "<group>"; };
+		F255CBAA2695F8B0005AB259 /* FilterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMapView.swift; sourceTree = "<group>"; };
+		F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */,
 				344723C324ABC078003B9F50 /* Modifiers */,
 				340A1980249BB0C900D49461 /* AddLostPetMapView.swift */,
+				F255CBAA2695F8B0005AB259 /* FilterMapView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -472,7 +477,7 @@
 				F2D7458A25FB2476003C5157 /* onboarding */,
 				F2D7454425FAF228003C5157 /* login */,
 				3445A79B240B03D70020561B /* Lost */,
-				F23D7255268C2EA100CB80C6 /* Filter.swift */,
+				F23D7255268C2EA100CB80C6 /* FilterView.swift */,
 				F255CBA826954CC8005AB259 /* PetImageTypes.swift */,
 			);
 			path = UI;
@@ -554,6 +559,7 @@
 				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
 				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
 				F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */,
+				F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -862,7 +868,7 @@
 				F255CBA926954CC8005AB259 /* PetImageTypes.swift in Sources */,
 				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
 				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
-				F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */,
+				F23D7256268C2EA100CB80C6 /* FilterView.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F220A6FB2682F14600319F2F /* MainView.swift in Sources */,
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
@@ -872,6 +878,7 @@
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
 				344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */,
 				F220A6D02675706D00319F2F /* ColoredPolygon.swift in Sources */,
+				F255CBAB2695F8B0005AB259 /* FilterMapView.swift in Sources */,
 				34B4B12524AB668100B092A8 /* Card.swift in Sources */,
 				345AE3B0241A7ABD004EBE8C /* ContentView.swift in Sources */,
 				F2A585462607BEDA00E8920E /* SearchPartyView.swift in Sources */,
@@ -880,6 +887,7 @@
 				F220A6FF268430E600319F2F /* SearchPartyAppState.swift in Sources */,
 				F216C07625FD605D0026B180 /* LostPet.swift in Sources */,
 				F2DBDDD2263B238600E9C987 /* PageControlLostPet.swift in Sources */,
+				F255CBAD2695F9F2005AB259 /* FilterViewModel.swift in Sources */,
 				3403A31A2408099500D7B040 /* LostPets.swift in Sources */,
 				F2791A652600746500C056A6 /* Search.swift in Sources */,
 			);
