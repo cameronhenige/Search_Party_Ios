@@ -71,6 +71,7 @@
 		F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72532689667800CB80C6 /* ActivityViewController.swift */; };
 		F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* Filter.swift */; };
 		F255CBA526901AD3005AB259 /* DynamicLinkGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */; };
+		F255CBA72695297F005AB259 /* GenerateFlyerViewModelX.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -206,6 +207,7 @@
 		F23D72532689667800CB80C6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F23D7255268C2EA100CB80C6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinkGenerator.swift; sourceTree = "<group>"; };
+		F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFlyerViewModelX.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
 				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
 				F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */,
+				F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
 				F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */,
 				F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */,
+				F255CBA72695297F005AB259 /* GenerateFlyerViewModelX.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F23D72402688299900CB80C6 /* ChatView.swift in Sources */,

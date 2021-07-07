@@ -137,7 +137,30 @@ struct LostPetView: View {
             HStack {
             Button(action: {
                 
-                generateFlyerViewModel.generateFlyer(lostPet: searchPartyAppState.selectedLostPet!)
+                //generateFlyerViewModel.generateFlyer(lostPet: searchPartyAppState.selectedLostPet!)
+                
+                
+                
+                
+                DispatchQueue.global().async { [self] in
+
+                    var pdfData = GenerateFlyerViewModelX(lostPet: searchPartyAppState.selectedLostPet!).createFlyer()
+
+                DispatchQueue.main.async {
+                    
+                    let activityVC = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+                    UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+                    
+                }
+                
+                }
+                
+                
+                
+
+                
+                
+                
             }) {
                 Text("Generate Flyer")
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])

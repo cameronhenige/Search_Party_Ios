@@ -32,7 +32,6 @@ class GenerateFlyerViewModel: NSObject, ObservableObject {
     func generateFlyer(lostPet: LostPet) {
         self.isGeneratingFlyer = true
         self.createPdf(lostPet: lostPet)
-        
     }
     
     
