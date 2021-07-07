@@ -13,24 +13,20 @@ import Kingfisher
 import FirebaseStorage
 
 class GenerateFlyerViewModelX: NSObject {
-    //let image: UIImage = UIImage(imageLiteralResourceName: "dog")
   let contactInfo: String = "contactInfo"
-    
-    
     let lostPet: LostPet
+    
+    let taskDateFormat: DateFormatter = {
+            let formatter = DateFormatter()
+        formatter.dateStyle = .short
+            return formatter
+        }()
     
     init(lostPet: LostPet) {
       self.lostPet = lostPet
     }
   
-  
     func createFlyer() -> Data {
-        
-        
-
-        
-        
-        
     // 1
     let pdfMetaData = [
       kCGPDFContextCreator: "Flyer Builder",
@@ -55,10 +51,11 @@ class GenerateFlyerViewModelX: NSObject {
       let titleBottom = addTitle(pageRect: pageRect)
       let imageBottom = addImage(pageRect: pageRect, imageTop: titleBottom + 18.0)
       addBodyText(pageRect: pageRect, textTop: imageBottom + 18.0)
-      
-      let context = context.cgContext
-      drawTearOffs(context, pageRect: pageRect, tearOffY: pageRect.height * 4.0 / 5.0, numberTabs: 8)
-      drawContactLabels(context, pageRect: pageRect, numberTabs: 8)
+        
+
+      //let context = context.cgContext
+      //drawTearOffs(context, pageRect: pageRect, tearOffY: pageRect.height * 4.0 / 5.0, numberTabs: 8)
+        //drawContactLabels(context, pageRect: pageRect, numberTabs: 8)
     }
     
     return data
@@ -66,11 +63,21 @@ class GenerateFlyerViewModelX: NSObject {
   
   func addTitle(pageRect: CGRect) -> CGFloat {
     // 1
-    let titleFont = UIFont.systemFont(ofSize: 18.0, weight: .bold)
+    let titleFont = UIFont.systemFont(ofSize: 30.0, weight: .bold)
     // 2
     let titleAttributes: [NSAttributedString.Key: Any] =
       [NSAttributedString.Key.font: titleFont]
-    let attributedTitle = NSAttributedString(string: lostPet.name, attributes: titleAttributes)
+    
+    
+    var lostPetName = ""
+    
+    if(lostPet.type == "Other") {
+        lostPetName = "PET"
+    } else {
+        lostPetName = lostPet.type ?? "PET"
+    }
+    
+    let attributedTitle = NSAttributedString(string: "LOST \(lostPetName.uppercased())", attributes: titleAttributes)
     // 3
     let titleStringSize = attributedTitle.size()
     // 4
@@ -83,24 +90,77 @@ class GenerateFlyerViewModelX: NSObject {
     return titleStringRect.origin.y + titleStringRect.size.height
   }
 
-  func addBodyText(pageRect: CGRect, textTop: CGFloat) {
+  func addBodyText(pageRect: CGRect, textTop: CGFloat) -> CGFloat {
     // 1
     let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
     // 2
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .natural
     paragraphStyle.lineBreakMode = .byWordWrapping
+    
     // 3
     let textAttributes = [
       NSAttributedString.Key.paragraphStyle: paragraphStyle,
       NSAttributedString.Key.font: textFont
     ]
-    let attributedText = NSAttributedString(string: lostPet.description ?? "", attributes: textAttributes)
+    
+    let fullText = getFullText()
+    let attributedText = NSAttributedString(string: fullText, attributes: textAttributes)
     // 4
-    let textRect = CGRect(x: 10, y: textTop, width: pageRect.width - 20,
+    let textRect = CGRect(x: 70, y: textTop, width: pageRect.width - 70,
                           height: pageRect.height - textTop - pageRect.height / 5.0)
     attributedText.draw(in: textRect)
+    
+    return textRect.origin.y + textRect.size.height
   }
+    
+
+    
+    func getFullText() -> String {
+        var text = ""
+        if(lostPet.description != nil){
+            text.append("\(lostPet.description!)\n\n")
+        }
+
+        text.append("\nName: " + lostPet.name)
+
+        if(lostPet.breed != nil) {
+            text.append("\nBreed: " + lostPet.breed!)
+        }
+
+        if(lostPet.age != nil) {
+            text.append("\nAge: \(lostPet.age!)")
+        }
+
+        if(lostPet.sex != nil) {
+            text.append("\nSex: " + lostPet.sex!)
+        }
+
+        if(lostPet.lostDateTime != nil) {
+            text.append("\nDate Lost: \(taskDateFormat.string(from: (lostPet.lostDateTime?.dateValue())!))")
+        }
+
+        if(lostPet.lostLocationDescription != nil) {
+            text.append("\nLocation Lost: " + lostPet.lostLocationDescription!)
+        }
+        
+        text.append("\n\n")
+
+
+        if(lostPet.ownerName != nil) {
+            text.append("Contact: " + lostPet.ownerName!)
+        }
+
+        if(lostPet.ownerPhoneNumber != nil) {
+            text.append(lostPet.ownerPhoneNumber!)
+        }
+
+        if(lostPet.ownerEmail != nil){
+            text.append(lostPet.ownerEmail!)
+        }
+        
+        return text
+    }
 
   func addImage(pageRect: CGRect, imageTop: CGFloat) -> CGFloat {
     
