@@ -33,17 +33,13 @@ struct FilterMapView: UIViewRepresentable {
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
             self.parent.map.removeOverlays(self.parent.map.overlays)
-            
-            let geoHash = mapView.centerCoordinate.geohash(length: 7)
-            print("current geohash " + geoHash)
-                        
-
-            
+            let circle = MKCircle(center: mapView.centerCoordinate, radius: 100)
+            self.parent.map.addOverlay(circle)
         }
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             
-            let over = MKPolygonRenderer(overlay: overlay)
+            let over = MKCircleRenderer(overlay: overlay)
             over.strokeColor = UIConfiguration.colorPrimary
             over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
             over.lineWidth = 3
