@@ -50,8 +50,9 @@ class GenerateFlyerViewModelX: NSObject {
       // 6
       let titleBottom = addTitle(pageRect: pageRect)
       let imageBottom = addImage(pageRect: pageRect, imageTop: titleBottom + 18.0)
-      addBodyText(pageRect: pageRect, textTop: imageBottom + 18.0)
-        
+      let bodyText = addBodyText(pageRect: pageRect, textTop: imageBottom + 18.0)
+      addQRCode(pageRect: pageRect, imageTop: bodyText)
+
 
       //let context = context.cgContext
       //drawTearOffs(context, pageRect: pageRect, tearOffY: pageRect.height * 4.0 / 5.0, numberTabs: 8)
@@ -63,7 +64,7 @@ class GenerateFlyerViewModelX: NSObject {
   
   func addTitle(pageRect: CGRect) -> CGFloat {
     // 1
-    let titleFont = UIFont.systemFont(ofSize: 30.0, weight: .bold)
+    let titleFont = UIFont.systemFont(ofSize: 35.0, weight: .bold)
     // 2
     let titleAttributes: [NSAttributedString.Key: Any] =
       [NSAttributedString.Key.font: titleFont]
@@ -118,13 +119,13 @@ class GenerateFlyerViewModelX: NSObject {
     
     func getFullText() -> String {
         var text = ""
-        if(lostPet.description != nil){
+        if(lostPet.description != nil && !lostPet.description!.isEmpty){
             text.append("\(lostPet.description!)\n\n")
         }
 
         text.append("\nName: " + lostPet.name)
 
-        if(lostPet.breed != nil) {
+        if(lostPet.breed != nil && !lostPet.breed!.isEmpty) {
             text.append("\nBreed: " + lostPet.breed!)
         }
 
@@ -132,7 +133,7 @@ class GenerateFlyerViewModelX: NSObject {
             text.append("\nAge: \(lostPet.age!)")
         }
 
-        if(lostPet.sex != nil) {
+        if(lostPet.sex != nil && !lostPet.sex!.isEmpty) {
             text.append("\nSex: " + lostPet.sex!)
         }
 
@@ -140,23 +141,20 @@ class GenerateFlyerViewModelX: NSObject {
             text.append("\nDate Lost: \(taskDateFormat.string(from: (lostPet.lostDateTime?.dateValue())!))")
         }
 
-        if(lostPet.lostLocationDescription != nil) {
+        if(lostPet.lostLocationDescription != nil && !lostPet.lostLocationDescription!.isEmpty) {
             text.append("\nLocation Lost: " + lostPet.lostLocationDescription!)
         }
-        
-        text.append("\n\n")
 
-
-        if(lostPet.ownerName != nil) {
-            text.append("Contact: " + lostPet.ownerName!)
+        if(lostPet.ownerName != nil && !lostPet.ownerName!.isEmpty) {
+            text.append("\nContact: " + lostPet.ownerName!)
         }
 
-        if(lostPet.ownerPhoneNumber != nil) {
-            text.append(lostPet.ownerPhoneNumber!)
+        if(lostPet.ownerPhoneNumber != nil && !lostPet.ownerPhoneNumber!.isEmpty) {
+            text.append("\n\(lostPet.ownerPhoneNumber!)")
         }
 
-        if(lostPet.ownerEmail != nil){
-            text.append(lostPet.ownerEmail!)
+        if(lostPet.ownerEmail != nil && !lostPet.ownerEmail!.isEmpty){
+            text.append("\n\(lostPet.ownerEmail!)")
         }
         
         return text
@@ -166,7 +164,7 @@ class GenerateFlyerViewModelX: NSObject {
     
     let image = getImage()
     // 1
-    let maxHeight = pageRect.height * 0.4
+    let maxHeight = pageRect.height * 0.35
     let maxWidth = pageRect.width * 0.8
     // 2
     let aspectWidth = maxWidth / image.size.width
@@ -184,6 +182,84 @@ class GenerateFlyerViewModelX: NSObject {
     return imageRect.origin.y + imageRect.size.height
   }
     
+    func addQRCode(pageRect: CGRect, imageTop: CGFloat) {
+        var link = DynamicLinkGenerator().getShareLink(lostPetName: lostPet.name, lostPetId: lostPet.id!)
+        
+        switch link {
+          case let .success(data):
+            let image = createQRCodeImage(lostPet: lostPet, url: data.absoluteString)!
+
+            //tododocument.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
+            // 1
+            let maxHeight = pageRect.height * 0.15
+            let maxWidth = pageRect.width * 0.15
+            // 2
+            let aspectWidth = maxWidth / image.size.width
+            let aspectHeight = maxHeight / image.size.height
+            let aspectRatio = min(aspectWidth, aspectHeight)
+            // 3
+            let scaledWidth = image.size.width * aspectRatio
+            let scaledHeight = image.size.height * aspectRatio
+            // 4
+            let imageX = (pageRect.width - scaledWidth) / 2.0
+            let imageRect = CGRect(x: imageX, y: imageTop,
+                                   width: scaledWidth, height: scaledHeight)
+            // 5
+            image.draw(in: imageRect)
+            
+            // 1
+            let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
+            // 2
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            paragraphStyle.lineBreakMode = .byWordWrapping
+            
+            // 3
+            let textAttributes = [
+              NSAttributedString.Key.paragraphStyle: paragraphStyle,
+              NSAttributedString.Key.font: textFont
+            ]
+            
+            let fullText = "Scan QR Code to help find \(lostPet.name) in the Search Party App."
+            let attributedText = NSAttributedString(string: fullText, attributes: textAttributes)
+            // 4
+            
+            let textSize = attributedText.size()
+
+            
+            let bottomOfQRCode = imageRect.origin.y + imageRect.height
+            let textRect = CGRect(x: (pageRect.width - textSize.width) / 2.0, y: bottomOfQRCode + 5, width: textSize.width,
+                                  height: textSize.height)
+        
+            
+            attributedText.draw(in: textRect)
+            
+            
+        case .failure(_):
+            print("failure!")
+            //todo show failed getting link
+           }
+        
+
+    }
+    
+    
+    func createQRCodeImage(lostPet: LostPet, url: String) -> UIImage? {
+        let data = Data(url.utf8)
+        
+        let filter = CIFilter.qrCodeGenerator()
+        filter.setValue(data, forKey: "inputMessage")
+        
+        if let qrCodeImage = filter.outputImage {
+            if let qrCodeCGImage = CIContext().createCGImage(qrCodeImage, from: qrCodeImage.extent) {
+                return UIImage(cgImage: qrCodeCGImage)
+            }
+        }
+        
+        return nil
+        
+    }
+    
     func getImage() -> UIImage {
       
       if(self.lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
@@ -193,7 +269,14 @@ class GenerateFlyerViewModelX: NSObject {
   //        let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
   //                                     size: CGSize(width: 500, height: 500), options: [.resize])
   //        section.columns[0].add(image: houseBookIcon)
-        return UIImage(named: "cat.png")!
+        
+        let petImage = PetImageTypes().getPetImageType(petType: lostPet.type)
+        if(petImage != nil){
+            return UIImage(named: petImage!)!
+
+        }else{
+            return UIImage(imageLiteralResourceName: "map")
+        }
       }
       
     }
