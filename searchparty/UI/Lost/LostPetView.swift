@@ -9,7 +9,6 @@ struct LostPetView: View {
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
-    @ObservedObject var generateFlyerViewModel = GenerateFlyerViewModel()
     @State var isOnLostPetIsFound = false
     @State var isOnEditPet = false
     @State var selectedView = 1

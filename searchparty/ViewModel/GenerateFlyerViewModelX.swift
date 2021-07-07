@@ -11,6 +11,7 @@ import PDFKit
 import Foundation
 import Kingfisher
 import FirebaseStorage
+import CoreImage.CIFilterBuiltins
 
 class GenerateFlyerViewModelX: NSObject {
   let contactInfo: String = "contactInfo"

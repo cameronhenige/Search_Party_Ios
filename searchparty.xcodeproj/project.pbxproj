@@ -66,7 +66,6 @@
 		F23D724926882B1500CB80C6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724726882B1500CB80C6 /* Message.swift */; };
 		F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724A26882B2F00CB80C6 /* SendButton.swift */; };
 		F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724B26882B2F00CB80C6 /* SearchView.swift */; };
-		F23D724F2689621900CB80C6 /* GenerateFlyerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */; };
 		F23D72522689637C00CB80C6 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = F23D72512689637C00CB80C6 /* TPPDF */; };
 		F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72532689667800CB80C6 /* ActivityViewController.swift */; };
 		F23D7256268C2EA100CB80C6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* Filter.swift */; };
@@ -204,7 +203,6 @@
 		F23D724726882B1500CB80C6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F23D724A26882B2F00CB80C6 /* SendButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateFlyerViewModel.swift; sourceTree = "<group>"; };
 		F23D72532689667800CB80C6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F23D7255268C2EA100CB80C6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinkGenerator.swift; sourceTree = "<group>"; };
@@ -555,7 +553,6 @@
 				F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */,
 				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
 				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
-				F23D724E2689621900CB80C6 /* GenerateFlyerViewModel.swift */,
 				F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */,
 			);
 			path = ViewModel;
@@ -857,7 +854,6 @@
 				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */,
-				F23D724F2689621900CB80C6 /* GenerateFlyerViewModel.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
