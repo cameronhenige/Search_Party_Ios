@@ -18,14 +18,16 @@ import FlexibleGeohash
 class FilterViewModel: NSObject, ObservableObject {
 
     @Published var isLoadingLocation = false
+    @Published var isUpdatingFilter = false
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
-    @Published var userLatitude: Double = 0
-    @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
-
+    
     private var completionHandler: ((Result<String, Error>) -> Void)?
     private var db = Firestore.firestore()
     private let locationManager = CLLocationManager()
+    
+    let FILTER_DISTANCE_KEY = "filterDistance"
+    let FILTER_LOCATION = "filterLocation"
     
     override init() {
       super.init()
@@ -48,21 +50,42 @@ class FilterViewModel: NSObject, ObservableObject {
         }
     }
     
-    func saveLocationToUser(location: CLLocation) {
+    func saveFilterPreference(filterDistance: Double, centerMapLocation: CLLocationCoordinate2D, completionHandler: @escaping (Result<String, Error>) -> Void) {
+        print(filterDistance)
+        print(centerMapLocation.latitude)
         
+        isUpdatingFilter = true
+
+        let locationGeoPoint = centerMapLocation.geohash(length: 7)
+        
+            let filterData : [String: Any] = [
+                FILTER_LOCATION : locationGeoPoint,
+                FILTER_DISTANCE_KEY: filterDistance
+            ]
+        
+        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).setData(filterData, merge: true) { err in
+                if let err = err {
+                    print("Error updating filter settings: \(err)")
+                    completionHandler(.failure(err))
+                } else {
+                    completionHandler(.success("Updated Filter Settings"))
+                }
+            }
+
     }
+    
+    
+    
+    
 }
 
 extension FilterViewModel: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }
-    userLatitude = location.coordinate.latitude
-    userLongitude = location.coordinate.longitude
-    saveLocationToUser(location: location)
     userLocation = CLLocationCoordinate2D(
-        latitude: userLatitude,
-        longitude: userLongitude)
+        latitude: location.coordinate.latitude,
+        longitude: location.coordinate.longitude)
   }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

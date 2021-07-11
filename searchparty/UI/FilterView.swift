@@ -12,7 +12,7 @@ struct FilterView: View {
     @State var distanceSelected = 0
 
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
-    @ObservedObject private var filterViewModel = FilterViewModel()
+    @StateObject private var filterViewModel = FilterViewModel()
 
     var body: some View {
         VStack {
@@ -28,10 +28,18 @@ struct FilterView: View {
         if(filterViewModel.userLocation != nil) {
 
             FilterMapView(map: self.$map, coordinate: self.$currentLocation, distanceSelected: self.$distanceSelected, initialLocation: filterViewModel.userLocation!).frame(height: 300).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0))
+        }else{
+            Text("Location not found")
         }
             
             Button(action: {
-                //todo save filter
+                self.filterViewModel.saveFilterPreference(filterDistance: ViewUtil().getRadiusForDistanceSelected(distanceSelected: distanceSelected), centerMapLocation: self.map.centerCoordinate) { result in
+                    
+                    searchPartyAppState.isFiltering = false
+                }
+                
+                
+                
             }) {
                 Text("Save")
             }.buttonStyle(PrimaryButtonStyle()).padding(.top)
@@ -43,6 +51,7 @@ struct FilterView: View {
             self.filterViewModel.requestLocation()
         }
     }
+    
 }
 
 //struct Filter_Previews: PreviewProvider {

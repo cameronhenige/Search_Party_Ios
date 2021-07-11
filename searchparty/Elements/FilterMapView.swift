@@ -26,6 +26,8 @@ struct FilterMapView: UIViewRepresentable {
     
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: FilterMapView
+        var currentDistanceSelected: Int? = nil
+
         
         init(_ parent: FilterMapView) {
             self.parent = parent
@@ -36,8 +38,9 @@ struct FilterMapView: UIViewRepresentable {
             self.parent.coordinate = mapView.centerCoordinate
             self.parent.map.removeOverlays(self.parent.map.overlays)
             
-            let radius = self.parent.getRadiusForDistanceSelected(distanceSelected: self.parent.distanceSelected)
+            let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.parent.distanceSelected)
             let circle = MKCircle(center: mapView.centerCoordinate, radius: radius)
+            currentDistanceSelected = self.parent.distanceSelected
             self.parent.map.addOverlay(circle)
         }
         
@@ -66,34 +69,21 @@ struct FilterMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        print("Update ui view")
-        
-        coordinate = view.centerCoordinate
         view.removeOverlays(view.overlays)
-        
-        let radius = getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
+        let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
         let circle = MKCircle(center: view.centerCoordinate, radius: radius)
         view.addOverlay(circle)
         
-    }
-    
-    func getRadiusForDistanceSelected(distanceSelected: Int) -> Double {
-    
-        switch distanceSelected {
-        case 0:
-            return 402.335
-        case 1:
-            return 804.67
-        case 2:
-            return 1609.34
-        case 3:
-            return 3218.68
-        case 4:
-            return 8046.70
-        default:
-            return 0
+        if(context.coordinator.currentDistanceSelected == nil || context.coordinator.currentDistanceSelected != self.distanceSelected){
+            let doubleRadius = radius * 2.75
+            let region = MKCoordinateRegion( center: view.centerCoordinate, latitudinalMeters: CLLocationDistance(exactly: doubleRadius)!, longitudinalMeters: CLLocationDistance(exactly: doubleRadius)!)
+            view.setRegion(view.regionThatFits(region), animated: true)
+            context.coordinator.currentDistanceSelected = self.distanceSelected
         }
+        
     }
+    
+
 }
 
 //struct MapView_Previews: PreviewProvider {

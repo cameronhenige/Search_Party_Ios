@@ -74,6 +74,7 @@
 		F255CBA926954CC8005AB259 /* PetImageTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBA826954CC8005AB259 /* PetImageTypes.swift */; };
 		F255CBAB2695F8B0005AB259 /* FilterMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAA2695F8B0005AB259 /* FilterMapView.swift */; };
 		F255CBAD2695F9F2005AB259 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */; };
+		F255CBAF269B2F07005AB259 /* ViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAE269B2F07005AB259 /* ViewUtil.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -212,6 +213,7 @@
 		F255CBA826954CC8005AB259 /* PetImageTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetImageTypes.swift; sourceTree = "<group>"; };
 		F255CBAA2695F8B0005AB259 /* FilterMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMapView.swift; sourceTree = "<group>"; };
 		F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		F255CBAE269B2F07005AB259 /* ViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtil.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				3445A79B240B03D70020561B /* Lost */,
 				F23D7255268C2EA100CB80C6 /* FilterView.swift */,
 				F255CBA826954CC8005AB259 /* PetImageTypes.swift */,
+				F255CBAE269B2F07005AB259 /* ViewUtil.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
 				F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */,
 				F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */,
+				F255CBAF269B2F07005AB259 /* ViewUtil.swift in Sources */,
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,
 				F2D7454A25FAF237003C5157 /* SignUpView.swift in Sources */,
 				F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */,
