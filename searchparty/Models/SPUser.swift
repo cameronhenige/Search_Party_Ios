@@ -12,7 +12,7 @@ import FirebaseFirestore
 
 struct SPUser: Codable, Identifiable {
     @DocumentID var id: String?
-    var filterDistance: Float?
+    var filterDistance: Double?
     var filterLocation: GeoPoint?
     var receiveNotifications: Bool?
     var searchStartLocations: [String]?

@@ -20,7 +20,8 @@ class FilterViewModel: NSObject, ObservableObject {
     @Published var isLoadingLocation = false
     @Published var isUpdatingFilter = false
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
-    @Published var userLocation: CLLocationCoordinate2D?
+    @Published var initialLocation: CLLocationCoordinate2D?
+    @Published var distanceSelected = 0
     
     private var completionHandler: ((Result<String, Error>) -> Void)?
     private var db = Firestore.firestore()
@@ -42,6 +43,43 @@ class FilterViewModel: NSObject, ObservableObject {
         self.locationManager.requestLocation()
     }
     
+    func loadInitialData() {
+        self.isLoadingLocation = true
+    
+        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
+            if let document = document {
+                
+                if(document.exists) {
+                    
+                    if let user = try? document.data(as: SPUser.self) {
+                        if(user.filterDistance != nil && user.filterLocation != nil) {
+                            self.isLoadingLocation = false
+                            print("User location received \(user.filterLocation)")
+                            
+                            self.initialLocation = CLLocationCoordinate2D(latitude: user.filterLocation!.latitude, longitude: user.filterLocation!.longitude)
+
+                            self.distanceSelected = ViewUtil().getDistanceSelectedForRadius(radius: user.filterDistance!)
+                            //set filter distance and location on view
+                        }else{
+                            self.requestLocation()
+                        }
+                                    
+                    } else {
+                        self.requestLocation()
+                    }
+
+                }else {
+                    
+                    self.requestLocation()
+
+                }
+                
+            } else {
+                print("Document does not exist") //todo handle failure
+            }
+        }
+    }
+    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
                 if #available(iOS 14.0, *) {
             permissionStatus = manager.authorizationStatus
@@ -51,13 +89,12 @@ class FilterViewModel: NSObject, ObservableObject {
     }
     
     func saveFilterPreference(filterDistance: Double, centerMapLocation: CLLocationCoordinate2D, completionHandler: @escaping (Result<String, Error>) -> Void) {
-        print(filterDistance)
-        print(centerMapLocation.latitude)
         
         isUpdatingFilter = true
 
-        let locationGeoPoint = centerMapLocation.geohash(length: 7)
-        
+        let locationGeoPoint = GeoPoint(latitude: centerMapLocation.latitude, longitude: centerMapLocation.longitude)
+
+        print(centerMapLocation)
             let filterData : [String: Any] = [
                 FILTER_LOCATION : locationGeoPoint,
                 FILTER_DISTANCE_KEY: filterDistance
@@ -83,9 +120,12 @@ extension FilterViewModel: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }
-    userLocation = CLLocationCoordinate2D(
+    initialLocation = CLLocationCoordinate2D(
         latitude: location.coordinate.latitude,
         longitude: location.coordinate.longitude)
+    
+    self.isLoadingLocation = false
+
   }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

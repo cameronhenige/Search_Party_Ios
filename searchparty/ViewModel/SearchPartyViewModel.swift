@@ -363,8 +363,6 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
     func updatePathToBackend(location: CLLocation) {
         
         let geoPoint = GeoPoint(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        print(location.coordinate.latitude)
-        print(location.coordinate.longitude)
 
         Firestore.firestore().collection("Lost").document(lostPet!.id!).collection("Searches").document(currentSearchId).updateData(["path" : FieldValue.arrayUnion([geoPoint])]){ err in
             if let err = err {
