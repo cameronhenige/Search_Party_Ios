@@ -15,7 +15,7 @@ struct FilterView: View {
 
     var body: some View {
         VStack {
-            if(!filterViewModel.isLoadingLocation && filterViewModel.initialLocation != nil) {
+            if(!filterViewModel.isLoadingLocation && filterViewModel.initialLocationAndDistance != nil) {
 
             Text("Distance")
             
@@ -26,7 +26,7 @@ struct FilterView: View {
             }.pickerStyle(SegmentedPickerStyle()).padding(.bottom)
             
 
-                FilterMapView(map: self.$map, distanceSelected: self.$filterViewModel.distanceSelected, initialLocation: self.$filterViewModel.initialLocation).frame(height: 300).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0))
+                FilterMapView(map: self.$map, distanceSelected: self.$filterViewModel.distanceSelected, initialLocationAndDistance: self.$filterViewModel.initialLocationAndDistance).frame(height: 300).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0))
         
             Button(action: {
                 self.filterViewModel.saveFilterPreference(filterDistance: ViewUtil().getRadiusForDistanceSelected(distanceSelected: filterViewModel.distanceSelected), centerMapLocation: self.map.centerCoordinate) { result in

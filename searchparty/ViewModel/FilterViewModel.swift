@@ -20,8 +20,10 @@ class FilterViewModel: NSObject, ObservableObject {
     @Published var isLoadingLocation = false
     @Published var isUpdatingFilter = false
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
-    @Published var initialLocation: CLLocationCoordinate2D?
+    //@Published var initialLocation: CLLocationCoordinate2D?
     @Published var distanceSelected = 0
+    
+    @Published var initialLocationAndDistance: InitialLocationAndDistance?
     
     private var completionHandler: ((Result<String, Error>) -> Void)?
     private var db = Firestore.firestore()
@@ -54,11 +56,12 @@ class FilterViewModel: NSObject, ObservableObject {
                     if let user = try? document.data(as: SPUser.self) {
                         if(user.filterDistance != nil && user.filterLocation != nil) {
                             self.isLoadingLocation = false
-                            print("User location received \(user.filterLocation)")
                             
-                            self.initialLocation = CLLocationCoordinate2D(latitude: user.filterLocation!.latitude, longitude: user.filterLocation!.longitude)
+                            var initialLocation = CLLocationCoordinate2D(latitude: user.filterLocation!.latitude, longitude: user.filterLocation!.longitude)
 
-                            self.distanceSelected = ViewUtil().getDistanceSelectedForRadius(radius: user.filterDistance!)
+                            
+                            self.initialLocationAndDistance = InitialLocationAndDistance(locationSelected: initialLocation, distanceSelected: user.filterDistance!)
+                            
                             //set filter distance and location on view
                         }else{
                             self.requestLocation()
@@ -120,10 +123,10 @@ extension FilterViewModel: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }
-    initialLocation = CLLocationCoordinate2D(
-        latitude: location.coordinate.latitude,
-        longitude: location.coordinate.longitude)
     
+    self.initialLocationAndDistance = InitialLocationAndDistance(locationSelected: CLLocationCoordinate2D(
+                                                                    latitude: location.coordinate.latitude,
+                                                                    longitude: location.coordinate.longitude), distanceSelected: 3218.68)
     self.isLoadingLocation = false
 
   }
