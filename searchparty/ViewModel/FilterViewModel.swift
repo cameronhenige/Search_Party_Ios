@@ -56,12 +56,11 @@ class FilterViewModel: NSObject, ObservableObject {
                         if(user.filterDistance != nil && user.filterLocation != nil) {
                             self.isLoadingLocation = false
                             
-                            var initialLocation = CLLocationCoordinate2D(latitude: user.filterLocation!.latitude, longitude: user.filterLocation!.longitude)
+                            let initialLocation = CLLocationCoordinate2D(latitude: user.filterLocation!.latitude, longitude: user.filterLocation!.longitude)
 
                             
                             self.initialLocationAndDistance = InitialLocationAndDistance(locationSelected: initialLocation, distanceSelected: user.filterDistance!)
                             
-                            //set filter distance and location on view
                         }else{
                             self.requestLocation()
                         }
