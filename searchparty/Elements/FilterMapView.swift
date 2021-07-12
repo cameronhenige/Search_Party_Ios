@@ -24,9 +24,7 @@ struct FilterMapView: UIViewRepresentable {
         var parent: FilterMapView
         var currentDistanceSelected: Int? = nil
         var currentRadiusSelected: Double? = nil
-
         var hasGoneToInitialLocation: Bool = false
-
         
         init(_ parent: FilterMapView) {
             self.parent = parent

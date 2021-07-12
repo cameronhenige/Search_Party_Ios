@@ -43,7 +43,7 @@ struct FilterView: View {
             
             
             Spacer()
-        }.padding().onAppear() {
+        }.padding().disabled(filterViewModel.isLoadingLocation || filterViewModel.isUpdatingFilter).onAppear() {
             self.filterViewModel.loadInitialData()
         }
     }

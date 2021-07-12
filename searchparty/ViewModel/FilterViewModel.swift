@@ -20,7 +20,6 @@ class FilterViewModel: NSObject, ObservableObject {
     @Published var isLoadingLocation = false
     @Published var isUpdatingFilter = false
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
-    //@Published var initialLocation: CLLocationCoordinate2D?
     @Published var distanceSelected = 0
     
     @Published var initialLocationAndDistance: InitialLocationAndDistance?
