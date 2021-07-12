@@ -75,9 +75,6 @@ struct FilterMapView: UIViewRepresentable {
         
         if(!context.coordinator.hasGoneToInitialLocation && initialLocationAndDistance != nil) {
             context.coordinator.hasGoneToInitialLocation = true
-            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)//todo figure out the span
-            let region = MKCoordinateRegion(center: initialLocationAndDistance!.locationSelected, span: span)
-                view.setRegion(region, animated: true)
             
             let initialRadius = initialLocationAndDistance!.distanceSelected
             
@@ -90,9 +87,6 @@ struct FilterMapView: UIViewRepresentable {
             view.setRegion(view.regionThatFits(initialRegion), animated: true)
             context.coordinator.currentDistanceSelected = self.distanceSelected
             
-            
-            //todo go to initial location
-
         }else {
             
             let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
