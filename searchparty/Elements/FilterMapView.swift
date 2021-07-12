@@ -70,42 +70,43 @@ struct FilterMapView: UIViewRepresentable {
 
     func updateUIView(_ view: MKMapView, context: Context) {
         view.removeOverlays(view.overlays)
-
-        
         
         if(!context.coordinator.hasGoneToInitialLocation && initialLocationAndDistance != nil) {
+            
+            context.coordinator.currentDistanceSelected = ViewUtil().getDistanceSelectedForRadius(radius: initialLocationAndDistance!.distanceSelected)
+
             context.coordinator.hasGoneToInitialLocation = true
             
             let initialRadius = initialLocationAndDistance!.distanceSelected
             
-            let circle = MKCircle(center: view.centerCoordinate, radius: initialRadius)
-            view.addOverlay(circle)
             
-            let doubleInitialRadius = initialRadius * 2.75
-            
-            let initialRegion = MKCoordinateRegion( center: initialLocationAndDistance!.locationSelected, latitudinalMeters: CLLocationDistance(exactly: doubleInitialRadius)!, longitudinalMeters: CLLocationDistance(exactly: doubleInitialRadius)!)
-            view.setRegion(view.regionThatFits(initialRegion), animated: true)
-            context.coordinator.currentDistanceSelected = self.distanceSelected
+            goToLocation(location: initialLocationAndDistance!.locationSelected, distanceSelected: initialRadius)
             
         }else {
             
             let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
-            let circle = MKCircle(center: view.centerCoordinate, radius: radius)
-            view.addOverlay(circle)
         
         if(context.coordinator.currentDistanceSelected == nil || context.coordinator.currentDistanceSelected != self.distanceSelected){
-            let doubleRadius = radius * 2.75
-            
-            let region = MKCoordinateRegion( center: view.centerCoordinate, latitudinalMeters: CLLocationDistance(exactly: doubleRadius)!, longitudinalMeters: CLLocationDistance(exactly: doubleRadius)!)
-            view.setRegion(view.regionThatFits(region), animated: true)
+            goToLocation(location: view.centerCoordinate, distanceSelected: radius)
             context.coordinator.currentDistanceSelected = self.distanceSelected
-            
         }
             
         }
         
 
         
+    }
+    
+    func goToLocation(location: CLLocationCoordinate2D, distanceSelected: Double) {
+        
+        let doubleRadius = distanceSelected * 2.75
+
+        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: doubleRadius)!, longitudinalMeters: CLLocationDistance(exactly: doubleRadius)!)
+        map.setRegion(map.regionThatFits(region), animated: true)
+        
+        
+        let circle = MKCircle(center: map.centerCoordinate, radius: distanceSelected)
+        map.addOverlay(circle)
     }
     
     
