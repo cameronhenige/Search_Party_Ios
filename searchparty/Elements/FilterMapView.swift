@@ -79,14 +79,13 @@ struct FilterMapView: UIViewRepresentable {
             
             let initialRadius = initialLocationAndDistance!.distanceSelected
             
-            
             goToLocation(location: initialLocationAndDistance!.locationSelected, distanceSelected: initialRadius)
             
         }else {
             
-            let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
         
         if(context.coordinator.currentDistanceSelected == nil || context.coordinator.currentDistanceSelected != self.distanceSelected){
+            let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
             goToLocation(location: view.centerCoordinate, distanceSelected: radius)
             context.coordinator.currentDistanceSelected = self.distanceSelected
         }
