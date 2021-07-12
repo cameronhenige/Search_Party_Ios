@@ -59,13 +59,6 @@ struct FilterMapView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         map.delegate = context.coordinator
-                
-        //todo
-//        if(initialLocationAndDistance != nil) {
-//        let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-//            let region = MKCoordinateRegion(center: initialLocationAndDistance!.locationSelected, span: span)
-//            map.setRegion(region, animated: true)
-//        }
         
         return map
     }
@@ -76,7 +69,9 @@ struct FilterMapView: UIViewRepresentable {
         if(!context.coordinator.hasGoneToInitialLocation && initialLocationAndDistance != nil) {
             
             context.coordinator.currentDistanceSelected = ViewUtil().getDistanceSelectedForRadius(radius: initialLocationAndDistance!.distanceSelected)
-
+            
+            self.distanceSelected = ViewUtil().getDistanceSelectedForRadius(radius: initialLocationAndDistance!.distanceSelected)
+            
             context.coordinator.hasGoneToInitialLocation = true
             
             let initialRadius = initialLocationAndDistance!.distanceSelected
@@ -87,7 +82,7 @@ struct FilterMapView: UIViewRepresentable {
         }else {
             
         
-        if(context.coordinator.currentDistanceSelected == nil || context.coordinator.currentDistanceSelected != self.distanceSelected){
+        if(context.coordinator.currentDistanceSelected == nil || context.coordinator.currentDistanceSelected != self.distanceSelected) {
             let radius = ViewUtil().getRadiusForDistanceSelected(distanceSelected: self.distanceSelected)
             context.coordinator.currentDistanceSelected = self.distanceSelected
             context.coordinator.currentRadiusSelected = radius
