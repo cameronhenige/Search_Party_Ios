@@ -18,7 +18,9 @@ class SearchPartyAppState: NSObject, ObservableObject {
     @Published var isLoadingLostPets = false
     @Published var isOnSearchParty = false
     @Published var isOnChat = false
-    @Published var isAddingLostPet = false
+    @Published var isOnAddingLostPet = false
+
+    @Published var isOnEditingLostPet = false
     @Published var isFiltering = false
     @Published var isLoadingLostPetFromNotification = false
     @Published var isOnLostPet = false

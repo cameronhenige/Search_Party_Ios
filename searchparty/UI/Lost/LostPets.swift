@@ -43,7 +43,7 @@ struct LostPets: View {
                         })
                     }
                     
-                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isAddingLostPet) {
+                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                 
                             }
                     
@@ -60,7 +60,7 @@ struct LostPets: View {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
 
                     Button(action: {
-                        self.searchPartyAppState.isAddingLostPet = true
+                        self.searchPartyAppState.isOnAddingLostPet = true
                     }) {
                         Text("Add Lost Pet")
                     }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])

@@ -1,10 +1,4 @@
-//
-//  AddLostPet.swift
-//  searchparty
-//
-//  Created by Hannah Krolewski on 4/24/21.
-//  Copyright © 2021 Filip Molcik. All rights reserved.
-//
+
 
 import SwiftUI
 import Combine
@@ -143,7 +137,7 @@ struct AddLostPet: View {
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
                                 
                 addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images) { result in
-                    lostViewRouter.isAddingLostPet = false
+                    lostViewRouter.isOnAddingLostPet = false
                 }
                 
             }) {
@@ -164,7 +158,7 @@ struct AddLostPet: View {
         }.pickerStyle(SegmentedPickerStyle())
             
 
-    }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
+            }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
         }.alert(isPresented: $addLostPetViewModel.errorAddingLostPet) {
             Alert(title: Text("Error adding pet"), message: Text("There was an error adding your pet."), dismissButton: .default(Text("Ok")))
@@ -185,6 +179,34 @@ struct AddLostPet: View {
 
         }.onAppear() {
             self.addLostPetViewModel.requestLocation()
+            
+            if(lostViewRouter.isOnEditingLostPet) {
+                
+                let selectedLostPet = lostViewRouter.selectedLostPet
+                
+                self.lostDate = selectedLostPet?.lostDateTime?.dateValue() ?? Date()
+                self.name = selectedLostPet?.name ?? ""
+                self.phoneNumber = selectedLostPet?.ownerPhoneNumber ?? ""
+                self.email = selectedLostPet?.ownerEmail ?? ""
+                self.otherContactMethod = selectedLostPet?.ownerOtherContactMethod ?? ""
+                self.petName = selectedLostPet?.name ?? ""
+                self.petAge = selectedLostPet?.age?.description ?? ""
+                self.petBreed = selectedLostPet?.breed ?? ""
+
+                //todo @State private var images : [UIImage] = []
+                
+                //todo finish the rest of these
+                self.petDescription = selectedLostPet?.description ?? ""
+                self.petType = 0
+                self.petSex = 0
+                self.preferredContactMethod = 0
+                self.lostLocationDescription = selectedLostPet?.lostLocationDescription ?? ""
+                
+                
+            }
+
+                
+            
         }.actionSheet(isPresented: $showingActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
                 .default(Text("Gallery")) {

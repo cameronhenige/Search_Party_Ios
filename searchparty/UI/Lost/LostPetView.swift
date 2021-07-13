@@ -214,10 +214,14 @@ struct LostPetView: View {
                     
                     
                 }
+                
+                NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
+            
+                        }
         
-        NavigationLink(destination: EditLostPet(), isActive: $isOnEditPet) {
+        NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
             Button(action: {
-                self.isOnEditPet = true
+                self.searchPartyAppState.isOnEditingLostPet = true
             }) {
                 Text("Edit Pet")
             }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
