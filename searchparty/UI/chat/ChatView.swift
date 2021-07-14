@@ -4,7 +4,7 @@ import FirebaseAuth
 
 struct ChatView: View {
     @State var message: String = ""
-    @ObservedObject var model = ChatViewModel()
+    @StateObject var model = ChatViewModel()
 
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
