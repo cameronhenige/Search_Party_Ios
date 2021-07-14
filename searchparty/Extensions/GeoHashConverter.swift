@@ -8,6 +8,7 @@
 
 
 import Foundation
+import CoreLocation
 
 public struct GeoHashConverter {
     public static func decode(hash: String) -> (latitude: (min: Double, max: Double), longitude: (min: Double, max: Double))? {
@@ -151,6 +152,68 @@ public extension CLLocationCoordinate2D {
     func geohash(precision: GeoHashConverter.Precision) -> String {
         return geohash(length: precision.rawValue)
     }
+}
+
+extension CLLocationCoordinate2D {
+    var cartesian: CartesianCoordinate3D { .init(from: self) }
+
+    // Returns the coordinates of the midpoint between point a and b.
+    // Limitation: point a and b may not be diametrically opposite.
+    public static func midpoint(between a: CLLocationCoordinate2D, and b: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        ((a.cartesian + b.cartesian) / 2).spherical
+    }
+}
+
+struct CartesianCoordinate3D {
+    let x: Double
+    let y: Double
+    let z: Double
+
+    var spherical: CLLocationCoordinate2D {
+        let r = sqrt(x * x + y * y)
+        if r == 0 {
+            if z > 0 {
+                return .init(latitude: 90, longitude: 0)
+            } else if z < 0 {
+                return .init(latitude: -90, longitude: 0)
+            } else {
+                // (x, y, z) == (0, 0, 0)
+                return .init(latitude: .nan, longitude: .nan)
+            }
+        } else {
+            let latitude = degrees(fromRadians: atan2(z, r))
+            let longitude = degrees(fromRadians: atan2(y, x))
+            return .init(latitude: latitude, longitude: longitude)
+        }
+    }
+
+    static func + (a: CartesianCoordinate3D, b: CartesianCoordinate3D) -> CartesianCoordinate3D {
+        .init(x: a.x + b.x, y: a.y + b.y, z: a.z + b.z)
+    }
+
+    static func / (numerator: CartesianCoordinate3D, denominator: Double) -> CartesianCoordinate3D {
+        .init(x: numerator.x / denominator, y: numerator.y / denominator, z: numerator.z / denominator)
+    }
+}
+
+extension CartesianCoordinate3D {
+
+    init(from locationCoordinate2D: CLLocationCoordinate2D) {
+        let latitudeInRadians = radians(fromDegrees: locationCoordinate2D.latitude)
+        let longitudeInRadians = radians(fromDegrees: locationCoordinate2D.longitude)
+
+        x = cos(latitudeInRadians) * cos(longitudeInRadians)
+        y = cos(latitudeInRadians) * sin(longitudeInRadians)
+        z = sin(latitudeInRadians)
+    }
+}
+
+private func degrees(fromRadians radians: Double) -> Double {
+    radians * 180 / .pi
+}
+
+private func radians(fromDegrees degrees: Double) -> Double {
+    degrees * .pi / 180
 }
 
 #endif

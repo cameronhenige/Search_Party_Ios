@@ -11,8 +11,9 @@ struct AddLostPet: View {
     
     @EnvironmentObject var lostViewRouter: SearchPartyAppState
 
-    @ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
-    
+    //@ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
+    @StateObject private var addLostPetViewModel = AddLostPetViewModel()
+
     @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var lostDate = Date()
@@ -29,7 +30,8 @@ struct AddLostPet: View {
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
     @State private var isShowGallery = false
-    @State private var images : [UIImage] = []
+    //@State private var existingImages : [SelectedImage] = []
+    @State private var images : [SelectedImage] = []
     @State var picker = false
     @State private var petDescription: String = ""
     @State private var petType = 0
@@ -74,17 +76,27 @@ struct AddLostPet: View {
             TextField("Breed", text: $petBreed)
             Text("Provide as many angles of your pet as possible.")
                 LazyVGrid(columns: imageColumns, spacing: 10) {
+                    
+                    
+                    
                         ForEach(0..<images.count, id: \.self) { i in
 
                         ZStack {
+                            
+                            if(images[i].isExisting){
+                                ExistingImage(url: images[i].name!, lostPetId: (lostViewRouter.selectedLostPet?.id)!)
 
-                        Image(uiImage: images[i]).resizable().frame(height: 150).cornerRadius(20)
+                            } else {
+                            
+                            Image(uiImage: images[i].image!).resizable().frame(height: 150).cornerRadius(20)
 
-                                Image(systemName: "trash")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
-                                        images.remove(at: i)
-                                    }
+                            }
+                            
+                            Image(systemName: "trash")
+                                .font(.largeTitle)
+                                .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
+                                    images.remove(at: i)
+                                }
                         }
                     }
 
@@ -192,9 +204,18 @@ struct AddLostPet: View {
                 self.petName = selectedLostPet?.name ?? ""
                 self.petAge = selectedLostPet?.age?.description ?? ""
                 self.petBreed = selectedLostPet?.breed ?? ""
-
-                //todo @State private var images : [UIImage] = []
                 
+                self.images = []
+                
+
+                if let tempExistingImages = selectedLostPet?.generalImages {
+                    for existingImage in tempExistingImages {
+                        let existingImageString = SelectedImage(name: existingImage, isExisting: true, image: nil)
+                        self.images.append(existingImageString)
+                    }
+                }
+                
+                                
                 //todo finish the rest of these
                 self.petDescription = selectedLostPet?.description ?? ""
                 self.petType = 0
@@ -203,6 +224,24 @@ struct AddLostPet: View {
                 self.lostLocationDescription = selectedLostPet?.lostLocationDescription ?? ""
                 
                 
+                if let lostLocation = selectedLostPet?.lostLocation {
+                    let geoHash = GeoHashConverter.decode(hash: lostLocation)
+                    
+                    let min = CLLocationCoordinate2D(latitude: (geoHash?.latitude.min)!, longitude: (geoHash?.longitude.min)!)
+                    let max = CLLocationCoordinate2D(latitude: (geoHash?.latitude.max)!, longitude: (geoHash?.longitude.max)!)
+
+                    let midPoint = CLLocationCoordinate2D.midpoint(between: min, and: max)
+
+                    addLostPetViewModel.userLocation = midPoint
+
+                }else {
+                    
+                }
+                
+
+//
+//                addLostPetViewModel.userLocation = CLLocationCoordinate2D(latitude: selectedLostPet?.lostLocation., longitude: <#T##CLLocationDegrees#>)
+//
             }
 
                 
@@ -229,7 +268,7 @@ struct AddLostPet: View {
 struct SUImagePickerView: UIViewControllerRepresentable {
     
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @Binding var images: [UIImage]
+    @Binding var images: [SelectedImage]
     @Binding var isShowCamera: Bool
     
     func makeCoordinator() -> ImagePickerViewCoordinator {
@@ -259,8 +298,9 @@ struct SUImagePickerView: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 
-                self.parent.images.append(image as! UIImage)
-            }
+                let selectedImage = SelectedImage(name: nil, isExisting: false, image: image as! UIImage)
+                self.parent.images.append(selectedImage)
+                            }
             self.parent.isShowCamera = false
         }
         
@@ -276,7 +316,7 @@ struct SUImagePickerView: UIViewControllerRepresentable {
 
 
 struct MyImagePicker : UIViewControllerRepresentable {
-    @Binding var images: [UIImage]
+    @Binding var images: [SelectedImage]
     @Binding var isShowGallery: Bool
     
     func makeCoordinator() -> Coordinator {
@@ -319,7 +359,8 @@ struct MyImagePicker : UIViewControllerRepresentable {
                         return
                     }
                     
-                    self.parent.images.append(image as! UIImage)
+                    let selectedImage = SelectedImage(name: nil, isExisting: false, image: image as! UIImage)
+                    self.parent.images.append(selectedImage)
                     
                 }
             } else{

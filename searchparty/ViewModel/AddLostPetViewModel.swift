@@ -39,7 +39,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
       self.locationManager.delegate = self
     }
     
-    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [UIImage], completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [SelectedImage], completionHandler: @escaping (Result<String, Error>) -> Void) {
         self.completionHandler = completionHandler
         if(!name.isEmpty){
 
@@ -86,7 +86,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         }
     }
     
-    func addImages(lostPetDocumentId: String, petImages: [UIImage]) {
+    func addImages(lostPetDocumentId: String, petImages: [SelectedImage]) {
         
         let group = DispatchGroup()
         
@@ -99,7 +99,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     
     let addItemImageRef = FirebaseUtil().getAddPetImageReference(imageName: imageName, lostPetId: lostPetDocumentId)
     
-    addItemImageRef.putData(image.jpegData(compressionQuality: CGFloat(AddLostPetViewModel.LOST_PET_IMAGE_COMPRESSION))!, metadata: metaData) { (metadata, error) in
+            addItemImageRef.putData(image.image!.jpegData(compressionQuality: CGFloat(AddLostPetViewModel.LOST_PET_IMAGE_COMPRESSION))!, metadata: metaData) { (metadata, error) in
                 if error == nil{
                     self.imagesAdded.append(imageName)
                 }else{

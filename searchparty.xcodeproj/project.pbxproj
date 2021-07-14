@@ -76,6 +76,8 @@
 		F255CBAD2695F9F2005AB259 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */; };
 		F255CBAF269B2F07005AB259 /* ViewUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBAE269B2F07005AB259 /* ViewUtil.swift */; };
 		F255CBB1269BB5A6005AB259 /* InitialLocationAndDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB0269BB5A6005AB259 /* InitialLocationAndDistance.swift */; };
+		F255CBB5269E488B005AB259 /* ExistingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB4269E488B005AB259 /* ExistingImage.swift */; };
+		F255CBB7269E6CF0005AB259 /* SelectedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB6269E6CF0005AB259 /* SelectedImage.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -216,6 +218,8 @@
 		F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		F255CBAE269B2F07005AB259 /* ViewUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUtil.swift; sourceTree = "<group>"; };
 		F255CBB0269BB5A6005AB259 /* InitialLocationAndDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLocationAndDistance.swift; sourceTree = "<group>"; };
+		F255CBB4269E488B005AB259 /* ExistingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingImage.swift; sourceTree = "<group>"; };
+		F255CBB6269E6CF0005AB259 /* SelectedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImage.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -381,6 +385,7 @@
 				F220A6A6265F4FDB00319F2F /* PathPolyline.swift */,
 				F220A6CF2675706D00319F2F /* ColoredPolygon.swift */,
 				F23D7235268764D800CB80C6 /* Pet.swift */,
+				F255CBB6269E6CF0005AB259 /* SelectedImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -514,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				F23D724226882A5700CB80C6 /* CustomField.swift */,
+				F255CBB4269E488B005AB259 /* ExistingImage.swift */,
 			);
 			path = customviews;
 			sourceTree = "<group>";
@@ -794,6 +800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2D7459325FB2484003C5157 /* OnboardingView.swift in Sources */,
+				F255CBB7269E6CF0005AB259 /* SelectedImage.swift in Sources */,
 				F2D7457925FAF6AC003C5157 /* AuthAPI.swift in Sources */,
 				F2DBDDD1263B238600E9C987 /* SingleLostPetImage.swift in Sources */,
 				F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */,
@@ -827,6 +834,7 @@
 				F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */,
 				F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */,
 				F255CBA72695297F005AB259 /* GenerateFlyerViewModelX.swift in Sources */,
+				F255CBB5269E488B005AB259 /* ExistingImage.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
 				F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */,
 				F23D72402688299900CB80C6 /* ChatView.swift in Sources */,
