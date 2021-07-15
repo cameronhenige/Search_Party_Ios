@@ -84,7 +84,7 @@ struct AddLostPet: View {
                         ZStack {
                             
                             if(images[i].isExisting){
-                                ExistingImage(url: images[i].name!, lostPetId: (lostViewRouter.selectedLostPet?.id)!)
+                                ExistingImage(url: images[i].name!, lostPetId: lostViewRouter.selectedLostPet?.id)
 
                             } else {
                             
@@ -151,9 +151,12 @@ struct AddLostPet: View {
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
+                
+                let isEditing = lostViewRouter.isOnEditingLostPet
                                 
-                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: self.getPreferredContactMethodApiString(), ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images) { result in
+                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: self.getPreferredContactMethodApiString(), ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images, isEditing: isEditing, lostPetId: lostViewRouter.selectedLostPet?.id) { result in
                     lostViewRouter.isOnAddingLostPet = false
+                    lostViewRouter.isOnEditingLostPet = false
                 }
                 
             }) {

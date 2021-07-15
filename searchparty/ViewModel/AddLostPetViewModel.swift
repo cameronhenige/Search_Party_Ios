@@ -39,7 +39,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
       self.locationManager.delegate = self
     }
     
-    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [SelectedImage], completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [SelectedImage], isEditing: Bool, lostPetId: String?, completionHandler: @escaping (Result<String, Error>) -> Void) {
         self.completionHandler = completionHandler
         if(!name.isEmpty){
 
@@ -64,6 +64,24 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 
             ]
         
+            if(isEditing){
+                
+                Firestore.firestore().collection("Lost").document(lostPetId!).updateData(itemData) { err in
+                    if  err != nil {
+                        self.errorAddingLostPet = true
+                    } else {
+                        
+                        //todo remvoe duplicatsion
+                        if(petImages.isEmpty) {
+                            self.completionHandler!(.success("Edited Lost Pet"))
+                        }else {
+                            self.addImages(lostPetDocumentId: lostPetId!, petImages: petImages)
+                        }
+                    }
+                }
+            }else {
+                
+            
             var ref: DocumentReference? = nil
             ref = Firestore.firestore().collection("Lost").addDocument(data: itemData){ err in
                 if  err != nil {
@@ -78,6 +96,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             
             self.isAddingLostPet = false
 
+            }
             }
         }else {
             self.addNameError = true
@@ -125,9 +144,10 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             if  err != nil {
                 self.errorAddingLostPet = true
             }
+            self.isAddingLostPet = false
+
             self.completionHandler!(.success("Added Lost Pet"))
 
-        self.isAddingLostPet = false
 
         }
         
