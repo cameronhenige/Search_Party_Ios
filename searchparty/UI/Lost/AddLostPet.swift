@@ -11,7 +11,6 @@ struct AddLostPet: View {
     
     @EnvironmentObject var lostViewRouter: SearchPartyAppState
 
-    //@ObservedObject private var addLostPetViewModel = AddLostPetViewModel()
     @StateObject private var addLostPetViewModel = AddLostPetViewModel()
 
     @State var map = MKMapView()
@@ -30,7 +29,6 @@ struct AddLostPet: View {
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
     @State private var isShowGallery = false
-    //@State private var existingImages : [SelectedImage] = []
     @State private var images : [SelectedImage] = []
     @State var picker = false
     @State private var petDescription: String = ""
@@ -123,9 +121,8 @@ struct AddLostPet: View {
 
         }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
-    Section(header: Text("Add a description of what you think people should know about PET.")) {
+    Section(header: Text("Add a description of what you think people should know about your pet. Be sure to include things like unique markings, temperament, and health conditions.")) {
         TextEditor(text: $petDescription).padding(.vertical)
-        Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
 
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
