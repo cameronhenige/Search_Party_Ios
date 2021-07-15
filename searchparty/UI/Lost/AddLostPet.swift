@@ -152,7 +152,7 @@ struct AddLostPet: View {
 
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
                                 
-                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: preferredContactMethods[preferredContactMethod], ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images) { result in
+                addLostPetViewModel.addLostPet(name: petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: self.getPreferredContactMethodApiString(), ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images) { result in
                     lostViewRouter.isOnAddingLostPet = false
                 }
                 
@@ -227,8 +227,6 @@ struct AddLostPet: View {
                     }
                 }
                 
-                                
-                //todo finish the rest of these
                 self.petDescription = selectedLostPet?.description ?? ""
                 
                 if let type = selectedLostPet?.type {
@@ -318,6 +316,19 @@ struct AddLostPet: View {
            return 2
         default:
             return 0
+        }
+    }
+    
+    func getPreferredContactMethodApiString() -> String {
+        switch preferredContactMethod {
+        case 0:
+           return "phoneNumber"
+        case 1:
+           return "email"
+        case 2:
+           return "other"
+        default:
+            return "phoneNumber"
         }
     }
     

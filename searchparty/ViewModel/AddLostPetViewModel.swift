@@ -45,8 +45,6 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 
     
         isAddingLostPet = true
-                    //todo LostPet.GENERAL_IMAGES: imagesAdded,
-
             let itemData : [String: Any] = [
                 LostPet.NAME : name,
                 LostPet.SEX: sex,
@@ -91,6 +89,8 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         let group = DispatchGroup()
         
         for image in petImages {
+            
+            if(!image.isExisting){
             group.enter()
             let metaData = StorageMetadata()
             metaData.contentType = "image/jpeg"
@@ -108,7 +108,11 @@ class AddLostPetViewModel: NSObject, ObservableObject {
         group.leave()
 
             }
+            }else {
+                self.imagesAdded.append(image.name!)
+
             }
+        }
         
         group.notify(queue: .main) {
             self.updateLostPetImages(lostPetDocumentId: lostPetDocumentId)

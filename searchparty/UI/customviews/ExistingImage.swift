@@ -15,8 +15,7 @@ struct ExistingImage: View {
             
             if(fullUrl != nil){
                 KFImage(fullUrl)
-                    .resizable()
-                    .aspectRatio(3 / 2, contentMode: .fit)
+                    .resizable().frame(height: 150).cornerRadius(20)
             }
             
         }.onAppear {
