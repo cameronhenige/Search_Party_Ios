@@ -74,6 +74,8 @@ struct AddLostPet: View {
             }
             
             TextField("Breed", text: $petBreed)
+            
+            VStack(alignment: .leading) {
             Text("Provide as many angles of your pet as possible.")
                 LazyVGrid(columns: imageColumns, spacing: 10) {
                     
@@ -117,14 +119,16 @@ struct AddLostPet: View {
 
 
                 }
+            }
 
         }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
     Section(header: Text("Add a description of what you think people should know about PET.")) {
-        TextEditor(text: $petDescription)
+        TextEditor(text: $petDescription).padding(.vertical)
         Text("* Be sure to include things like unique markings, temperament, and health conditions.").font(.caption)
 
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
+            
 
     Section(header: Text("When and where was your pet lost?")) {
         DatePicker(
@@ -133,8 +137,9 @@ struct AddLostPet: View {
             displayedComponents: [.date]
         )
 
-        Text("Lost Location")
-        Text("To obscure your exact location, only the bounding box is saved.").font(.caption)
+        VStack(alignment: .leading){
+            Text("Lost Location").padding(.vertical)
+        Text("To obscure your exact location, only the bounding box is saved.").font(.caption).fixedSize(horizontal: false, vertical: true)
 
         if(addLostPetViewModel.userLocation != nil) {
 
@@ -142,7 +147,9 @@ struct AddLostPet: View {
             
         }
         
-        TextField("Location Description", text: $lostLocationDescription)
+        TextField("Location Description", text: $lostLocationDescription).padding(.vertical)
+            
+        }
 
     }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
 
@@ -159,18 +166,26 @@ struct AddLostPet: View {
         iPhoneNumberField("Phone Number", text: $phoneNumber)
         TextField("Email", text: $email).textContentType(.emailAddress)
 
-        TextField("Other Contact Method", text: $otherContactMethod)
 
-        Text("Preferred Contact Method")
+
+                VStack(alignment: .leading) {
+                    
+                    Text("Preferred Contact Method").padding(.vertical)
 
         Picker(selection: $preferredContactMethod, label: Text("Preferred Contact Method")) {
             ForEach(0 ..< preferredContactMethods.count) {
                 Text(self.preferredContactMethods[$0])
             }
         }.pickerStyle(SegmentedPickerStyle())
+                
+                if(self.preferredContactMethod == 2){
+                    TextField("Other Contact Method", text: $otherContactMethod).padding(.vertical)
+                }
             
 
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
+                
+            }
             
         }.alert(isPresented: $addLostPetViewModel.errorAddingLostPet) {
             Alert(title: Text("Error adding pet"), message: Text("There was an error adding your pet."), dismissButton: .default(Text("Ok")))
@@ -218,11 +233,22 @@ struct AddLostPet: View {
                                 
                 //todo finish the rest of these
                 self.petDescription = selectedLostPet?.description ?? ""
-                self.petType = 0
-                self.petSex = 0
-                self.preferredContactMethod = 0
+                
+                if let type = selectedLostPet?.type {
+                    self.petType = getPetTypeFromLostPet(petType: type)
+                }
+                
+                if let sex = selectedLostPet?.sex {
+                    self.petSex = getPetSexFromLostPet(sex: sex)
+                }
+                
+                if let preferredContactMethod = selectedLostPet?.ownerPreferredContactMethod {
+                    self.preferredContactMethod = getPreferredContactMethod(method: preferredContactMethod)
+                }
+                
                 self.lostLocationDescription = selectedLostPet?.lostLocationDescription ?? ""
                 
+                self.otherContactMethod = selectedLostPet?.ownerOtherContactMethod ?? ""
                 
                 if let lostLocation = selectedLostPet?.lostLocation {
                     let geoHash = GeoHashConverter.decode(hash: lostLocation)
@@ -238,10 +264,6 @@ struct AddLostPet: View {
                     
                 }
                 
-
-//
-//                addLostPetViewModel.userLocation = CLLocationCoordinate2D(latitude: selectedLostPet?.lostLocation., longitude: <#T##CLLocationDegrees#>)
-//
             }
 
                 
@@ -262,6 +284,45 @@ struct AddLostPet: View {
             
         }
         }
+    
+    func getPetSexFromLostPet(sex: String) -> Int {
+        switch sex {
+        case "Male":
+           return 0
+        case "Female":
+           return 1
+        default:
+            return 0
+        }
+    }
+    
+    func getPetTypeFromLostPet(petType: String) -> Int {
+        switch petType {
+        case "Dog":
+           return 0
+        case "Cat":
+           return 1
+        case "Bird":
+           return 2
+        case "Other":
+           return 3
+        default:
+            return 0
+        }
+    }
+    
+    func getPreferredContactMethod(method: String) -> Int {
+        switch method {
+        case "phoneNumber":
+           return 0
+        case "email":
+           return 1
+        case "other":
+           return 2
+        default:
+            return 0
+        }
+    }
     
 }
 
