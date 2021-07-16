@@ -263,7 +263,7 @@ class GenerateFlyerViewModelX: NSObject {
     
     func getImage() -> UIImage {
       
-      if(self.lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+      if(self.lostPet.generalImages != nil && !lostPet.generalImages.isEmpty){
         return addImage(lostPet: lostPet)!
 
       } else {
@@ -285,9 +285,9 @@ class GenerateFlyerViewModelX: NSObject {
     func addImage(lostPet: LostPet) -> UIImage?{
 
 
-        if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+        if(lostPet.generalImages != nil && !lostPet.generalImages.isEmpty){
 
-            let imageReference : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages![0]
+            let imageReference : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages[0]
             let storage = Storage.storage().reference().child(imageReference)
             let roomImageResult = self.getImage(imageReference: storage)
             

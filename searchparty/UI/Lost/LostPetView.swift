@@ -30,56 +30,79 @@ struct LostPetView: View {
             //todo
     }
     
-
+    private var numberOfImages = 5
     
     var body: some View {
-        return
-            ZStack(alignment: .top) {
-
-                ScrollView(.vertical, showsIndicators: false) {
-                    
-                    VStack(alignment: .center, spacing: 0, content: {
-                            
-                        if(searchPartyAppState.selectedLostPet != nil) {
-                            
-                            Text(searchPartyAppState.selectedLostPet?.generalImages?.debugDescription ?? "nil")
-                            PetBackground(generalImages: searchPartyAppState.selectedLostPet?.generalImages, hasPicture: self.hasPicture, petType: searchPartyAppState.selectedLostPet?.type, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
-
-                            Text(searchPartyAppState.selectedLostPet!.name)
-                                                    .fontWeight(.bold)
-                                                    .font(.title).padding(.top)
-                        }else {
-                            EmptyView()
-                        }
-                        
-//                        if let pet = searchPartyAppState.selectedLostPet {
-//                                PetBackground(generalImages: pet.generalImages, hasPicture: self.hasPicture, petType: pet.type, lostPetId: pet.id!)
-//
-//                                                    Text(pet.name)
-//                                                        .fontWeight(.bold)
-//                                                        .font(.title).padding(.top)
-//
-//                        } else {
-//                            EmptyView()
-//                        }
-                        
-                    })
-                    
+        
+        
+        GeometryReader { proxy in
+            
+            ScrollView {
+                
                     VStack(alignment: .leading, spacing:0) {
-                        
 
-                        
-                        RandomView
-
-                        LostPetData.padding()
-
-                    }
+            TabView {
+                
+                ForEach(searchPartyAppState.selectedLostPet!.generalImages, id: \.self) { image in
+                    SingleLostPetImage(url: image, lostPetId: (searchPartyAppState.selectedLostPet?.id!)!)
                 }
+
+                
+//                ForEach(0..<(searchPartyAppState.selectedLostPet?.generalImages.count)!) { num in
+//                    SingleLostPetImage(url: (searchPartyAppState.selectedLostPet?.generalImages[num])!, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
+//                }
+            }.tabViewStyle(PageTabViewStyle())
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+            .padding()
+            .frame(width: proxy.size.width, height: proxy.size.height/2.5)
+                
+                Text(searchPartyAppState.selectedLostPet!.name)
+                                        .fontWeight(.bold)
+                                        .font(.title).padding()
+                
+                RandomView
+                LostPetData.padding()
+                
+                        
+                    }
             }
-            .frame(maxWidth: .infinity).onAppear {
-                searchPartyAppState.getSelectedLostPet()
-            }
+            
+        }.frame(maxWidth: .infinity).onAppear {
+            searchPartyAppState.getSelectedLostPet()
+        }
+        
+
+        
+//            ZStack(alignment: .top) {
+//
+//                ScrollView(.vertical, showsIndicators: false) {
+//
+//                    VStack(alignment: .leading, spacing:0) {
+//
+//                        if(searchPartyAppState.selectedLostPet != nil) {
+//
+//
+//
+////                            PetBackground(generalImages: searchPartyAppState.selectedLostPet?.generalImages, hasPicture: self.hasPicture, petType: searchPartyAppState.selectedLostPet?.type, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
+//
+//                            Text(searchPartyAppState.selectedLostPet!.name)
+//                                                    .fontWeight(.bold)
+//                                                    .font(.title).padding(.top)
+//                        }
+//
+//                        RandomView
+//
+//                        LostPetData.padding()
+//
+//                    }
+//                }
+//            }
+            
     }
+    
+    
+    
+    
     
     var LostPetData: some View {
         return

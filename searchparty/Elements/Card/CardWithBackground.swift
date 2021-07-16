@@ -60,9 +60,9 @@ struct CardWithBackground: View {
 
         }.onAppear {
             
-            if(lostPet.generalImages != nil && !lostPet.generalImages!.isEmpty){
+            if(lostPet.generalImages != nil && !lostPet.generalImages.isEmpty){
                 hasPicture = true
-                let storageLocation : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages![0]
+                let storageLocation : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages[0]
                 let storage = Storage.storage().reference().child(storageLocation)
                 storage.downloadURL { (URL, Error) in
                     if(Error != nil){

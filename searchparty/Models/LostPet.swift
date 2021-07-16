@@ -42,7 +42,7 @@ struct LostPet: Codable, Identifiable, Hashable {
     var uniqueMarkings: String?
     var temperament: String?
     var healthCondition: String?
-    var generalImages: [String]?
+    var generalImages: [String] = []
     var lostDateTime: Timestamp?
     var lostLocation: String?
     var lostLocationDescription: String?
