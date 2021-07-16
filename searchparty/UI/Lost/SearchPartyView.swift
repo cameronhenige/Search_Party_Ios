@@ -17,7 +17,7 @@ struct SearchPartyView: View {
 
     var lostPet: LostPet
 
-    @ObservedObject var searchPartyViewModel = SearchPartyViewModel()
+    @StateObject var searchPartyViewModel = SearchPartyViewModel()
 
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
 
