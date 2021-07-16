@@ -41,6 +41,8 @@ struct LostPetView: View {
                     VStack(alignment: .center, spacing: 0, content: {
                             
                         if(searchPartyAppState.selectedLostPet != nil) {
+                            
+                            Text(searchPartyAppState.selectedLostPet?.generalImages?.debugDescription ?? "nil")
                             PetBackground(generalImages: searchPartyAppState.selectedLostPet?.generalImages, hasPicture: self.hasPicture, petType: searchPartyAppState.selectedLostPet?.type, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
 
                             Text(searchPartyAppState.selectedLostPet!.name)

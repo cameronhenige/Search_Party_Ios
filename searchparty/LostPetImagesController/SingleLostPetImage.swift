@@ -14,6 +14,7 @@ struct SingleLostPetImage: View {
         
         VStack {
             
+            
             if(fullUrl != nil){
                 KFImage(fullUrl)
                     .resizable()
