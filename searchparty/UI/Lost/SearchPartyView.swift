@@ -117,6 +117,7 @@ struct SearchPartyView: View {
                     Spacer()
                     Button(action: {
                         searchPartyViewModel.startUpdatingLocationButtonAction()
+                        print("here")
                     }) {
 
                         

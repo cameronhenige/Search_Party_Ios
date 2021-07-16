@@ -147,6 +147,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                 if(currentLocation != nil){
                 checkForJoined()
                 }else{
+                    print("current location is nil")
                     //todo tell user to wait for current location
                 }
 
@@ -324,7 +325,8 @@ extension SearchPartyViewModel: CLLocationManagerDelegate {
             return
         }
                 
-        currentLocation = mostRecentLocation
+        self.currentLocation = mostRecentLocation
+        print("New Location \(self.currentLocation)")
         
         self.isInsideOfAPrivateGeoHash = self.isInsideOfPrivateGeoHash()
         print(self.isInsideOfAPrivateGeoHash)
