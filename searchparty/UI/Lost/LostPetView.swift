@@ -47,12 +47,8 @@ struct LostPetView: View {
                     SingleLostPetImage(url: image, lostPetId: (searchPartyAppState.selectedLostPet?.id!)!)
                 }
 
-                
-//                ForEach(0..<(searchPartyAppState.selectedLostPet?.generalImages.count)!) { num in
-//                    SingleLostPetImage(url: (searchPartyAppState.selectedLostPet?.generalImages[num])!, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
-//                }
             }.tabViewStyle(PageTabViewStyle())
-            .clipShape(RoundedRectangle(cornerRadius: 5))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
             .padding()
             .frame(width: proxy.size.width, height: proxy.size.height/2.5)
                 
@@ -70,33 +66,6 @@ struct LostPetView: View {
         }.frame(maxWidth: .infinity).onAppear {
             searchPartyAppState.getSelectedLostPet()
         }
-        
-
-        
-//            ZStack(alignment: .top) {
-//
-//                ScrollView(.vertical, showsIndicators: false) {
-//
-//                    VStack(alignment: .leading, spacing:0) {
-//
-//                        if(searchPartyAppState.selectedLostPet != nil) {
-//
-//
-//
-////                            PetBackground(generalImages: searchPartyAppState.selectedLostPet?.generalImages, hasPicture: self.hasPicture, petType: searchPartyAppState.selectedLostPet?.type, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
-//
-//                            Text(searchPartyAppState.selectedLostPet!.name)
-//                                                    .fontWeight(.bold)
-//                                                    .font(.title).padding(.top)
-//                        }
-//
-//                        RandomView
-//
-//                        LostPetData.padding()
-//
-//                    }
-//                }
-//            }
             
     }
     
