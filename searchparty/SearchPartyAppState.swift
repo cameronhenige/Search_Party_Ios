@@ -27,7 +27,6 @@ class SearchPartyAppState: NSObject, ObservableObject {
     @Published var selectedTab: Int = 1
     @Published var selectedLostPet: LostPet? = nil
     @Published var pets: [Pet] = [Pet(name: "Louie"), Pet(name: "Fred"), Pet(name: "Stanley")]
-    @Published var selectedPet: Pet? = nil
 
     //@Published var isOnChat = false
     

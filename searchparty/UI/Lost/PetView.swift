@@ -13,7 +13,7 @@ struct PetView: View {
     @EnvironmentObject var viewRouter: SearchPartyAppState
 
     var body: some View {
-        if let pet = viewRouter.selectedPet {
+        if let pet = viewRouter.selectedLostPet {
             Text(pet.name)
         } else {
             EmptyView()

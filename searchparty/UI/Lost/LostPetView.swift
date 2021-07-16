@@ -39,20 +39,27 @@ struct LostPetView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     
                     VStack(alignment: .center, spacing: 0, content: {
+                            
+                        if(searchPartyAppState.selectedLostPet != nil) {
+                            PetBackground(generalImages: searchPartyAppState.selectedLostPet?.generalImages, hasPicture: self.hasPicture, petType: searchPartyAppState.selectedLostPet?.type, lostPetId: (searchPartyAppState.selectedLostPet?.id)!)
 
-                            
-
-                        
-                        if let pet = searchPartyAppState.selectedLostPet {
-                                PetBackground(generalImages: pet.generalImages, hasPicture: self.hasPicture, petType: pet.type, lostPetId: pet.id!)
-                            
-                                                    Text(pet.name)
-                                                        .fontWeight(.bold)
-                                                        .font(.title).padding(.top)
-                            
-                        } else {
+                            Text(searchPartyAppState.selectedLostPet!.name)
+                                                    .fontWeight(.bold)
+                                                    .font(.title).padding(.top)
+                        }else {
                             EmptyView()
                         }
+                        
+//                        if let pet = searchPartyAppState.selectedLostPet {
+//                                PetBackground(generalImages: pet.generalImages, hasPicture: self.hasPicture, petType: pet.type, lostPetId: pet.id!)
+//
+//                                                    Text(pet.name)
+//                                                        .fontWeight(.bold)
+//                                                        .font(.title).padding(.top)
+//
+//                        } else {
+//                            EmptyView()
+//                        }
                         
                     })
                     
