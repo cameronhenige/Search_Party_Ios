@@ -35,13 +35,20 @@ struct LostPets: View {
             
                 ScrollView(.vertical, showsIndicators: false) {
                     ForEach(searchPartyAppState.lostPets) { lostPet in
-                        NavigationLink(destination: LostPetView(),
-                                       tag: lostPet,
-                                       selection: $searchPartyAppState.selectedLostPet,
-                                       label: {
-                                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
-                        })
+//                        NavigationLink(destination: LostPetView(),
+//                                       tag: lostPet,
+//                                       selection: $searchPartyAppState.selectedLostPet,
+//                                       label: {
+//                                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
+//                        })
+                        
+                        CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil).onTapGesture {
+                            searchPartyAppState.selectedLostPet = lostPet
+                            searchPartyAppState.isOnLostPet = true
+                        }
+                        
                     }
+                    
                     
                     NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                 

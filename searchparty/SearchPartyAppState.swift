@@ -101,6 +101,20 @@ class SearchPartyAppState: NSObject, ObservableObject {
         //todo load lost pet
     }
     
+    func getSelectedLostPet() {
+        let selectedLostPetQuery = Firestore.firestore().collection("Lost").document((selectedLostPet?.id)!)
+
+        selectedLostPetQuery.getDocument { (DocumentSnapshot, Error) in
+
+            if(Error == nil) {
+                let lostPet = try? DocumentSnapshot!.data(as: LostPet.self)
+                self.selectedLostPet = lostPet
+            } else {
+                //todo
+            }
+        }
+    }
+    
     
     
     func fetchLostPets() {

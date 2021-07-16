@@ -67,7 +67,9 @@ struct LostPetView: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: .infinity).onAppear {
+                searchPartyAppState.getSelectedLostPet()
+            }
     }
     
     var LostPetData: some View {
