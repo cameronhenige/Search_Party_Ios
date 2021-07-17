@@ -186,14 +186,10 @@ struct AddLostPet: View {
                     
                 }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
                 
+            }.alert(isPresented: $addLostPetViewModel.showAlert) {
+                Alert(title: Text(addLostPetViewModel.errorTitle), message: Text(addLostPetViewModel.errorBody), dismissButton: .default(Text("Ok")))
             }
             
-        }.alert(isPresented: $addLostPetViewModel.errorAddingLostPet) {
-            Alert(title: Text("Error adding pet"), message: Text("There was an error adding your pet."), dismissButton: .default(Text("Ok")))
-        }.alert(isPresented: $addLostPetViewModel.addNameError) {
-            Alert(title: Text("Add a name"), message: Text("Add a name for your pet."), dismissButton: .default(Text("Ok")))
-        }.alert(isPresented: $addLostPetViewModel.errorAddingImage) {
-            Alert(title: Text("Error Adding Image"), message: Text("There was an error adding your image."), dismissButton: .default(Text("Ok")))
         }
         
     }

@@ -17,6 +17,9 @@ import FlexibleGeohash
 
 class AddLostPetViewModel: NSObject, ObservableObject {
 
+    @Published var showAlert = false
+    @Published var errorTitle = ""
+    @Published var errorBody = ""
 
     @Published var isLoadingLocation = false
     @Published var errorAddingLostPet = false
@@ -68,7 +71,10 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                 
                 Firestore.firestore().collection("Lost").document(lostPetId!).updateData(itemData) { err in
                     if  err != nil {
-                        self.errorAddingLostPet = true
+                        self.showAlert = true
+                        self.errorTitle = "Error adding pet"
+                        self.errorBody = "There was an error adding your pet."
+
                     } else {
                         
                         //todo remvoe duplicatsion
@@ -98,7 +104,10 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             }
             }
         }else {
-            self.addNameError = true
+            
+            self.showAlert = true
+            self.errorTitle = "Add a name"
+            self.errorBody = "Add a name for your pet."
         }
     }
     
@@ -121,7 +130,9 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                 if error == nil{
                     self.imagesAdded.append(imageName)
                 }else{
-                    self.errorAddingImage = true
+                    self.showAlert = true
+                    self.errorTitle = "Error Adding Image"
+                    self.errorBody = "There was an error adding your image."
                 }
         group.leave()
 
