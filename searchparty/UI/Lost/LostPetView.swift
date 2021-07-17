@@ -34,13 +34,14 @@ struct LostPetView: View {
     
     var body: some View {
         
-        
         GeometryReader { proxy in
             
             ScrollView {
                 
                 VStack(alignment: .leading, spacing:0) {
                     
+                    
+                    if(searchPartyAppState.selectedLostPet!.generalImages.count>0){
                     TabView {
                         
                         ForEach(searchPartyAppState.selectedLostPet!.generalImages, id: \.self) { image in
@@ -51,6 +52,14 @@ struct LostPetView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .padding()
                     .frame(width: proxy.size.width, height: proxy.size.height/2.5)
+                        
+                    }else {
+                        Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet!.type)!).resizable()
+                            .aspectRatio(contentMode: .fit).clipShape(RoundedRectangle(cornerRadius: 15))
+                            .padding()
+                            .frame(width: proxy.size.width, height: proxy.size.height/2.5)
+                        
+                    }
                     
                     Text(searchPartyAppState.selectedLostPet!.name)
                         .fontWeight(.bold)
@@ -68,10 +77,6 @@ struct LostPetView: View {
         }
         
     }
-    
-    
-    
-    
     
     var LostPetData: some View {
         return

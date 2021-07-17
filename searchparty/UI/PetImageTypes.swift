@@ -20,7 +20,7 @@ public func getPetImageType(petType: String?) -> String? {
     }else if petType == "Bird" {
         return "bird"
     }else {
-        return nil
+        return "marker"
     }
 }
 }

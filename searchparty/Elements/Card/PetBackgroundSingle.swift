@@ -23,6 +23,7 @@ struct PetBackgroundSingle: View {
             
         }else{
             
+            
             if(petType == "Dog"){
             Image("dog")
             }else if petType == "Cat" {

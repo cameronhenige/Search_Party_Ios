@@ -40,19 +40,7 @@ struct PetBackground: View {
                         .listRowInsets(EdgeInsets())
             
         }else{
-            if(petType == "Dog"){
-            Image("dog")
-            }else if petType == "Cat" {
-                Image("cat")
-            }else if petType == "Bird" {
-                Image("bird")
-            }else {
-                Image("maps_default_marker")
-
-            }
-
-            
-
+            Image(PetImageTypes().getPetImageType(petType: petType)!)
         }
     }
 }
