@@ -122,19 +122,8 @@ struct AddLostPet: View {
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
             Section(header: Text("Add a description of what you think people should know about your pet. Be sure to include things like unique markings, temperament, and health conditions.")) {
-//                VStack(alignment: .leading) {
-//                    TextEditor(text: $petDescription).padding()
-//                        .background(Color.gray.opacity(0.5))
-//                        .foregroundColor(Color.white)
-//
-//                        .cornerRadius(25)
-//                }
                 
-                
-                ZStack {
-                    TextEditor(text: $petDescription)
-                    Text(petDescription).opacity(0).padding(.all, 8)
-                }
+                MultilineTextField("Description", text: $petDescription)
                 
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
