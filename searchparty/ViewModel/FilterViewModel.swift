@@ -108,6 +108,8 @@ class FilterViewModel: NSObject, ObservableObject {
                 } else {
                     completionHandler(.success("Updated Filter Settings"))
                 }
+            self.isUpdatingFilter = false
+
             }
 
     }

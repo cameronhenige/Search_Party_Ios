@@ -72,11 +72,11 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                     } else {
                         
                         //todo remvoe duplicatsion
-                        if(petImages.isEmpty) {
-                            self.completionHandler!(.success("Edited Lost Pet"))
-                        }else {
+//                        if(petImages.isEmpty) {
+//                            self.completionHandler!(.success("Edited Lost Pet"))
+//                        }else {
                             self.addImages(lostPetDocumentId: lostPetId!, petImages: petImages)
-                        }
+                        //}
                     }
                 }
             }else {
@@ -87,14 +87,13 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                 if  err != nil {
                     self.errorAddingLostPet = true
                 } else {
-                    if(petImages.isEmpty) {
-                        self.completionHandler!(.success("Added Lost Pet"))
-                    }else {
+//                    if(petImages.isEmpty) {
+//                        self.completionHandler!(.success("Added Lost Pet"))
+//                    }else {
                         self.addImages(lostPetDocumentId: ref!.documentID, petImages: petImages)
-                    }
+                    //}
                 }
             
-            self.isAddingLostPet = false
 
             }
             }
