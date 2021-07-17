@@ -10,15 +10,12 @@ import MapKit
 struct AddLostPet: View {
     
     @EnvironmentObject var lostViewRouter: SearchPartyAppState
-    
     @StateObject private var addLostPetViewModel = AddLostPetViewModel()
     
     @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var lostDate = Date()
-    @State private var showingActionSheet = false
-    @State private var shouldPresentImagePicker = false
-    @State private var backgroundColor = Color.white
+    @State private var showingPhotoActionSheet = false
     @State var name = ""
     @State var phoneNumber = ""
     @State var email = ""
@@ -26,19 +23,18 @@ struct AddLostPet: View {
     @State var petName = ""
     @State var petAge = ""
     @State var petBreed = ""
-    @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
     @State private var isShowGallery = false
     @State private var images : [SelectedImage] = []
-    @State var picker = false
     @State private var petDescription: String = ""
     @State private var petType = 0
-    var petTypes = ["Dog", "Cat", "Bird", "Other"]
     @State private var petSex = 0
-    var petSexes = ["Male", "Female"]
     @State private var preferredContactMethod = 0
-    var preferredContactMethods = ["Phone Number", "Email", "Other"]
     @State var lostLocationDescription = ""
+    
+    var petTypes = ["Dog", "Cat", "Bird", "Other"]
+    var petSexes = ["Male", "Female"]
+    var preferredContactMethods = ["Phone Number", "Email", "Other"]
     
     var imageColumns: [GridItem] {
         Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
@@ -77,8 +73,6 @@ struct AddLostPet: View {
                     Text("Provide as many angles of your pet as possible.")
                     LazyVGrid(columns: imageColumns, spacing: 10) {
                         
-                        
-                        
                         ForEach(0..<images.count, id: \.self) { i in
                             
                             ZStack {
@@ -111,7 +105,7 @@ struct AddLostPet: View {
                             Image(systemName: "camera")
                                 .font(.largeTitle)
                                 .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
-                                    self.showingActionSheet = true
+                                    self.showingPhotoActionSheet = true
                                 }
                         }
                         
@@ -255,15 +249,13 @@ struct AddLostPet: View {
                     
                     addLostPetViewModel.userLocation = midPoint
                     
-                }else {
-                    
                 }
                 
             }
             
             
             
-        }.actionSheet(isPresented: $showingActionSheet) {
+        }.actionSheet(isPresented: $showingPhotoActionSheet) {
             ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
                 .default(Text("Gallery")) {
                     self.isShowGallery = true },
@@ -367,7 +359,7 @@ struct SUImagePickerView: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 
-                let selectedImage = SelectedImage(name: nil, isExisting: false, image: image as! UIImage)
+                let selectedImage = SelectedImage(name: nil, isExisting: false, image: image )
                 self.parent.images.append(selectedImage)
             }
             self.parent.isShowCamera = false
@@ -423,12 +415,12 @@ struct MyImagePicker : UIViewControllerRepresentable {
                     
                     img.itemProvider.loadObject(ofClass: UIImage.self) { (image, err) in
                         
-                        guard let image1 = image else {
+                        guard image != nil else {
                             print(err)
                             return
                         }
                         
-                        let selectedImage = SelectedImage(name: nil, isExisting: false, image: image as! UIImage)
+                        let selectedImage = SelectedImage(name: nil, isExisting: false, image: image as? UIImage)
                         self.parent.images.append(selectedImage)
                         
                     }
