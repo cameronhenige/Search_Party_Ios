@@ -12,14 +12,11 @@ import BottomSheet
 
 struct SearchPartyView: View {
     
-    
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     
     var lostPet: LostPet
     
     @StateObject var searchPartyViewModel = SearchPartyViewModel()
-    
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
     enum CustomBottomSheetPosition: CGFloat, CaseIterable {
         case top = 0.975, middle = 0.4, bottom = 0.2
@@ -59,7 +56,7 @@ struct SearchPartyView: View {
                 
                 
                 
-                SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes).edgesIgnoringSafeArea(.all)
+                SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, selectedDay: $searchPartyViewModel.selectedDay, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes).edgesIgnoringSafeArea(.all)
                 
                 VStack{
                     
