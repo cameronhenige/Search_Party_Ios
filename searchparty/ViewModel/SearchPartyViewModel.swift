@@ -27,6 +27,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
 
     @Published var listOfDays: [Date] = []
 
+    @Published var selectedDay: Date?
 
     @Published var searchPartyUsers = [SearchPartyUser]()
     @Published var hasScrolledToInitialSearches = false

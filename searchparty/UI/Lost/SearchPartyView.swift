@@ -22,7 +22,7 @@ struct SearchPartyView: View {
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
     enum CustomBottomSheetPosition: CGFloat, CaseIterable {
-        case top = 0.975, middle = 0.4, bottom = 0.165
+        case top = 0.975, middle = 0.4, bottom = 0.2
     }
     
     @State private var bottomSheetPosition: CustomBottomSheetPosition = .bottom
@@ -30,7 +30,7 @@ struct SearchPartyView: View {
     @State var currentLocation: CLLocationCoordinate2D?
     
     @State var name = ""
-    
+        
     @State var map = MKMapView()
     
     var SearchingButtonText: some View {
@@ -78,16 +78,24 @@ struct SearchPartyView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             
                             ZStack {
-                                RoundedRectangle(cornerRadius: 25, style: .continuous)
-                                    .fill(Color.white)
                                 LazyHStack {
+                                        DateText(text: "All", isSelected: searchPartyViewModel.selectedDay == nil).onTapGesture {
+                                            searchPartyViewModel.selectedDay = nil
+                                        }
+
                                     ForEach(searchPartyViewModel.listOfDays, id: \.self) { day in
-                                        Text(String(taskDateFormat.string(from: day))).padding()
+                                        
+                                        DateText(text: String(taskDateFormat.string(from: day)), isSelected: searchPartyViewModel.selectedDay == day).onTapGesture {
+                                            searchPartyViewModel.selectedDay = day
+                                        }
+                                        
                                     }
-                                }
+                                    
+                                }.background(Color.white)
                                 
-                            }.frame(height: 50).padding()
-                        }
+                            }.frame(height: 50).clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous)).padding()
+                        }.flipsForRightToLeftLayoutDirection(true)
+                        .environment(\.layoutDirection, .rightToLeft)
                     }
                     
                     if(searchPartyViewModel.isInsideOfAPrivateGeoHash){
@@ -151,6 +159,27 @@ struct SearchPartyView: View {
         
         
     }
+    
+    
+    struct DateText: View {
+        var text: String
+        var isSelected: Bool
+
+        var body: some View {
+            
+            if(isSelected){
+                Text(text).foregroundColor(.white).rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0))).padding().background(Constant.color.tintColor)
+
+            }else {
+                Text(text).rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0))).padding()
+
+            }
+        }
+    }
+    
+    
+    
+    
 }
 
 struct SearchPartyView_Previews: PreviewProvider {
