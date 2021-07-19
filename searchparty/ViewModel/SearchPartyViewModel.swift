@@ -98,6 +98,9 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             }
         }
         
+        self.listOfDays = self.listOfDays.sorted(by: { $0.compare($1) == .orderedDescending })
+
+        
     }
     
     private func updateSearchesForUser(searches: [SearchPartySearch]) {
