@@ -61,18 +61,19 @@ struct SearchPartyView: View {
                 
                 SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes).edgesIgnoringSafeArea(.all)
                 
-                
-                VStack (alignment: .trailing){
+                VStack{
                     
-                    HStack{
+                    HStack {
+                        Spacer()
                     Button(action: {
                         self.searchPartyAppState.isOnSearchParty = false
                     }) {
                         Text("X")
-                    }.buttonStyle(PrimaryButtonStyle()).frame(width: 40)
+                    }.buttonStyle(PrimaryButtonStyle()).frame(width: 30, alignment: .trailing)
+                    }.padding(.leading).padding(.top).padding(.trailing)
                     
-                    }
-                    
+
+                    //Image("dog").resizable().frame(width: 30, height: 30, alignment: .topTrailing)
                     if(searchPartyViewModel.listOfDays.count > 0) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             
@@ -85,7 +86,7 @@ struct SearchPartyView: View {
                                     }
                                 }
                                 
-                            }.frame(height: 50, alignment: .top).padding()
+                            }.frame(height: 50).padding()
                         }
                     }
                     
@@ -114,9 +115,7 @@ struct SearchPartyView: View {
                         searchPartyViewModel.startUpdatingLocationButtonAction()
                         print("here")
                     }) {
-                        
-                        
-                        
+
                         SearchingButtonText
                         
                     }.buttonStyle(PrimaryButtonStyle()).frame(width: 150)
@@ -132,10 +131,6 @@ struct SearchPartyView: View {
                 }.buttonStyle(PrimaryButtonStyle())
                 
                 ScrollView {
-                    //                            ForEach(0..<100) { index in
-                    //                                Text(String(index))
-                    //                            }
-                    //                            .frame(maxWidth: .infinity)
                     Text("People Searching").padding(.vertical)
                     
                     ForEach(searchPartyViewModel.searchPartyUsers) { user in

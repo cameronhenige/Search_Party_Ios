@@ -120,7 +120,7 @@ struct SearchPartyMapView: UIViewRepresentable {
 //        map.setRegion(region, animated: true)
         
         let buttonItem = MKUserTrackingButton(mapView: map)
-            buttonItem.frame = CGRect(origin: CGPoint(x:25, y: 80), size: CGSize(width: 35, height: 35))
+            buttonItem.frame = CGRect(origin: CGPoint(x:25, y: 70), size: CGSize(width: 35, height: 35))
 
             map.addSubview(buttonItem)
         
