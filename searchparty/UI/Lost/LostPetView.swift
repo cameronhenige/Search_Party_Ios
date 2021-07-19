@@ -42,16 +42,16 @@ struct LostPetView: View {
                     
                     
                     if(searchPartyAppState.selectedLostPet!.generalImages.count>0){
-                    TabView {
-                        
-                        ForEach(searchPartyAppState.selectedLostPet!.generalImages, id: \.self) { image in
-                            SingleLostPetImage(url: image, lostPetId: (searchPartyAppState.selectedLostPet?.id!)!)
-                        }
-                        
-                    }.tabViewStyle(PageTabViewStyle())
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                    .padding()
-                    .frame(width: proxy.size.width, height: proxy.size.height/2.5)
+                        TabView {
+                            
+                            ForEach(searchPartyAppState.selectedLostPet!.generalImages, id: \.self) { image in
+                                SingleLostPetImage(url: image, lostPetId: (searchPartyAppState.selectedLostPet?.id!)!)
+                            }
+                            
+                        }.tabViewStyle(PageTabViewStyle())
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        .padding()
+                        .frame(width: proxy.size.width, height: proxy.size.height/2.5)
                         
                     }else {
                         Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet!.type)!).resizable()
@@ -197,20 +197,20 @@ struct LostPetView: View {
                 if let pet = searchPartyAppState.selectedLostPet {
                     
                     
-                    NavigationLink(destination: SearchPartyView(lostPet: pet), isActive: $searchPartyAppState.isOnSearchParty) {
-                        Button(action: {
-                            self.searchPartyAppState.isOnSearchParty = true
-                        }) {
-                            Text("Join Search Party")
-                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                    }
+                    //                    NavigationLink(destination: SearchPartyView(lostPet: pet), isActive: $searchPartyAppState.isOnSearchParty) {
+                    //                        Button(action: {
+                    //                            self.searchPartyAppState.isOnSearchParty = true
+                    //                        }) {
+                    //                            Text("Join Search Party")
+                    //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                    //                    }
                     
-                    //                    Button("Full Screen Join Search Party") {
-                    //                        self.searchPartyAppState.isOnSearchParty.toggle()
-                    //                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing]).fullScreenCover(isPresented: self.$searchPartyAppState.isOnSearchParty) {
-                    //
-                    //                                SearchPartyView(lostPet: pet)
-                    //                            }
+                    Button("Join Search Party") {
+                        self.searchPartyAppState.isOnSearchParty.toggle()
+                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing]).fullScreenCover(isPresented: self.$searchPartyAppState.isOnSearchParty) {
+                        
+                        SearchPartyView(lostPet: pet)
+                    }
                     
                     
                 }
