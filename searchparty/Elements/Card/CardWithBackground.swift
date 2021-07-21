@@ -44,12 +44,34 @@ struct CardWithBackground: View {
                             .font(.title)
                     }
                     Spacer()
-                }
+                }.padding()
+                
+                
                 Spacer()
+                
+                ZStack {
+                    if let foundPet = lostPet.foundPet {
+                        if(foundPet) {
+                            
+                            HStack {
+                                
+                                Image("error_icon").resizable().frame(width: 32.0, height: 32.0)
+                                
+                                Text("\(lostPet.name) has been found!").padding(.leading).padding(.trailing)
+                            
+                            }.foregroundColor(Color.white).frame(
+                                minWidth: 0,
+                                maxWidth: .infinity,
+                                alignment: .bottomLeading
+                              ).padding().background(Constant.color.tintColor)
+                            
+                        }
+                    }
+                }
 
                 
             }
-            .padding(.all)
+            
             .background(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.3), Color.black.opacity(0), Color.black.opacity(0), Color.black.opacity(description != nil ? 0.3 : 0)]), startPoint: .top, endPoint: .bottom))
             .frame(maxWidth: .infinity)
             .frame(height: height)

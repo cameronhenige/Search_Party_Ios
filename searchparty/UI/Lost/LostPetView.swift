@@ -9,7 +9,6 @@ struct LostPetView: View {
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
-    @State var isOnLostPetIsFound = false
     @State var isOnEditPet = false
     @State var selectedView = 1
     @State private var isPresented = false
@@ -59,6 +58,32 @@ struct LostPetView: View {
                             .padding()
                             .frame(width: proxy.size.width, height: proxy.size.height/2.5)
                         
+                    }
+                    
+                    if let foundPet = searchPartyAppState.selectedLostPet?.foundPet {
+                        if(foundPet) {
+                            
+                            HStack {
+                                
+                                Image("error_icon").resizable().frame(width: 32.0, height: 32.0)
+                                
+                            VStack(alignment: .leading) {
+                                Text("\(searchPartyAppState.selectedLostPet!.name) has been found!")
+                                
+                                if let foundPetDescription = searchPartyAppState.selectedLostPet?.foundPetDescription{
+                                    Text("\"\(foundPetDescription)\"").fixedSize(horizontal: false, vertical: true)
+                                }
+                                Spacer()
+
+                            }.padding(.leading).padding(.trailing)
+                            
+                            }.foregroundColor(Color.white).frame(
+                                minWidth: 0,
+                                maxWidth: .infinity,
+                                alignment: .bottomLeading
+                              ).padding().background(Constant.color.tintColor)
+                            
+                        }
                     }
                     
                     Text(searchPartyAppState.selectedLostPet!.name)
@@ -186,9 +211,9 @@ struct LostPetView: View {
                 }
                 
                 
-                NavigationLink(destination: MarkPetAsFound(), isActive: $isOnLostPetIsFound) {
+                NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
                     Button(action: {
-                        self.isOnLostPetIsFound = true
+                        self.searchPartyAppState.isOnLostPetIsFound = true
                     }) {
                         Text("Mark Pet As Found")
                     }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])

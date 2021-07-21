@@ -24,9 +24,13 @@ struct MainScreen: View {
                 Image("found_icon").renderingMode(.template)
             }.tag(2)
             AccountScreen().tabItem {
+                
                 Text("Account")
                 Image(systemName: "person.circle").renderingMode(.template)
+                
             }.tag(3)
+                
+            
         }
         .accentColor(Constant.color.foodPrimary).onAppear {
             syncFcmTokenViewModel.syncFcmTokenIfNeeded()

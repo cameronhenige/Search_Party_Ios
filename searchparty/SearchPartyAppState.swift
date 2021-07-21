@@ -15,6 +15,7 @@ import FlexibleGeohash
 
 class SearchPartyAppState: NSObject, ObservableObject {
     
+    @Published var isOnLostPetIsFound = false
     @Published var isLoadingLostPets = false
     @Published var isOnSearchParty = false
     @Published var isOnChat = false

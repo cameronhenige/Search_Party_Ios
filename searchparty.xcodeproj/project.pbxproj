@@ -80,6 +80,7 @@
 		F255CBB7269E6CF0005AB259 /* SelectedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB6269E6CF0005AB259 /* SelectedImage.swift */; };
 		F276A4EE26A2923700F36394 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A4ED26A2923700F36394 /* MultilineTextField.swift */; };
 		F276A4F026A2925F00F36394 /* UITextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A4EF26A2925F00F36394 /* UITextViewWrapper.swift */; };
+		F276A50F26A67D2300F36394 /* MarkPetAsFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */; };
 		F2791A6226006B7100C056A6 /* SPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A6126006B7100C056A6 /* SPUser.swift */; };
 		F2791A652600746500C056A6 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A642600746500C056A6 /* Search.swift */; };
 		F2791A6A2600750500C056A6 /* SearchPartyUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2791A692600750500C056A6 /* SearchPartyUser.swift */; };
@@ -224,6 +225,7 @@
 		F255CBB6269E6CF0005AB259 /* SelectedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImage.swift; sourceTree = "<group>"; };
 		F276A4ED26A2923700F36394 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		F276A4EF26A2925F00F36394 /* UITextViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWrapper.swift; sourceTree = "<group>"; };
+		F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFoundViewModel.swift; sourceTree = "<group>"; };
 		F2791A6126006B7100C056A6 /* SPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPUser.swift; sourceTree = "<group>"; };
 		F2791A642600746500C056A6 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		F2791A692600750500C056A6 /* SearchPartyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyUser.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
 				F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */,
 				F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */,
+				F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				F255CBA526901AD3005AB259 /* DynamicLinkGenerator.swift in Sources */,
 				F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */,
 				F2DBDDE4263B2FDE00E9C987 /* PetBackgroundSingle.swift in Sources */,
+				F276A50F26A67D2300F36394 /* MarkPetAsFoundViewModel.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
 				F27BC5F3265E07D00017B198 /* SearchPartySearch.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
