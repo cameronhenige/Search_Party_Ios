@@ -7,17 +7,18 @@ public class MarkPetAsFoundViewModel: ObservableObject {
     private var completionHandler: ((Result<String, Error>) -> Void)?
     @Published var isMarkingPetAsFound = false
     
+    
     @Published var showAlert = false
     @Published var errorTitle = ""
     @Published var errorBody = ""
     
-    func markPetAsFound(lostPetId: String, description: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func markPetAsFound(lostPetId: String, description: String, isFound: Bool, completionHandler: @escaping (Result<String, Error>) -> Void) {
         self.completionHandler = completionHandler
         isMarkingPetAsFound = true
     
             let itemData : [String: Any] = [
                 "foundPetDescription" : description,
-                "foundPet": true,
+                "foundPet": isFound,
             ]
         
                 Firestore.firestore().collection("Lost").document(lostPetId).updateData(itemData) { err in
