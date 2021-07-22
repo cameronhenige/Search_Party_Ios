@@ -40,7 +40,7 @@ struct LostPetView: View {
                 VStack(alignment: .leading, spacing:0) {
                     
                     
-                    if(searchPartyAppState.selectedLostPet!.generalImages.count>0){
+                    if(searchPartyAppState.selectedLostPet!.generalImages.count>0) {
                         TabView {
                             
                             ForEach(searchPartyAppState.selectedLostPet!.generalImages, id: \.self) { image in
@@ -50,9 +50,9 @@ struct LostPetView: View {
                         }.tabViewStyle(PageTabViewStyle())
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                         .padding()
-                        .frame(width: proxy.size.width, height: proxy.size.height/2.5)
+                        .frame(width: proxy.size.width, height: proxy.size.height/2.5).id(searchPartyAppState.selectedLostPet!.generalImages.count)
                         
-                    }else {
+                    } else {
                         Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet!.type)!).resizable()
                             .aspectRatio(contentMode: .fit).clipShape(RoundedRectangle(cornerRadius: 15))
                             .padding()

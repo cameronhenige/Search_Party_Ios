@@ -107,6 +107,14 @@ struct AddLostPet: View {
                                 .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
                                     self.showingPhotoActionSheet = true
                                 }
+                        }.actionSheet(isPresented: $showingPhotoActionSheet) {
+                            ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
+                                .default(Text("Gallery")) {
+                                    self.isShowGallery = true },
+                                .default(Text("Camera")) {
+                                    self.isShowCamera = true },
+                                .cancel()
+                            ])
                         }
                         
                         
@@ -255,14 +263,6 @@ struct AddLostPet: View {
             
             
             
-        }.actionSheet(isPresented: $showingPhotoActionSheet) {
-            ActionSheet(title: Text("Choose Photo Location"), message: Text("Select photo location"), buttons: [
-                .default(Text("Gallery")) {
-                    self.isShowGallery = true },
-                .default(Text("Camera")) {
-                    self.isShowCamera = true },
-                .cancel()
-            ])
         }.navigationTitle("Add Lost Pet")
         .sheet(isPresented: $isShowGallery) {
             MyImagePicker(images: $images, isShowGallery: self.$isShowGallery)

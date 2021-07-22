@@ -71,6 +71,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                 
                 Firestore.firestore().collection("Lost").document(lostPetId!).updateData(itemData) { err in
                     if  err != nil {
+                        print(err)
                         self.showAlert = true
                         self.errorTitle = "Error adding pet"
                         self.errorBody = "There was an error adding your pet."
