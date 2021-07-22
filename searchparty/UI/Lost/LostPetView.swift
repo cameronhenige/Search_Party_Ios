@@ -86,6 +86,19 @@ struct LostPetView: View {
                         }
                     }
                     
+                    TabBar(
+                        content: [
+                            TabItem(name: "2 people", icon: Constant.icon.person),
+                            TabItem(name: "2 people", icon: Constant.icon.person),
+                            TabItem(name: "4 minutes", icon: Constant.icon.clock),
+                            TabItem(name: "4 minutes", icon: Constant.icon.clock)
+
+                        ]
+                        
+                        
+                    )
+                    
+                    
                     Text("Lost: \(searchPartyAppState.selectedLostPet!.name)")
                         .fontWeight(.bold)
                         .font(.title).padding()
