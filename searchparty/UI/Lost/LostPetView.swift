@@ -86,7 +86,7 @@ struct LostPetView: View {
                         }
                     }
                     
-                    Text(searchPartyAppState.selectedLostPet!.name)
+                    Text("Lost: \(searchPartyAppState.selectedLostPet!.name)")
                         .fontWeight(.bold)
                         .font(.title).padding()
                     
@@ -211,12 +211,14 @@ struct LostPetView: View {
                 }
                 
                 
+                if(searchPartyAppState.isOwnerOfLostPet()){
                 NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
                     Button(action: {
                         self.searchPartyAppState.isOnLostPetIsFound = true
                     }) {
                         Text("Mark Pet As Found")
                     }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                }
                 }
                 
                 if let pet = searchPartyAppState.selectedLostPet {
@@ -243,13 +245,15 @@ struct LostPetView: View {
                 NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                     
                 }
-                
+                if(searchPartyAppState.isOwnerOfLostPet()){
+
                 NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
                     Button(action: {
                         self.searchPartyAppState.isOnEditingLostPet = true
                     }) {
                         Text("Edit Pet")
                     }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                }
                 }
             }
     }

@@ -16,7 +16,6 @@ struct AccountScreen: View {
         NavigationView {
 
         Text("My Account").background(Constant.color.gray)
-            .navigationBarColor(Constant.color.tintColor.uiColor())
             .navigationBarTitle(Text("Account"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: signoutTapped, label: {
                 Image(systemName: "person.circle")

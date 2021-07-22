@@ -85,7 +85,7 @@ struct LostPets: View {
                         
                     }
 
-                }.navigationBarColor(Constant.color.tintColor.uiColor())
+                }
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .background(Constant.color.gray)
                 .onAppear(){

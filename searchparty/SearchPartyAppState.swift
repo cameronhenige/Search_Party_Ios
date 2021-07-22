@@ -101,6 +101,16 @@ class SearchPartyAppState: NSObject, ObservableObject {
         //todo load lost pet
     }
     
+    func isOwnerOfLostPet() -> Bool {
+        
+        if let owners = selectedLostPet?.Owners {
+            return owners.contains(Auth.auth().currentUser!.uid)
+        }else {
+            return false
+        }
+        
+    }
+    
     func getSelectedLostPet() {
         let selectedLostPetQuery = Firestore.firestore().collection("Lost").document((selectedLostPet?.id)!)
 
