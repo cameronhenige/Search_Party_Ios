@@ -123,7 +123,6 @@ extension FilterViewModel: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }
-    
     self.initialLocationAndDistance = InitialLocationAndDistance(locationSelected: CLLocationCoordinate2D(
                                                                     latitude: location.coordinate.latitude,
                                                                     longitude: location.coordinate.longitude), distanceSelected: 3218.68)

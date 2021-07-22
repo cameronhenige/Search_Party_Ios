@@ -39,10 +39,15 @@ struct FilterView: View {
             }.buttonStyle(PrimaryButtonStyle()).padding(.top).disabled(self.filterViewModel.isUpdatingFilter)
             }
             
+
             
             Spacer()
         }.padding().disabled(filterViewModel.isLoadingLocation || filterViewModel.isUpdatingFilter).onAppear() {
             self.filterViewModel.loadInitialData()
+        }
+        
+        if(filterViewModel.isLoadingLocation) {
+            ProgressView()
         }
     }
     
