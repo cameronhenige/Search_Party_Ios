@@ -105,7 +105,7 @@ struct LostPetView: View {
                         }
                         
                         NavigationLink(destination: ChatView(), isActive: $searchPartyAppState.isOnChat) {
-                            TabBar(content: TabItem(name: "Chat", icon: Constant.icon.person)).onTapGesture {
+                            TabBar(content: TabItem(name: "Chat", icon: Constant.icon.envelope)).onTapGesture {
                                 self.searchPartyAppState.isOnChat = true
                                 
                             }
@@ -124,7 +124,7 @@ struct LostPetView: View {
                         if(searchPartyAppState.isOwnerOfLostPet()){
 
                         NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
-                            TabBar(content: TabItem(name: "Edit Pet", icon: Constant.icon.person)).onTapGesture {
+                            TabBar(content: TabItem(name: "Edit Pet", icon: Constant.icon.compose)).onTapGesture {
                                 self.searchPartyAppState.isOnEditingLostPet = true
 
                                 
