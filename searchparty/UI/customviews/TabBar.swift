@@ -12,34 +12,28 @@ struct TabBar: View {
     
     var backgroundColor: Color = Constant.color.bgDefault
     var foregroundColor: Color = Constant.color.tintColor
-    var content: [TabItem]
-    @EnvironmentObject var searchPartyAppState: SearchPartyAppState
-
+    var content: TabItem
     
     var body: some View {
         HStack () {
-            ForEach(content) {tab in
                 Spacer()
                 VStack() {
-                    if (tab.customView != nil) {
-                        tab.customView
+                    if (content.customView != nil) {
+                        content.customView
                     } else {
-                        Image(systemName: tab.icon ?? Constant.icon.circle)
+                        Image(systemName: content.icon ?? Constant.icon.circle)
                     }
-                    Text(tab.name)
-                        .font(.caption)
+                    Text(content.name)
+                        .font(.caption).frame(alignment: .center)
                 }
                 .frame(maxWidth:.infinity)
                 Spacer()
-            }
+            
         }
         .frame(maxWidth: .infinity)
         .frame(height: 64.0)
         .background(backgroundColor)
-        .foregroundColor(foregroundColor).onTapGesture {
-            print("Hey")
-            searchPartyAppState.isOnChat = true
-        }
+        .foregroundColor(foregroundColor)
     }
 }
 

@@ -67,36 +67,72 @@ struct LostPetView: View {
                                 
                                 Image("error_icon").resizable().frame(width: 32.0, height: 32.0)
                                 
-                            VStack(alignment: .leading) {
-                                Text("\(searchPartyAppState.selectedLostPet!.name) has been found!")
+                                VStack(alignment: .leading) {
+                                    Text("\(searchPartyAppState.selectedLostPet!.name) has been found!")
+                                    
+                                    if let foundPetDescription = searchPartyAppState.selectedLostPet?.foundPetDescription{
+                                        Text("\"\(foundPetDescription)\"").fixedSize(horizontal: false, vertical: true)
+                                    }
+                                    Spacer()
+                                    
+                                }.padding(.leading).padding(.trailing)
                                 
-                                if let foundPetDescription = searchPartyAppState.selectedLostPet?.foundPetDescription{
-                                    Text("\"\(foundPetDescription)\"").fixedSize(horizontal: false, vertical: true)
-                                }
-                                Spacer()
-
-                            }.padding(.leading).padding(.trailing)
-                            
                             }.foregroundColor(Color.white).frame(
                                 minWidth: 0,
                                 maxWidth: .infinity,
                                 alignment: .bottomLeading
-                              ).padding().background(Constant.color.tintColor)
+                            ).padding().background(Constant.color.tintColor)
                             
                         }
                     }
                     
-                    TabBar(
-                        content: [
-                            TabItem(name: "2 people", icon: Constant.icon.person),
-                            TabItem(name: "2 people", icon: Constant.icon.person),
-                            TabItem(name: "4 minutes", icon: Constant.icon.clock),
-                            TabItem(name: "4 minutes", icon: Constant.icon.clock)
+                    
+                    
+                    HStack () {
+                        
+                        TabBar(content: TabItem(name: "Generate Flyer", icon: Constant.icon.doc)).onTapGesture {
+                            
+                            DispatchQueue.global().async { [self] in
+                                
+                                var pdfData = GenerateFlyerViewModelX(lostPet: searchPartyAppState.selectedLostPet!).createFlyer()
+                                
+                                DispatchQueue.main.async {
+                                    let activityVC = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+                                    UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+                                }
+                                
+                            }
+                        }
+                        
+                        NavigationLink(destination: ChatView(), isActive: $searchPartyAppState.isOnChat) {
+                            TabBar(content: TabItem(name: "Chat", icon: Constant.icon.person)).onTapGesture {
+                                self.searchPartyAppState.isOnChat = true
+                                
+                            }
+                        }
+                        
+                        if(searchPartyAppState.isOwnerOfLostPet()){
 
-                        ]
+                        NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
+                            TabBar(content: TabItem(name: "Mark Pet as Found", icon: Constant.icon.person)).onTapGesture {
+                                self.searchPartyAppState.isOnLostPetIsFound = true
+                                
+                            }
+                        }
+                        }
                         
+                        if(searchPartyAppState.isOwnerOfLostPet()){
+
+                        NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
+                            TabBar(content: TabItem(name: "Edit Pet", icon: Constant.icon.person)).onTapGesture {
+                                self.searchPartyAppState.isOnEditingLostPet = true
+
+                                
+                            }
+                        }
+                        }
                         
-                    )
+                    }
                     
                     
                     Text("Lost: \(searchPartyAppState.selectedLostPet!.name)")
@@ -105,7 +141,6 @@ struct LostPetView: View {
                     
                     RandomView
                     LostPetData.padding()
-                    
                     
                 }
             }
@@ -179,71 +214,20 @@ struct LostPetView: View {
     var RandomView: some View {
         return
             VStack{
-                HStack {
-                    Button(action: {
-                        
-                        //generateFlyerViewModel.generateFlyer(lostPet: searchPartyAppState.selectedLostPet!)
-                        
-                        
-                        
-                        
-                        DispatchQueue.global().async { [self] in
-                            
-                            var pdfData = GenerateFlyerViewModelX(lostPet: searchPartyAppState.selectedLostPet!).createFlyer()
-                            
-                            DispatchQueue.main.async {
-                                let activityVC = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
-                                UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-                            }
-                            
-                        }
-                        
-                    }) {
-                        Text("Generate Flyer")
-                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading])
-                    
-                    //            .sheet(isPresented: $generateFlyerViewModel.isShowingFlyer, onDismiss: {
-                    //                print("Dismiss")
-                    //            }, content: {
-                    //                ActivityViewController(activityItems: [$generateFlyerViewModel.flyerURL])
-                    //            })
-                    
-                    
-                    
-                    
-                    NavigationLink(destination: ChatView(), isActive: $searchPartyAppState.isOnChat) {
-                        Button(action: {
-                            self.searchPartyAppState.isOnChat = true
-                        }) {
-                            Text("Chat")
-                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .trailing])
-                    }
-                    
-                    
-                    
-                }
                 
                 
-                if(searchPartyAppState.isOwnerOfLostPet()){
-                NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
-                    Button(action: {
-                        self.searchPartyAppState.isOnLostPetIsFound = true
-                    }) {
-                        Text("Mark Pet As Found")
-                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                }
-                }
+                
+//                if(searchPartyAppState.isOwnerOfLostPet()){
+//                    NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
+//                        Button(action: {
+//                            self.searchPartyAppState.isOnLostPetIsFound = true
+//                        }) {
+//                            Text("Mark Pet As Found")
+//                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+//                    }
+//                }
                 
                 if let pet = searchPartyAppState.selectedLostPet {
-                    
-                    
-                    //                    NavigationLink(destination: SearchPartyView(lostPet: pet), isActive: $searchPartyAppState.isOnSearchParty) {
-                    //                        Button(action: {
-                    //                            self.searchPartyAppState.isOnSearchParty = true
-                    //                        }) {
-                    //                            Text("Join Search Party")
-                    //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                    //                    }
                     
                     Button("Join Search Party") {
                         self.searchPartyAppState.isOnSearchParty.toggle()
@@ -252,22 +236,24 @@ struct LostPetView: View {
                         SearchPartyView(lostPet: pet)
                     }
                     
-                    
                 }
+                
+                
+//                if(searchPartyAppState.isOwnerOfLostPet()){
+//
+//                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
+//                        Button(action: {
+//                            self.searchPartyAppState.isOnEditingLostPet = true
+//                        }) {
+//                            Text("Edit Pet")
+//                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+//                    }
+//                }
                 
                 NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                     
                 }
-                if(searchPartyAppState.isOwnerOfLostPet()){
-
-                NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
-                    Button(action: {
-                        self.searchPartyAppState.isOnEditingLostPet = true
-                    }) {
-                        Text("Edit Pet")
-                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                }
-                }
+                
             }
     }
 }
