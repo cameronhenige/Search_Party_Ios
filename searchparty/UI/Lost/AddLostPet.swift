@@ -16,6 +16,8 @@ struct AddLostPet: View {
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var lostDate = Date()
     @State private var showingPhotoActionSheet = false
+    @State var title = ""
+
     @State var name = ""
     @State var phoneNumber = ""
     @State var email = ""
@@ -207,7 +209,7 @@ struct AddLostPet: View {
             self.addLostPetViewModel.requestLocation()
             
             if(lostViewRouter.isOnEditingLostPet) {
-                
+                self.title = "Edit Pet"
                 let selectedLostPet = lostViewRouter.selectedLostPet
                 
                 self.lostDate = selectedLostPet?.lostDateTime?.dateValue() ?? Date()
@@ -259,11 +261,13 @@ struct AddLostPet: View {
                     
                 }
                 
+            } else {
+                self.title = "Add Lost Pet"
             }
             
             
             
-        }.navigationTitle("Add Lost Pet")
+        }.navigationTitle("\(title)")
         .sheet(isPresented: $isShowGallery) {
             MyImagePicker(images: $images, isShowGallery: self.$isShowGallery)
         }.sheet(isPresented: $isShowCamera) {
