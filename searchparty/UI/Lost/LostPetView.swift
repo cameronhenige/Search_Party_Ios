@@ -71,7 +71,9 @@ struct LostPetView: View {
                                     Text("\(searchPartyAppState.selectedLostPet!.name) has been found!")
                                     
                                     if let foundPetDescription = searchPartyAppState.selectedLostPet?.foundPetDescription{
-                                        Text("\"\(foundPetDescription)\"").fixedSize(horizontal: false, vertical: true)
+                                        if(!foundPetDescription.isEmpty){
+                                            Text("\"\(foundPetDescription)\"").fixedSize(horizontal: false, vertical: true)
+                                        }
                                     }
                                     Spacer()
                                     
@@ -89,6 +91,18 @@ struct LostPetView: View {
                     
                     
                     HStack () {
+                        
+                        if(searchPartyAppState.isOwnerOfLostPet()){
+
+                        NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
+                            
+
+                            TabBar(content: TabItem(name: "Mark Found", icon: "tag.circle")).onTapGesture {
+                                self.searchPartyAppState.isOnLostPetIsFound = true
+                                
+                            }
+                        }
+                        }
                         
                         TabBar(content: TabItem(name: "Generate Flyer", icon: Constant.icon.doc)).onTapGesture {
                             
@@ -115,33 +129,10 @@ struct LostPetView: View {
 
                         }
                         
-                        if(searchPartyAppState.isOwnerOfLostPet()){
 
-                        NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
-                            TabBar(content: TabItem(name: "Mark Pet as Found", icon: "tag.circle")).onTapGesture {
-                                self.searchPartyAppState.isOnLostPetIsFound = true
-                                
-                            }
-                        }
-                        }
-                        
-//                        if(searchPartyAppState.isOwnerOfLostPet()){
-//
-//                        NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
-//                            TabBar(content: TabItem(name: "Edit Pet", icon: Constant.icon.compose)).onTapGesture {
-//                                self.searchPartyAppState.isOnEditingLostPet = true
-//
-//
-//                            }
-//                        }
-//                        }
-                        
-                    }
                     
-                    
-                    Text("Lost: \(searchPartyAppState.selectedLostPet!.name)")
-                        .fontWeight(.bold)
-                        .font(.title).padding()
+                        
+                    }.padding(.vertical)
                     
                     RandomView
                     LostPetData.padding()
@@ -149,7 +140,7 @@ struct LostPetView: View {
                 }
             }
             
-        }.frame(maxWidth: .infinity).onAppear {
+        }.navigationTitle("Lost: \(searchPartyAppState.selectedLostPet!.name)").frame(maxWidth: .infinity).onAppear {
             searchPartyAppState.getSelectedLostPet()
         }.toolbar {
             
