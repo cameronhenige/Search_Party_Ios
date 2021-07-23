@@ -11,9 +11,7 @@ struct MarkPetAsFound: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            
-            Text("Pet Status").font(.title).padding(.bottom)
-            
+                        
             Toggle("Is Found", isOn: $isFound).padding(.vertical)
             
             if(isFound){
@@ -37,7 +35,8 @@ struct MarkPetAsFound: View {
             
         }.padding().alert(isPresented: $markPetAsFoundViewModel.showAlert) {
             Alert(title: Text(markPetAsFoundViewModel.errorTitle), message: Text(markPetAsFoundViewModel.errorBody), dismissButton: .default(Text("Ok")))
-        }.onAppear {
+        }.navigationBarTitle(Text("Pet Status"))
+        .onAppear {
             let selectedLostPet = lostViewRouter.selectedLostPet
             
             self.foundInformation = selectedLostPet?.foundPetDescription ?? ""

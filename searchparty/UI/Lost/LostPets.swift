@@ -87,7 +87,6 @@ struct LostPets: View {
 
                 }
                 .navigationBarTitle(Text(""), displayMode: .inline)
-                .background(Constant.color.gray)
                 .onAppear(){
                     //locationManager.delegate = lostPetsViewModel
 

@@ -32,7 +32,7 @@ struct LostPetView: View {
     private var numberOfImages = 5
     
     var body: some View {
-        
+
         GeometryReader { proxy in
             
             ScrollView {
@@ -111,26 +111,30 @@ struct LostPetView: View {
                             }
                         }
                         
+                        NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
+
+                        }
+                        
                         if(searchPartyAppState.isOwnerOfLostPet()){
 
                         NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
-                            TabBar(content: TabItem(name: "Mark Pet as Found", icon: Constant.icon.person)).onTapGesture {
+                            TabBar(content: TabItem(name: "Mark Pet as Found", icon: "tag.circle")).onTapGesture {
                                 self.searchPartyAppState.isOnLostPetIsFound = true
                                 
                             }
                         }
                         }
                         
-                        if(searchPartyAppState.isOwnerOfLostPet()){
-
-                        NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
-                            TabBar(content: TabItem(name: "Edit Pet", icon: Constant.icon.compose)).onTapGesture {
-                                self.searchPartyAppState.isOnEditingLostPet = true
-
-                                
-                            }
-                        }
-                        }
+//                        if(searchPartyAppState.isOwnerOfLostPet()){
+//
+//                        NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
+//                            TabBar(content: TabItem(name: "Edit Pet", icon: Constant.icon.compose)).onTapGesture {
+//                                self.searchPartyAppState.isOnEditingLostPet = true
+//
+//
+//                            }
+//                        }
+//                        }
                         
                     }
                     
@@ -147,6 +151,27 @@ struct LostPetView: View {
             
         }.frame(maxWidth: .infinity).onAppear {
             searchPartyAppState.getSelectedLostPet()
+        }.toolbar {
+            
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                if(searchPartyAppState.isOwnerOfLostPet()){
+
+ 
+                    
+                    Button(action: {
+                        self.searchPartyAppState.isOnEditingLostPet = true
+                    }) { Image(systemName: "square.and.pencil") }
+                    
+                    
+
+                
+                Button(action: {
+                    //todo add delete
+                }) { Image(systemName: "trash") }
+                    
+                }
+            }
+
         }
         
     }

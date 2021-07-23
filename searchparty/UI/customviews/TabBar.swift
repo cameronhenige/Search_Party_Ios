@@ -21,10 +21,10 @@ struct TabBar: View {
                     if (content.customView != nil) {
                         content.customView
                     } else {
-                        Image(systemName: content.icon ?? Constant.icon.circle)
+                        Image(systemName: content.icon ?? Constant.icon.circle).font(.system(size: 24))
                     }
                     Text(content.name)
-                        .font(.caption).frame(alignment: .center)
+                        .font(.subheadline).frame(alignment: .center).fixedSize(horizontal: false, vertical: true).padding(.top, 5)
                 }
                 .frame(maxWidth:.infinity)
                 Spacer()
@@ -34,6 +34,7 @@ struct TabBar: View {
         .frame(height: 64.0)
         .background(backgroundColor)
         .foregroundColor(foregroundColor)
+        
     }
 }
 
