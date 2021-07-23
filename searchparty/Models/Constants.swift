@@ -19,6 +19,8 @@ struct Constant {
     }
     struct color {
         static let tintColor = Color("BrandPrimary")
+        static let secondaryColor = Color("Secondary")
+
         static let foodPrimary = Color("BrandPrimary")
         static let socialPrimary = Color("SocialPrimary")
         static let bgDefault = Color("Default")

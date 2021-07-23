@@ -24,7 +24,7 @@ struct FilterView: View {
             }.pickerStyle(SegmentedPickerStyle()).padding(.bottom).disabled(self.filterViewModel.isUpdatingFilter)
             
 
-                FilterMapView(map: self.$map, distanceSelected: self.$filterViewModel.distanceSelected, initialLocationAndDistance: self.$filterViewModel.initialLocationAndDistance).frame(height: 300).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0)).disabled(self.filterViewModel.isUpdatingFilter)
+                FilterMapView(map: self.$map, distanceSelected: self.$filterViewModel.distanceSelected, initialLocationAndDistance: self.$filterViewModel.initialLocationAndDistance).frame(height: 400).overlay(Image("marker").resizable().frame(width: 30.0, height: 45.0)).disabled(self.filterViewModel.isUpdatingFilter)
         
             Button(action: {
                 self.filterViewModel.saveFilterPreference(filterDistance: ViewUtil().getRadiusForDistanceSelected(distanceSelected: filterViewModel.distanceSelected), centerMapLocation: self.map.centerCoordinate) { result in

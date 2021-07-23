@@ -32,7 +32,7 @@ struct MainScreen: View {
                 
             
         }
-        .accentColor(Constant.color.foodPrimary).onAppear {
+        .accentColor(Constant.color.tintColor).onAppear {
             syncFcmTokenViewModel.syncFcmTokenIfNeeded()
         
     }
