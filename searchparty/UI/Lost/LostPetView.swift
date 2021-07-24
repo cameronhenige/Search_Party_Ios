@@ -11,6 +11,8 @@ struct LostPetView: View {
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     
+    @State var hasLostLocation = false
+
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
 
     @State var isOnEditPet = false
@@ -180,20 +182,28 @@ struct LostPetView: View {
             
             searchPartyAppState.getSelectedLostPet()
             
-            let lostPetLocation = GeoHashConverter.decode(hash: (searchPartyAppState.selectedLostPet?.lostLocation)!)
-            
-            let latitudeMin = lostPetLocation?.latitude.min
-            let latitudeMax = lostPetLocation?.latitude.max
+            if let lostLocation = searchPartyAppState.selectedLostPet?.lostLocation {
+                
+                let lostPetLocation = GeoHashConverter.decode(hash: lostLocation)
+                
+                let latitudeMin = lostPetLocation?.latitude.min
+                let latitudeMax = lostPetLocation?.latitude.max
 
-            let longitudeMin = lostPetLocation?.longitude.min
-            let longitudeMax = lostPetLocation?.longitude.max
+                let longitudeMin = lostPetLocation?.longitude.min
+                let longitudeMax = lostPetLocation?.longitude.max
 
-            var latitude = (latitudeMin! + latitudeMax!) / 2
-            var longitude = (longitudeMin! + longitudeMax!) / 2
+                var latitude = (latitudeMin! + latitudeMax!) / 2
+                var longitude = (longitudeMin! + longitudeMax!) / 2
 
 
-            print(lostPetLocation)
-            self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                print(lostPetLocation)
+                self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+                
+                hasLostLocation = true
+            }else {
+                hasLostLocation = false
+            }
+
         }.toolbar {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -242,8 +252,10 @@ struct LostPetView: View {
                         Text(lostLocationDescription).padding(.bottom)
                     }
                     
+                    if(hasLostLocation){
                     Map(coordinateRegion: $region).disabled(true)
                         .frame(width: 200, height: 200).overlay(Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet?.type)!).resizable().frame(width: 45.0, height: 45.0)).padding(.bottom)
+                    }
                     
                     if let ownersName = pet.ownerName, !ownersName.isEmpty {
                         Text("Owners' Name").font(.caption)
