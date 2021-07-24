@@ -3,12 +3,16 @@ import UIKit
 import SwiftUI
 import FirebaseStorage
 import Kingfisher
+import MapKit
 
 struct LostPetView: View {
     
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
+    
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+
     @State var isOnEditPet = false
     @State var selectedView = 1
     @State private var isPresented = false
@@ -23,10 +27,6 @@ struct LostPetView: View {
     
     private func goToSearchParty() {
         self.isPresented.toggle()
-    }
-    
-    private func markPetAsFound() {
-        //todo
     }
     
     private var numberOfImages = 5
@@ -176,7 +176,24 @@ struct LostPetView: View {
             }
             
         }.navigationTitle("Lost: \(searchPartyAppState.selectedLostPet!.name)").frame(maxWidth: .infinity).onAppear {
+            
+            
             searchPartyAppState.getSelectedLostPet()
+            
+            let lostPetLocation = GeoHashConverter.decode(hash: (searchPartyAppState.selectedLostPet?.lostLocation)!)
+            
+            let latitudeMin = lostPetLocation?.latitude.min
+            let latitudeMax = lostPetLocation?.latitude.max
+
+            let longitudeMin = lostPetLocation?.longitude.min
+            let longitudeMax = lostPetLocation?.longitude.max
+
+            var latitude = (latitudeMin! + latitudeMax!) / 2
+            var longitude = (longitudeMin! + longitudeMax!) / 2
+
+
+            print(lostPetLocation)
+            self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         }.toolbar {
             
             ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -215,15 +232,18 @@ struct LostPetView: View {
                         Text(type).padding(.bottom)
                     }
                     
+                    if let lostDateTime = pet.lostDateTime {
+                        Text("Lost Date").font(.caption)
+                        Text(taskDateFormat.string(from: (lostDateTime.dateValue()))).padding(.bottom)
+                    }
+                    
                     if let lostLocationDescription = pet.lostLocationDescription, !lostLocationDescription.isEmpty {
                         Text("Lost Location").font(.caption)
                         Text(lostLocationDescription).padding(.bottom)
                     }
                     
-                    if let lostDateTime = pet.lostDateTime {
-                        Text("Lost Date").font(.caption)
-                        Text(taskDateFormat.string(from: (lostDateTime.dateValue()))).padding(.bottom)
-                    }
+                    Map(coordinateRegion: $region).disabled(true)
+                        .frame(width: 200, height: 200).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
                     
                     if let ownersName = pet.ownerName, !ownersName.isEmpty {
                         Text("Owners' Name").font(.caption)
@@ -247,19 +267,29 @@ struct LostPetView: View {
                     
                     if let ownerPreferredContactMethod = pet.ownerPreferredContactMethod, !ownerPreferredContactMethod.isEmpty {
                         Text("Preferred Contact Method").font(.caption)
-                        Text(ownerPreferredContactMethod).padding(.bottom)
+                        Text(self.getPreferredContactMethod(ownerPreferredContactMethod: ownerPreferredContactMethod)).padding(.bottom)
                     }
                     
                 } else {
                     EmptyView()
                 }
-                
-                
-                
-                
-                
-                
+
             }
+        
+
+    }
+    
+    func getPreferredContactMethod(ownerPreferredContactMethod: String) -> String{
+        switch ownerPreferredContactMethod {
+        case "phoneNumber":
+            return "Phone Number"
+        case "email":
+            return "Email"
+        case "other":
+            return "Other"
+        default:
+            return "Other"
+        }
     }
     
     var RandomView: some View {
