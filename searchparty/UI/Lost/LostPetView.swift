@@ -243,7 +243,7 @@ struct LostPetView: View {
                     }
                     
                     Map(coordinateRegion: $region).disabled(true)
-                        .frame(width: 200, height: 200).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+                        .frame(width: 200, height: 200).overlay(Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet?.type)!).resizable().frame(width: 45.0, height: 45.0)).padding(.bottom)
                     
                     if let ownersName = pet.ownerName, !ownersName.isEmpty {
                         Text("Owners' Name").font(.caption)
