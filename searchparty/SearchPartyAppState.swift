@@ -151,6 +151,21 @@ class SearchPartyAppState: NSObject, ObservableObject {
         }
     }
     
+    func shareLink() {
+        var link = DynamicLinkGenerator().getShareLink(lostPetName: selectedLostPet!.name, lostPetId: selectedLostPet!.id!)
+        
+        switch link {
+          case let .success(data):
+            DispatchQueue.main.async {
+            let activityVC = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+            UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+            }
+        case .failure(_):
+            print("failure!")
+            //todo show failed getting link
+           }
+    }
+    
     func queryLostPets(filterLocation: GeoPoint, radiusInM: Double) {
   
 

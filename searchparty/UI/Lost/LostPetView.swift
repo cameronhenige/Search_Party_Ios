@@ -10,7 +10,7 @@ struct LostPetView: View {
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
-    
+        
     @State var hasLostLocation = false
 
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -127,6 +127,15 @@ struct LostPetView: View {
                                 }
                             }
                             
+                            TabBar(content: TabItem(name: "Share Link", icon: Constant.icon.share)).onTapGesture {
+                                DispatchQueue.global().async { [self] in
+
+                                self.searchPartyAppState.shareLink()
+                                    
+                                }
+                                
+                            }
+                            
                             NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
                                 
                             }
@@ -192,13 +201,9 @@ struct LostPetView: View {
                 let longitudeMin = lostPetLocation?.longitude.min
                 let longitudeMax = lostPetLocation?.longitude.max
 
-                var latitude = (latitudeMin! + latitudeMax!) / 2
-                var longitude = (longitudeMin! + longitudeMax!) / 2
-
-
-                print(lostPetLocation)
+                let latitude = (latitudeMin! + latitudeMax!) / 2
+                let longitude = (longitudeMin! + longitudeMax!) / 2
                 self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-                
                 hasLostLocation = true
             }else {
                 hasLostLocation = false
