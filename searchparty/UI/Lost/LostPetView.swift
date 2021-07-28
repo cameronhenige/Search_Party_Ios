@@ -313,41 +313,6 @@ struct LostPetView: View {
         return
             VStack{
                 
-                
-                
-                //                if(searchPartyAppState.isOwnerOfLostPet()){
-                //                    NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
-                //                        Button(action: {
-                //                            self.searchPartyAppState.isOnLostPetIsFound = true
-                //                        }) {
-                //                            Text("Mark Pet As Found")
-                //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                //                    }
-                //                }
-                
-//                if let pet = searchPartyAppState.selectedLostPet {
-//
-//                    Button("Join Search Party") {
-//                        self.searchPartyAppState.isOnSearchParty.toggle()
-//                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing]).fullScreenCover(isPresented: self.$searchPartyAppState.isOnSearchParty) {
-//
-//                        SearchPartyView(lostPet: pet)
-//                    }
-//
-//                }
-                
-                
-                //                if(searchPartyAppState.isOwnerOfLostPet()){
-                //
-                //                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
-                //                        Button(action: {
-                //                            self.searchPartyAppState.isOnEditingLostPet = true
-                //                        }) {
-                //                            Text("Edit Pet")
-                //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                //                    }
-                //                }
-                
                 NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                     
                 }
