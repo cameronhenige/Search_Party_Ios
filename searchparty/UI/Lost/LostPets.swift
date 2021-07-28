@@ -7,13 +7,11 @@ struct LostPets: View {
     
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
-        
     @State var isShowingAlert = true
 
 
     var body: some View {
         NavigationView {
-
         
         if(searchPartyAppState.permissionStatus == nil){
             AnyView(Text("Waiting on permission")).onAppear(){
@@ -88,7 +86,6 @@ struct LostPets: View {
                 }
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .onAppear(){
-                    //locationManager.delegate = lostPetsViewModel
 
                     self.searchPartyAppState.fetchLostPets()
                 }

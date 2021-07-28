@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import Firebase
 
 @main
 struct ContentView: App {
@@ -20,10 +21,39 @@ struct ContentView: App {
     
     var body: some Scene {
         WindowGroup {
+            
+            
+//            if(searchPartyAppState.isLoadingDeepLink){
+//
+//            } else {
+                
             MainView().environmentObject(ModalManager())
                 .environmentObject(OnboardingRouter())
                 .environmentObject(AuthenticationState.shared)
-                .environmentObject(searchPartyAppState).onAppear(perform:setUpAppDelegate)
+                .environmentObject(searchPartyAppState).onAppear(perform:setUpAppDelegate).onOpenURL { url in
+                    print("Url found is \(url)")
+                    
+                    let handled = DynamicLinks.dynamicLinks()
+                      .handleUniversalLink(url) { dynamiclink, error in
+                        print("parsed out \(dynamiclink?.url)")
+                        
+                        if(error == nil) {
+                            
+                            let link = dynamiclink?.url?.absoluteString
+                            if((link!.contains("LostPet"))){
+                                let lostPetId = getQueryStringParameter(url: link!, param: "lostPetId")
+                                
+                                searchPartyAppState.deepLinkToLostPet(lostPetId: lostPetId!)
+
+                            }else{
+                               //todo invalid link
+                            }
+                        }
+                        
+                      }
+                  }
+                
+           // }
                 
 
         }.onChange(of: scenePhase) { newScenePhase in
@@ -43,6 +73,11 @@ struct ContentView: App {
 
         
         
+    }
+    
+    func getQueryStringParameter(url: String, param: String) -> String? {
+      guard let url = URLComponents(string: url) else { return nil }
+      return url.queryItems?.first(where: { $0.name == param })?.value
     }
     
     func setUpAppDelegate(){

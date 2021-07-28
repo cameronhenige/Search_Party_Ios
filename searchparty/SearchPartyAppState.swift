@@ -166,6 +166,21 @@ class SearchPartyAppState: NSObject, ObservableObject {
            }
     }
     
+    func deepLinkToLostPet(lostPetId: String) {
+        let lostPetDocument = Firestore.firestore().collection("Lost").document(lostPetId)
+        
+        lostPetDocument.getDocument { (DocumentSnapshot, Error) in
+
+            if(Error == nil){
+                self.selectedLostPet = try? DocumentSnapshot!.data(as: LostPet.self)
+                self.isOnLostPet = true
+                //todo navigate
+            } else {
+                //todo
+            }
+        }
+    }
+    
     func queryLostPets(filterLocation: GeoPoint, radiusInM: Double) {
   
 
