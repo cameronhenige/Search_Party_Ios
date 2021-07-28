@@ -11,15 +11,11 @@ import FirebaseStorage
 import Kingfisher
 
 struct CardWithBackground: View {
-
+    
     var lostPet: LostPet
-    var title: String
-    var subTitle: String?
-    var subSubTitle: String?
     var height: CGFloat
     @State var pictureUrl: URL?
     @State var hasPicture: Bool = false
-
     var description: String?
     
     var body: some View {
@@ -27,19 +23,19 @@ struct CardWithBackground: View {
             VStack(){
                 HStack() {
                     VStack(alignment: .leading) {
-                        if (subTitle != nil ){
-                            Text((subTitle!).uppercased())
+                        if (lostPet.getLostDate() != nil ){
+                            Text((lostPet.getLostDate())!.uppercased())
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                                 .opacity(0.6)
                         }
-                        if (subSubTitle != nil ){
-                            Text((subSubTitle!).uppercased())
+                        if (lostPet.getLostLocationDescription() != nil ){
+                            Text((lostPet.getLostLocationDescription())!.uppercased())
                                 .font(.subheadline)
                                 .fontWeight(.semibold)
                                 .opacity(0.6)
                         }
-                        Text(title)
+                        Text(lostPet.name)
                             .fontWeight(.bold)
                             .font(.title)
                     }

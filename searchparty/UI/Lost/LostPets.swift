@@ -40,7 +40,7 @@ struct LostPets: View {
 //                                            CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil)
 //                        })
                         
-                        CardWithBackground(lostPet: lostPet, title: lostPet.name, subTitle: lostPet.getLostDate(), subSubTitle: lostPet.getLostLocationDescription(), height: 300.0, description: nil).onTapGesture {
+                        CardWithBackground(lostPet: lostPet, height: 300.0, description: nil).onTapGesture {
                             searchPartyAppState.selectedLostPet = lostPet
                             searchPartyAppState.isOnLostPet = true
                         }
