@@ -39,8 +39,6 @@
 		F216C07625FD605D0026B180 /* LostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C07525FD605D0026B180 /* LostPet.swift */; };
 		F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F216C0DB25FF078D0026B180 /* PetBackground.swift */; };
 		F21B8D6126AE5B2600D48172 /* ShareLostPetLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21B8D6026AE5B2600D48172 /* ShareLostPetLinkViewModel.swift */; };
-		F21E41AE264B0D4400199197 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21E41AD264B0D4400199197 /* LocationViewController.swift */; };
-		F21E41B0264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */; };
 		F220A6A7265F4FDB00319F2F /* PathPolyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6A6265F4FDB00319F2F /* PathPolyline.swift */; };
 		F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C7266F220A00319F2F /* ColorExtension.swift */; };
 		F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C92671B4EA00319F2F /* TestUIFile.swift */; };
@@ -66,7 +64,6 @@
 		F23D724826882B1500CB80C6 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724626882B1500CB80C6 /* ChatViewModel.swift */; };
 		F23D724926882B1500CB80C6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724726882B1500CB80C6 /* Message.swift */; };
 		F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724A26882B2F00CB80C6 /* SendButton.swift */; };
-		F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D724B26882B2F00CB80C6 /* SearchView.swift */; };
 		F23D72522689637C00CB80C6 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = F23D72512689637C00CB80C6 /* TPPDF */; };
 		F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72532689667800CB80C6 /* ActivityViewController.swift */; };
 		F23D7256268C2EA100CB80C6 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7255268C2EA100CB80C6 /* FilterView.swift */; };
@@ -186,8 +183,6 @@
 		F216C07525FD605D0026B180 /* LostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPet.swift; sourceTree = "<group>"; };
 		F216C0DB25FF078D0026B180 /* PetBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetBackground.swift; sourceTree = "<group>"; };
 		F21B8D6026AE5B2600D48172 /* ShareLostPetLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLostPetLinkViewModel.swift; sourceTree = "<group>"; };
-		F21E41AD264B0D4400199197 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISearchViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		F220A6A6265F4FDB00319F2F /* PathPolyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathPolyline.swift; sourceTree = "<group>"; };
 		F220A6C7266F220A00319F2F /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F220A6C92671B4EA00319F2F /* TestUIFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIFile.swift; sourceTree = "<group>"; };
@@ -214,7 +209,6 @@
 		F23D724626882B1500CB80C6 /* ChatViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		F23D724726882B1500CB80C6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		F23D724A26882B2F00CB80C6 /* SendButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
-		F23D724B26882B2F00CB80C6 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		F23D72532689667800CB80C6 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		F23D7255268C2EA100CB80C6 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinkGenerator.swift; sourceTree = "<group>"; };
@@ -403,7 +397,6 @@
 		3445A79B240B03D70020561B /* Lost */ = {
 			isa = PBXGroup;
 			children = (
-				F21E41AD264B0D4400199197 /* LocationViewController.swift */,
 				F2DBDDE7263D0E4800E9C987 /* ImagePicker.swift */,
 				34DCE8C0240817CD00C4EE89 /* MainScreen.swift */,
 				3403A3192408099500D7B040 /* LostPets.swift */,
@@ -413,7 +406,6 @@
 				F233D3D22633D41400912F28 /* ChatScreen.swift */,
 				F233D3D62633D89000912F28 /* EditLostPet.swift */,
 				F233D3DE2633EDF600912F28 /* AddLostPet.swift */,
-				F21E41AF264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift */,
 				F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */,
 				F220A6C92671B4EA00319F2F /* TestUIFile.swift */,
 				F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */,
@@ -504,18 +496,9 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		F233D3D92633E9DA00912F28 /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				F233D3DA2633E9EC00912F28 /* AccountScreen.swift */,
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
 		F23D723C2688245800CB80C6 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				F23D724B26882B2F00CB80C6 /* SearchView.swift */,
 				F23D724A26882B2F00CB80C6 /* SendButton.swift */,
 				F23D724626882B1500CB80C6 /* ChatViewModel.swift */,
 				F23D724726882B1500CB80C6 /* Message.swift */,
@@ -569,12 +552,11 @@
 		F2D7454425FAF228003C5157 /* login */ = {
 			isa = PBXGroup;
 			children = (
-				F233D3D92633E9DA00912F28 /* Account */,
+				F233D3DA2633E9EC00912F28 /* AccountScreen.swift */,
 				F2D7454C25FAF2B3003C5157 /* SplashView.swift */,
 				F2D7454525FAF236003C5157 /* SignInView.swift */,
 				F2D7454725FAF237003C5157 /* SignUpView.swift */,
 				F2D7454625FAF237003C5157 /* WelcomeView.swift */,
-				F2D7458725FB21B6003C5157 /* OnboardingRouter.swift */,
 				F2A5854D260842AA00E8920E /* ForgotPasswordView.swift */,
 			);
 			path = login;
@@ -630,6 +612,7 @@
 		F2D7458A25FB2476003C5157 /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				F2D7458725FB21B6003C5157 /* OnboardingRouter.swift */,
 				F2D745CA25FB259C003C5157 /* PageControl.swift */,
 				F2D7458D25FB2484003C5157 /* LottieSubview.swift */,
 				F2D7458C25FB2484003C5157 /* OnboardingView.swift */,
@@ -826,7 +809,6 @@
 				F255CBB7269E6CF0005AB259 /* SelectedImage.swift in Sources */,
 				F2D7457925FAF6AC003C5157 /* AuthAPI.swift in Sources */,
 				F2DBDDD1263B238600E9C987 /* SingleLostPetImage.swift in Sources */,
-				F23D724D26882B2F00CB80C6 /* SearchView.swift in Sources */,
 				F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */,
 				F2A5854B26083CF100E8920E /* ButtonSecondary.swift in Sources */,
 				3461D3DB245C219B009D389E /* Extensions.swift in Sources */,
@@ -844,13 +826,11 @@
 				F23D72342687646C00CB80C6 /* PetView.swift in Sources */,
 				F2D7459725FB2484003C5157 /* Subview.swift in Sources */,
 				F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */,
-				F21E41AE264B0D4400199197 /* LocationViewController.swift in Sources */,
 				F220A6CE2671C13B00319F2F /* DateExtension.swift in Sources */,
 				F2DBDDD4263B238600E9C987 /* PageView.swift in Sources */,
 				F216C0DC25FF078D0026B180 /* PetBackground.swift in Sources */,
 				F2791AA52601B3B200C056A6 /* GeoHashConverter.swift in Sources */,
 				F27BC5E8265575DF0017B198 /* UINavigationControllerExtension.swift in Sources */,
-				F21E41B0264B1BD000199197 /* SwiftUISearchViewControllerRepresentable.swift in Sources */,
 				F2D7454825FAF237003C5157 /* SignInView.swift in Sources */,
 				F2D7454D25FAF2B3003C5157 /* SplashView.swift in Sources */,
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,

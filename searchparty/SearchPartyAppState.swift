@@ -20,7 +20,6 @@ class SearchPartyAppState: NSObject, ObservableObject {
     @Published var isOnSearchParty = false
     @Published var isOnChat = false
     @Published var isOnAddingLostPet = false
-
     @Published var isOnEditingLostPet = false
     @Published var isFiltering = false
     @Published var isLoadingLostPetFromNotification = false
@@ -28,10 +27,6 @@ class SearchPartyAppState: NSObject, ObservableObject {
     @Published var selectedTab: Int = 1
     @Published var selectedLostPet: LostPet? = nil
     @Published var pets: [Pet] = [Pet(name: "Louie"), Pet(name: "Fred"), Pet(name: "Stanley")]
-
-    //@Published var isOnChat = false
-    
-    
     @Published var lostPets = [LostPet]()
         @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
         private let locationManager = CLLocationManager()

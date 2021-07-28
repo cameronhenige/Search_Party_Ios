@@ -356,9 +356,9 @@ struct LostPetView: View {
     }
 }
 
-//
-//struct LostPetView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LostPetView(lostPet: LostPet(id: "TestContent", name: "TestContent", sex: "TestContent", age: 3, chatSize: 3, breed: "TestContent", type: "TestContent", description: "TestContent", uniqueMarkings: "TestContent", temperament: "TestContent", healthCondition: "TestContent", generalImages: ["TestContent"], lostDateTime: nil, lostLocation: "TestContent", lostLocationDescription: "TestContent", ownerName: "TestContent", ownerEmail: "TestContent", ownerPhoneNumber: "TestContent", ownerOtherContactMethod: "TestContent", ownerPreferredContactMethod: "TestContent", foundPetDescription: "TestContent", foundPet: true, Owners: ["TestContent"]))
-//    }
-//}
+
+struct LostPetView_Previews: PreviewProvider {
+    static var previews: some View {
+        LostPetView()
+    }
+}

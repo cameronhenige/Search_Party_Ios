@@ -17,7 +17,7 @@ struct ChatView: View {
                     ChatRow(text: message.message!,
                             sender: message.sender == Auth.auth().currentUser?.uid)
                         .padding(3)
-                }.onChange(of: model.messages) { _ in
+                }.padding().onChange(of: model.messages) { _ in
                     scrollView.scrollTo(model.messages[model.messages.endIndex - 1])
                 }.onAppear(){
                     if(model.messages.count>0){
@@ -50,7 +50,7 @@ struct ChatView: View {
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatView()
+        ChatView().environmentObject(SearchPartyAppState())
             .preferredColorScheme(.dark)
     }
 }

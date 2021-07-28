@@ -17,7 +17,6 @@ struct ChatRow: View {
         HStack {
             if sender { Spacer() }
 
-
             HStack {
                 Text(text)
                     .foregroundColor(sender ? Color.white : Color(.label))
