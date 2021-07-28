@@ -70,7 +70,6 @@ struct SearchPartyView: View {
                     }.padding(.leading).padding(.top).padding(.trailing)
                     
 
-                    //Image("dog").resizable().frame(width: 30, height: 30, alignment: .topTrailing)
                     if(searchPartyViewModel.listOfDays.count > 0) {
                         ScrollView(.horizontal, showsIndicators: false) {
                             
@@ -168,7 +167,7 @@ struct SearchPartyView: View {
                 Text(text).foregroundColor(.white).rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0))).padding().background(Constant.color.tintColor)
 
             }else {
-                Text(text).rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0))).padding()
+                Text(text).foregroundColor(Constant.color.tintColor).rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(0), y: CGFloat(10), z: CGFloat(0))).padding()
 
             }
         }
