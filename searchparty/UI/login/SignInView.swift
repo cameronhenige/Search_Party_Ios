@@ -18,8 +18,6 @@ struct SignInView: View {
     @State var password: String = ""
     @EnvironmentObject var authState: AuthenticationState
 
-    init(state: AppState) {
-    }
     
     var body: some View {
         ZStack {

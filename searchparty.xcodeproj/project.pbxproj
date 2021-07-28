@@ -102,7 +102,6 @@
 		F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456125FAF6AC003C5157 /* SignUpViewModel.swift */; };
 		F2D7457125FAF6AC003C5157 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456225FAF6AC003C5157 /* SignInViewModel.swift */; };
 		F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */; };
-		F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456525FAF6AC003C5157 /* AppState.swift */; };
 		F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456625FAF6AC003C5157 /* UIConfiguration.swift */; };
 		F2D7457525FAF6AC003C5157 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456725FAF6AC003C5157 /* UIColorExt.swift */; };
 		F2D7457625FAF6AC003C5157 /* CustomModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D7456925FAF6AC003C5157 /* CustomModifier.swift */; };
@@ -245,7 +244,6 @@
 		F2D7456125FAF6AC003C5157 /* SignUpViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		F2D7456225FAF6AC003C5157 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		F2D7456325FAF6AC003C5157 /* StatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
-		F2D7456525FAF6AC003C5157 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F2D7456625FAF6AC003C5157 /* UIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConfiguration.swift; sourceTree = "<group>"; };
 		F2D7456725FAF6AC003C5157 /* UIColorExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		F2D7456925FAF6AC003C5157 /* CustomModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomModifier.swift; sourceTree = "<group>"; };
@@ -585,7 +583,6 @@
 			isa = PBXGroup;
 			children = (
 				F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */,
-				F2D7456525FAF6AC003C5157 /* AppState.swift */,
 				F2D7456625FAF6AC003C5157 /* UIConfiguration.swift */,
 				F2D7456725FAF6AC003C5157 /* UIColorExt.swift */,
 			);
@@ -888,7 +885,6 @@
 				F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F255CBA926954CC8005AB259 /* PetImageTypes.swift in Sources */,
-				F2D7457325FAF6AC003C5157 /* AppState.swift in Sources */,
 				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
 				F23D7256268C2EA100CB80C6 /* FilterView.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,

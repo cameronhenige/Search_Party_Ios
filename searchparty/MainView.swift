@@ -25,7 +25,7 @@ struct MainView: View {
             //if(Auth.auth().currentUser == nil){
             }else{
                 
-                SplashView(state: AppState())
+                SplashView()
 
                 //ModalAnchorView()
 

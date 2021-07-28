@@ -11,7 +11,6 @@ import SwiftUI
 struct WelcomeView: View {
     @State private var index = 1
     @State private var pushActive = false
-    @ObservedObject var state: AppState
     @EnvironmentObject var authState: AuthenticationState
 
     var body: some View {
@@ -98,9 +97,9 @@ struct WelcomeView: View {
     private func destinationView() -> AnyView {
         switch index {
         case 1:
-            return AnyView(SignInView(state: state))
+            return AnyView(SignInView())
         default:
-            return AnyView(SignUpView(state: state))
+            return AnyView(SignUpView())
         }
     }
 }

@@ -14,15 +14,13 @@ class SignUpViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var fullName: String = ""
     @Published var statusViewModel: StatusViewModel?
-    @Published var state: AppState
 
     
     private var cancellableBag = Set<AnyCancellable>()
     private let authAPI: AuthAPI
     
-    init(authAPI: AuthAPI, state: AppState) {
+    init(authAPI: AuthAPI) {
         self.authAPI = authAPI
-        self.state = state
     }
     
     func signUp() {
@@ -39,7 +37,6 @@ class SignUpViewModel: ObservableObject {
 extension SignUpViewModel {
     private func resultMapper(with user: MyUser?) -> StatusViewModel {
         if user != nil {
-            state.currentUser = user
             return StatusViewModel.signUpSuccessStatus
         } else {
             return StatusViewModel.errorStatus

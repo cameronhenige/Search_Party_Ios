@@ -18,9 +18,6 @@ struct SignUpView: View {
     
     @EnvironmentObject var authState: AuthenticationState
     
-    init(state: AppState) {
-    }
-    
     var body: some View {
         ZStack {
             Color(UIConfiguration.tintColor)

@@ -9,12 +9,11 @@ import SwiftUI
 
 struct SplashView: View {
     @State var isActive:Bool = false
-    @ObservedObject var state: AppState
     
     var body: some View {
         VStack {
             if self.isActive {
-                WelcomeView(state: state)
+                WelcomeView()
             } else {
                 ZStack {
                     Color(UIConfiguration.tintColor)
