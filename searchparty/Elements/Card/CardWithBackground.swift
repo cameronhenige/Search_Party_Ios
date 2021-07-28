@@ -96,14 +96,8 @@ struct CardWithBackground: View {
     }
 }
 
-//struct CardWithBackground_Previews: PreviewProvider {
-//    static var previews: some View {
-////        CardWithBackground(
-////            title: recipesData[0].title,
-////            subTitle: recipeCategoriesData[0].subtitle,
-////            height: 300.0,
-////            pictureUrl: recipesData[0].picture.uri,
-////            description: "\(recipesData[0].minutes) minutes")
-////            .environmentObject(UserData())
-//    }
-//}
+struct CardWithBackground_Previews: PreviewProvider {
+    static var previews: some View {
+        CardWithBackground(lostPet: LostPet(id: "id", name: "Tom", sex: "male", age: 5, chatSize: 3, breed: "Maine Coon", type: "cat", description: "Good pet", uniqueMarkings: "None", temperament: "Nice", healthCondition: "Good", generalImages: [], lostDateTime: nil, lostLocation: "Mexico", lostLocationDescription: "Near Mexico", ownerName: "Cam", ownerEmail: "Cam@g.com", ownerPhoneNumber: "123455678", ownerOtherContactMethod: "Facebook", ownerPreferredContactMethod: "phon", foundPetDescription: "Found the pet", foundPet: true, Owners: []), height: 400.0)
+    }
+}
