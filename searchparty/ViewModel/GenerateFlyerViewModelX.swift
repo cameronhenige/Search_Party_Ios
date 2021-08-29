@@ -30,8 +30,8 @@ class GenerateFlyerViewModelX: NSObject {
     func createFlyer() -> Data {
     // 1
     let pdfMetaData = [
-      kCGPDFContextCreator: "Flyer Builder",
-      kCGPDFContextAuthor: "raywenderlich.com",
+      kCGPDFContextCreator: "Search Party",
+      kCGPDFContextAuthor: "searchparty.io",
         kCGPDFContextTitle: lostPet.name + " Flyer"
     ]
     let format = UIGraphicsPDFRendererFormat()
@@ -273,7 +273,7 @@ class GenerateFlyerViewModelX: NSObject {
         
         let petImage = PetImageTypes().getPetImageType(petType: lostPet.type)
         if(petImage != nil){
-            return UIImage(named: petImage!)!
+            return UIImage(named: petImage)!
 
         }else{
             return UIImage(imageLiteralResourceName: "map")

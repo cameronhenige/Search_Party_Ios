@@ -55,7 +55,7 @@ struct LostPetView: View {
                             .frame(width: proxy.size.width, height: proxy.size.height/2.5).id(searchPartyAppState.selectedLostPet!.generalImages.count)
                             
                         } else {
-                            Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet!.type)!).resizable()
+                            Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet!.type)).resizable()
                                 .aspectRatio(contentMode: .fit).clipShape(RoundedRectangle(cornerRadius: 15))
                                 .padding()
                                 .frame(width: proxy.size.width, height: proxy.size.height/2.5)
@@ -259,7 +259,7 @@ struct LostPetView: View {
                     
                     if(hasLostLocation){
                     Map(coordinateRegion: $region).disabled(true)
-                        .frame(width: 200, height: 200).overlay(Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet?.type)!).resizable().frame(width: 45.0, height: 45.0)).padding(.bottom)
+                        .frame(width: 200, height: 200).overlay(Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet?.type)).resizable().frame(width: 45.0, height: 45.0)).padding(.bottom)
                     }
                     
                     if let ownersName = pet.ownerName, !ownersName.isEmpty {
@@ -312,6 +312,41 @@ struct LostPetView: View {
     var RandomView: some View {
         return
             VStack{
+                
+                
+                
+                //                if(searchPartyAppState.isOwnerOfLostPet()){
+                //                    NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
+                //                        Button(action: {
+                //                            self.searchPartyAppState.isOnLostPetIsFound = true
+                //                        }) {
+                //                            Text("Mark Pet As Found")
+                //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                //                    }
+                //                }
+                
+//                if let pet = searchPartyAppState.selectedLostPet {
+//
+//                    Button("Join Search Party") {
+//                        self.searchPartyAppState.isOnSearchParty.toggle()
+//                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing]).fullScreenCover(isPresented: self.$searchPartyAppState.isOnSearchParty) {
+//
+//                        SearchPartyView(lostPet: pet)
+//                    }
+//
+//                }
+                
+                
+                //                if(searchPartyAppState.isOwnerOfLostPet()){
+                //
+                //                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
+                //                        Button(action: {
+                //                            self.searchPartyAppState.isOnEditingLostPet = true
+                //                        }) {
+                //                            Text("Edit Pet")
+                //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                //                    }
+                //                }
                 
                 NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                     

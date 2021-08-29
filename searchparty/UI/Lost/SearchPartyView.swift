@@ -9,15 +9,16 @@
 import SwiftUI
 import MapKit
 import BottomSheet
+import Kingfisher
+
 
 struct SearchPartyView: View {
     
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     
     var lostPet: LostPet
-    
     @StateObject var searchPartyViewModel = SearchPartyViewModel()
-    
+
     enum CustomBottomSheetPosition: CGFloat, CaseIterable {
         case top = 0.975, middle = 0.4, bottom = 0.2
     }
@@ -110,14 +111,23 @@ struct SearchPartyView: View {
             VStack {
                 
                 HStack {
-                    Image("cat").resizable()
-                        .frame(width: 100.0, height: 100.0)
+                    
+                    if(searchPartyViewModel.pictureUrl != nil) {
+                        KFImage(searchPartyViewModel.pictureUrl)
+                            .resizable()
+                                .frame(width: 100.0, height: 100.0)
+                        
+                    }else{
+                        
+                        Image(PetImageTypes().getPetImageType(petType: lostPet.type)).resizable()
+                            .frame(width: 100.0, height: 100.0)
+                    }
+                    
                     
                     Text(lostPet.name)
                     Spacer()
                     Button(action: {
                         searchPartyViewModel.startUpdatingLocationButtonAction()
-                        print("here")
                     }) {
 
                         SearchingButtonText
@@ -151,7 +161,16 @@ struct SearchPartyView: View {
             
         }).onAppear() {
             self.searchPartyViewModel.fetchData(lostPet: lostPet)
+            
+
+            
         }
+        
+
+            
+
+        
+        
         
         
     }

@@ -11,7 +11,7 @@ import Foundation
 public class PetImageTypes {
     
 
-public func getPetImageType(petType: String?) -> String? {
+public func getPetImageType(petType: String?) -> String {
     if(petType == "Dog"){
     return "dog"
     }else if petType == "Cat" {

@@ -40,7 +40,7 @@ struct PetBackground: View {
                         .listRowInsets(EdgeInsets())
             
         }else{
-            Image(PetImageTypes().getPetImageType(petType: petType)!)
+            Image(PetImageTypes().getPetImageType(petType: petType))
         }
     }
 }

@@ -14,6 +14,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 import UserNotifications
+import FirebaseStorage
 
 class SearchPartyViewModel: NSObject, ObservableObject {
     
@@ -37,6 +38,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var isSearching: Bool = false
     @Published var isInsideOfAPrivateGeoHash = false
     @Published var isOnAddHomeScreen: Bool = false
+    @Published var pictureUrl: URL?
+
 
     var currentSearchId: String = ""
 
@@ -82,6 +85,19 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             self.updateSearchesForUser(searches: self.searchPartySearches)
 
       }
+        
+        if(lostPet.generalImages != nil && !lostPet.generalImages.isEmpty){
+
+            let storageLocation : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages[0]
+            let storage = Storage.storage().reference().child(storageLocation)
+            storage.downloadURL { (URL, Error) in
+                if(Error != nil){
+                    print(Error?.localizedDescription)
+                    return
+                }
+                self.pictureUrl = URL
+            }
+        }
         
     }
     

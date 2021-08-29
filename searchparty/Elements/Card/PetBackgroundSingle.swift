@@ -32,7 +32,6 @@ struct PetBackgroundSingle: View {
                 Image("bird")
             }else {
                 Image("maps_default_marker")
-
             }
         }
     }
