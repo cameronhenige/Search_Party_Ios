@@ -113,9 +113,8 @@ struct SearchPartyView: View {
                 HStack {
                     
                     if(searchPartyViewModel.pictureUrl != nil) {
-                        KFImage(searchPartyViewModel.pictureUrl)
-                            .resizable()
-                                .frame(width: 100.0, height: 100.0)
+                        KFImage(searchPartyViewModel.pictureUrl).resizing(referenceSize: CGSize(width: 100, height: 100))
+                                .frame(width: 100.0, height: 100.0).cornerRadius(15)
                         
                     }else{
                         
