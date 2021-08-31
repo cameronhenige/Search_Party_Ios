@@ -56,6 +56,7 @@
 		F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D62633D89000912F28 /* EditLostPet.swift */; };
 		F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DA2633E9EC00912F28 /* AccountScreen.swift */; };
 		F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3DE2633EDF600912F28 /* AddLostPet.swift */; };
+		F23C001F26DDF24D002314A1 /* DeleteLostPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23C001E26DDF24D002314A1 /* DeleteLostPetViewModel.swift */; };
 		F23D72342687646C00CB80C6 /* PetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D72332687646C00CB80C6 /* PetView.swift */; };
 		F23D7236268764D800CB80C6 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D7235268764D800CB80C6 /* Pet.swift */; };
 		F23D72402688299900CB80C6 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23D723F2688299900CB80C6 /* ChatView.swift */; };
@@ -200,6 +201,7 @@
 		F233D3D62633D89000912F28 /* EditLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLostPet.swift; sourceTree = "<group>"; };
 		F233D3DA2633E9EC00912F28 /* AccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountScreen.swift; sourceTree = "<group>"; };
 		F233D3DE2633EDF600912F28 /* AddLostPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPet.swift; sourceTree = "<group>"; };
+		F23C001E26DDF24D002314A1 /* DeleteLostPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteLostPetViewModel.swift; sourceTree = "<group>"; };
 		F23D72332687646C00CB80C6 /* PetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetView.swift; sourceTree = "<group>"; };
 		F23D7235268764D800CB80C6 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		F23D723F2688299900CB80C6 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */,
 				F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */,
 				F21B8D6026AE5B2600D48172 /* ShareLostPetLinkViewModel.swift */,
+				F23C001E26DDF24D002314A1 /* DeleteLostPetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				F2D7454925FAF237003C5157 /* WelcomeView.swift in Sources */,
 				F23D7236268764D800CB80C6 /* Pet.swift in Sources */,
 				F23D724C26882B2F00CB80C6 /* SendButton.swift in Sources */,
+				F23C001F26DDF24D002314A1 /* DeleteLostPetViewModel.swift in Sources */,
 				F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */,
 				344723C124ABB098003B9F50 /* TabItem.swift in Sources */,
 				344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */,

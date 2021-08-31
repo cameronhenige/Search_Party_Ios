@@ -15,7 +15,6 @@ import FlexibleGeohash
 
 class SearchPartyAppState: NSObject, ObservableObject {
     
-    @Published var showDeleteWarning = false
     @Published var isOnLostPetIsFound = false
     @Published var isLoadingLostPets = false
     @Published var isOnSearchParty = false
@@ -124,26 +123,7 @@ class SearchPartyAppState: NSObject, ObservableObject {
         }
     }
     
-    func deleteSelectedLostPet(completionHandler: @escaping (Result<String, Error>) -> Void) {
-        let selectedLostPetDocument = Firestore.firestore().collection("Lost").document((selectedLostPet?.id)!)
-        selectedLostPetDocument.delete() { err in
-            if let err = err {
-                //todo
-                print("Error removing document: \(err)")
-            } else {
-                completionHandler(.success("Deleted Lost Pet"))
-            }
-        }
-        
-        
-//        Firestore.firestore().collection("Lost").document("acds").delete { Error? in
-//            if(Error == nil) {
-//                self.isOnLostPet = false
-//            }else {
-//                //todo show error deleting lost pet.
-//            }
-//        }
-    }
+
     
     func fetchLostPets() {
         

@@ -10,7 +10,8 @@ struct LostPetView: View {
     var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
-        
+    @StateObject private var deleteLostPetViewModel = DeleteLostPetViewModel()
+
     @State var hasLostLocation = false
 
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
@@ -186,10 +187,10 @@ struct LostPetView: View {
                 
             }
             
-        }.alert(isPresented: $searchPartyAppState.showDeleteWarning, content: {
+        }.alert(isPresented: $deleteLostPetViewModel.showDeleteWarning, content: {
             Alert(title: Text("Delete"), message: Text("Are you sure you want to delete your listing?"),
                   primaryButton: .destructive(Text("Delete")) {
-                    searchPartyAppState.deleteSelectedLostPet(){ result in
+                    deleteLostPetViewModel.deleteSelectedLostPet(lostPet: searchPartyAppState.selectedLostPet!){ result in
 
                         searchPartyAppState.isOnLostPet = false
 
@@ -234,7 +235,7 @@ struct LostPetView: View {
                     
                     
                     Button(action: {
-                        self.searchPartyAppState.showDeleteWarning = true
+                        self.deleteLostPetViewModel.showDeleteWarning = true
                     }) { Image(systemName: "trash") }
                     
                 }
