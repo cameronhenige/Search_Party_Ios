@@ -186,7 +186,17 @@ struct LostPetView: View {
                 
             }
             
-        }.navigationTitle("Lost: \(searchPartyAppState.selectedLostPet!.name)").frame(maxWidth: .infinity).onAppear {
+        }.alert(isPresented: $searchPartyAppState.showDeleteWarning, content: {
+            Alert(title: Text("Delete"), message: Text("Are you sure you want to delete your listing?"),
+                  primaryButton: .destructive(Text("Delete")) {
+                    searchPartyAppState.deleteSelectedLostPet(){ result in
+
+                        searchPartyAppState.isOnLostPet = false
+
+                    }
+                  },
+                  secondaryButton: .cancel())
+        }).navigationTitle("Lost: \(searchPartyAppState.selectedLostPet!.name)").frame(maxWidth: .infinity).onAppear {
             
             
             searchPartyAppState.getSelectedLostPet()
@@ -224,7 +234,7 @@ struct LostPetView: View {
                     
                     
                     Button(action: {
-                        //todo add delete
+                        self.searchPartyAppState.showDeleteWarning = true
                     }) { Image(systemName: "trash") }
                     
                 }

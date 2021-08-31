@@ -56,9 +56,8 @@ struct LostPets: View {
                 
                             }
                     
-                    NavigationLink(destination: LostPetView(),
-                                   isActive: self.$searchPartyAppState.isOnLostPet) {
-                                    EmptyView()
+                    NavigationLink(destination: LostPetView().environmentObject(searchPartyAppState),
+                                   isActive: $searchPartyAppState.isOnLostPet) {
                     }
                     
                 }.toolbar {
@@ -86,7 +85,7 @@ struct LostPets: View {
                 }
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .onAppear(){
-
+                    print("appeared")
                     self.searchPartyAppState.fetchLostPets()
                 }
                 
