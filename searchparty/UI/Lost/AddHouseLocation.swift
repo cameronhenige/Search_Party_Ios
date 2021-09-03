@@ -63,7 +63,7 @@ struct AddHouseLocation: View {
 
             
             
-        }.onAppear() {
+        }.navigationBarTitle(Text("Add House Location"), displayMode: .inline).onAppear() {
             self.addHouseLocationViewModel.requestLocation()
         }
         

@@ -159,7 +159,7 @@ struct SearchPartyView: View {
             }.padding(.horizontal)
             
             
-        }).onAppear() {
+        }).navigationBarTitle(Text(""), displayMode: .inline).onAppear() {
             self.searchPartyViewModel.fetchData(lostPet: lostPet)
             
 
