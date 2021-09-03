@@ -53,6 +53,8 @@ struct SignInView: View {
                                                        color: UIConfiguration.white))
                         }
                         
+                        Text("Big").modifier(Header())
+                        
                     }.padding(.horizontal, 25)
                     
                     VStack(alignment: .center, spacing: 40) {

@@ -114,9 +114,6 @@ class SearchPartyAppState: NSObject, ObservableObject {
             if(Error == nil) {
                 let lostPet = try? DocumentSnapshot!.data(as: LostPet.self)
                 self.selectedLostPet = lostPet
-                
-                print(self.selectedLostPet?.generalImages)
-
             } else {
                 //todo
             }

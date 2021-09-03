@@ -41,9 +41,7 @@ struct SearchPartyView: View {
     
     var body: some View {
         
-        NavigationLink(destination: AddHouseLocation(), isActive: $searchPartyViewModel.isOnAddHomeScreen) {
-            
-        }
+
         
         
         let taskDateFormat: DateFormatter = {
@@ -51,12 +49,15 @@ struct SearchPartyView: View {
             formatter.dateStyle = .short
             return formatter
         }()
+        
+        NavigationView {
         VStack {
             
             ZStack(alignment: .top) {
                 
-                
-                
+                NavigationLink(destination: AddHouseLocation(), isActive: $searchPartyViewModel.isOnAddHomeScreen) {
+                    
+                }
                 SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, selectedDay: $searchPartyViewModel.selectedDay, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes).edgesIgnoringSafeArea(.all)
                 
                 VStack{
@@ -167,7 +168,7 @@ struct SearchPartyView: View {
         
 
             
-
+        }
         
         
         

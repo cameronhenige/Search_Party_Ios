@@ -149,7 +149,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         if(hasSeenSearchPartyIntro == nil || hasSeenSearchPartyIntro == false){
             return false
         }else{
-            return true
+            return false
         }
     }
     
