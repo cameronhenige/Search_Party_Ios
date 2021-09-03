@@ -10,6 +10,8 @@ import SwiftUI
 import MapKit
 
 struct AddHouseLocation: View {
+    @Binding var showView : Bool
+
     @State var isOnLostPetIsFound = false
 
     @State var map = MKMapView()
@@ -39,7 +41,7 @@ struct AddHouseLocation: View {
                 Text("Add your home location")
 
                     Button(action: {
-                        self.isOnLostPetIsFound = true
+                        self.showView = false
                         //todo skip
 
                     }) {
@@ -70,8 +72,8 @@ struct AddHouseLocation: View {
     }
 }
 
-struct AddHouseLocation_Previews: PreviewProvider {
-    static var previews: some View {
-        AddHouseLocation()
-    }
-}
+//struct AddHouseLocation_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddHouseLocation(showView: <#Binding<Bool>#>)
+//    }
+//}

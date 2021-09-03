@@ -40,6 +40,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     @Published var isOnAddHomeScreen: Bool = false
     @Published var pictureUrl: URL?
 
+    
 
     var currentSearchId: String = ""
 

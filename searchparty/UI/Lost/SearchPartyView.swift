@@ -55,9 +55,15 @@ struct SearchPartyView: View {
             
             ZStack(alignment: .top) {
                 
-                NavigationLink(destination: AddHouseLocation(), isActive: $searchPartyViewModel.isOnAddHomeScreen) {
+                NavigationLink(destination: AddHouseLocation(showView: self.$searchPartyViewModel.isOnAddHomeScreen), isActive: $searchPartyViewModel.isOnAddHomeScreen) {
                     
                 }
+                
+//                NavigationLink(destination:DestView(showView: self.$showView),isActive : self.$showView){
+//               Text("Push View")
+//
+//            }
+                
                 SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, selectedDay: $searchPartyViewModel.selectedDay, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes).edgesIgnoringSafeArea(.all)
                 
                 VStack{
