@@ -15,7 +15,7 @@ extension UINavigationController {
         super.viewDidLoad()
         
         let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
+        //appearance.configureWithOpaqueBackground()
         appearance.titleTextAttributes = [.foregroundColor: UIConfiguration.colorPrimary]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIConfiguration.colorPrimary]
         //appearance.backgroundColor = UIConfiguration.colorPrimary
