@@ -76,7 +76,7 @@ struct WelcomeView: View {
                 
             }
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }.navigationViewStyle(StackNavigationViewStyle()).accentColor(.white)
     }
     
     private func signInClicked() {
