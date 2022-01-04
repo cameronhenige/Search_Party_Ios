@@ -251,7 +251,10 @@ class SearchPartyViewModel: NSObject, ObservableObject {
 
                         
                             //start searching
-                            var ref: DocumentReference? = Firestore.firestore().collection("Lost").document(self.lostPet!.id!).collection("Searches").addDocument(data: [
+                        //todo uncomment
+                        var ref: DocumentReference? = nil
+
+                            ref = Firestore.firestore().collection("Lost").document(self.lostPet!.id!).collection("Searches").addDocument(data: [
                                 "uid": Auth.auth().currentUser!.uid
                             ]) { err in
                                 if let err = err {
@@ -260,7 +263,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                                     
                                     self.currentSearchId = ref!.documentID
                                     //todo get search start locations
-                                    
+
                                     self.sendSearchingNotification()
                                     self.locationManager.startUpdatingLocation()
                                     self.isSearching = true

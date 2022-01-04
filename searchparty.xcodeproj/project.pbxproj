@@ -15,7 +15,6 @@
 		34041A8E245313F800722D9A /* ModalHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34041A8D245313F800722D9A /* ModalHeader.swift */; };
 		340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A1980249BB0C900D49461 /* AddLostPetMapView.swift */; };
 		341D20DA241CDDCB00C706A2 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */; };
-		341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */; };
 		3445A798240A80AF0020561B /* ColorPalette.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3445A797240A80AF0020561B /* ColorPalette.xcassets */; };
 		3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3445A79E240B0C3F0020561B /* CardWithBackground.swift */; };
 		344723BD24ABA9CD003B9F50 /* LostPetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344723BC24ABA9CD003B9F50 /* LostPetView.swift */; };
@@ -78,6 +77,7 @@
 		F255CBB1269BB5A6005AB259 /* InitialLocationAndDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB0269BB5A6005AB259 /* InitialLocationAndDistance.swift */; };
 		F255CBB5269E488B005AB259 /* ExistingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB4269E488B005AB259 /* ExistingImage.swift */; };
 		F255CBB7269E6CF0005AB259 /* SelectedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB6269E6CF0005AB259 /* SelectedImage.swift */; };
+		F268199E2783C21100E51172 /* TestLostPets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268199D2783C21100E51172 /* TestLostPets.swift */; };
 		F276A4EE26A2923700F36394 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A4ED26A2923700F36394 /* MultilineTextField.swift */; };
 		F276A4F026A2925F00F36394 /* UITextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A4EF26A2925F00F36394 /* UITextViewWrapper.swift */; };
 		F276A50F26A67D2300F36394 /* MarkPetAsFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */; };
@@ -155,7 +155,6 @@
 		34041A8D245313F800722D9A /* ModalHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeader.swift; sourceTree = "<group>"; };
 		340A1980249BB0C900D49461 /* AddLostPetMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetMapView.swift; sourceTree = "<group>"; };
 		341D20D9241CDDCB00C706A2 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
-		341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
 		3445A797240A80AF0020561B /* ColorPalette.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorPalette.xcassets; sourceTree = "<group>"; };
 		3445A79E240B0C3F0020561B /* CardWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardWithBackground.swift; sourceTree = "<group>"; };
 		344723BC24ABA9CD003B9F50 /* LostPetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetView.swift; sourceTree = "<group>"; };
@@ -223,6 +222,7 @@
 		F255CBB0269BB5A6005AB259 /* InitialLocationAndDistance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLocationAndDistance.swift; sourceTree = "<group>"; };
 		F255CBB4269E488B005AB259 /* ExistingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingImage.swift; sourceTree = "<group>"; };
 		F255CBB6269E6CF0005AB259 /* SelectedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImage.swift; sourceTree = "<group>"; };
+		F268199D2783C21100E51172 /* TestLostPets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLostPets.swift; sourceTree = "<group>"; };
 		F276A4ED26A2923700F36394 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		F276A4EF26A2925F00F36394 /* UITextViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWrapper.swift; sourceTree = "<group>"; };
 		F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFoundViewModel.swift; sourceTree = "<group>"; };
@@ -414,6 +414,7 @@
 				F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */,
 				F23D72332687646C00CB80C6 /* PetView.swift */,
 				F23D72532689667800CB80C6 /* ActivityViewController.swift */,
+				F268199D2783C21100E51172 /* TestLostPets.swift */,
 			);
 			path = Lost;
 			sourceTree = "<group>";
@@ -432,7 +433,6 @@
 		344723C324ABC078003B9F50 /* Modifiers */ = {
 			isa = PBXGroup;
 			children = (
-				341D20DB241CDE0B00C706A2 /* NavigationBarModifier.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -861,6 +861,7 @@
 				F27BC5F3265E07D00017B198 /* SearchPartySearch.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
 				F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */,
+				F268199E2783C21100E51172 /* TestLostPets.swift in Sources */,
 				F2D7457425FAF6AC003C5157 /* UIConfiguration.swift in Sources */,
 				3445A79F240B0C3F0020561B /* CardWithBackground.swift in Sources */,
 				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
@@ -874,7 +875,6 @@
 				F233D3DF2633EDF600912F28 /* AddLostPet.swift in Sources */,
 				F2D7457225FAF6AC003C5157 /* StatusViewModel.swift in Sources */,
 				345AE3AE241A7A8E004EBE8C /* ModalManager.swift in Sources */,
-				341D20DC241CDE0B00C706A2 /* NavigationBarModifier.swift in Sources */,
 				34F1215B258760C800BBB7DB /* Coordinates.swift in Sources */,
 				F2D7457A25FAF6AC003C5157 /* AuthService.swift in Sources */,
 				F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */,

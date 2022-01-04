@@ -42,11 +42,31 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     func saveLocationToUser(location: CLLocation) {
         
     }
+
     
-    func saveHomeLocation(location: CLLocationCoordinate2D) {
+    func saveHomeLocation(location: CLLocationCoordinate2D, completionHandler: @escaping (Result<String, Error>) -> Void) {
         let geoHash = location.geohash(length: 7)
         print(geoHash)
+        
+        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).setData([
+            "homeGeoHash": geoHash
+        ], merge: true) { err in
+                if let err = err {
+                    print("Error updating house: \(err)") //todo
+                } else {
+                    completionHandler(.success("Updated House"))
+                    //todo finish
+                }
+            }
+        
         //todo save to firebase
+        
+//        NewFirestoreUtil().getUserReference().set(getData(), SetOptions.merge()).addOnSuccessListener {
+//            findNavController().popBackStack()
+//        }.addOnFailureListener {
+//            hideLoading()
+//            Toast.makeText(requireContext(), "There was an issue saving your home location.", Toast.LENGTH_SHORT).show()
+//        }
 
     }
 }

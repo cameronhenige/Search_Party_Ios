@@ -74,7 +74,7 @@ struct WelcomeView: View {
                 }
                 Spacer()
                 
-            }.navigationBarColor(UIConfiguration.tintColor)
+            }
             }
         }.navigationViewStyle(StackNavigationViewStyle())
     }

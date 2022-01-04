@@ -19,7 +19,7 @@ struct MainView: View {
             OnboardingView().environmentObject(viewRouter)
         }else{
             if authState.loggedInUser != nil  && !authState.isAuthenticating {
-                MainScreen(syncFcmTokenViewModel: SyncFcmTokenViewModel()).environmentObject(searchPartyAppState).navigationBarColor(Constant.color.tintColor.uiColor())
+                MainScreen(syncFcmTokenViewModel: SyncFcmTokenViewModel()).environmentObject(searchPartyAppState)
                 
 
             //if(Auth.auth().currentUser == nil){

@@ -61,13 +61,15 @@ struct LostPets: View {
                     }
                     
                 }.toolbar {
+                    
+                    
                     ToolbarItemGroup(placement: .navigationBarLeading) {
 
                     Button(action: {
                         self.searchPartyAppState.isOnAddingLostPet = true
                     }) {
                         Text("Add Lost Pet")
-                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                    }
                     
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -78,7 +80,7 @@ struct LostPets: View {
                                 self.searchPartyAppState.isFiltering = true
                             }) {
                                 Text("Filter")
-                            }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                            }
                         
                     }
 
@@ -102,6 +104,6 @@ struct LostPets: View {
 struct Recipes_Previews: PreviewProvider {
     static var previews: some View {
         LostPets()
-            .environment(\.colorScheme, .light)
+            .environment(\.colorScheme, .light).environmentObject(SearchPartyAppState())
     }
 }

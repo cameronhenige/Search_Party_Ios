@@ -38,7 +38,7 @@ struct AddHouseLocation: View {
             
             ZStack(alignment: .bottom) {
                 VStack {
-                Text("Add your home location")
+                    Text("Please select your home location so Search Party knows not to track you while you are near your home.").padding(.bottom)
 
                     Button(action: {
                         self.showView = false
@@ -46,20 +46,21 @@ struct AddHouseLocation: View {
 
                     }) {
                         Text("Skip")
-                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
+                    }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
                 
                     
 
                         Button(action: {
-                            self.addHouseLocationViewModel.saveHomeLocation(location: self.map.centerCoordinate)
-                            self.isOnLostPetIsFound = true
+                            self.addHouseLocationViewModel.saveHomeLocation(location: self.map.centerCoordinate) { result in
+                                self.showView = false
+                            }
                             //todo save
                         }) {
                             Text("Save")
-                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing, .bottom])
+                        }.buttonStyle(PrimaryButtonStyle())
                     
                     
-                }
+                }.padding()
                 
             }
 
