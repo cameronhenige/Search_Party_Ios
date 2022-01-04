@@ -11,10 +11,12 @@ struct LostPetView: View {
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     @StateObject private var deleteLostPetViewModel = DeleteLostPetViewModel()
+    
 
     @State var hasLostLocation = false
 
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    @State var lostPetForm: LostPetForm = LostPetForm()
 
     @State var isOnEditPet = false
     @State var selectedView = 1
@@ -137,7 +139,7 @@ struct LostPetView: View {
                                 
                             }
                             
-                            NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
+                            NavigationLink(destination: AddLostPet(lostPetForm: $lostPetForm).environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
                                 
                             }
                             
@@ -146,7 +148,6 @@ struct LostPetView: View {
                             
                         }.padding(.vertical)
                         
-                        RandomView
                         LostPetData.padding()
                         
                     }
@@ -228,7 +229,23 @@ struct LostPetView: View {
                     
                     
                     Button(action: {
+                        
+                        var images : [SelectedImage] = []
+                        if let tempExistingImages = searchPartyAppState.selectedLostPet?.generalImages {
+                                            for existingImage in tempExistingImages {
+                                                let existingImageString = SelectedImage(name: existingImage, isExisting: true, image: nil)
+                                                images.append(existingImageString)
+                                            }
+                                        }
+                        
+                        let selectedLostPet = searchPartyAppState.selectedLostPet
+                        let petAge = selectedLostPet?.age?.description ?? ""
+                        
+                        self.lostPetForm = LostPetForm(petName: selectedLostPet?.name ?? "", lostDate: selectedLostPet?.lostDateTime?.dateValue() ?? Date(), name: selectedLostPet?.name ?? "", phoneNumber: selectedLostPet?.ownerPhoneNumber ?? "", email: selectedLostPet?.ownerEmail ?? "", otherContactMethod: selectedLostPet?.ownerOtherContactMethod ?? "", petAge: petAge, petBreed: selectedLostPet?.breed ?? "", images: images, petDescription: selectedLostPet?.description ?? "", petType: getPetTypeFromLostPet(petType: selectedLostPet?.type), petSex: getPetSexFromLostPet(sex: selectedLostPet?.sex), preferredContactMethod: getPreferredContactMethod(method: selectedLostPet?.ownerPreferredContactMethod ?? ""), lostLocationDescription: selectedLostPet?.lostLocationDescription ?? "")
+                        
+                        
                         self.searchPartyAppState.isOnEditingLostPet = true
+                        
                     }) { Image(systemName: "square.and.pencil") }
                     
                     
@@ -307,6 +324,19 @@ struct LostPetView: View {
 
     }
     
+    func getPreferredContactMethod(method: String) -> Int {
+        switch method {
+        case "phoneNumber":
+            return 0
+        case "email":
+            return 1
+        case "other":
+            return 2
+        default:
+            return 0
+        }
+    }
+    
     func getPreferredContactMethod(ownerPreferredContactMethod: String) -> String{
         switch ownerPreferredContactMethod {
         case "phoneNumber":
@@ -320,51 +350,32 @@ struct LostPetView: View {
         }
     }
     
-    var RandomView: some View {
-        return
-            VStack{
-                
-                
-                
-                //                if(searchPartyAppState.isOwnerOfLostPet()){
-                //                    NavigationLink(destination: MarkPetAsFound(), isActive: $searchPartyAppState.isOnLostPetIsFound) {
-                //                        Button(action: {
-                //                            self.searchPartyAppState.isOnLostPetIsFound = true
-                //                        }) {
-                //                            Text("Mark Pet As Found")
-                //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                //                    }
-                //                }
-                
-//                if let pet = searchPartyAppState.selectedLostPet {
-//
-//                    Button("Join Search Party") {
-//                        self.searchPartyAppState.isOnSearchParty.toggle()
-//                    }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing]).fullScreenCover(isPresented: self.$searchPartyAppState.isOnSearchParty) {
-//
-//                        SearchPartyView(lostPet: pet)
-//                    }
-//
-//                }
-                
-                
-                //                if(searchPartyAppState.isOwnerOfLostPet()){
-                //
-                //                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnEditingLostPet) {
-                //                        Button(action: {
-                //                            self.searchPartyAppState.isOnEditingLostPet = true
-                //                        }) {
-                //                            Text("Edit Pet")
-                //                        }.buttonStyle(PrimaryButtonStyle()).padding([.top, .leading, .trailing])
-                //                    }
-                //                }
-                
-                NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
-                    
-                }
-                
-            }
+    func getPetSexFromLostPet(sex: String?) -> Int {
+        switch sex {
+        case "Male":
+            return 0
+        case "Female":
+            return 1
+        default:
+            return 0
+        }
     }
+    
+    func getPetTypeFromLostPet(petType: String?) -> Int {
+        switch petType {
+        case "Dog":
+            return 0
+        case "Cat":
+            return 1
+        case "Bird":
+            return 2
+        case "Other":
+            return 3
+        default:
+            return 0
+        }
+    }
+    
 }
 
 

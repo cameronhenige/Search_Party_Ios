@@ -78,6 +78,7 @@
 		F255CBB5269E488B005AB259 /* ExistingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB4269E488B005AB259 /* ExistingImage.swift */; };
 		F255CBB7269E6CF0005AB259 /* SelectedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255CBB6269E6CF0005AB259 /* SelectedImage.swift */; };
 		F268199E2783C21100E51172 /* TestLostPets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268199D2783C21100E51172 /* TestLostPets.swift */; };
+		F26819A02784114A00E51172 /* LostPetForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268199F2784114900E51172 /* LostPetForm.swift */; };
 		F276A4EE26A2923700F36394 /* MultilineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A4ED26A2923700F36394 /* MultilineTextField.swift */; };
 		F276A4F026A2925F00F36394 /* UITextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A4EF26A2925F00F36394 /* UITextViewWrapper.swift */; };
 		F276A50F26A67D2300F36394 /* MarkPetAsFoundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */; };
@@ -223,6 +224,7 @@
 		F255CBB4269E488B005AB259 /* ExistingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingImage.swift; sourceTree = "<group>"; };
 		F255CBB6269E6CF0005AB259 /* SelectedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImage.swift; sourceTree = "<group>"; };
 		F268199D2783C21100E51172 /* TestLostPets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestLostPets.swift; sourceTree = "<group>"; };
+		F268199F2784114900E51172 /* LostPetForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetForm.swift; sourceTree = "<group>"; };
 		F276A4ED26A2923700F36394 /* MultilineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextField.swift; sourceTree = "<group>"; };
 		F276A4EF26A2925F00F36394 /* UITextViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewWrapper.swift; sourceTree = "<group>"; };
 		F276A50E26A67D2300F36394 /* MarkPetAsFoundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFoundViewModel.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				345AE3A8241A7A8E004EBE8C /* ModalView.swift */,
 				345AE3A9241A7A8E004EBE8C /* ModalAnchorView.swift */,
 				345AE3AA241A7A8E004EBE8C /* ModalManager.swift */,
+				F268199F2784114900E51172 /* LostPetForm.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				F276A50F26A67D2300F36394 /* MarkPetAsFoundViewModel.swift in Sources */,
 				F2ACC66126AA271900083A1E /* TabBar.swift in Sources */,
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
+				F26819A02784114A00E51172 /* LostPetForm.swift in Sources */,
 				F27BC5F3265E07D00017B198 /* SearchPartySearch.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
 				F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */,

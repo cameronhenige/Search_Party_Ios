@@ -42,27 +42,34 @@ class AddLostPetViewModel: NSObject, ObservableObject {
       self.locationManager.delegate = self
     }
     
-    func addLostPet(name: String, sex: String, age: Int?, breed: String, type: String, description: String, lostDateTime: Date, lostLocation: String, lostLocationDescription: String, ownerName: String, ownerEmail: String, ownerPhoneNumber: String, ownerPreferredContactMethod: String, ownerOtherContactMethod: String, owners: [String], petImages: [SelectedImage], isEditing: Bool, lostPetId: String?, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    //                addLostPetViewModel.addLostPet(name: lostPetForm.petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: self.getPreferredContactMethodApiString(), ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images, isEditing: isEditing, lostPetId: lostViewRouter.selectedLostPet?.id) { result in
+    //                    lostViewRouter.isOnAddingLostPet = false
+    //                    lostViewRouter.isOnEditingLostPet = false
+    //                }
+    
+    
+    
+    func addLostPet(lostPetForm: LostPetForm, isEditing: Bool, lostPetId: String?, owners: [String], lostLocation: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
         self.completionHandler = completionHandler
-        if(!name.isEmpty){
+        if(!lostPetForm.petName.isEmpty){
 
     
         isAddingLostPet = true
             let itemData : [String: Any] = [
-                LostPet.NAME : name,
-                LostPet.SEX: sex,
-                LostPet.AGE: age,
-                LostPet.BREED: breed,
-                LostPet.TYPE: type,
-                LostPet.DESCRIPTION: description,
-                LostPet.LOST_DATE_TIME: lostDateTime,
+                LostPet.NAME : lostPetForm.name,
+                LostPet.SEX: lostPetForm.getPetSexString(),
+                LostPet.AGE: Int(lostPetForm.petAge),
+                LostPet.BREED: lostPetForm.petBreed,
+                LostPet.TYPE: lostPetForm.getPetTypeString(),
+                LostPet.DESCRIPTION: lostPetForm.petDescription,
+                LostPet.LOST_DATE_TIME: lostPetForm.lostDate,
                 LostPet.LOST_LOCATION: lostLocation,
-                LostPet.LOST_LOCATION_DESCRIPTION: lostLocationDescription,
-                LostPet.OWNER_NAME: ownerName,
-                LostPet.OWNER_EMAIL: ownerEmail,
-                LostPet.OWNER_PHONE_NUMBER: ownerPhoneNumber,
-                LostPet.OWNER_PREFERRED_CONTACT_METHOD: ownerPreferredContactMethod,
-                LostPet.OWNER_OTHER_CONTACT_METHOD: ownerOtherContactMethod,
+                LostPet.LOST_LOCATION_DESCRIPTION: lostPetForm.lostLocationDescription,
+                LostPet.OWNER_NAME: lostPetForm.name,
+                LostPet.OWNER_EMAIL: lostPetForm.email,
+                LostPet.OWNER_PHONE_NUMBER: lostPetForm.phoneNumber,
+                LostPet.OWNER_PREFERRED_CONTACT_METHOD: lostPetForm.getPreferredContactMethodApiString(),
+                LostPet.OWNER_OTHER_CONTACT_METHOD: lostPetForm.otherContactMethod,
                 LostPet.OWNERS: owners
 
             ]
@@ -82,7 +89,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 //                        if(petImages.isEmpty) {
 //                            self.completionHandler!(.success("Edited Lost Pet"))
 //                        }else {
-                            self.addImages(lostPetDocumentId: lostPetId!, petImages: petImages)
+                        self.addImages(lostPetDocumentId: lostPetId!, petImages: lostPetForm.images)
                         //}
                     }
                 }
@@ -97,7 +104,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 //                    if(petImages.isEmpty) {
 //                        self.completionHandler!(.success("Added Lost Pet"))
 //                    }else {
-                        self.addImages(lostPetDocumentId: ref!.documentID, petImages: petImages)
+                    self.addImages(lostPetDocumentId: ref!.documentID, petImages: lostPetForm.images)
                     //}
                 }
             
@@ -111,6 +118,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             self.errorBody = "Add a name for your pet."
         }
     }
+    
     
     func addImages(lostPetDocumentId: String, petImages: [SelectedImage]) {
         

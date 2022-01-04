@@ -8,6 +8,7 @@ struct LostPets: View {
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
 
     @State var isShowingAlert = true
+    @State var lostPetForm: LostPetForm = LostPetForm()
 
 
     var body: some View {
@@ -48,7 +49,7 @@ struct LostPets: View {
                     }
                     
                     
-                    NavigationLink(destination: AddLostPet().environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
+                    NavigationLink(destination: AddLostPet(lostPetForm: $lostPetForm).environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                 
                             }
                     
@@ -66,6 +67,7 @@ struct LostPets: View {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
 
                     Button(action: {
+                        lostPetForm = LostPetForm()
                         self.searchPartyAppState.isOnAddingLostPet = true
                     }) {
                         Text("Add Lost Pet")
