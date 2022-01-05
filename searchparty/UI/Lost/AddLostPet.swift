@@ -189,7 +189,6 @@ struct AddLostPet: View {
             AddLostPetSections
             
         }.onAppear() {
-            self.addLostPetViewModel.requestLocation()
             
             if(lostViewRouter.isOnEditingLostPet) {
                 self.title = "Edit Pet"

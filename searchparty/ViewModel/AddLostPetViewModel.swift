@@ -40,6 +40,8 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     override init() {
       super.init()
       self.locationManager.delegate = self
+    requestLocation()
+        
     }
     
     func addLostPet(lostPetForm: LostPetForm, isEditing: Bool, lostPetId: String?, owners: [String], lostLocation: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
