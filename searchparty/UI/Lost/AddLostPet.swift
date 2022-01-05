@@ -9,7 +9,6 @@ import MapKit
 
 struct AddLostPet: View {
     
-    //@Binding var lostPetForm: LostPetForm
     @EnvironmentObject var lostViewRouter: SearchPartyAppState
     @ObservedObject var addLostPetViewModel: AddLostPetViewModel
     @State var map = MKMapView()

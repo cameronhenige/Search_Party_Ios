@@ -57,8 +57,8 @@ class AddLostPetViewModel: NSObject, ObservableObject {
             let midPoint = CLLocationCoordinate2D.midpoint(between: min, and: max)
             
             userLocation = midPoint
-            
         }
+            
         }
 
     }
@@ -70,7 +70,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     
         isAddingLostPet = true
             let itemData : [String: Any] = [
-                LostPet.NAME : lostPetForm.name,
+                LostPet.NAME : lostPetForm.petName,
                 LostPet.SEX: lostPetForm.getPetSexString(),
                 LostPet.AGE: Int(lostPetForm.petAge),
                 LostPet.BREED: lostPetForm.petBreed,
@@ -96,15 +96,9 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                         self.showAlert = true
                         self.errorTitle = "Error adding pet"
                         self.errorBody = "There was an error adding your pet."
-
-                    } else {
                         
-                        //todo remvoe duplicatsion
-//                        if(petImages.isEmpty) {
-//                            self.completionHandler!(.success("Edited Lost Pet"))
-//                        }else {
+                    } else {
                         self.addImages(lostPetDocumentId: lostPetId!, petImages: self.lostPetForm.images)
-                        //}
                     }
                 }
             }else {
@@ -115,11 +109,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
                 if  err != nil {
                     self.errorAddingLostPet = true
                 } else {
-//                    if(petImages.isEmpty) {
-//                        self.completionHandler!(.success("Added Lost Pet"))
-//                    }else {
                     self.addImages(lostPetDocumentId: ref!.documentID, petImages: self.lostPetForm.images)
-                    //}
                 }
             
 
