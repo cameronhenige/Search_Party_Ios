@@ -143,6 +143,7 @@
 		F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */; };
 		F2DBDDFD2646372900E9C987 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = F2DBDDFC2646372900E9C987 /* iPhoneNumberField */; };
 		F2DE92B92785490E002A0833 /* LostPetConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92B82785490E002A0833 /* LostPetConverter.swift */; };
+		F2DE92D927861CFE002A0833 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92D827861CFE002A0833 /* TextArea.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -288,6 +289,7 @@
 		F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetViewModel.swift; sourceTree = "<group>"; };
 		F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLocations.swift; sourceTree = "<group>"; };
 		F2DE92B82785490E002A0833 /* LostPetConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetConverter.swift; sourceTree = "<group>"; };
+		F2DE92D827861CFE002A0833 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -523,6 +525,7 @@
 				F23D724226882A5700CB80C6 /* CustomField.swift */,
 				F255CBB4269E488B005AB259 /* ExistingImage.swift */,
 				F2ACC66026AA271900083A1E /* TabBar.swift */,
+				F2DE92D827861CFE002A0833 /* TextArea.swift */,
 			);
 			path = customviews;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				F27BC5DE2650CD390017B198 /* FirebaseUtil.swift in Sources */,
 				F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */,
 				F220A6C8266F220A00319F2F /* ColorExtension.swift in Sources */,
+				F2DE92D927861CFE002A0833 /* TextArea.swift in Sources */,
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,

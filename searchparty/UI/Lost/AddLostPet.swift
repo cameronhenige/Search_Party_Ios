@@ -106,9 +106,8 @@ struct AddLostPet: View {
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
             Section(header: Text("Add a description of what you think people should know about your pet. Be sure to include things like unique markings, temperament, and health conditions.")) {
-                
-                MultilineTextField("Description", text: $addLostPetViewModel.lostPetForm.petDescription)
-                
+                TextArea("Description", text: $addLostPetViewModel.lostPetForm.petDescription)
+                //TextEditor(text: $addLostPetViewModel.lostPetForm.petDescription)
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
             
