@@ -28,27 +28,7 @@ struct AddLostPetMapView: UIViewRepresentable {
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
-            self.parent.map.removeOverlays(self.parent.map.overlays)
-            
-            let geoHash = mapView.centerCoordinate.geohash(length: 7)
-            print("current geohash " + geoHash)
-            
-            print(GeoHashConverter.decode(hash: geoHash))
-            
-            let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
-            
-            let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
-            let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
-            let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
-            let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
 
-            let points = [topLeft, topRight, bottomRight, bottomLeft]
-            
-            let polygon = MKPolygon(coordinates: points, count: points.count)
-            
-            self.parent.map.addOverlay(polygon)
-
-            
         }
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -73,7 +53,27 @@ struct AddLostPetMapView: UIViewRepresentable {
         return map
     }
 
-    func updateUIView(_ view: MKMapView, context: Context) {
+    func updateUIView(_ mapView: MKMapView, context: Context) {
+        
+        mapView.removeOverlays(mapView.overlays)
+        
+        let geoHash = mapView.centerCoordinate.geohash(length: 7)
+
+        let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
+        
+        let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
+        let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
+        let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
+        let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
+
+        let points = [topLeft, topRight, bottomRight, bottomLeft]
+        
+        let polygon = MKPolygon(coordinates: points, count: points.count)
+        
+        mapView.addOverlay(polygon)
+
+        
+        
     }
 }
 
