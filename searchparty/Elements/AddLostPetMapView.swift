@@ -67,11 +67,12 @@ struct AddLostPetMapView: UIViewRepresentable {
         let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
 
         let points = [topLeft, topRight, bottomRight, bottomLeft]
-        
+
         let polygon = MKPolygon(coordinates: points, count: points.count)
         
+        
         mapView.addOverlay(polygon)
-
+        
         
         
     }
