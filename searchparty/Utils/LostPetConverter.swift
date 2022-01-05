@@ -23,7 +23,7 @@ class LostPetConverter {
         
         let petAge = selectedLostPet?.age?.description ?? ""
         
-        return LostPetForm(petName: selectedLostPet?.name ?? "", lostDate: selectedLostPet?.lostDateTime?.dateValue() ?? Date(), name: selectedLostPet?.name ?? "", phoneNumber: selectedLostPet?.ownerPhoneNumber ?? "", email: selectedLostPet?.ownerEmail ?? "", otherContactMethod: selectedLostPet?.ownerOtherContactMethod ?? "", petAge: petAge, petBreed: selectedLostPet?.breed ?? "", images: images, petDescription: selectedLostPet?.description ?? "", petType: LostPetConverter.getPetTypeFromLostPet(petType: selectedLostPet?.type), petSex: LostPetConverter.getPetSexFromLostPet(sex: selectedLostPet?.sex), preferredContactMethod: LostPetConverter.getPreferredContactMethod(method: selectedLostPet?.ownerPreferredContactMethod ?? ""), lostLocationDescription: selectedLostPet?.lostLocationDescription ?? "")
+        return LostPetForm(petName: selectedLostPet?.name ?? "", lostDate: selectedLostPet?.lostDateTime?.dateValue() ?? Date(), name: selectedLostPet?.name ?? "", phoneNumber: selectedLostPet?.ownerPhoneNumber ?? "", email: selectedLostPet?.ownerEmail ?? "", otherContactMethod: selectedLostPet?.ownerOtherContactMethod ?? "", petAge: petAge, petBreed: selectedLostPet?.breed ?? "", images: images, petDescription: selectedLostPet?.description ?? "", petType: LostPetConverter.getPetTypeFromLostPet(petType: selectedLostPet?.type), petSex: LostPetConverter.getPetSexFromLostPet(sex: selectedLostPet?.sex), preferredContactMethod: LostPetConverter.getPreferredContactMethod(method: selectedLostPet?.ownerPreferredContactMethod ?? ""), lostLocationDescription: selectedLostPet?.lostLocationDescription ?? "", lostLocation: selectedLostPet?.lostLocation)
     }
     
     class func getPreferredContactMethod(method: String) -> Int {
@@ -77,4 +77,5 @@ class LostPetConverter {
             return 0
         }
     }
+    
 }

@@ -7,14 +7,10 @@ import MapKit
 
 struct LostPetView: View {
     
-    var tintColor: Color = Constant.color.tintColor
     @EnvironmentObject var modalManager: ModalManager
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
     @StateObject private var deleteLostPetViewModel = DeleteLostPetViewModel()
-    
-
     @State var hasLostLocation = false
-
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State var lostPetForm: LostPetForm = LostPetForm()
 
@@ -224,21 +220,12 @@ struct LostPetView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 if(searchPartyAppState.isOwnerOfLostPet()){
                     
-                    
-                    
                     Button(action: {
                         
-
-                        
                         self.lostPetForm = LostPetConverter.getLostPetFormFromLostPet(selectedLostPet: searchPartyAppState.selectedLostPet)
-                        
-                        
                         self.searchPartyAppState.isOnEditingLostPet = true
                         
                     }) { Image(systemName: "square.and.pencil") }
-                    
-                    
-                    
                     
                     Button(action: {
                         self.deleteLostPetViewModel.showDeleteWarning = true
@@ -246,9 +233,7 @@ struct LostPetView: View {
                     
                 }
             }
-            
         }
-        
     }
     
     var LostPetData: some View {
@@ -307,16 +292,9 @@ struct LostPetView: View {
                 } else {
                     EmptyView()
                 }
-
             }
-        
-
     }
-    
-
-    
 }
-
 
 struct LostPetView_Previews: PreviewProvider {
     static var previews: some View {

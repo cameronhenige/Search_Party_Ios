@@ -42,13 +42,6 @@ class AddLostPetViewModel: NSObject, ObservableObject {
       self.locationManager.delegate = self
     }
     
-    //                addLostPetViewModel.addLostPet(name: lostPetForm.petName, sex: petSexes[petSex], age: Int(petAge), breed: petBreed, type: petTypes[petType], description: petDescription, lostDateTime: lostDate, lostLocation: (currentLocation?.geohash(length: 7))!, lostLocationDescription: lostLocationDescription, ownerName: name, ownerEmail: email, ownerPhoneNumber: phoneNumber, ownerPreferredContactMethod: self.getPreferredContactMethodApiString(), ownerOtherContactMethod: otherContactMethod, owners: [Auth.auth().currentUser!.uid], petImages: images, isEditing: isEditing, lostPetId: lostViewRouter.selectedLostPet?.id) { result in
-    //                    lostViewRouter.isOnAddingLostPet = false
-    //                    lostViewRouter.isOnEditingLostPet = false
-    //                }
-    
-    
-    
     func addLostPet(lostPetForm: LostPetForm, isEditing: Bool, lostPetId: String?, owners: [String], lostLocation: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
         self.completionHandler = completionHandler
         if(!lostPetForm.petName.isEmpty){

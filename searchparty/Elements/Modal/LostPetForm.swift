@@ -24,6 +24,9 @@ struct LostPetForm {
     var petSex: Int = 0
     var preferredContactMethod: Int = 0
     var lostLocationDescription = ""
+    
+    var lostLocation: String?
+
 
     func getPreferredContactMethodApiString() -> String {
         switch preferredContactMethod {

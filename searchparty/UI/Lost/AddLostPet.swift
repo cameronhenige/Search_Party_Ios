@@ -10,23 +10,17 @@ import MapKit
 struct AddLostPet: View {
     
     @Binding var lostPetForm: LostPetForm
-
-    
     @EnvironmentObject var lostViewRouter: SearchPartyAppState
     @StateObject private var addLostPetViewModel = AddLostPetViewModel()
-    
     @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var showingPhotoActionSheet = false
     @State var title = ""
     @State var isShowCamera = false
     @State var isShowGallery = false
-
-    
     var petTypes = ["Dog", "Cat", "Bird", "Other"]
     var petSexes = ["Male", "Female"]
     var preferredContactMethods = ["Phone Number", "Email", "Other"]
-    
     var imageColumns: [GridItem] {
         Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
@@ -72,9 +66,7 @@ struct AddLostPet: View {
                                     ExistingImage(url: lostPetForm.images[i].name!, lostPetId: lostViewRouter.selectedLostPet?.id)
                                     
                                 } else {
-                                    
                                     Image(uiImage: lostPetForm.images[i].image!).resizable().frame(height: 150).cornerRadius(20)
-                                    
                                 }
                                 
                                 Image(systemName: "trash")
@@ -201,9 +193,8 @@ struct AddLostPet: View {
             
             if(lostViewRouter.isOnEditingLostPet) {
                 self.title = "Edit Pet"
-                let selectedLostPet = lostViewRouter.selectedLostPet
                 
-                if let lostLocation = selectedLostPet?.lostLocation {
+                if let lostLocation = lostPetForm.lostLocation {
                     let geoHash = GeoHashConverter.decode(hash: lostLocation)
                     
                     let min = CLLocationCoordinate2D(latitude: (geoHash?.latitude.min)!, longitude: (geoHash?.longitude.min)!)
@@ -229,36 +220,6 @@ struct AddLostPet: View {
             
         }
     }
-    
-    func getPetSexFromLostPet(sex: String) -> Int {
-        switch sex {
-        case "Male":
-            return 0
-        case "Female":
-            return 1
-        default:
-            return 0
-        }
-    }
-    
-    func getPetTypeFromLostPet(petType: String) -> Int {
-        switch petType {
-        case "Dog":
-            return 0
-        case "Cat":
-            return 1
-        case "Bird":
-            return 2
-        case "Other":
-            return 3
-        default:
-            return 0
-        }
-    }
-    
-
-    
-
     
 }
 
