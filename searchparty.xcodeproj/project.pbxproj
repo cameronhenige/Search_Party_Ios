@@ -142,6 +142,7 @@
 		F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */; };
 		F2DBDDF42644F5AE00E9C987 /* SampleLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */; };
 		F2DBDDFD2646372900E9C987 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = F2DBDDFC2646372900E9C987 /* iPhoneNumberField */; };
+		F2DE92B92785490E002A0833 /* LostPetConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92B82785490E002A0833 /* LostPetConverter.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -286,6 +287,7 @@
 		F2DBDDEE264240D000E9C987 /* cats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cats.json; sourceTree = "<group>"; };
 		F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLostPetViewModel.swift; sourceTree = "<group>"; };
 		F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLocations.swift; sourceTree = "<group>"; };
+		F2DE92B82785490E002A0833 /* LostPetConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetConverter.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -539,6 +541,7 @@
 			children = (
 				F27BC5DD2650CD390017B198 /* FirebaseUtil.swift */,
 				F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */,
+				F2DE92B82785490E002A0833 /* LostPetConverter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				34AA9DA925850D180087798C /* MyUser.swift in Sources */,
 				F26819A02784114A00E51172 /* LostPetForm.swift in Sources */,
 				F27BC5F3265E07D00017B198 /* SearchPartySearch.swift in Sources */,
+				F2DE92B92785490E002A0833 /* LostPetConverter.swift in Sources */,
 				34041A8E245313F800722D9A /* ModalHeader.swift in Sources */,
 				F2DBDDF12643A1FA00E9C987 /* AddLostPetViewModel.swift in Sources */,
 				F268199E2783C21100E51172 /* TestLostPets.swift in Sources */,

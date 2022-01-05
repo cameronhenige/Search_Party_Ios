@@ -33,9 +33,7 @@ struct LostPetView: View {
     private func goToSearchParty() {
         self.isPresented.toggle()
     }
-    
-    private var numberOfImages = 5
-    
+        
     var body: some View {
         ZStack {
             GeometryReader { proxy in
@@ -113,7 +111,7 @@ struct LostPetView: View {
                                 
                                 DispatchQueue.global().async { [self] in
                                     
-                                    var pdfData = GenerateFlyerViewModelX(lostPet: searchPartyAppState.selectedLostPet!).createFlyer()
+                                    let pdfData = GenerateFlyerViewModelX(lostPet: searchPartyAppState.selectedLostPet!).createFlyer()
                                     
                                     DispatchQueue.main.async {
                                         let activityVC = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
@@ -230,18 +228,9 @@ struct LostPetView: View {
                     
                     Button(action: {
                         
-                        var images : [SelectedImage] = []
-                        if let tempExistingImages = searchPartyAppState.selectedLostPet?.generalImages {
-                                            for existingImage in tempExistingImages {
-                                                let existingImageString = SelectedImage(name: existingImage, isExisting: true, image: nil)
-                                                images.append(existingImageString)
-                                            }
-                                        }
+
                         
-                        let selectedLostPet = searchPartyAppState.selectedLostPet
-                        let petAge = selectedLostPet?.age?.description ?? ""
-                        
-                        self.lostPetForm = LostPetForm(petName: selectedLostPet?.name ?? "", lostDate: selectedLostPet?.lostDateTime?.dateValue() ?? Date(), name: selectedLostPet?.name ?? "", phoneNumber: selectedLostPet?.ownerPhoneNumber ?? "", email: selectedLostPet?.ownerEmail ?? "", otherContactMethod: selectedLostPet?.ownerOtherContactMethod ?? "", petAge: petAge, petBreed: selectedLostPet?.breed ?? "", images: images, petDescription: selectedLostPet?.description ?? "", petType: getPetTypeFromLostPet(petType: selectedLostPet?.type), petSex: getPetSexFromLostPet(sex: selectedLostPet?.sex), preferredContactMethod: getPreferredContactMethod(method: selectedLostPet?.ownerPreferredContactMethod ?? ""), lostLocationDescription: selectedLostPet?.lostLocationDescription ?? "")
+                        self.lostPetForm = LostPetConverter.getLostPetFormFromLostPet(selectedLostPet: searchPartyAppState.selectedLostPet)
                         
                         
                         self.searchPartyAppState.isOnEditingLostPet = true
@@ -312,7 +301,7 @@ struct LostPetView: View {
                     
                     if let ownerPreferredContactMethod = pet.ownerPreferredContactMethod, !ownerPreferredContactMethod.isEmpty {
                         Text("Preferred Contact Method").font(.caption)
-                        Text(self.getPreferredContactMethod(ownerPreferredContactMethod: ownerPreferredContactMethod)).padding(.bottom)
+                        Text(LostPetConverter.getPreferredContactMethod(ownerPreferredContactMethod: ownerPreferredContactMethod)).padding(.bottom)
                     }
                     
                 } else {
@@ -324,57 +313,7 @@ struct LostPetView: View {
 
     }
     
-    func getPreferredContactMethod(method: String) -> Int {
-        switch method {
-        case "phoneNumber":
-            return 0
-        case "email":
-            return 1
-        case "other":
-            return 2
-        default:
-            return 0
-        }
-    }
-    
-    func getPreferredContactMethod(ownerPreferredContactMethod: String) -> String{
-        switch ownerPreferredContactMethod {
-        case "phoneNumber":
-            return "Phone Number"
-        case "email":
-            return "Email"
-        case "other":
-            return "Other"
-        default:
-            return "Other"
-        }
-    }
-    
-    func getPetSexFromLostPet(sex: String?) -> Int {
-        switch sex {
-        case "Male":
-            return 0
-        case "Female":
-            return 1
-        default:
-            return 0
-        }
-    }
-    
-    func getPetTypeFromLostPet(petType: String?) -> Int {
-        switch petType {
-        case "Dog":
-            return 0
-        case "Cat":
-            return 1
-        case "Bird":
-            return 2
-        case "Other":
-            return 3
-        default:
-            return 0
-        }
-    }
+
     
 }
 

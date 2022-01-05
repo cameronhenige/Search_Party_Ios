@@ -202,43 +202,6 @@ struct AddLostPet: View {
             if(lostViewRouter.isOnEditingLostPet) {
                 self.title = "Edit Pet"
                 let selectedLostPet = lostViewRouter.selectedLostPet
-//
-//                self.lostDate = selectedLostPet?.lostDateTime?.dateValue() ?? Date()
-//                self.name = selectedLostPet?.name ?? ""
-//                self.phoneNumber = selectedLostPet?.ownerPhoneNumber ?? ""
-//                self.email = selectedLostPet?.ownerEmail ?? ""
-//                self.otherContactMethod = selectedLostPet?.ownerOtherContactMethod ?? ""
-//                //todo self.petName = selectedLostPet?.name ?? ""
-//                self.petAge = selectedLostPet?.age?.description ?? ""
-//                self.petBreed = selectedLostPet?.breed ?? ""
-//
-//                self.images = []
-//
-//
-//                if let tempExistingImages = selectedLostPet?.generalImages {
-//                    for existingImage in tempExistingImages {
-//                        let existingImageString = SelectedImage(name: existingImage, isExisting: true, image: nil)
-//                        self.images.append(existingImageString)
-//                    }
-//                }
-//
-//                self.petDescription = selectedLostPet?.description ?? ""
-//
-//                if let type = selectedLostPet?.type {
-//                    self.petType = getPetTypeFromLostPet(petType: type)
-//                }
-//
-//                if let sex = selectedLostPet?.sex {
-//                    self.petSex = getPetSexFromLostPet(sex: sex)
-//                }
-//
-//                if let preferredContactMethod = selectedLostPet?.ownerPreferredContactMethod {
-//                    self.preferredContactMethod = getPreferredContactMethod(method: preferredContactMethod)
-//                }
-//
-//                self.lostLocationDescription = selectedLostPet?.lostLocationDescription ?? ""
-//
-//                self.otherContactMethod = selectedLostPet?.ownerOtherContactMethod ?? ""
                 
                 if let lostLocation = selectedLostPet?.lostLocation {
                     let geoHash = GeoHashConverter.decode(hash: lostLocation)
