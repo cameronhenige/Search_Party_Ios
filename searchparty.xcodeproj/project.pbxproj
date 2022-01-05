@@ -144,6 +144,8 @@
 		F2DBDDFD2646372900E9C987 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = F2DBDDFC2646372900E9C987 /* iPhoneNumberField */; };
 		F2DE92B92785490E002A0833 /* LostPetConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92B82785490E002A0833 /* LostPetConverter.swift */; };
 		F2DE92D927861CFE002A0833 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92D827861CFE002A0833 /* TextArea.swift */; };
+		F2DE92DB2786279B002A0833 /* MyImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92DA2786279B002A0833 /* MyImagePicker.swift */; };
+		F2DE92DD2786284E002A0833 /* SUImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DE92DC2786284E002A0833 /* SUImagePickerView.swift */; };
 		F2FBDBDB25FBDCC3003CC354 /* AuthenticationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */; };
 /* End PBXBuildFile section */
 
@@ -290,6 +292,8 @@
 		F2DBDDF32644F5AD00E9C987 /* SampleLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleLocations.swift; sourceTree = "<group>"; };
 		F2DE92B82785490E002A0833 /* LostPetConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostPetConverter.swift; sourceTree = "<group>"; };
 		F2DE92D827861CFE002A0833 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		F2DE92DA2786279B002A0833 /* MyImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImagePicker.swift; sourceTree = "<group>"; };
+		F2DE92DC2786284E002A0833 /* SUImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SUImagePickerView.swift; sourceTree = "<group>"; };
 		F2FBDBDA25FBDCC3003CC354 /* AuthenticationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -526,6 +530,8 @@
 				F255CBB4269E488B005AB259 /* ExistingImage.swift */,
 				F2ACC66026AA271900083A1E /* TabBar.swift */,
 				F2DE92D827861CFE002A0833 /* TextArea.swift */,
+				F2DE92DA2786279B002A0833 /* MyImagePicker.swift */,
+				F2DE92DC2786284E002A0833 /* SUImagePickerView.swift */,
 			);
 			path = customviews;
 			sourceTree = "<group>";
@@ -899,11 +905,13 @@
 				F2A9DBEF25FC7AEB0055AC33 /* Error+Extension.swift in Sources */,
 				340A1981249BB0C900D49461 /* AddLostPetMapView.swift in Sources */,
 				F233D3DB2633E9EC00912F28 /* AccountScreen.swift in Sources */,
+				F2DE92DD2786284E002A0833 /* SUImagePickerView.swift in Sources */,
 				F21B8D6126AE5B2600D48172 /* ShareLostPetLinkViewModel.swift in Sources */,
 				F23D72542689667800CB80C6 /* ActivityViewController.swift in Sources */,
 				F2791A6226006B7100C056A6 /* SPUser.swift in Sources */,
 				F255CBA926954CC8005AB259 /* PetImageTypes.swift in Sources */,
 				F27BC5EF26557F3D0017B198 /* SearchPartyMapView.swift in Sources */,
+				F2DE92DB2786279B002A0833 /* MyImagePicker.swift in Sources */,
 				F23D7256268C2EA100CB80C6 /* FilterView.swift in Sources */,
 				F2D7459225FB2484003C5157 /* PageViewController.swift in Sources */,
 				F220A6FB2682F14600319F2F /* MainView.swift in Sources */,

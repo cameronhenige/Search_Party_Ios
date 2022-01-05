@@ -15,6 +15,7 @@ struct AddLostPet: View {
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var showingPhotoActionSheet = false
     @State var title = ""
+    @State var submitButton = ""
     @State var isShowCamera = false
     @State var isShowGallery = false
     var petTypes = ["Dog", "Cat", "Bird", "Other"]
@@ -79,7 +80,6 @@ struct AddLostPet: View {
                         
                         ZStack {
                             
-                            
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
                                 .fill(Color.gray)
                                 .frame(height: 150)
@@ -107,7 +107,6 @@ struct AddLostPet: View {
             
             Section(header: Text("Add a description of what you think people should know about your pet. Be sure to include things like unique markings, temperament, and health conditions.")) {
                 TextArea("Description", text: $addLostPetViewModel.lostPetForm.petDescription)
-                //TextEditor(text: $addLostPetViewModel.lostPetForm.petDescription)
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
             
@@ -136,23 +135,17 @@ struct AddLostPet: View {
             
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
                 
-                let isEditing = lostViewRouter.isOnEditingLostPet
                 addLostPetViewModel.addLostPet(lostPetId: lostViewRouter.selectedLostPet?.id, owners: [Auth.auth().currentUser!.uid], lostLocation: (currentLocation?.geohash(length: 7))!) { result in
                     lostViewRouter.isOnAddingLostPet = false
                     lostViewRouter.isOnEditingLostPet = false
                 }
-                
-                
 
-                
             }) {
-                Text("Post Lost Pet")
+                Text(submitButton)
             }.buttonStyle(PrimaryButtonStyle()).padding()) {
                 TextField("Name", text: $addLostPetViewModel.lostPetForm.name).textContentType(.name)
                 iPhoneNumberField("Phone Number", text: $addLostPetViewModel.lostPetForm.phoneNumber)
                 TextField("Email", text: $addLostPetViewModel.lostPetForm.email).textContentType(.emailAddress)
-                
-                
                 
                 VStack(alignment: .leading) {
                     
@@ -190,136 +183,32 @@ struct AddLostPet: View {
             
             if(addLostPetViewModel.isEditing) {
                 self.title = "Edit Pet"
+                self.submitButton = "Save"
             } else {
                 self.title = "Add Lost Pet"
+                self.submitButton = "Post Lost Pet"
             }
-            
-            
             
         }.navigationTitle("\(title)")
         .sheet(isPresented: $isShowGallery) {
             MyImagePicker(images: $addLostPetViewModel.lostPetForm.images, isShowGallery: self.$isShowGallery)
         }.sheet(isPresented: $isShowCamera) {
             SUImagePickerView(sourceType: .camera, images: self.$addLostPetViewModel.lostPetForm.images, isShowCamera: self.$isShowCamera)
-            
         }
     }
     
 }
 
-struct SUImagePickerView: UIViewControllerRepresentable {
-    
-    var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @Binding var images: [SelectedImage]
-    @Binding var isShowCamera: Bool
-    
-    func makeCoordinator() -> ImagePickerViewCoordinator {
-        return ImagePickerViewCoordinator(parent1: self)
+
+
+
+
+
+
+struct AddLostPet_Previews: PreviewProvider {
+    @State var lostPetForm: LostPetForm = LostPetForm()
+
+    static var previews: some View {
+        AddLostPet(addLostPetViewModel: AddLostPetViewModel(lostPetForm: LostPetForm(), isEditing: false))
     }
-    
-    func makeUIViewController(context: Context) -> UIImagePickerController {
-        let pickerController = UIImagePickerController()
-        pickerController.sourceType = sourceType
-        pickerController.delegate = context.coordinator
-        return pickerController
-    }
-    
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
-        // Nothing to update here
-    }
-    
-    class ImagePickerViewCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        
-        var parent: SUImagePickerView
-        
-        
-        init(parent1: SUImagePickerView) {
-            parent = parent1
-        }
-        
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                
-                let selectedImage = SelectedImage(name: nil, isExisting: false, image: image )
-                self.parent.images.append(selectedImage)
-            }
-            self.parent.isShowCamera = false
-        }
-        
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            self.parent.isShowCamera = false
-            
-        }
-        
-    }
-    
 }
-
-
-
-struct MyImagePicker : UIViewControllerRepresentable {
-    @Binding var images: [SelectedImage]
-    @Binding var isShowGallery: Bool
-    
-    func makeCoordinator() -> Coordinator {
-        return MyImagePicker.Coordinator(parent1: self)
-    }
-    
-    
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images
-        
-        config.selectionLimit = 0
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = context.coordinator
-        
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        
-    }
-    
-    class Coordinator: NSObject, PHPickerViewControllerDelegate{
-        var parent: MyImagePicker
-        
-        init(parent1: MyImagePicker) {
-            parent = parent1
-        }
-        
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            parent.isShowGallery.toggle()
-            for img in results{
-                
-                if img.itemProvider.canLoadObject(ofClass: UIImage.self){
-                    
-                    img.itemProvider.loadObject(ofClass: UIImage.self) { (image, err) in
-                        
-                        guard image != nil else {
-                            print(err)
-                            return
-                        }
-                        
-                        let selectedImage = SelectedImage(name: nil, isExisting: false, image: image as? UIImage)
-                        self.parent.images.append(selectedImage)
-                        
-                    }
-                } else{
-                    print("cannot be loaded")
-                    
-                }
-            }
-            
-        }
-    }
-    
-}
-
-//struct AddLostPet_Previews: PreviewProvider {
-//    @State var lostPetForm: LostPetForm = LostPetForm()
-//
-//    static var previews: some View {
-//        AddLostPet(lostPetForm: $lostPetForm)
-//    }
-//}
