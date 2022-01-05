@@ -16,6 +16,7 @@ import GeoFire
 import FlexibleGeohash
 
 class AddLostPetViewModel: NSObject, ObservableObject {
+    @Published var isEditing = false
 
     @Published var showAlert = false
     @Published var errorTitle = ""
@@ -30,21 +31,39 @@ class AddLostPetViewModel: NSObject, ObservableObject {
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var isAddingLostPet = false
-
+    @Published var lostPetForm: LostPetForm
     private var completionHandler: ((Result<String, Error>) -> Void)?
     private var db = Firestore.firestore()
     private let locationManager = CLLocationManager()
     static let LOST_PET_IMAGE_COMPRESSION : Float = 0.4
     var imagesAdded = [] as [String]
     
-    override init() {
-      super.init()
-      self.locationManager.delegate = self
-    requestLocation()
+    
+    init(lostPetForm: LostPetForm, isEditing: Bool) {
+        self.lostPetForm = lostPetForm
+        self.isEditing = isEditing
+        super.init()
+
+        self.locationManager.delegate = self
+      requestLocation()
         
+        if(isEditing) {
+        if let lostLocation = lostPetForm.lostLocation {
+            let geoHash = GeoHashConverter.decode(hash: lostLocation)
+            
+            let min = CLLocationCoordinate2D(latitude: (geoHash?.latitude.min)!, longitude: (geoHash?.longitude.min)!)
+            let max = CLLocationCoordinate2D(latitude: (geoHash?.latitude.max)!, longitude: (geoHash?.longitude.max)!)
+            
+            let midPoint = CLLocationCoordinate2D.midpoint(between: min, and: max)
+            
+            userLocation = midPoint
+            
+        }
+        }
+
     }
     
-    func addLostPet(lostPetForm: LostPetForm, isEditing: Bool, lostPetId: String?, owners: [String], lostLocation: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func addLostPet(lostPetId: String?, owners: [String], lostLocation: String, completionHandler: @escaping (Result<String, Error>) -> Void) {
         self.completionHandler = completionHandler
         if(!lostPetForm.petName.isEmpty){
 
@@ -84,7 +103,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 //                        if(petImages.isEmpty) {
 //                            self.completionHandler!(.success("Edited Lost Pet"))
 //                        }else {
-                        self.addImages(lostPetDocumentId: lostPetId!, petImages: lostPetForm.images)
+                        self.addImages(lostPetDocumentId: lostPetId!, petImages: self.lostPetForm.images)
                         //}
                     }
                 }
@@ -99,7 +118,7 @@ class AddLostPetViewModel: NSObject, ObservableObject {
 //                    if(petImages.isEmpty) {
 //                        self.completionHandler!(.success("Added Lost Pet"))
 //                    }else {
-                    self.addImages(lostPetDocumentId: ref!.documentID, petImages: lostPetForm.images)
+                    self.addImages(lostPetDocumentId: ref!.documentID, petImages: self.lostPetForm.images)
                     //}
                 }
             

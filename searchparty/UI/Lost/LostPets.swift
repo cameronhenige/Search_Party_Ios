@@ -49,7 +49,7 @@ struct LostPets: View {
                     }
                     
                     
-                    NavigationLink(destination: AddLostPet(lostPetForm: $lostPetForm).environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
+                    NavigationLink(destination: AddLostPet(addLostPetViewModel: AddLostPetViewModel(lostPetForm: lostPetForm, isEditing: false)).environmentObject(searchPartyAppState), isActive: $searchPartyAppState.isOnAddingLostPet) {
                 
                             }
                     

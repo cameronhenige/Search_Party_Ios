@@ -9,9 +9,9 @@ import MapKit
 
 struct AddLostPet: View {
     
-    @Binding var lostPetForm: LostPetForm
+    //@Binding var lostPetForm: LostPetForm
     @EnvironmentObject var lostViewRouter: SearchPartyAppState
-    @StateObject private var addLostPetViewModel = AddLostPetViewModel()
+    @ObservedObject var addLostPetViewModel: AddLostPetViewModel
     @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
     @State private var showingPhotoActionSheet = false
@@ -29,50 +29,50 @@ struct AddLostPet: View {
         Form {
             
             Section(header: Text("Let's get some information about your lost pet.")) {
-                TextField("Pet Name", text: $lostPetForm.petName)
+                TextField("Pet Name", text: $addLostPetViewModel.lostPetForm.petName)
                 
-                Picker(selection: $lostPetForm.petType, label: Text("Pet Type")) {
+                Picker(selection: $addLostPetViewModel.lostPetForm.petType, label: Text("Pet Type")) {
                     ForEach(0 ..< petTypes.count) {
                         Text(self.petTypes[$0])
                     }
                 }.pickerStyle(SegmentedPickerStyle())
                 
-                Picker(selection: $lostPetForm.petSex, label: Text("Sex")) {
+                Picker(selection: $addLostPetViewModel.lostPetForm.petSex, label: Text("Sex")) {
                     ForEach(0 ..< petSexes.count) {
                         Text(self.petSexes[$0])
                     }
                 }.pickerStyle(SegmentedPickerStyle())
                 
-                TextField("Approximate Age", text: $lostPetForm.petAge)
+                TextField("Approximate Age", text: $addLostPetViewModel.lostPetForm.petAge)
                     .keyboardType(.numberPad)
-                    .onReceive(Just(lostPetForm.petAge)) { newValue in
+                    .onReceive(Just(addLostPetViewModel.lostPetForm.petAge)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
                         if filtered != newValue {
-                            self.lostPetForm.petAge = filtered
+                            self.addLostPetViewModel.lostPetForm.petAge = filtered
                         }
                     }
                 
-                TextField("Breed", text: $lostPetForm.petBreed)
+                TextField("Breed", text: $addLostPetViewModel.lostPetForm.petBreed)
                 
                 VStack(alignment: .leading) {
                     Text("Provide as many angles of your pet as possible.")
                     LazyVGrid(columns: imageColumns, spacing: 10) {
                         
-                        ForEach(0..<lostPetForm.images.count, id: \.self) { i in
+                        ForEach(0..<addLostPetViewModel.lostPetForm.images.count, id: \.self) { i in
                             
                             ZStack {
                                 
-                                if(lostPetForm.images[i].isExisting){
-                                    ExistingImage(url: lostPetForm.images[i].name!, lostPetId: lostViewRouter.selectedLostPet?.id)
+                                if(addLostPetViewModel.lostPetForm.images[i].isExisting){
+                                    ExistingImage(url: addLostPetViewModel.lostPetForm.images[i].name!, lostPetId: lostViewRouter.selectedLostPet?.id)
                                     
                                 } else {
-                                    Image(uiImage: lostPetForm.images[i].image!).resizable().frame(height: 150).cornerRadius(20)
+                                    Image(uiImage: addLostPetViewModel.lostPetForm.images[i].image!).resizable().frame(height: 150).cornerRadius(20)
                                 }
                                 
                                 Image(systemName: "trash")
                                     .font(.largeTitle)
                                     .foregroundColor(.white).frame(width: 50, height: 50, alignment: .topTrailing).onTapGesture {
-                                        lostPetForm.images.remove(at: i)
+                                        addLostPetViewModel.lostPetForm.images.remove(at: i)
                                     }
                             }
                         }
@@ -108,7 +108,7 @@ struct AddLostPet: View {
             
             Section(header: Text("Add a description of what you think people should know about your pet. Be sure to include things like unique markings, temperament, and health conditions.")) {
                 
-                MultilineTextField("Description", text: $lostPetForm.petDescription)
+                MultilineTextField("Description", text: $addLostPetViewModel.lostPetForm.petDescription)
                 
             }.padding(.vertical).disabled(addLostPetViewModel.isAddingLostPet)
             
@@ -116,7 +116,7 @@ struct AddLostPet: View {
             Section(header: Text("When and where was your pet lost?")) {
                 DatePicker(
                     "Lost Date",
-                    selection: $lostPetForm.lostDate,
+                    selection: $addLostPetViewModel.lostPetForm.lostDate,
                     displayedComponents: [.date]
                 )
                 
@@ -126,11 +126,11 @@ struct AddLostPet: View {
                     
                     if(addLostPetViewModel.userLocation != nil) {
                         
-                        AddLostPetMapView(map: self.$map, name: self.$lostPetForm.name, coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
+                        AddLostPetMapView(map: self.$map, name: self.$addLostPetViewModel.lostPetForm.name, coordinate: self.$currentLocation, initialLocation: addLostPetViewModel.userLocation!).frame(height: 300).overlay(Image("dog").resizable().frame(width: 45.0, height: 45.0))
                         
                     }
                     
-                    TextField("Location Description", text: $lostPetForm.lostLocationDescription).padding(.vertical)
+                    TextField("Location Description", text: $addLostPetViewModel.lostPetForm.lostLocationDescription).padding(.vertical)
                     
                 }
                 
@@ -139,7 +139,7 @@ struct AddLostPet: View {
             Section(header: Text("Let's get your contact information."), footer: Button(action: {
                 
                 let isEditing = lostViewRouter.isOnEditingLostPet
-                addLostPetViewModel.addLostPet(lostPetForm: lostPetForm, isEditing: isEditing, lostPetId: lostViewRouter.selectedLostPet?.id, owners: [Auth.auth().currentUser!.uid], lostLocation: (currentLocation?.geohash(length: 7))!) { result in
+                addLostPetViewModel.addLostPet(lostPetId: lostViewRouter.selectedLostPet?.id, owners: [Auth.auth().currentUser!.uid], lostLocation: (currentLocation?.geohash(length: 7))!) { result in
                     lostViewRouter.isOnAddingLostPet = false
                     lostViewRouter.isOnEditingLostPet = false
                 }
@@ -150,9 +150,9 @@ struct AddLostPet: View {
             }) {
                 Text("Post Lost Pet")
             }.buttonStyle(PrimaryButtonStyle()).padding()) {
-                TextField("Name", text: $lostPetForm.name).textContentType(.name)
-                iPhoneNumberField("Phone Number", text: $lostPetForm.phoneNumber)
-                TextField("Email", text: $lostPetForm.email).textContentType(.emailAddress)
+                TextField("Name", text: $addLostPetViewModel.lostPetForm.name).textContentType(.name)
+                iPhoneNumberField("Phone Number", text: $addLostPetViewModel.lostPetForm.phoneNumber)
+                TextField("Email", text: $addLostPetViewModel.lostPetForm.email).textContentType(.emailAddress)
                 
                 
                 
@@ -160,14 +160,14 @@ struct AddLostPet: View {
                     
                     Text("Preferred Contact Method").padding(.vertical)
                     
-                    Picker(selection: $lostPetForm.preferredContactMethod, label: Text("Preferred Contact Method")) {
+                    Picker(selection: $addLostPetViewModel.lostPetForm.preferredContactMethod, label: Text("Preferred Contact Method")) {
                         ForEach(0 ..< preferredContactMethods.count) {
                             Text(self.preferredContactMethods[$0])
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                     
-                    if(self.lostPetForm.preferredContactMethod == 2){
-                        TextField("Other Contact Method", text: $lostPetForm.otherContactMethod).padding(.vertical)
+                    if(self.addLostPetViewModel.lostPetForm.preferredContactMethod == 2){
+                        TextField("Other Contact Method", text: $addLostPetViewModel.lostPetForm.otherContactMethod).padding(.vertical)
                     }
                     
                     
@@ -190,21 +190,8 @@ struct AddLostPet: View {
             
         }.onAppear() {
             
-            if(lostViewRouter.isOnEditingLostPet) {
+            if(addLostPetViewModel.isEditing) {
                 self.title = "Edit Pet"
-                
-                if let lostLocation = lostPetForm.lostLocation {
-                    let geoHash = GeoHashConverter.decode(hash: lostLocation)
-                    
-                    let min = CLLocationCoordinate2D(latitude: (geoHash?.latitude.min)!, longitude: (geoHash?.longitude.min)!)
-                    let max = CLLocationCoordinate2D(latitude: (geoHash?.latitude.max)!, longitude: (geoHash?.longitude.max)!)
-                    
-                    let midPoint = CLLocationCoordinate2D.midpoint(between: min, and: max)
-                    
-                    addLostPetViewModel.userLocation = midPoint
-                    
-                }
-                
             } else {
                 self.title = "Add Lost Pet"
             }
@@ -213,9 +200,9 @@ struct AddLostPet: View {
             
         }.navigationTitle("\(title)")
         .sheet(isPresented: $isShowGallery) {
-            MyImagePicker(images: $lostPetForm.images, isShowGallery: self.$isShowGallery)
+            MyImagePicker(images: $addLostPetViewModel.lostPetForm.images, isShowGallery: self.$isShowGallery)
         }.sheet(isPresented: $isShowCamera) {
-            SUImagePickerView(sourceType: .camera, images: self.$lostPetForm.images, isShowCamera: self.$isShowCamera)
+            SUImagePickerView(sourceType: .camera, images: self.$addLostPetViewModel.lostPetForm.images, isShowCamera: self.$isShowCamera)
             
         }
     }
