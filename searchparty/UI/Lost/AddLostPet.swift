@@ -201,10 +201,6 @@ struct AddLostPet: View {
 
 
 
-
-
-
-
 struct AddLostPet_Previews: PreviewProvider {
     @State var lostPetForm: LostPetForm = LostPetForm()
 
