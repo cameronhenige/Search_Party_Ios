@@ -9,6 +9,8 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     
     @Binding var coordinate: CLLocationCoordinate2D?
     
+    @Binding var disabledLocationHashes: [String]?
+
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
@@ -29,33 +31,69 @@ struct AddHouseLocationMapView: UIViewRepresentable {
             self.parent.map.removeOverlays(self.parent.map.overlays)
             
             let geoHash = mapView.centerCoordinate.geohash(length: 7)
-            print("current geohash " + geoHash)
             
-            print(GeoHashConverter.decode(hash: geoHash))
-            
-            let geoHashSquare = GeoHashConverter.decode(hash: geoHash)
-            
-            let topLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.min)
-            let topRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.min, geoHashSquare!.longitude.max)
-            let bottomLeft = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.min)
-            let bottomRight = CLLocationCoordinate2DMake(geoHashSquare!.latitude.max, geoHashSquare!.longitude.max)
+            let polygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: geoHash, color: "#AA0000")
 
-            let points = [topLeft, topRight, bottomRight, bottomLeft]
+            if let disabledHashes = parent.disabledLocationHashes {
+                for hash in disabledHashes {
+                    let disabledPolygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: hash, color: "#FF0000")
+                    
+                    self.parent.map.addOverlay(disabledPolygon)
+
+                }
+            }
+
             
-            let polygon = MKPolygon(coordinates: points, count: points.count)
             
             self.parent.map.addOverlay(polygon)
 
             
         }
         
+//        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//
+//            let over = MKPolygonRenderer(overlay: overlay)
+//            over.strokeColor = UIConfiguration.colorPrimary
+//            over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
+//            over.lineWidth = 3
+//            return over
+//        }
+        
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            
+            if let polyline = overlay as? PathPolyline {
+                let testlineRenderer = MKPolylineRenderer(polyline: polyline)
+                testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
+                testlineRenderer.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
+
+                testlineRenderer.lineWidth = 3
+                return testlineRenderer
+            }
+            
+            
+            if let polygon = overlay as? ColoredPolygon {
+                //                        let testlineRenderer = MKPolylineRenderer(polyline: polyline)
+                //                testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
+                //
+                //                        testlineRenderer.lineWidth = 3.0
+                //                        return testlineRenderer
+                
+                
+                let over = MKPolygonRenderer(overlay: overlay)
+                over.strokeColor = UIColor(hexString: polygon.color!)
+                over.fillColor = UIColor(hexString: polygon.color!).withAlphaComponent(0.3)
+                over.lineWidth = 3
+                return over
+                
+            }
+            
             
             let over = MKPolygonRenderer(overlay: overlay)
             over.strokeColor = UIConfiguration.colorPrimary
             over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
             over.lineWidth = 3
             return over
+            
         }
         
         

@@ -9,19 +9,40 @@ import FlexibleGeohash
 
 class AddHouseLocationViewModel: NSObject, ObservableObject {
 
-    @Published var isLoadingLocation = false
+    @Published var isLoadingDisabledLocations = true
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
     @Published var userLatitude: Double = 0
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
+    @Published var disabledLocationHashes: [String]? = []
 
     private let locationManager = CLLocationManager()
     
     override init() {
       super.init()
       self.locationManager.delegate = self
+        loadUser()
     }
 
+    func loadUser() {
+
+        let document = Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid)
+        
+        document.addSnapshotListener { documentSnapshot, error in
+            if(documentSnapshot!.exists) {
+            if let user = try? documentSnapshot!.data(as: SPUser.self) {
+                self.disabledLocationHashes = user.disabledLocationHashes
+
+                }else {
+                    //todo handle error
+                }
+                
+            }else {
+                //todo show error
+            }
+            }
+        
+    }
     
     func requestLocationPermission() {
         locationManager.requestAlwaysAuthorization()
@@ -46,28 +67,16 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     
     func saveHomeLocation(location: CLLocationCoordinate2D, completionHandler: @escaping (Result<String, Error>) -> Void) {
         let geoHash = location.geohash(length: 7)
-        print(geoHash)
         
-        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).setData([
-            "homeGeoHash": geoHash
-        ], merge: true) { err in
+        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).updateData([
+    "disabledLocationHashes": FieldValue.arrayUnion([geoHash])]) { err in
                 if let err = err {
                     print("Error updating house: \(err)") //todo
                 } else {
-                    completionHandler(.success("Updated House"))
+
                     //todo finish
                 }
             }
-        
-        //todo save to firebase
-        
-//        NewFirestoreUtil().getUserReference().set(getData(), SetOptions.merge()).addOnSuccessListener {
-//            findNavController().popBackStack()
-//        }.addOnFailureListener {
-//            hideLoading()
-//            Toast.makeText(requireContext(), "There was an issue saving your home location.", Toast.LENGTH_SHORT).show()
-//        }
-
     }
 }
 

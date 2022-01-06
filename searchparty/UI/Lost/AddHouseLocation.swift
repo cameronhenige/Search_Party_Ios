@@ -25,13 +25,10 @@ struct AddHouseLocation: View {
         VStack {
 
             ZStack(alignment: .top) {
-                
 
-                
-                
         if(addHouseLocationViewModel.userLocation != nil) {
 
-            AddHouseLocationMapView(map: self.$map, coordinate: self.$currentLocation, initialLocation: addHouseLocationViewModel.userLocation!).overlay(Image("outline_home_black_36pt").resizable().frame(width: 45.0, height: 45.0))
+            AddHouseLocationMapView(map: self.$map, coordinate: self.$currentLocation, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(Image("outline_home_black_36pt").resizable().frame(width: 45.0, height: 45.0))
         }
                 
             }
@@ -42,10 +39,9 @@ struct AddHouseLocation: View {
 
                     Button(action: {
                         self.showView = false
-                        //todo skip
 
                     }) {
-                        Text("Skip")
+                        Text("Add Disabled")
                     }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
                 
                     
@@ -54,9 +50,8 @@ struct AddHouseLocation: View {
                             self.addHouseLocationViewModel.saveHomeLocation(location: self.map.centerCoordinate) { result in
                                 self.showView = false
                             }
-                            //todo save
                         }) {
-                            Text("Save")
+                            Text("Skip")
                         }.buttonStyle(PrimaryButtonStyle())
                     
                     
@@ -73,8 +68,8 @@ struct AddHouseLocation: View {
     }
 }
 
-//struct AddHouseLocation_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddHouseLocation(showView: <#Binding<Bool>#>)
-//    }
-//}
+struct AddHouseLocation_Previews: PreviewProvider {
+    static var previews: some View {
+        AddHouseLocation(showView: .constant(true))
+    }
+}

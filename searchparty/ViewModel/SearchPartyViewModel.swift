@@ -231,7 +231,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
         
         
         Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).updateData([
-            "searchStartLocations": FieldValue.arrayUnion([self.initialLocationGeoHash])
+            "disabledLocationHashes": FieldValue.arrayUnion([self.initialLocationGeoHash])
         ]) { err in
             if let err = err {
                 print("Error updating document: \(err)")
@@ -243,7 +243,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
                 Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).getDocument { (document, error) in
                     if(document!.exists) {
                     if let user = try? document!.data(as: SPUser.self) {
-                        self.listOfPrivateGeoHashes = user.searchStartLocations
+                        self.listOfPrivateGeoHashes = user.disabledLocationHashes
 
 
                     

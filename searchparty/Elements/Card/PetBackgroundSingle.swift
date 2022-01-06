@@ -31,14 +31,14 @@ struct PetBackgroundSingle: View {
             }else if petType == "Bird" {
                 Image("bird")
             }else {
-                Image("maps_default_marker")
+                Image("marker")
             }
         }
     }
 }
 
-//struct PetBackgroundSingle_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PetBackground(generalImages: nil, petType: "Dog")
-//    }
-//}
+struct PetBackgroundSingle_Previews: PreviewProvider {
+    static var previews: some View {
+        PetBackground(generalImages: nil, petType: "Dog", lostPetId: "id")
+    }
+}
