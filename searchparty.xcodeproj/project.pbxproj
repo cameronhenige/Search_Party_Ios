@@ -43,9 +43,9 @@
 		F220A6CA2671B4EA00319F2F /* TestUIFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6C92671B4EA00319F2F /* TestUIFile.swift */; };
 		F220A6CE2671C13B00319F2F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6CD2671C13B00319F2F /* DateExtension.swift */; };
 		F220A6D02675706D00319F2F /* ColoredPolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6CF2675706D00319F2F /* ColoredPolygon.swift */; };
-		F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */; };
+		F220A6D22677D9CC00319F2F /* SelectPrivacyLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D12677D9CC00319F2F /* SelectPrivacyLocations.swift */; };
 		F220A6D4267846BE00319F2F /* AddHouseLocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */; };
-		F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */; };
+		F220A6D62678482200319F2F /* SelectPrivacyLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6D52678482100319F2F /* SelectPrivacyLocationsViewModel.swift */; };
 		F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */; };
 		F220A6FB2682F14600319F2F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FA2682F14600319F2F /* MainView.swift */; };
 		F220A6FF268430E600319F2F /* SearchPartyAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FE268430E600319F2F /* SearchPartyAppState.swift */; };
@@ -194,9 +194,9 @@
 		F220A6C92671B4EA00319F2F /* TestUIFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIFile.swift; sourceTree = "<group>"; };
 		F220A6CD2671C13B00319F2F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		F220A6CF2675706D00319F2F /* ColoredPolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredPolygon.swift; sourceTree = "<group>"; };
-		F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocation.swift; sourceTree = "<group>"; };
+		F220A6D12677D9CC00319F2F /* SelectPrivacyLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPrivacyLocations.swift; sourceTree = "<group>"; };
 		F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationMapView.swift; sourceTree = "<group>"; };
-		F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHouseLocationViewModel.swift; sourceTree = "<group>"; };
+		F220A6D52678482100319F2F /* SelectPrivacyLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPrivacyLocationsViewModel.swift; sourceTree = "<group>"; };
 		F220A6DA267C4D1800319F2F /* searchparty.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = searchparty.entitlements; sourceTree = "<group>"; };
 		F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFcmTokenViewModel.swift; sourceTree = "<group>"; };
 		F220A6FA2682F14600319F2F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -422,7 +422,7 @@
 				F233D3DE2633EDF600912F28 /* AddLostPet.swift */,
 				F27BC5EE26557F3D0017B198 /* SearchPartyMapView.swift */,
 				F220A6C92671B4EA00319F2F /* TestUIFile.swift */,
-				F220A6D12677D9CC00319F2F /* AddHouseLocation.swift */,
+				F220A6D12677D9CC00319F2F /* SelectPrivacyLocations.swift */,
 				F220A6D3267846BE00319F2F /* AddHouseLocationMapView.swift */,
 				F23D72332687646C00CB80C6 /* PetView.swift */,
 				F23D72532689667800CB80C6 /* ActivityViewController.swift */,
@@ -592,7 +592,7 @@
 				F216C05C25FD5F560026B180 /* LostPetsViewModel.swift */,
 				F2DBDDF02643A1FA00E9C987 /* AddLostPetViewModel.swift */,
 				F27BC5F02655823C0017B198 /* SearchPartyViewModel.swift */,
-				F220A6D52678482100319F2F /* AddHouseLocationViewModel.swift */,
+				F220A6D52678482100319F2F /* SelectPrivacyLocationsViewModel.swift */,
 				F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */,
 				F255CBA62695297F005AB259 /* GenerateFlyerViewModelX.swift */,
 				F255CBAC2695F9F2005AB259 /* FilterViewModel.swift */,
@@ -857,7 +857,7 @@
 				346DFE1F258503F600449492 /* Picture.swift in Sources */,
 				F276A4F026A2925F00F36394 /* UITextViewWrapper.swift in Sources */,
 				F2DBDDD3263B238600E9C987 /* PageViewControllerLostPet.swift in Sources */,
-				F220A6D22677D9CC00319F2F /* AddHouseLocation.swift in Sources */,
+				F220A6D22677D9CC00319F2F /* SelectPrivacyLocations.swift in Sources */,
 				F255CBA72695297F005AB259 /* GenerateFlyerViewModelX.swift in Sources */,
 				F255CBB5269E488B005AB259 /* ExistingImage.swift in Sources */,
 				F2D745CB25FB259C003C5157 /* PageControl.swift in Sources */,
@@ -888,7 +888,7 @@
 				34DCE8C1240817CD00C4EE89 /* MainScreen.swift in Sources */,
 				F2DBDDE8263D0E4800E9C987 /* ImagePicker.swift in Sources */,
 				F2D7458825FB21B6003C5157 /* OnboardingRouter.swift in Sources */,
-				F220A6D62678482200319F2F /* AddHouseLocationViewModel.swift in Sources */,
+				F220A6D62678482200319F2F /* SelectPrivacyLocationsViewModel.swift in Sources */,
 				F233D3D72633D89000912F28 /* EditLostPet.swift in Sources */,
 				F255CBAF269B2F07005AB259 /* ViewUtil.swift in Sources */,
 				344723C824ABC64A003B9F50 /* ButtonApplePay.swift in Sources */,

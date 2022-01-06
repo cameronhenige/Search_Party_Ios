@@ -7,26 +7,21 @@ import FirebaseAuth
 import GeoFire
 import FlexibleGeohash
 
-class AddHouseLocationViewModel: NSObject, ObservableObject {
+class SelectPrivacyLocationsViewModel: NSObject, ObservableObject {
 
     @Published var isLoadingUserLocation = true
-
     @Published var isLoadingDisabledLocations = true
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
     @Published var userLatitude: Double = 0
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var disabledLocationHashes: [String] = []
-    
-    
-
     private let locationManager = CLLocationManager()
     
     override init() {
       super.init()
       locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        //locationManager.requestLocation()
         locationManager.startUpdatingLocation()
         loadUser()
     }
@@ -39,7 +34,6 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
             if(documentSnapshot!.exists) {
             if let user = try? documentSnapshot!.data(as: SPUser.self) {
                 self.disabledLocationHashes = user.disabledLocationHashes
-
                 }else {
                     //todo handle error
                 }
@@ -95,7 +89,7 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     }
 }
 
-extension AddHouseLocationViewModel: CLLocationManagerDelegate {
+extension SelectPrivacyLocationsViewModel: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let location = locations.last else { return }

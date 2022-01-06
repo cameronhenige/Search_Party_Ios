@@ -55,7 +55,7 @@ struct SearchPartyView: View {
             
             ZStack(alignment: .top) {
                 
-                NavigationLink(destination: AddHouseLocation(showView: self.$searchPartyViewModel.isOnAddHomeScreen), isActive: $searchPartyViewModel.isOnAddHomeScreen) {
+                NavigationLink(destination: SelectPrivacyLocations(showView: self.$searchPartyViewModel.isOnSelectPrivateAreasScreen), isActive: $searchPartyViewModel.isOnSelectPrivateAreasScreen) {
                     
                 }
                 

@@ -37,7 +37,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     var lostPet: LostPet?
     @Published var isSearching: Bool = false
     @Published var isInsideOfAPrivateGeoHash = false
-    @Published var isOnAddHomeScreen: Bool = false
+    @Published var isOnSelectPrivateAreasScreen: Bool = false
     @Published var pictureUrl: URL?
 
     
@@ -146,12 +146,8 @@ class SearchPartyViewModel: NSObject, ObservableObject {
     }
     func hasSeenSearchPartyShowcase() -> Bool{
                 
-        let hasSeenSearchPartyIntro = UserDefaults.standard.bool(forKey: "HAS_SEEN_SEARCH_PARTY_INTRO")
-        if(hasSeenSearchPartyIntro == nil || hasSeenSearchPartyIntro == false){
-            return false
-        }else{
-            return false
-        }
+        return UserDefaults.standard.bool(forKey: "HAS_SEEN_SEARCH_PARTY_INTRO")
+
     }
     
     func startUpdatingLocationButtonAction() {
@@ -178,7 +174,7 @@ class SearchPartyViewModel: NSObject, ObservableObject {
             
             UserDefaults.standard.setValue(true, forKey: "HAS_SEEN_SEARCH_PARTY_INTRO")
             
-            self.isOnAddHomeScreen = true
+            self.isOnSelectPrivateAreasScreen = true
         }
         
         

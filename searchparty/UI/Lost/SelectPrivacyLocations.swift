@@ -9,19 +9,14 @@
 import SwiftUI
 import MapKit
 
-struct AddHouseLocation: View {
+struct SelectPrivacyLocations: View {
     @Binding var showView : Bool
-
     @State var isOnLostPetIsFound = false
-
     @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
     @State var mapCenter: CLLocationCoordinate2D?
+    @ObservedObject private var addHouseLocationViewModel = SelectPrivacyLocationsViewModel()
 
-    @ObservedObject private var addHouseLocationViewModel = AddHouseLocationViewModel()
-
-
-    
     var AddRemoveButton: some View {
         
         if(addHouseLocationViewModel.disabledLocationHashes.contains((map.centerCoordinate.geohash(length: 7)))) {
@@ -39,7 +34,6 @@ struct AddHouseLocation: View {
             }).frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
                 .foregroundColor(Color(.white))
                 .clipShape(Capsule()).padding()
-
         }
 
     }
@@ -58,7 +52,7 @@ struct AddHouseLocation: View {
 
         if(addHouseLocationViewModel.userLocation != nil) {
 
-            AddHouseLocationMapView(map: self.$map, mapCenter: $mapCenter, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(AddRemoveButton, alignment: .bottomTrailing).overlay(Image("dot").resizable().frame(width: 45.0, height: 45.0))
+            SelectPrivacyLocationsMapView(map: self.$map, mapCenter: $mapCenter, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(AddRemoveButton, alignment: .bottomTrailing).overlay(Image("dot").resizable().frame(width: 45.0, height: 45.0))
         }
                 
             }
@@ -95,6 +89,6 @@ struct AddHouseLocation: View {
 
 struct AddHouseLocation_Previews: PreviewProvider {
     static var previews: some View {
-        AddHouseLocation(showView: .constant(true))
+        SelectPrivacyLocations(showView: .constant(true))
     }
 }

@@ -3,7 +3,7 @@
 import SwiftUI
 import MapKit
 
-struct AddHouseLocationMapView: UIViewRepresentable {
+struct SelectPrivacyLocationsMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
     
@@ -16,33 +16,18 @@ struct AddHouseLocationMapView: UIViewRepresentable {
         return Coordinator(self)
     }
     
-
-    
     class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: AddHouseLocationMapView
+        var parent: SelectPrivacyLocationsMapView
         
-        init(_ parent: AddHouseLocationMapView) {
+        init(_ parent: SelectPrivacyLocationsMapView) {
             self.parent = parent
         }
         
-        
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.mapCenter = mapView.centerCoordinate
-
         }
         
-        
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            
-            if let polyline = overlay as? PathPolyline {
-                let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-                testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
-                testlineRenderer.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
-
-                testlineRenderer.lineWidth = 3
-                return testlineRenderer
-            }
-            
             
             if let polygon = overlay as? ColoredPolygon {
                 let over = MKPolygonRenderer(overlay: overlay)
@@ -50,9 +35,7 @@ struct AddHouseLocationMapView: UIViewRepresentable {
                 over.fillColor = UIColor(hexString: polygon.color!).withAlphaComponent(0.3)
                 over.lineWidth = 3
                 return over
-                
             }
-            
             
             let over = MKPolygonRenderer(overlay: overlay)
             over.strokeColor = UIConfiguration.colorPrimary
@@ -87,7 +70,6 @@ struct AddHouseLocationMapView: UIViewRepresentable {
             for hash in disabledLocationHashes {
                 let disabledPolygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: hash, color: "#FF0000")
                 overlays.append(disabledPolygon)
-
             }
         
 
@@ -98,8 +80,3 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     }
 }
 
-//struct MapView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MapView(coordinate: restaurantsData[0].locationCoordinate)
-//    }
-//}
