@@ -9,7 +9,7 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     
     @Binding var coordinate: CLLocationCoordinate2D?
     
-    @Binding var disabledLocationHashes: [String]?
+    @Binding var disabledLocationHashes: [String]
 
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
@@ -28,36 +28,9 @@ struct AddHouseLocationMapView: UIViewRepresentable {
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             self.parent.coordinate = mapView.centerCoordinate
-            self.parent.map.removeOverlays(self.parent.map.overlays)
-            
-            let geoHash = mapView.centerCoordinate.geohash(length: 7)
-            
-            let polygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: geoHash, color: "#AA0000")
 
-            if let disabledHashes = parent.disabledLocationHashes {
-                for hash in disabledHashes {
-                    let disabledPolygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: hash, color: "#FF0000")
-                    
-                    self.parent.map.addOverlay(disabledPolygon)
-
-                }
-            }
-
-            
-            
-            self.parent.map.addOverlay(polygon)
-
-            
         }
         
-//        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//
-//            let over = MKPolygonRenderer(overlay: overlay)
-//            over.strokeColor = UIConfiguration.colorPrimary
-//            over.fillColor = UIConfiguration.colorPrimaryDark.withAlphaComponent(0.3)
-//            over.lineWidth = 3
-//            return over
-//        }
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             
@@ -110,6 +83,25 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
+        
+        view.removeOverlays(view.overlays)
+        
+        let geoHash = view.centerCoordinate.geohash(length: 7)
+        
+        let polygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: geoHash, color: "#808080")
+
+        var overlays: [ColoredPolygon] = []
+            for hash in disabledLocationHashes {
+                let disabledPolygon = MapUtil.getPolygonSquareFromGeoHash(geoHash: hash, color: "#FF0000")
+                overlays.append(disabledPolygon)
+
+            }
+        
+
+        overlays.append(polygon)
+
+        view.addOverlays(overlays)
+        
     }
 }
 

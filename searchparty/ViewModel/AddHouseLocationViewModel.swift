@@ -14,7 +14,7 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     @Published var userLatitude: Double = 0
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
-    @Published var disabledLocationHashes: [String]? = []
+    @Published var disabledLocationHashes: [String] = []
 
     private let locationManager = CLLocationManager()
     
@@ -63,10 +63,21 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     func saveLocationToUser(location: CLLocation) {
         
     }
+    
+    func removeUserLocation(geoHash: String) {
+        Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).updateData([
+    "disabledLocationHashes": FieldValue.arrayRemove([geoHash])]) { err in
+                if let err = err {
+                    print("Error updating house: \(err)") //todo
+                } else {
+
+                    //todo finish
+                }
+            }
+    }
 
     
-    func saveHomeLocation(location: CLLocationCoordinate2D, completionHandler: @escaping (Result<String, Error>) -> Void) {
-        let geoHash = location.geohash(length: 7)
+    func saveHomeLocation(geoHash: String) {
         
         Firestore.firestore().collection("Users").document(Auth.auth().currentUser!.uid).updateData([
     "disabledLocationHashes": FieldValue.arrayUnion([geoHash])]) { err in

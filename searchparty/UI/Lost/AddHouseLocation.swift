@@ -37,21 +37,38 @@ struct AddHouseLocation: View {
                 VStack {
                     Text("Please select your home location so Search Party knows not to track you while you are near your home.").padding(.bottom)
 
-                    Button(action: {
-                        self.showView = false
-
-                    }) {
-                        Text("Add Disabled")
-                    }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
-                
                     
-
+                    
+                    if(addHouseLocationViewModel.disabledLocationHashes.contains((map.centerCoordinate.geohash(length: 7)))) {
                         Button(action: {
-                            self.addHouseLocationViewModel.saveHomeLocation(location: self.map.centerCoordinate) { result in
-                                self.showView = false
-                            }
+                            addHouseLocationViewModel.removeUserLocation(geoHash: map.centerCoordinate.geohash(length: 7))
                         }) {
-                            Text("Skip")
+                           Text("Remove")
+                        }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
+                    } else {
+                        
+                        Button(action: {
+                            self.addHouseLocationViewModel.saveHomeLocation(geoHash: map.centerCoordinate.geohash(length: 7))
+
+                        }) {
+                            
+                           Text("Add Disabled")
+
+                        }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
+                        
+                        
+                    }
+                    
+                        Button(action: {
+
+                        }) {
+                            if(addHouseLocationViewModel.disabledLocationHashes.isEmpty) {
+                                Text("Skip")
+                            } else {
+                                Text("Done")
+                            }
+                            
+                        
                         }.buttonStyle(PrimaryButtonStyle())
                     
                     
