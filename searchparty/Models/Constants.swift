@@ -26,6 +26,9 @@ struct Constant {
         static let gray = Color("Gray")
         static let contrast = Color("Contrast")
         static let travelPrimary = Color("TravelPrimary")
+        static let red = Color("Red")
+        static let green = Color("Green")
+
     }
     
     struct icon {

@@ -20,6 +20,34 @@ struct AddHouseLocation: View {
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
 
     
+    var AddRemoveButton: some View {
+        
+        if(addHouseLocationViewModel.disabledLocationHashes.contains((map.centerCoordinate.geohash(length: 7)))) {
+            return Button(action: {
+                addHouseLocationViewModel.removeUserLocation(geoHash: map.centerCoordinate.geohash(length: 7))
+            }) {
+                Text("Remove").padding()
+            }.frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
+                .foregroundColor(Color(.white))
+                .cornerRadius(8).padding()
+        } else {
+
+
+            return Button(action: {
+                self.addHouseLocationViewModel.saveHomeLocation(geoHash: map.centerCoordinate.geohash(length: 7))
+
+            }) {
+
+               Text("Add").padding()
+
+            }.frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
+                .foregroundColor(Color(.white))
+                .cornerRadius(8).padding()
+
+        }
+
+    }
+    
     var body: some View {
 
         VStack {
@@ -28,37 +56,15 @@ struct AddHouseLocation: View {
 
         if(addHouseLocationViewModel.userLocation != nil) {
 
-            AddHouseLocationMapView(map: self.$map, coordinate: self.$currentLocation, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(Image("outline_home_black_36pt").resizable().frame(width: 45.0, height: 45.0))
+            AddHouseLocationMapView(map: self.$map, coordinate: self.$currentLocation, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(AddRemoveButton, alignment: .bottomTrailing).overlay(Image("outline_home_black_36pt").resizable().frame(width: 45.0, height: 45.0))
         }
                 
             }
             
             ZStack(alignment: .bottom) {
                 VStack {
-                    Text("Please select your home location so Search Party knows not to track you while you are near your home.").padding(.bottom)
+                    Text("Please select areas where Search Party shouldn't track you when searching.").padding(.bottom)
 
-                    
-                    
-                    if(addHouseLocationViewModel.disabledLocationHashes.contains((map.centerCoordinate.geohash(length: 7)))) {
-                        Button(action: {
-                            addHouseLocationViewModel.removeUserLocation(geoHash: map.centerCoordinate.geohash(length: 7))
-                        }) {
-                           Text("Remove")
-                        }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
-                    } else {
-                        
-                        Button(action: {
-                            self.addHouseLocationViewModel.saveHomeLocation(geoHash: map.centerCoordinate.geohash(length: 7))
-
-                        }) {
-                            
-                           Text("Add Disabled")
-
-                        }.buttonStyle(PrimaryButtonStyle()).padding(.bottom)
-                        
-                        
-                    }
-                    
                         Button(action: {
 
                         }) {
@@ -78,7 +84,7 @@ struct AddHouseLocation: View {
 
             
             
-        }.navigationBarTitle(Text("Add House Location"), displayMode: .inline).onAppear() {
+        }.navigationBarTitle(Text("Select Private Areas"), displayMode: .inline).onAppear() {
             self.addHouseLocationViewModel.requestLocation()
         }
         
