@@ -25,26 +25,20 @@ struct AddHouseLocation: View {
     var AddRemoveButton: some View {
         
         if(addHouseLocationViewModel.disabledLocationHashes.contains((map.centerCoordinate.geohash(length: 7)))) {
-            return Button(action: {
+            return Button("Remove", action: {
                 addHouseLocationViewModel.removeUserLocation(geoHash: map.centerCoordinate.geohash(length: 7))
-            }) {
-                Text("Remove").padding()
-            }.frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
+            }).frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
                 .foregroundColor(Color(.white))
-                .cornerRadius(8).padding()
+                .clipShape(Capsule()).padding()
         } else {
 
 
-            return Button(action: {
+            return Button("Add", action: {
                 self.addHouseLocationViewModel.saveHomeLocation(geoHash: map.centerCoordinate.geohash(length: 7))
 
-            }) {
-
-               Text("Add").padding()
-
-            }.frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
+            }).frame(minWidth: 100, minHeight: 44).background(Constant.color.tintColor)
                 .foregroundColor(Color(.white))
-                .cornerRadius(8).padding()
+                .clipShape(Capsule()).padding()
 
         }
 
