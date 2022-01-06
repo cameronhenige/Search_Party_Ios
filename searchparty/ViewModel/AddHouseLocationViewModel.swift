@@ -15,6 +15,8 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     @Published var userLongitude: Double = 0
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var disabledLocationHashes: [String] = []
+    
+    
 
     private let locationManager = CLLocationManager()
     

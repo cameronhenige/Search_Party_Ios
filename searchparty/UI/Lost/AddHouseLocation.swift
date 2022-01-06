@@ -16,8 +16,10 @@ struct AddHouseLocation: View {
 
     @State var map = MKMapView()
     @State var currentLocation: CLLocationCoordinate2D?
+    @State var mapCenter: CLLocationCoordinate2D?
+
     @ObservedObject private var addHouseLocationViewModel = AddHouseLocationViewModel()
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+
 
     
     var AddRemoveButton: some View {
@@ -56,17 +58,17 @@ struct AddHouseLocation: View {
 
         if(addHouseLocationViewModel.userLocation != nil) {
 
-            AddHouseLocationMapView(map: self.$map, coordinate: self.$currentLocation, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(AddRemoveButton, alignment: .bottomTrailing).overlay(Image("outline_home_black_36pt").resizable().frame(width: 45.0, height: 45.0))
+            AddHouseLocationMapView(map: self.$map, mapCenter: $mapCenter, disabledLocationHashes: $addHouseLocationViewModel.disabledLocationHashes, initialLocation: addHouseLocationViewModel.userLocation!).overlay(AddRemoveButton, alignment: .bottomTrailing).overlay(Image("dot").resizable().frame(width: 45.0, height: 45.0))
         }
                 
             }
             
             ZStack(alignment: .bottom) {
                 VStack {
-                    Text("Please select areas where Search Party shouldn't track you when searching.").padding(.bottom)
+                    Text("Please select areas where Search Party shouldn't track you when searching.").foregroundColor(.black).padding(.bottom)
 
                         Button(action: {
-
+                            showView = false
                         }) {
                             if(addHouseLocationViewModel.disabledLocationHashes.isEmpty) {
                                 Text("Skip")

@@ -7,16 +7,16 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     
     @Binding var map : MKMapView
     
-    @Binding var coordinate: CLLocationCoordinate2D?
+    @Binding var mapCenter: CLLocationCoordinate2D?
     
     @Binding var disabledLocationHashes: [String]
+    var initialLocation: CLLocationCoordinate2D
 
     func makeCoordinator() -> Coordinator {
         return Coordinator(self)
     }
     
 
-    var initialLocation: CLLocationCoordinate2D
     
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: AddHouseLocationMapView
@@ -27,7 +27,7 @@ struct AddHouseLocationMapView: UIViewRepresentable {
         
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
-            self.parent.coordinate = mapView.centerCoordinate
+            self.parent.mapCenter = mapView.centerCoordinate
 
         }
         
@@ -45,13 +45,6 @@ struct AddHouseLocationMapView: UIViewRepresentable {
             
             
             if let polygon = overlay as? ColoredPolygon {
-                //                        let testlineRenderer = MKPolylineRenderer(polyline: polyline)
-                //                testlineRenderer.strokeColor = UIColor(hexString: polyline.color!);
-                //
-                //                        testlineRenderer.lineWidth = 3.0
-                //                        return testlineRenderer
-                
-                
                 let over = MKPolygonRenderer(overlay: overlay)
                 over.strokeColor = UIColor(hexString: polygon.color!)
                 over.fillColor = UIColor(hexString: polygon.color!).withAlphaComponent(0.3)
@@ -74,7 +67,7 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         map.delegate = context.coordinator
-        let centerCoordinate = coordinate ?? initialLocation
+        let centerCoordinate = initialLocation
         let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
         let region = MKCoordinateRegion(center: centerCoordinate, span: span)
         map.setRegion(region, animated: true)
