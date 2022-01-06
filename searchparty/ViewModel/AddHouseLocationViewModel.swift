@@ -9,6 +9,8 @@ import FlexibleGeohash
 
 class AddHouseLocationViewModel: NSObject, ObservableObject {
 
+    @Published var isLoadingUserLocation = true
+
     @Published var isLoadingDisabledLocations = true
     @Published var permissionStatus: CLAuthorizationStatus? = CLLocationManager.authorizationStatus()
     @Published var userLatitude: Double = 0
@@ -22,7 +24,10 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     
     override init() {
       super.init()
-      self.locationManager.delegate = self
+      locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestLocation()
+        locationManager.startUpdatingLocation()
         loadUser()
     }
 
@@ -49,10 +54,7 @@ class AddHouseLocationViewModel: NSObject, ObservableObject {
     func requestLocationPermission() {
         locationManager.requestAlwaysAuthorization()
     }
-    
-    func requestLocation() {
-        self.locationManager.requestLocation()
-    }
+
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
                 if #available(iOS 14.0, *) {
@@ -103,6 +105,8 @@ extension AddHouseLocationViewModel: CLLocationManagerDelegate {
     userLocation = CLLocationCoordinate2D(
         latitude: userLatitude,
         longitude: userLongitude)
+      isLoadingUserLocation = false
+      manager.stopUpdatingLocation()
   }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

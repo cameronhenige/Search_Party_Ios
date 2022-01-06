@@ -8,7 +8,7 @@ struct AddHouseLocationMapView: UIViewRepresentable {
     @Binding var map : MKMapView
     
     @Binding var mapCenter: CLLocationCoordinate2D?
-    
+        
     @Binding var disabledLocationHashes: [String]
     var initialLocation: CLLocationCoordinate2D
 

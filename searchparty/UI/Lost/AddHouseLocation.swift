@@ -48,6 +48,12 @@ struct AddHouseLocation: View {
 
         VStack {
 
+            if(addHouseLocationViewModel.isLoadingUserLocation) {
+                ProgressView()
+                Text("Finding Location")
+            } else {
+                
+            
             ZStack(alignment: .top) {
 
         if(addHouseLocationViewModel.userLocation != nil) {
@@ -77,13 +83,13 @@ struct AddHouseLocation: View {
                 }.padding()
                 
             }
+                
+            }
 
             
             
-        }.navigationBarTitle(Text("Select Private Areas"), displayMode: .inline).onAppear() {
-            self.addHouseLocationViewModel.requestLocation()
-        }
-        
+        }.navigationBarTitle(Text("Select Private Areas"), displayMode: .inline)
+
     }
 }
 
