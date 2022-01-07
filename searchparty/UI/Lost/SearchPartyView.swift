@@ -30,6 +30,28 @@ struct SearchPartyView: View {
     @State var name = ""
         
     @State var map = MKMapView()
+    @State private var showingContactAlert = false
+    
+    var actionSheet: ActionSheet {
+        ActionSheet(title: Text("Title"), message: Text("Message"), buttons: [.default(Text("Call"), action: {
+            print("here")
+        })])
+    }
+    
+    func sendMessage(phoneNumber: String) {
+        let rawPhoneNumber = phoneNumber.filter("0123456789.".contains)
+        let sms: String = "sms:" + rawPhoneNumber
+        let strURL: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
+    }
+    
+    func callPhone(phoneNumber: String) {
+        let rawPhoneNumber = phoneNumber.filter("0123456789.".contains)
+        let sms: String = "tel://" + rawPhoneNumber
+        let strURL: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
+    }
+
     
     var SearchingButtonText: some View {
         if(searchPartyViewModel.isSearching) {
@@ -144,12 +166,31 @@ struct SearchPartyView: View {
                 
                 Button(action: {
                     //todo contact searchPartyViewModel.startUpdatingLocationButtonAction()
+                    showingContactAlert.toggle()
                 }) {
                     
                     Text("Contact Owner")
                     
-                }.buttonStyle(PrimaryButtonStyle())
-                
+                }.buttonStyle(PrimaryButtonStyle()).confirmationDialog("Contact Owner", isPresented: $showingContactAlert) {
+                    if(searchPartyViewModel.lostPet?.ownerEmail != nil && !(searchPartyViewModel.lostPet?.ownerEmail!.isEmpty)!){
+                        Button((searchPartyViewModel.lostPet?.ownerEmail)!) {
+                        //todo email
+                    }
+                    }
+                    
+                    if(searchPartyViewModel.lostPet?.ownerPhoneNumber != nil && !(searchPartyViewModel.lostPet?.ownerPhoneNumber!.isEmpty)!){
+                        Button("Text " + (searchPartyViewModel.lostPet?.ownerPhoneNumber)!) {
+                            sendMessage(phoneNumber: (searchPartyViewModel.lostPet?.ownerPhoneNumber)!)
+                    }
+                        
+                        Button("Call " + (searchPartyViewModel.lostPet?.ownerPhoneNumber)!) {
+                            callPhone(phoneNumber: (searchPartyViewModel.lostPet?.ownerPhoneNumber)!)
+                    }
+                    }
+
+                    Button("Cancel", role: .cancel) {}
+                }
+                                    
                 ScrollView {
                     Text("People Searching").padding(.vertical)
                     
@@ -177,6 +218,7 @@ struct SearchPartyView: View {
         }
         
         
+
         
         
     }
