@@ -33,7 +33,7 @@ class SelectPrivacyLocationsViewModel: NSObject, ObservableObject {
         document.addSnapshotListener { documentSnapshot, error in
             if(documentSnapshot!.exists) {
             if let user = try? documentSnapshot!.data(as: SPUser.self) {
-                self.disabledLocationHashes = user.disabledLocationHashes
+                self.disabledLocationHashes = user.disabledLocationHashes!
                 }else {
                     //todo handle error
                 }

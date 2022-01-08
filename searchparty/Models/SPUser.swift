@@ -15,7 +15,7 @@ struct SPUser: Codable, Identifiable {
     var filterDistance: Double?
     var filterLocation: GeoPoint?
     var receiveNotifications: Bool?
-    var disabledLocationHashes: [String] = []
+    var disabledLocationHashes: [String]? = []
     var hasSetHomeFilter: Bool?
     var homeGeoHash: String?
 }

@@ -6,6 +6,7 @@ import CoreLocation
 struct LostPets: View {
     
     @EnvironmentObject var searchPartyAppState: SearchPartyAppState
+    @StateObject var lostPetsViewModel: LostPetsViewModel = LostPetsViewModel()
 
     @State var isShowingAlert = true
     @State var lostPetForm: LostPetForm = LostPetForm()
@@ -14,16 +15,16 @@ struct LostPets: View {
     var body: some View {
         NavigationView {
         
-        if(searchPartyAppState.permissionStatus == nil){
+        if(lostPetsViewModel.permissionStatus == nil){
             AnyView(Text("Waiting on permission")).onAppear(){
                 //locationManager.delegate = lostPetsViewModel
              }
-        }else if(searchPartyAppState.permissionStatus == .notDetermined){
+        }else if(lostPetsViewModel.permissionStatus == .notDetermined){
             AnyView(Text("Permission not determined")).onAppear(){
                 //locationManager.delegate = lostPetsViewModel
-                self.searchPartyAppState.requestLocationPermission()
+                self.lostPetsViewModel.requestLocationPermission()
              }
-        }else if(searchPartyAppState.permissionStatus == .denied){
+        }else if(lostPetsViewModel.permissionStatus == .denied){
             AnyView(Text("Permission denied!")).alert(isPresented: $isShowingAlert, content: {
                 Alert(title: Text("Permission Denied"), message: Text("Please Enable Permission in App Settings"), dismissButton: .default(Text("Go to Settings"), action: {
                     UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
@@ -33,7 +34,7 @@ struct LostPets: View {
 
             
                 ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(searchPartyAppState.lostPets) { lostPet in
+                    ForEach(lostPetsViewModel.lostPets) { lostPet in
 //                        NavigationLink(destination: LostPetView(),
 //                                       tag: lostPet,
 //                                       selection: $searchPartyAppState.selectedLostPet,
@@ -89,8 +90,9 @@ struct LostPets: View {
                 }
                 .navigationBarTitle(Text(""), displayMode: .inline)
                 .onAppear(){
+                    //todo can probably be smarter about refreshing lost pets
                     print("appeared")
-                    self.searchPartyAppState.fetchLostPets()
+                    self.lostPetsViewModel.fetchLostPets()
                 }
                 
                     
@@ -103,9 +105,9 @@ struct LostPets: View {
     
 }
 
-struct Recipes_Previews: PreviewProvider {
-    static var previews: some View {
-        LostPets()
-            .environment(\.colorScheme, .light).environmentObject(SearchPartyAppState())
-    }
-}
+//struct Recipes_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LostPets()
+//            .environment(\.colorScheme, .light).environmentObject(SearchPartyAppState())
+//    }
+//}
