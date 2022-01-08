@@ -49,6 +49,7 @@
 		F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */; };
 		F220A6FB2682F14600319F2F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FA2682F14600319F2F /* MainView.swift */; };
 		F220A6FF268430E600319F2F /* SearchPartyAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FE268430E600319F2F /* SearchPartyAppState.swift */; };
+		F226C3982788365500F53A27 /* IosUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226C3972788365500F53A27 /* IosUtil.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -201,6 +202,7 @@
 		F220A6DB267D98B200319F2F /* SyncFcmTokenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncFcmTokenViewModel.swift; sourceTree = "<group>"; };
 		F220A6FA2682F14600319F2F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F220A6FE268430E600319F2F /* SearchPartyAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyAppState.swift; sourceTree = "<group>"; };
+		F226C3972788365500F53A27 /* IosUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosUtil.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				F255CBA426901AD3005AB259 /* DynamicLinkGenerator.swift */,
 				F2DE92B82785490E002A0833 /* LostPetConverter.swift */,
 				F25A1431278695DB0075C8BF /* MapUtil.swift */,
+				F226C3972788365500F53A27 /* IosUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				F23D72402688299900CB80C6 /* ChatView.swift in Sources */,
 				F2D7457025FAF6AC003C5157 /* SignUpViewModel.swift in Sources */,
 				F2DBDDE6263B39AE00E9C987 /* PetImagePage.swift in Sources */,
+				F226C3982788365500F53A27 /* IosUtil.swift in Sources */,
 				F2791A6D2600759E00C056A6 /* Chat.swift in Sources */,
 				F27BC5F12655823C0017B198 /* SearchPartyViewModel.swift in Sources */,
 				F2A5854E260842AB00E8920E /* ForgotPasswordView.swift in Sources */,

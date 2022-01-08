@@ -38,18 +38,10 @@ struct SearchPartyView: View {
         })])
     }
     
-    func sendMessage(phoneNumber: String) {
-        let rawPhoneNumber = phoneNumber.filter("0123456789.".contains)
-        let sms: String = "sms:" + rawPhoneNumber
-        let strURL: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
-    }
+
     
-    func callPhone(phoneNumber: String) {
-        let rawPhoneNumber = phoneNumber.filter("0123456789.".contains)
-        let sms: String = "tel://" + rawPhoneNumber
-        let strURL: String = sms.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        UIApplication.shared.open(URL.init(string: strURL)!, options: [:], completionHandler: nil)
+    func doesOwnerHaveAContactMethod()-> Bool {
+        return false //todo actually check this
     }
 
     
@@ -62,9 +54,6 @@ struct SearchPartyView: View {
     }
     
     var body: some View {
-        
-
-        
         
         let taskDateFormat: DateFormatter = {
             let formatter = DateFormatter()
@@ -80,11 +69,6 @@ struct SearchPartyView: View {
                 NavigationLink(destination: SelectPrivacyLocations(showView: self.$searchPartyViewModel.isOnSelectPrivateAreasScreen), isActive: $searchPartyViewModel.isOnSelectPrivateAreasScreen) {
                     
                 }
-                
-//                NavigationLink(destination:DestView(showView: self.$showView),isActive : self.$showView){
-//               Text("Push View")
-//
-//            }
                 
                 SearchPartyMapView(map: self.$map, name: self.$name, isSearching: $searchPartyViewModel.isSearching, selectedDay: $searchPartyViewModel.selectedDay, coordinate: self.$currentLocation, searchPartyUsers: $searchPartyViewModel.searchPartyUsers, listOfPrivateGeoHashes: $searchPartyViewModel.listOfPrivateGeoHashes).edgesIgnoringSafeArea(.all)
                 
@@ -144,13 +128,10 @@ struct SearchPartyView: View {
                     if(searchPartyViewModel.pictureUrl != nil) {
                         KFImage(searchPartyViewModel.pictureUrl).resizing(referenceSize: CGSize(width: 100, height: 100))
                                 .frame(width: 100.0, height: 100.0).cornerRadius(15)
-                        
                     }else{
-                        
                         Image(PetImageTypes().getPetImageType(petType: lostPet.type)).resizable()
                             .frame(width: 100.0, height: 100.0)
                     }
-                    
                     
                     Text(lostPet.name)
                     Spacer()
@@ -164,28 +145,36 @@ struct SearchPartyView: View {
                     
                 }
                 
+
                 Button(action: {
-                    //todo contact searchPartyViewModel.startUpdatingLocationButtonAction()
                     showingContactAlert.toggle()
                 }) {
-                    
                     Text("Contact Owner")
-                    
+                
                 }.buttonStyle(PrimaryButtonStyle()).confirmationDialog("Contact Owner", isPresented: $showingContactAlert) {
+                    
+                    if(doesOwnerHaveAContactMethod()){
+                    
                     if(searchPartyViewModel.lostPet?.ownerEmail != nil && !(searchPartyViewModel.lostPet?.ownerEmail!.isEmpty)!){
                         Button((searchPartyViewModel.lostPet?.ownerEmail)!) {
-                        //todo email
+                            IosUtil.sendEmail(email: (searchPartyViewModel.lostPet?.ownerEmail)!)
                     }
                     }
                     
                     if(searchPartyViewModel.lostPet?.ownerPhoneNumber != nil && !(searchPartyViewModel.lostPet?.ownerPhoneNumber!.isEmpty)!){
                         Button("Text " + (searchPartyViewModel.lostPet?.ownerPhoneNumber)!) {
-                            sendMessage(phoneNumber: (searchPartyViewModel.lostPet?.ownerPhoneNumber)!)
+                            IosUtil.sendMessage(phoneNumber: (searchPartyViewModel.lostPet?.ownerPhoneNumber)!)
                     }
                         
                         Button("Call " + (searchPartyViewModel.lostPet?.ownerPhoneNumber)!) {
-                            callPhone(phoneNumber: (searchPartyViewModel.lostPet?.ownerPhoneNumber)!)
+                            IosUtil.callPhone(phoneNumber: (searchPartyViewModel.lostPet?.ownerPhoneNumber)!)
                     }
+                    }
+                    } else {
+
+                        Button("Owner has not added any contact methods") {
+                            
+                        }
                     }
 
                     Button("Cancel", role: .cancel) {}

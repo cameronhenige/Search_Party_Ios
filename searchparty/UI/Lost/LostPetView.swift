@@ -13,6 +13,7 @@ struct LostPetView: View {
     @State var hasLostLocation = false
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     @State var lostPetForm: LostPetForm = LostPetForm()
+    @State private var showingContactAlertPhoneNumber = false
 
     @State var isOnEditPet = false
     @State var selectedView = 1
@@ -259,7 +260,7 @@ struct LostPetView: View {
                         Text(lostLocationDescription).padding(.bottom)
                     }
                     
-                    if(hasLostLocation){
+                    if(hasLostLocation) {
                     Map(coordinateRegion: $region).disabled(true)
                         .frame(width: 200, height: 200).overlay(Image(PetImageTypes().getPetImageType(petType: searchPartyAppState.selectedLostPet?.type)).resizable().frame(width: 45.0, height: 45.0)).padding(.bottom)
                     }
@@ -271,12 +272,28 @@ struct LostPetView: View {
                     
                     if let ownerEmail = pet.ownerEmail, !ownerEmail.isEmpty {
                         Text("Owners' Email").font(.caption)
-                        Text(ownerEmail).padding(.bottom)
+                        Button(ownerEmail) {
+                            IosUtil.sendEmail(email: ownerEmail)
+                        }.padding(.bottom)
                     }
                     
                     if let ownerPhoneNumber = pet.ownerPhoneNumber, !ownerPhoneNumber.isEmpty {
                         Text("Owners' Phone Number").font(.caption)
-                        Text(ownerPhoneNumber).padding(.bottom)
+                    
+                            Button(ownerPhoneNumber) {
+                                showingContactAlertPhoneNumber.toggle()
+                            }.padding(.bottom).confirmationDialog("Contact", isPresented: $showingContactAlertPhoneNumber) {
+                                
+                                    Button("Text " + ownerPhoneNumber) {
+                                        IosUtil.sendMessage(phoneNumber: ownerPhoneNumber)
+                                }
+                                    Button("Call " + ownerPhoneNumber) {
+                                        IosUtil.callPhone(phoneNumber: ownerPhoneNumber)
+                                }
+
+                                Button("Cancel", role: .cancel) {}
+                            }
+                        
                     }
                     
                     if let ownerOtherContactMethod = pet.ownerOtherContactMethod, !ownerOtherContactMethod.isEmpty {
