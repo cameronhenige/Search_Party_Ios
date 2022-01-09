@@ -28,7 +28,6 @@ class GenerateFlyerViewModelX: NSObject {
     }
   
     func createFlyer() -> Data {
-    // 1
     let pdfMetaData = [
       kCGPDFContextCreator: "Search Party",
       kCGPDFContextAuthor: "searchparty.io",
@@ -37,18 +36,14 @@ class GenerateFlyerViewModelX: NSObject {
     let format = UIGraphicsPDFRendererFormat()
     format.documentInfo = pdfMetaData as [String: Any]
     
-    // 2
     let pageWidth = 8.5 * 72.0
     let pageHeight = 11 * 72.0
     let pageRect = CGRect(x: 0, y: 0, width: pageWidth, height: pageHeight)
     
-    // 3
     let renderer = UIGraphicsPDFRenderer(bounds: pageRect, format: format)
-    // 4
-    let data = renderer.pdfData { (context) in
-      // 5
+
+        let data = renderer.pdfData { (context) in
       context.beginPage()
-      // 6
       let titleBottom = addTitle(pageRect: pageRect)
       let imageBottom = addImage(pageRect: pageRect, imageTop: titleBottom + 18.0)
       let bodyText = addBodyText(pageRect: pageRect, textTop: imageBottom + 18.0)
@@ -64,15 +59,12 @@ class GenerateFlyerViewModelX: NSObject {
   }
   
   func addTitle(pageRect: CGRect) -> CGFloat {
-    // 1
     let titleFont = UIFont.systemFont(ofSize: 35.0, weight: .bold)
-    // 2
     let titleAttributes: [NSAttributedString.Key: Any] =
       [NSAttributedString.Key.font: titleFont]
     
-    
     var lostPetName = ""
-    
+     
     if(lostPet.type == "Other") {
         lostPetName = "PET"
     } else {
@@ -80,27 +72,20 @@ class GenerateFlyerViewModelX: NSObject {
     }
     
     let attributedTitle = NSAttributedString(string: "LOST \(lostPetName.uppercased())", attributes: titleAttributes)
-    // 3
     let titleStringSize = attributedTitle.size()
-    // 4
     let titleStringRect = CGRect(x: (pageRect.width - titleStringSize.width) / 2.0,
                                  y: 36, width: titleStringSize.width,
                                  height: titleStringSize.height)
-    // 5
     attributedTitle.draw(in: titleStringRect)
-    // 6
     return titleStringRect.origin.y + titleStringRect.size.height
   }
 
   func addBodyText(pageRect: CGRect, textTop: CGFloat) -> CGFloat {
-    // 1
     let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-    // 2
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .natural
     paragraphStyle.lineBreakMode = .byWordWrapping
     
-    // 3
     let textAttributes = [
       NSAttributedString.Key.paragraphStyle: paragraphStyle,
       NSAttributedString.Key.font: textFont
@@ -108,7 +93,6 @@ class GenerateFlyerViewModelX: NSObject {
     
     let fullText = getFullText()
     let attributedText = NSAttributedString(string: fullText, attributes: textAttributes)
-    // 4
     let textRect = CGRect(x: 70, y: textTop, width: pageRect.width - 70,
                           height: pageRect.height - textTop - pageRect.height / 5.0)
     attributedText.draw(in: textRect)
@@ -164,58 +148,45 @@ class GenerateFlyerViewModelX: NSObject {
   func addImage(pageRect: CGRect, imageTop: CGFloat) -> CGFloat {
     
     let image = getImage()
-    // 1
     let maxHeight = pageRect.height * 0.35
     let maxWidth = pageRect.width * 0.8
-    // 2
     let aspectWidth = maxWidth / image.size.width
     let aspectHeight = maxHeight / image.size.height
     let aspectRatio = min(aspectWidth, aspectHeight)
-    // 3
     let scaledWidth = image.size.width * aspectRatio
     let scaledHeight = image.size.height * aspectRatio
-    // 4
     let imageX = (pageRect.width - scaledWidth) / 2.0
     let imageRect = CGRect(x: imageX, y: imageTop,
                            width: scaledWidth, height: scaledHeight)
-    // 5
     image.draw(in: imageRect)
     return imageRect.origin.y + imageRect.size.height
   }
     
     func addQRCode(pageRect: CGRect, imageTop: CGFloat) {
-        var link = DynamicLinkGenerator().getShareLink(lostPetName: lostPet.name, lostPetId: lostPet.id!)
+        let link = DynamicLinkGenerator().getShareLink(lostPetName: lostPet.name, lostPetId: lostPet.id!)
         
         switch link {
           case let .success(data):
             let image = createQRCodeImage(lostPet: lostPet, url: data.absoluteString)!
 
             //tododocument.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
-            // 1
             let maxHeight = pageRect.height * 0.15
             let maxWidth = pageRect.width * 0.15
-            // 2
             let aspectWidth = maxWidth / image.size.width
             let aspectHeight = maxHeight / image.size.height
             let aspectRatio = min(aspectWidth, aspectHeight)
-            // 3
             let scaledWidth = image.size.width * aspectRatio
             let scaledHeight = image.size.height * aspectRatio
-            // 4
             let imageX = (pageRect.width - scaledWidth) / 2.0
             let imageRect = CGRect(x: imageX, y: imageTop,
                                    width: scaledWidth, height: scaledHeight)
-            // 5
             image.draw(in: imageRect)
             
-            // 1
             let textFont = UIFont.systemFont(ofSize: 12.0, weight: .regular)
-            // 2
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             paragraphStyle.lineBreakMode = .byWordWrapping
             
-            // 3
             let textAttributes = [
               NSAttributedString.Key.paragraphStyle: paragraphStyle,
               NSAttributedString.Key.font: textFont
@@ -223,7 +194,6 @@ class GenerateFlyerViewModelX: NSObject {
             
             let fullText = "Scan QR Code to help find \(lostPet.name) in the Search Party App."
             let attributedText = NSAttributedString(string: fullText, attributes: textAttributes)
-            // 4
             
             let textSize = attributedText.size()
 
@@ -263,21 +233,14 @@ class GenerateFlyerViewModelX: NSObject {
     
     func getImage() -> UIImage {
       
-      if(self.lostPet.generalImages != nil && !lostPet.generalImages.isEmpty){
+      if(!lostPet.generalImages.isEmpty){
         return addImage(lostPet: lostPet)!
 
       } else {
-  //        let houseBookIcon = PDFImage(image: UIImage(named: "cat.png")!,
-  //                                     size: CGSize(width: 500, height: 500), options: [.resize])
-  //        section.columns[0].add(image: houseBookIcon)
         
         let petImage = PetImageTypes().getPetImageType(petType: lostPet.type)
-        if(petImage != nil){
             return UIImage(named: petImage)!
 
-        }else{
-            return UIImage(imageLiteralResourceName: "map")
-        }
       }
       
     }
@@ -285,20 +248,15 @@ class GenerateFlyerViewModelX: NSObject {
     func addImage(lostPet: LostPet) -> UIImage?{
 
 
-        if(lostPet.generalImages != nil && !lostPet.generalImages.isEmpty){
+        if(!lostPet.generalImages.isEmpty){
 
             let imageReference : String = "Lost/" + lostPet.id! + "/generalImages/" + lostPet.generalImages[0]
             let storage = Storage.storage().reference().child(imageReference)
-            let roomImageResult = self.getImage(imageReference: storage)
+            let imageResult = self.getImage(imageReference: storage)
             
-        switch roomImageResult {
+        switch imageResult {
           case let .success(data):
 
-//            let heightRatio = roomImageHeight / data.size.height
-//            let newWidth = data.size.width * heightRatio
-//            let imageElement = PDFImage(image: data,
-//                                        size: CGSize(width: data.size.width, height: data.size.height), options: [.none])
-//            column.add(image: imageElement)
             return data
 
         case .failure(_):
@@ -342,33 +300,26 @@ class GenerateFlyerViewModelX: NSObject {
         return getImageResult
     }
   
-  // 1
   func drawTearOffs(_ drawContext: CGContext, pageRect: CGRect,
                     tearOffY: CGFloat, numberTabs: Int) {
-    // 2
     drawContext.saveGState()
     drawContext.setLineWidth(2.0)
     
-    // 3
     drawContext.move(to: CGPoint(x: 0, y: tearOffY))
     drawContext.addLine(to: CGPoint(x: pageRect.width, y: tearOffY))
     drawContext.strokePath()
     drawContext.restoreGState()
     
-    // 4
     drawContext.saveGState()
     let dashLength = CGFloat(72.0 * 0.2)
     drawContext.setLineDash(phase: 0, lengths: [dashLength, dashLength])
-    // 5
     let tabWidth = pageRect.width / CGFloat(numberTabs)
     for tearOffIndex in 1..<numberTabs {
-      // 6
       let tabX = CGFloat(tearOffIndex) * tabWidth
       drawContext.move(to: CGPoint(x: tabX, y: tearOffY))
       drawContext.addLine(to: CGPoint(x: tabX, y: pageRect.height))
       drawContext.strokePath()
     }
-    // 7
     drawContext.restoreGState()
   }
   
@@ -382,16 +333,13 @@ class GenerateFlyerViewModelX: NSObject {
       NSAttributedString.Key.font: contactTextFont
     ]
     let attributedContactText = NSMutableAttributedString(string: contactInfo, attributes: contactBlurbAttributes)
-    // 1
     let textHeight = attributedContactText.size().height
     let tabWidth = pageRect.width / CGFloat(numberTabs)
     let horizontalOffset = (tabWidth - textHeight) / 2.0
     drawContext.saveGState()
-    // 2
     drawContext.rotate(by: -90.0 * CGFloat.pi / 180.0)
     for tearOffIndex in 0...numberTabs {
       let tabX = CGFloat(tearOffIndex) * tabWidth + horizontalOffset
-      // 3
       attributedContactText.draw(at: CGPoint(x: -pageRect.height + 5.0, y: tabX))
     }
     drawContext.restoreGState()
