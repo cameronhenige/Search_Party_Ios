@@ -112,7 +112,11 @@ struct LostPetView: View {
                                     
                                     DispatchQueue.main.async {
                                         let activityVC = UIActivityViewController(activityItems: [pdfData], applicationActivities: nil)
+                                        activityVC.popoverPresentationController?.sourceView = UIApplication.shared.windows.first
+                                        activityVC.popoverPresentationController?.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2.1, y: UIScreen.main.bounds.height / 2.3, width: 200, height: 200)
+
                                         UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
+                                
                                     }
                                     
                                 }
