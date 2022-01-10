@@ -21,7 +21,7 @@ struct SendButton: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 55, height: 55)
                 .foregroundColor(Color.white)
-                .background(Color.blue)
+                .background(Constant.color.tintColor)
                 .clipShape(Circle())
         })
     }

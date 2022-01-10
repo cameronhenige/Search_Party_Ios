@@ -15,15 +15,17 @@ struct TabBar: View {
     var content: TabItem
     
     var body: some View {
+        
         HStack () {
                 Spacer()
                 VStack() {
+                    
                     if (content.customView != nil) {
                         content.customView
                     } else {
                         Image(systemName: content.icon ?? Constant.icon.circle).font(.system(size: 24))
                     }
-                    Text(content.name)
+                    Text(content.name).multilineTextAlignment(.center)
                         .font(.subheadline).frame(alignment: .center).fixedSize(horizontal: false, vertical: true).padding(.top, 5)
                 }
                 .frame(maxWidth:.infinity)
@@ -39,12 +41,8 @@ struct TabBar: View {
 }
 
 
-//struct TabBar_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TabBar(content: [
-//            TabItem(name: "$$", icon: "creditcard"),
-//            TabItem(name: "129 reviews", customView: Stars(3).eraseToAnyView()),
-//            TabItem(name: "$18:00 - 22:00", icon: "clock.fill")
-//        ])
-//    }
-//}
+struct TabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        TabBar(content: TabItem(name: "Generate Flyer", icon: "tag.circle"))
+    }
+}

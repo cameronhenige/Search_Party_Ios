@@ -104,7 +104,7 @@ struct LostPetView: View {
                                 }
                             }
                             
-                            TabBar(content: TabItem(name: "Generate Flyer", icon: Constant.icon.doc)).onTapGesture {
+                            TabBar(content: TabItem(name: "Flyer", icon: Constant.icon.doc)).onTapGesture {
                                 
                                 DispatchQueue.global().async { [self] in
                                     

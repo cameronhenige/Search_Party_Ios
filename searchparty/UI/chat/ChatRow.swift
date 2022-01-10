@@ -28,7 +28,7 @@ struct ChatRow: View {
                     .foregroundColor(sender ? Color.white : Color(.label))
                     .padding()
             }
-            .background(sender ? Color.blue : Color(.systemGray4))
+            .background(sender ? Constant.color.tintColor : Color(.systemGray4))
             .cornerRadius(6)
 
             if !sender { Spacer() }
