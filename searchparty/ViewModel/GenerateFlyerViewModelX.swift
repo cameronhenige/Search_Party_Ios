@@ -169,7 +169,6 @@ class GenerateFlyerViewModelX: NSObject {
           case let .success(data):
             let image = createQRCodeImage(lostPet: lostPet, url: data.absoluteString)!
 
-            //tododocument.add(.contentCenter, text: "Scan QR Code to help find \(lostPet.name) in the Search Party App.")
             let maxHeight = pageRect.height * 0.15
             let maxWidth = pageRect.width * 0.15
             let aspectWidth = maxWidth / image.size.width

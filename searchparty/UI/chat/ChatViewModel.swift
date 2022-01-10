@@ -15,12 +15,13 @@ class ChatViewModel: ObservableObject {
     @AppStorage("currentUsername") var currentUsername: String = ""
     @AppStorage("currentEmail") var currentEmail: String = ""
     @Published var hasJoinedSearchparty: Bool = false
-    @Published var isAddingMessage: Bool = false
-    @Published var isSendingMessage: Bool? = false
-    @Published var errorSendingMessage: Bool? = false
+    @Published var errorSendingMessage: Bool = false
+    @Published var errorMessage: String = ""
+
     @Published var showingSignIn: Bool = true
     @Published var conversations: [String] = []
     @Published var messages: [Chat] = []
+    @Published var messageBeingSent: [MessageBeingSent] = []
 
     let database = Firestore.firestore()
     let auth = Auth.auth()
@@ -66,8 +67,18 @@ extension ChatViewModel {
             self.messages = documents.compactMap { document -> Chat? in
               try? document.data(as: Chat.self)
             }
+            
+            for message in self.messages {
+                
+                self.messageBeingSent.removeAll(where: {$0.id == message.id})
+            
+            }
       }
         
+    }
+    
+    func messageContainsMessageBeingSent() -> Bool {
+        return true
     }
 }
 
@@ -80,25 +91,27 @@ extension ChatViewModel {
 
     func addMessage(text: String, lostPetId: String) {
         
-        isAddingMessage = true
+        let userName = Auth.auth().currentUser!.displayName
+        //todo generate this in backend
+        
         let messageData : [String: Any] = [
             ChatViewModel.MESSAGE_KEY: text,
             ChatViewModel.SENDER_KEY: Auth.auth().currentUser!.uid,
-            ChatViewModel.SENDER_NAME: Auth.auth().currentUser!.displayName //todo generate this in backend
+            ChatViewModel.SENDER_NAME: userName
         ]
         
-        var ref: DocumentReference? = nil
+
+        var ref: DocumentReference?
         ref = Firestore.firestore().collection("Lost").document(lostPetId).collection("chat").addDocument(data: messageData){ err in
             if  err != nil {
+                self.errorMessage = text
                 self.errorSendingMessage = true
-            } else {
-                //todo successfully sent
+                self.messageBeingSent.removeAll(where: {$0.id == ref?.documentID})
             }
-            self.isSendingMessage = false
-        
-        self.isAddingMessage = false
 
         }
+        
+        messageBeingSent.append(MessageBeingSent(id: ref?.documentID, message: text, sender: Auth.auth().currentUser!.uid, senderName: userName))
     }
     
     
@@ -119,7 +132,6 @@ Firestore.firestore().collection("Lost").document(lostPetId).collection("SearchP
 
     func sendMessage(text: String, lostPetId: String) {
         
-        isAddingMessage = true
         if(self.hasJoinedSearchparty){
                 addMessage(text: text, lostPetId: lostPetId)
            }else{

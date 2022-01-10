@@ -50,6 +50,7 @@
 		F220A6FB2682F14600319F2F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FA2682F14600319F2F /* MainView.swift */; };
 		F220A6FF268430E600319F2F /* SearchPartyAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F220A6FE268430E600319F2F /* SearchPartyAppState.swift */; };
 		F226C3982788365500F53A27 /* IosUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226C3972788365500F53A27 /* IosUtil.swift */; };
+		F226C39A278BFDAE00F53A27 /* MessageBeingSent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226C399278BFDAE00F53A27 /* MessageBeingSent.swift */; };
 		F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */; };
 		F233D3D02633D37400912F28 /* MarkPetAsFound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */; };
 		F233D3D32633D41400912F28 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233D3D22633D41400912F28 /* ChatScreen.swift */; };
@@ -203,6 +204,7 @@
 		F220A6FA2682F14600319F2F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F220A6FE268430E600319F2F /* SearchPartyAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPartyAppState.swift; sourceTree = "<group>"; };
 		F226C3972788365500F53A27 /* IosUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosUtil.swift; sourceTree = "<group>"; };
+		F226C399278BFDAE00F53A27 /* MessageBeingSent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBeingSent.swift; sourceTree = "<group>"; };
 		F233D3CC2633CE6800912F28 /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
 		F233D3CF2633D37400912F28 /* MarkPetAsFound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkPetAsFound.swift; sourceTree = "<group>"; };
 		F233D3D22633D41400912F28 /* ChatScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				F220A6CF2675706D00319F2F /* ColoredPolygon.swift */,
 				F23D7235268764D800CB80C6 /* Pet.swift */,
 				F255CBB6269E6CF0005AB259 /* SelectedImage.swift */,
+				F226C399278BFDAE00F53A27 /* MessageBeingSent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				F2D7459425FB2484003C5157 /* LottieSubview.swift in Sources */,
 				F233D3CD2633CE6800912F28 /* PrimaryButtonStyle.swift in Sources */,
 				3403A3022406B70F00D7B040 /* AppDelegate.swift in Sources */,
+				F226C39A278BFDAE00F53A27 /* MessageBeingSent.swift in Sources */,
 				F220A6DC267D98B200319F2F /* SyncFcmTokenViewModel.swift in Sources */,
 				F23D724826882B1500CB80C6 /* ChatViewModel.swift in Sources */,
 				345AE3AD241A7A8E004EBE8C /* ModalAnchorView.swift in Sources */,

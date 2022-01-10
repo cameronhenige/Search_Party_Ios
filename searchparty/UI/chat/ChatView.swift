@@ -13,11 +13,26 @@ struct ChatView: View {
             ScrollView(.vertical) {
                 ScrollViewReader { scrollView in
 
+                    
+                    VStack {
                 ForEach(model.messages, id: \.self) { message in
                     ChatRow(text: message.message!,
-                            sender: message.sender == Auth.auth().currentUser?.uid)
+                            sender: message.sender == Auth.auth().currentUser?.uid, isBeingSent: false)
                         .padding(3)
-                }.padding().onChange(of: model.messages) { _ in
+                }
+                        
+                        ForEach(model.messageBeingSent, id: \.self) { messageBeingSent in
+                            ChatRow(text: messageBeingSent.message!,
+                                    sender: messageBeingSent.sender == Auth.auth().currentUser?.uid, isBeingSent: true)
+                                .padding(3)
+                        }.onChange(of: model.messageBeingSent) { _ in
+                            if(!model.messageBeingSent.isEmpty){
+                            scrollView.scrollTo(model.messageBeingSent[model.messageBeingSent.endIndex - 1])
+                            }
+                        }
+                
+                
+                    }.padding().onChange(of: model.messages) { _ in
                     scrollView.scrollTo(model.messages[model.messages.endIndex - 1])
                 }.onAppear(){
                     if(model.messages.count>0){
@@ -32,14 +47,12 @@ struct ChatView: View {
                 TextField("Message...", text: $message)
                     .modifier(CustomField())
 
-                
-                if(model.isAddingMessage){
-                    ProgressView()
-                }else{
                     SendButton(text: $message, model: model)
-                }
+                
             }
             .padding()
+        }.alert("Failed to send \"" + model.errorMessage + "\"", isPresented: $model.errorSendingMessage) {
+            Button("OK", role: .cancel) { }
         }
         .navigationBarTitle("Chat with Search Party", displayMode: .inline)
         .onAppear {
