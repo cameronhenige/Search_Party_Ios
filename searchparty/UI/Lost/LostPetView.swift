@@ -121,12 +121,11 @@ struct LostPetView: View {
                                     
                                 }
                             }
+
                             
-                            NavigationLink(destination: ChatView(), isActive: $searchPartyAppState.isOnChat) {
-                                TabBar(content: TabItem(name: "Chat", icon: Constant.icon.envelope)).onTapGesture {
-                                    self.searchPartyAppState.isOnChat = true
-                                    
-                                }
+                            TabBar(content: TabItem(name: "Chat", icon: Constant.icon.envelope)).onTapGesture {
+                                self.searchPartyAppState.isOnChat = true
+                                
                             }
                             
                             TabBar(content: TabItem(name: "Share Link", icon: Constant.icon.share)).onTapGesture {
@@ -143,6 +142,9 @@ struct LostPetView: View {
                             }
                             
                             
+                            NavigationLink(destination: ChatView(), isActive: $searchPartyAppState.isOnChat) {
+
+                            }
                             
                             
                         }.padding(.vertical)
@@ -180,6 +182,10 @@ struct LostPetView: View {
                     }
                 
                     }
+                }.onAppear {
+                 
+                        searchPartyAppState.isOnChat = true
+                    
                 }
                 
                 

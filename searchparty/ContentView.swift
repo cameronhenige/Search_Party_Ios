@@ -16,7 +16,7 @@ struct ContentView: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) var scenePhase
     
-    var searchPartyAppState = SearchPartyAppState()
+    @StateObject var searchPartyAppState = SearchPartyAppState()
 
     
     var body: some Scene {
@@ -42,7 +42,7 @@ struct ContentView: App {
                             let link = dynamiclink?.url?.absoluteString
                             if((link!.contains("LostPet"))){
                                 let lostPetId = getQueryStringParameter(url: link!, param: "lostPetId")
-                                
+                                                                
                                 searchPartyAppState.deepLinkToLostPet(lostPetId: lostPetId!)
 
                             }else{
