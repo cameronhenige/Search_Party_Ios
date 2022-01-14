@@ -182,10 +182,6 @@ struct LostPetView: View {
                     }
                 
                     }
-                }.onAppear {
-                 
-                        searchPartyAppState.isOnChat = true
-                    
                 }
                 
                 
